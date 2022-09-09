@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Background from '../images/aboutBackground.png'
+import Background from '../images/HowWhyStoryFunctioningBackground.png'
 import {colors, fontSizes} from "../../generalStyle";
 
-export const TitleAboutSection = styled.h1`
+export const TitleSection = styled.h1`
   font-family: "KaushanScript";
   font-size: ${fontSizes.heading.base};
   color: ${colors.primary.base};
@@ -17,6 +17,7 @@ export const AboutWrapper = styled.div`
           text-align: center;
           padding-top: 5%;
           padding-bottom: 5%;
+  height: 100vh;
     `
 ;
 
