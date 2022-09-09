@@ -19,7 +19,7 @@ export const AboutSection = () => {
     return (
         <>
             <AboutWrapper>
-                <TitleAboutSection>Despre profa de povesti</TitleAboutSection>
+                <TitleAboutSection>Despre profa de povești</TitleAboutSection>
                 {ParagraphAboutSection}
                 <YoutubeEmbed embedId="C_BkCoJVzBU"/>
             </AboutWrapper>
