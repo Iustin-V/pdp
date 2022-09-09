@@ -17,6 +17,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { MainPage } from "./MainPage/MainPage";
 import { ToTopButton } from "./ToTopButton";
+import {AboutSection} from "./AboutStoryTeacherSection/AboutSection";
 
 export const Home = () => {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -32,6 +33,9 @@ export const Home = () => {
       <StyledPageWrapper>
         <MainContentWrapper></MainContentWrapper>
       </StyledPageWrapper>
+
+        <AboutSection></AboutSection>
+
       <ToTopButton topRef={topRef} isTopButton={isTopButton} />
       <Footer />
     </>
