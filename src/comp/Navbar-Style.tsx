@@ -34,12 +34,6 @@ export const StyledNav = styled.div<{ height: string }>`
   display: flex;
   justify-content:space-between;
   overflow: hidden;
-  
-  @media (max-width: 1440px) {
-    padding: 0px 40px;
-    width:calc(100% - 80px);
-  }
-  
 `;
 
 export const StyledNavItems=styled.div`
