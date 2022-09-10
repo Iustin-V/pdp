@@ -7,16 +7,28 @@ import {
   StyledProgressBar,
   StyledProgressContainer,
   StyledImage,
+  Container,
+  StyledNavItems,
+  StyledLogoItem,
+  StyledMobileNav,
+  BurgerMenu,
+  StyledLateralMenu,
+  Overlay
 } from "./Navbar-Style";
-import logo from "./images/logo-white.png";
+import logo from "./images/logo.png";
+import burgerLogo from "./images/icons8-menu.svg";
+import closeIcon from "./images/icons8-close.svg"
+import {useState} from "react";
 
 interface navbarProps {
   setTopButton: (value: boolean) => void;
 }
 
 export const Navbar = (props: navbarProps) => {
-  const [visible, setVisible] = React.useState(true);
   const [scrollWidth, setScrollWidth] = React.useState(0);
+
+  const [isActive,setIsActive]=useState(false)
+  const [logoSrc, setLogoSrc]=useState(burgerLogo)
   const navbarTexts = [
     "Cutia cu povești",
     "Povestea săptămânii",
@@ -33,17 +45,14 @@ export const Navbar = (props: navbarProps) => {
       // @ts-ignore
       if (window.scrollY > window?.visualViewport?.height - 160) {
         props.setTopButton(true);
-        setVisible(false);
       } else {
         // @ts-ignore
         if (window.scrollY < window?.visualViewport?.height + 80) {
           props.setTopButton(false);
-          setVisible(true);
         }
       }
       setScrollWidth(percentScrolled);
     });
-      console.log('visible',visible)
   }, [window.scrollY]);
 
   const value = navbarTexts.map((item) => {
@@ -54,17 +63,57 @@ export const Navbar = (props: navbarProps) => {
     );
   });
 
+  const Logo=()=>{
+    return(
+    <StyledLogoItem key="" to={`/`}>
+      <StyledImage height="60px" src={logo} alt="logo" />
+    </StyledLogoItem>
+    )
+
+  }
+
+  const handleClose=()=>{
+    document.body.style.overflow = 'auto';
+    setLogoSrc(burgerLogo)
+    setIsActive(false)
+  }
+  const handleOpen=()=>{
+
+    document.body.style.overflow = 'hidden';
+    setLogoSrc(closeIcon)
+    setIsActive(true)
+  }
+  const MobileMenu=(props:{isActive:boolean, logoSrc:string})=>{
+    return(
+        <>
+          <BurgerMenu onClick={props.logoSrc===burgerLogo ? handleOpen : handleClose}>
+            <img src={props.logoSrc} alt="burgerMenu"/>
+          </BurgerMenu>
+          <StyledLateralMenu lateralActive={props.isActive}>
+            {value}
+          </StyledLateralMenu>
+
+    </>
+
+    )
+
+  }
+
   return (
-    <>
-      <StyledNav height={visible ? "80px" : "0"}>
-        <StyledNavItem key="logo" to="/">
-          <StyledImage height="60px" src={logo} alt="logo" />
-        </StyledNavItem>
-        {value}
+    <Container isActive={isActive}>
+      {isActive && <Overlay />}
+      <StyledNav height="80px">
+        <Logo />
+        <StyledNavItems>
+          {value}
+        </StyledNavItems>
+        <StyledMobileNav>
+          <MobileMenu isActive={isActive} logoSrc={logoSrc}/>
+        </StyledMobileNav>
       </StyledNav>
-      <StyledProgressContainer top={visible ? "80px" : ""}>
+      <StyledProgressContainer >
         <StyledProgressBar width={`${scrollWidth}%`} />
       </StyledProgressContainer>
-    </>
+    </Container>
   );
 };
