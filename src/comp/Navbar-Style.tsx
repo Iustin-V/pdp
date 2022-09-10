@@ -1,26 +1,92 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {colors, fontSizes} from "../generalStyle";
+
+export const Overlay=styled.div`
+position:absolute;
+z-index:-1;
+width:100%;
+height:100vh;
+top:88px;
+left:0;
+background-color: rgba(0,0,0,0.4);
+overflow:hidden;
+`
+
+export const Container = styled.div<{isActive:boolean}>`
+position: fixed;
+  width: 100%;
+  background-color: ${colors.secondary.base};
+  top: 0;
+  z-index:3;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+`
+
 
 export const StyledNav = styled.div<{ height: string }>`
   height: ${(props) => props.height};
-  position: fixed;
-  width: 100vw;
-  background-color: #3e3e3e;
-  top: 0;
+   padding: 0px 40px;
+  width:calc(100% - 80px);
+  max-width: 1440px;
   display: flex;
-  justify-content: space-evenly;
-  transition: height 200ms ease-in-out;
+  justify-content:space-between;
   overflow: hidden;
+  
+  @media (max-width: 1440px) {
+    padding: 0px 40px;
+    width:calc(100% - 80px);
+  }
+  
 `;
+
+export const StyledNavItems=styled.div`
+display:flex;
+flex-direction:row;
+
+@media (max-width: 1200px) {
+    display:none;
+  }
+`
+
+export const StyledMobileNav=styled.div`
+display:none;
+height:100%;
+
+@media (max-width: 1200px) {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+`
+
+
+
+export const StyledLogoItem=styled(Link)`
+width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+
 export const StyledNavItem = styled(Link)`
   width: fit-content;
   height: 100%;
-  color: whitesmoke;
+  color: ${colors.primary.base};
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 19px;
+  font-size: ${fontSizes.paragraph.base};
+  padding: 0 15px;
+  
+  :hover {
+  background-color:${colors.secondary.lighter}
+  }
 `;
 export const StyledText = styled.p`
   font-weight: 700;
@@ -28,20 +94,45 @@ export const StyledText = styled.p`
 `;
 export const StyledProgressBar = styled.div<{ width: string }>`
   height: 8px;
-  background-color: #002366;
+  background-color: ${colors.primary.base};
   width: ${(props) => props.width};
 `;
-export const StyledProgressContainer = styled.div<{ top: string }>`
-  //top:${(props) => props.top};
-  position: fixed;
+export const StyledProgressContainer = styled.div`
   width: 100%;
   height: 8px;
-  background: #ccc;
-  //transition:top 200ms ease-in-out;
-  //de corectat
+  background: ${colors.secondary.lighter};
 `;
 export const StyledImage = styled.img<{ height?: string; width?: string }>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   background-attachment: fixed;
 `;
+
+
+export const BurgerMenu = styled.button`
+ border:none;
+ background:transparent;
+ img{
+    height:40px;
+    fill:${colors.primary.base}
+ }
+`
+
+export const StyledLateralMenu=styled.div<{ lateralActive :boolean }>`
+    position:absolute;
+    top:80px;
+    right: ${(props) => props.lateralActive? '0': '-300px'};
+    transition: right 3s;
+    height:fit-content;
+    display:flex;
+    flex-direction:column;
+    width:300px;
+    background:${colors.secondary.base};
+    
+    a{
+    width:calc(100% - 30px);
+    padding: 20px 15px;
+    text-align:left;
+    justify-content: flex-start;
+    }
+    `
