@@ -41,6 +41,7 @@ width:fit-content;
 export const StyledFooterSocialMedia=styled(Link)`
 padding: 10px;
 background-color:${colors.primary.base};
+ border:1px solid ${colors.primary.base};
 border-radius:50%;
 display:flex;
 align-items:center;
@@ -48,6 +49,7 @@ justify-content:center;
 
  :hover{
  background:${colors.primary.lighter};
+ border:1px solid white;
  }
 
 `
