@@ -28,10 +28,12 @@ padding: 10px 15px;
 color:${colors.primary.base};
 text-decoration: none;
 font-size:${fontSizes.paragraph.base};
+width:fit-content;
 
- :hover{
- background:${colors.secondary.lighter};
- }
+:hover{
+    color:white;
+}
+
 `
 
 
