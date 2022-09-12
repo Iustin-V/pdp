@@ -4,7 +4,6 @@ import bookshelf from "./images/bookshelf.png";
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
-
   background-color: #fafafa;
 `;
 export const StyledPageWrapper = styled.div`
@@ -34,7 +33,6 @@ export const StyledToTopButton = styled.button<{ bottom: string }>`
   background-color: #002366;
   position: fixed;
   right: 40px;
-  //bottom: 40px;
   font-size: 3rem;
   z-index: 1;
   cursor: pointer;
@@ -72,6 +70,10 @@ export const MainPageText = styled.p`
     padding: 50px 0 0 0;
     width: 100%;
     border-width: 6px 0 0 0;
+    @media (max-width: 500px) {
+      border-width: 3px 0 0 0;
+      font-size: 15px;
+    }
   }
 `;
 export const MainTitle = styled.p`
@@ -85,6 +87,9 @@ export const MainTitle = styled.p`
     width: 100%;
     padding: 0;
     text-align: center;
+    @media (max-width: 500px) {
+      font-size: 20px;
+    }
   }
 `;
 export const IconWrapper = styled.div<{ top: string }>`
