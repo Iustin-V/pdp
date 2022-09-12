@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Background from '../images/aboutBackground.png'
+import Background from '../images/TimeLine.Background.png'
 import {colors, fontSizes} from "../../generalStyle";
 
 export const TitleAboutSection = styled.h1`
@@ -8,6 +8,9 @@ export const TitleAboutSection = styled.h1`
   color: ${colors.primary.base};
 `
 
+export const PrincipalDiv = styled.div`
+  background-color: black;
+`;
 
 export const AboutWrapper = styled.div`
           background-image: url(${Background});
@@ -34,5 +37,9 @@ export const ParagraphStyled = styled.p`
   max-width: initial;
 `;
 
+
+export const LittleImage = styled.image<{src?:string}>`
+  background-image: ${(props) => `url(${props.src})`};
+`
 
 

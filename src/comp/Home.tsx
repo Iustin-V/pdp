@@ -18,7 +18,7 @@ import { Footer } from "./Footer";
 import { MainPage } from "./MainPage/MainPage";
 import { ToTopButton } from "./ToTopButton";
 import {AboutSection} from "./AboutStoryTeacherSection/AboutSection";
-import {HowWhyStoryFunctioningSection} from "./HowWhyStoryFunctioningSection/HowWhyStoryFunctioningSection";
+import {TimeLineSection} from "./HowWhyStoryFunctioningSection/TimeLineSection";
 
 export const Home = () => {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -36,7 +36,7 @@ export const Home = () => {
       </StyledPageWrapper>
 
         <AboutSection/>
-        <HowWhyStoryFunctioningSection/>
+        <TimeLineSection/>
 
       <ToTopButton topRef={topRef} isTopButton={isTopButton} />
       <Footer />
