@@ -66,7 +66,7 @@ export const Navbar = (props: navbarProps) => {
   const Logo=()=>{
     return(
     <StyledLogoItem key="" to={`/`}>
-      <StyledImage height="60px" src={logo} alt="logo" />
+      <StyledImage height="70px" src={logo} alt="logo" />
     </StyledLogoItem>
     )
 
