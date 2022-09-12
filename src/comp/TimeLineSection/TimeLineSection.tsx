@@ -1,10 +1,10 @@
 import React from "react";
-import {AboutWrapper, PrincipalDiv} from "../AboutStoryTeacherSection/AboutSection.Styles";
 // @ts-ignore
 import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import {colors} from "../../generalStyle";
-import {ParagraphStyled, TitleSection} from "./TimeLine.Styles";
+import {AboutWrapper, ParagraphItalicStyled, TitleSection} from "../Styles";
+import Background from '../images/TimeLine.Background.png'
 
 
 export const TimeLineSection = () => {
@@ -20,21 +20,18 @@ export const TimeLineSection = () => {
                 contentArrowStyle={{borderRight: `7px solid ${index % 2 === 0 ? '' : '#f8ecd4'} ${'#f8ecd4'}`}}
                 iconStyle={{background: '#f8ecd4', color: '#fff'}}
             >
-                <ParagraphStyled>{element}</ParagraphStyled>
+                <ParagraphItalicStyled>{element}</ParagraphItalicStyled>
             </VerticalTimelineElement>
         )
 
     })
 
     return (
-        <PrincipalDiv>
-            <AboutWrapper>
+            <AboutWrapper imgUrl={Background}>
                 <TitleSection>Cum și de ce funtioneaza poveștile?</TitleSection>
                 <VerticalTimeline lineColor={'#f8ecd4'}>
                     {timeLine}
                 </VerticalTimeline>
-
             </AboutWrapper>
-        </PrincipalDiv>
     );
 };

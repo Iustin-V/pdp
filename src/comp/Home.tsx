@@ -18,7 +18,7 @@ import { Footer } from "./Footer";
 import { MainPage } from "./MainPage/MainPage";
 import { ToTopButton } from "./ToTopButton";
 import {AboutSection} from "./AboutStoryTeacherSection/AboutSection";
-import {TimeLineSection} from "./HowWhyStoryFunctioningSection/TimeLineSection";
+import {TimeLineSection} from "./TimeLineSection/TimeLineSection";
 
 export const Home = () => {
   const topRef = React.useRef<null | HTMLDivElement>(null);
