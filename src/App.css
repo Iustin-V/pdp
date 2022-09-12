@@ -7,8 +7,8 @@
 }
 
 @font-face {
-  font-family: "Nunito";
-  src: local("Nunito"),
+  font-family: "Nunito-Italic";
+  src: local("Nunito-Italic"),
   url('./fonts/Nunito/Nunito-VariableFont_wght.ttf') format("truetype");
   font-weight: italic;
 }

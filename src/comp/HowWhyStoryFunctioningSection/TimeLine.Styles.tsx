@@ -2,15 +2,16 @@ import styled from "styled-components";
 import Background from '../images/TimeLine.Background.png'
 import {colors, fontSizes} from "../../generalStyle";
 
-export const TitleAboutSection = styled.h1`
+export const TitleSection = styled.h1`
   font-family: "KaushanScript";
   font-size: ${fontSizes.heading.base};
   color: ${colors.primary.base};
+
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.heading.small};
+  }
 `
 
-export const PrincipalDiv = styled.div`
-  background-color: black;
-`;
 
 export const AboutWrapper = styled.div`
           background-image: url(${Background});
@@ -20,6 +21,7 @@ export const AboutWrapper = styled.div`
           text-align: center;
           padding-top: 5%;
           padding-bottom: 5%;
+          height: 100vh;
     `
 ;
 
@@ -37,9 +39,5 @@ export const ParagraphStyled = styled.p`
   max-width: initial;
 `;
 
-
-export const LittleImage = styled.image<{src?:string}>`
-  background-image: ${(props) => `url(${props.src})`};
-`
 
 

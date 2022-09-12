@@ -18,8 +18,10 @@ export const colors={
         darker:"#005"
     },
     secondary:{
-       base:"#b4a087",
        darker:"#8d7056",
-        lighter:"#e7c9ae"
+       lighter:"#e7c9ae",
+        base:"#b4a087",
+        // "#f8ecd4",
+
     }
 }
