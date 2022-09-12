@@ -1,24 +1,13 @@
 import React from "react";
 
-import arrow from "./images/arrow.png";
-import bookshelf from "./images/bookshelf.jpg";
-
-import {
-  StyledPageWrapper,
-  MainContentWrapper,
-  StyledToTopButton,
-  StyledImageNew,
-  MainPagePhoto,
-  MainPageText,
-  MainTitle,
-  IconWrapper,
-} from "./Styles";
+import { StyledPageWrapper, MainContentWrapper } from "./Styles";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { MainPage } from "./MainPage/MainPage";
 import { ToTopButton } from "./ToTopButton";
-import {AboutSection} from "./AboutStoryTeacherSection/AboutSection";
-import {TimeLineSection} from "./HowWhyStoryFunctioningSection/TimeLineSection";
+import { AboutSection } from "./AboutStoryTeacherSection/AboutSection";
+import { TimeLineSection } from "./HowWhyStoryFunctioningSection/TimeLineSection";
+import { Experiences } from "./Experiences/Experiences";
 
 export const Home = () => {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -32,12 +21,13 @@ export const Home = () => {
         <MainPage />
       </StyledPageWrapper>
       <StyledPageWrapper>
-        <MainContentWrapper></MainContentWrapper>
+        <MainContentWrapper flexDirection='row'/>
       </StyledPageWrapper>
-
-        <AboutSection/>
-        <TimeLineSection/>
-
+      <AboutSection />
+      <TimeLineSection />
+      <StyledPageWrapper>
+        <Experiences />
+      </StyledPageWrapper>
       <ToTopButton topRef={topRef} isTopButton={isTopButton} />
       <Footer />
     </>
