@@ -1,4 +1,4 @@
-import {AboutWrapper, ParagraphStyled, TitleAboutSection,} from "./AboutSection.Styles";
+import {AboutWrapper, ParagraphItalicStyled, TitleAboutSection,} from "./AboutSection.Styles";
 import React from "react";
 import {YoutubeEmbed} from "../YoutubeEmbed/YoutubeEmbed";
 
@@ -12,7 +12,7 @@ export const AboutSection = () => {
     ]
     const ParagraphAboutSection = aboutParagraph.map((item) => {
             return (
-                <ParagraphStyled>{item}</ParagraphStyled>
+                <ParagraphItalicStyled>{item}</ParagraphItalicStyled>
             )
         })
 

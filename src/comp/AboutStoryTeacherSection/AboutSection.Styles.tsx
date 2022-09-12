@@ -8,10 +8,6 @@ export const TitleAboutSection = styled.h1`
   color: ${colors.primary.base};
 `
 
-export const PrincipalDiv = styled.div`
-  background-color: black;
-`;
-
 export const AboutWrapper = styled.div`
           background-image: url(${Background});
           background-position: top;
@@ -23,7 +19,7 @@ export const AboutWrapper = styled.div`
     `
 ;
 
-export const ParagraphStyled = styled.p`
+export const ParagraphItalicStyled = styled.p`
   margin-left: 15%;
   margin-right: 15%;
   text-align: center;
@@ -36,10 +32,5 @@ export const ParagraphStyled = styled.p`
   width: initial;
   max-width: initial;
 `;
-
-
-export const LittleImage = styled.image<{src?:string}>`
-  background-image: ${(props) => `url(${props.src})`};
-`
 
 
