@@ -67,6 +67,25 @@ export const MainPageText = styled.p`
   border: solid orange;
   border-width: 0 0 0 6px;
   padding-left: 50px;
+  transform: translateX(200%);
+  opacity: 0;
+  animation: slide-in-anim 1.5s ease-out forwards;
+
+  @keyframes slide-in-anim {
+    20% {
+      opacity: 0;
+    }
+    60% {
+      transform: translateX(-10%);
+    }
+    75% {
+      transform: translateX(5%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
   @media (max-width: 1200px) {
     padding: 50px 0 0 0;
     width: 100%;

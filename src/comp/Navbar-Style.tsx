@@ -27,9 +27,10 @@ export const Container = styled.div<{ isActive: boolean }>`
 
 export const StyledNav = styled.div<{ height: string }>`
   height: ${(props) => props.height};
-  padding: 0px 40px;
+  padding: 0 40px;
   width: calc(100% - 80px);
   display: flex;
+  max-width: 1440px;
   justify-content: space-between;
   overflow: hidden;
 `;
