@@ -5,7 +5,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { MainPage } from "./MainPage/MainPage";
 import { ToTopButton } from "./ToTopButton";
-import {AboutSection} from "./AboutStoryTeacherSection/AboutSection";
+import { AboutSection } from "./AboutStoryTeacherSection/AboutSection";
 import {TimeLineSection} from "./TimeLineSection/TimeLineSection";
 import {WeekStorySection} from "./WeekStorySection/WeekStorySection";
 

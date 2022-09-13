@@ -124,6 +124,7 @@ export const SectionContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 export const TitleSection = styled.h1<{ color: string }>`
   font-family: "KaushanScript";
   font-size: ${fontSizes.heading.base};
