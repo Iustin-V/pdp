@@ -5,7 +5,6 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { MainPage } from "./MainPage/MainPage";
 import { ToTopButton } from "./ToTopButton";
-import { Experiences } from "./Experiences/Experiences";
 import {AboutSection} from "./AboutStoryTeacherSection/AboutSection";
 import {TimeLineSection} from "./TimeLineSection/TimeLineSection";
 import {WeekStorySection} from "./WeekStorySection/WeekStorySection";
@@ -28,9 +27,6 @@ export const Home = () => {
         <AboutSection/>
         <TimeLineSection/>
         <WeekStorySection/>
-      <StyledPageWrapper>
-        <Experiences />
-      </StyledPageWrapper>
       <ToTopButton topRef={topRef} isTopButton={isTopButton} />
       <Footer />
     </>
