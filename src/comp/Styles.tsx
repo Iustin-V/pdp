@@ -85,11 +85,10 @@ export const IconWrapper = styled.div<{ top: string }>`
   justify-content: center;
   align-items: center;
 `;
-export const TitleSection = styled.h1`
+export const TitleSection = styled.h1<{ color: string }>`
   font-family: "KaushanScript";
   font-size: ${fontSizes.heading.base};
-  color: ${colors.primary.base};
-
+  color: ${(props) => props.color};
   @media (max-width: 768px) {
     font-size: ${fontSizes.heading.small};
   }
@@ -109,7 +108,7 @@ export const ParagraphItalicStyled = styled.p`
   max-width: initial;
 `;
 
-export const AboutWrapper = styled.div<{ imgUrl: string }>`
+export const BackgroundWrapper = styled.div<{ imgUrl: string }>`
           background-image: url(${(props) => props.imgUrl});
           background-position: top;
           background-repeat: no-repeat;
