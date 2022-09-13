@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import bookshelf from "./images/bookshelf.png";
-import {colors, fontSizes} from "../generalStyle";
+import { colors, fontSizes } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -132,7 +132,7 @@ export const TitleSection = styled.h1<{ color: string }>`
   @media (max-width: 768px) {
     font-size: ${fontSizes.heading.small};
   }
-`
+`;
 
 export const ParagraphItalicStyled = styled.p`
   margin-left: 15%;
@@ -149,13 +149,11 @@ export const ParagraphItalicStyled = styled.p`
 `;
 
 export const BackgroundWrapper = styled.div<{ imgUrl: string }>`
-          background-image: url(${(props) => props.imgUrl});
-          background-position: top;
-          background-repeat: no-repeat;
-          background-color: white;
-          text-align: center;
-          padding-top: 5%;
-          padding-bottom: 5%;
-    `
-;
-
+  background-image: url(${(props) => props.imgUrl});
+  background-position: top;
+  background-repeat: no-repeat;
+  background-color: white;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+`;

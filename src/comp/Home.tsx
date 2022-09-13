@@ -6,8 +6,8 @@ import { Footer } from "./Footer";
 import { MainPage } from "./MainPage/MainPage";
 import { ToTopButton } from "./ToTopButton";
 import { AboutSection } from "./AboutStoryTeacherSection/AboutSection";
-import {TimeLineSection} from "./TimeLineSection/TimeLineSection";
-import {WeekStorySection} from "./WeekStorySection/WeekStorySection";
+import { TimeLineSection } from "./TimeLineSection/TimeLineSection";
+import { WeekStorySection } from "./WeekStorySection/WeekStorySection";
 
 export const Home = () => {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -21,12 +21,12 @@ export const Home = () => {
         <MainPage />
       </StyledPageWrapper>
       <StyledPageWrapper>
-        <MainContentWrapper flexDirection='row'/>
+        <MainContentWrapper flexDirection="row" />
       </StyledPageWrapper>
 
-        <AboutSection/>
-        <TimeLineSection/>
-        <WeekStorySection/>
+      <AboutSection />
+      <TimeLineSection />
+      <WeekStorySection />
       <ToTopButton topRef={topRef} isTopButton={isTopButton} />
       <Footer />
     </>

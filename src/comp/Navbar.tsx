@@ -13,12 +13,12 @@ import {
   StyledMobileNav,
   BurgerMenu,
   StyledLateralMenu,
-  Overlay
+  Overlay,
 } from "./Navbar-Style";
 import logo from "./images/logo.png";
 import burgerLogo from "./images/icons8-menu.svg";
-import closeIcon from "./images/icons8-close.svg"
-import {useState} from "react";
+import closeIcon from "./images/icons8-close.svg";
+import { useState } from "react";
 
 interface navbarProps {
   setTopButton: (value: boolean) => void;
@@ -27,8 +27,8 @@ interface navbarProps {
 export const Navbar = (props: navbarProps) => {
   const [scrollWidth, setScrollWidth] = React.useState(0);
 
-  const [isActive,setIsActive]=useState(false)
-  const [logoSrc, setLogoSrc]=useState(burgerLogo)
+  const [isActive, setIsActive] = useState(false);
+  const [logoSrc, setLogoSrc] = useState(burgerLogo);
   const navbarTexts = [
     "Cutia cu povești",
     "Povestea săptămânii",
@@ -63,55 +63,50 @@ export const Navbar = (props: navbarProps) => {
     );
   });
 
-  const Logo=()=>{
-    return(
-    <StyledLogoItem key="" to={`/`}>
-      <StyledImage height="70px" src={logo} alt="logo" />
-    </StyledLogoItem>
-    )
+  const Logo = () => {
+    return (
+      <StyledLogoItem key="" to={`/`}>
+        <StyledImage height="70px" src={logo} alt="logo" />
+      </StyledLogoItem>
+    );
+  };
 
-  }
-
-  const handleClose=()=>{
-    document.body.style.overflow = 'auto';
-    setLogoSrc(burgerLogo)
-    setIsActive(false)
-  }
-  const handleOpen=()=>{
-
-    document.body.style.overflow = 'hidden';
-    setLogoSrc(closeIcon)
-    setIsActive(true)
-  }
-  const MobileMenu=(props:{isActive:boolean, logoSrc:string})=>{
-    return(
-        <>
-          <BurgerMenu onClick={props.logoSrc===burgerLogo ? handleOpen : handleClose}>
-            <img src={props.logoSrc} alt="burgerMenu"/>
-          </BurgerMenu>
-          <StyledLateralMenu lateralActive={props.isActive}>
-            {value}
-          </StyledLateralMenu>
-
-    </>
-
-    )
-
-  }
+  const handleClose = () => {
+    document.body.style.overflow = "auto";
+    setLogoSrc(burgerLogo);
+    setIsActive(false);
+  };
+  const handleOpen = () => {
+    document.body.style.overflow = "hidden";
+    setLogoSrc(closeIcon);
+    setIsActive(true);
+  };
+  const MobileMenu = (props: { isActive: boolean; logoSrc: string }) => {
+    return (
+      <>
+        <BurgerMenu
+          onClick={props.logoSrc === burgerLogo ? handleOpen : handleClose}
+        >
+          <img src={props.logoSrc} alt="burgerMenu" />
+        </BurgerMenu>
+        <StyledLateralMenu lateralActive={props.isActive}>
+          {value}
+        </StyledLateralMenu>
+      </>
+    );
+  };
 
   return (
     <Container isActive={isActive}>
       {isActive && <Overlay />}
       <StyledNav height="80px">
         <Logo />
-        <StyledNavItems>
-          {value}
-        </StyledNavItems>
+        <StyledNavItems>{value}</StyledNavItems>
         <StyledMobileNav>
-          <MobileMenu isActive={isActive} logoSrc={logoSrc}/>
+          <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
       </StyledNav>
-      <StyledProgressContainer >
+      <StyledProgressContainer>
         <StyledProgressBar width={`${scrollWidth}%`} />
       </StyledProgressContainer>
     </Container>
