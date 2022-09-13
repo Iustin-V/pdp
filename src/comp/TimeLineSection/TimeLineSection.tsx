@@ -3,7 +3,7 @@ import React from "react";
 import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import {colors} from "../../generalStyle";
-import {AboutWrapper, ParagraphItalicStyled, TitleSection} from "../Styles";
+import {BackgroundWrapper, ParagraphItalicStyled, TitleSection} from "../Styles";
 import Background from '../images/TimeLine.Background.png'
 
 
@@ -27,11 +27,11 @@ export const TimeLineSection = () => {
     })
 
     return (
-            <AboutWrapper imgUrl={Background}>
-                <TitleSection>Cum și de ce funtioneaza poveștile?</TitleSection>
+            <BackgroundWrapper imgUrl={Background}>
+                <TitleSection color={colors.primary.base}>Cum și de ce funtioneaza poveștile?</TitleSection>
                 <VerticalTimeline lineColor={'#f8ecd4'}>
                     {timeLine}
                 </VerticalTimeline>
-            </AboutWrapper>
+            </BackgroundWrapper>
     );
 };
