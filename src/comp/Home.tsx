@@ -8,6 +8,7 @@ import { ToTopButton } from "./ToTopButton";
 import { AboutSection } from "./AboutStoryTeacherSection/AboutSection";
 import {TimeLineSection} from "./TimeLineSection/TimeLineSection";
 import {WeekStorySection} from "./WeekStorySection/WeekStorySection";
+import {ReviewSection} from "./ReviewSection/ReviewSection";
 
 export const Home = () => {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -27,6 +28,7 @@ export const Home = () => {
         <AboutSection/>
         <TimeLineSection/>
         <WeekStorySection/>
+        <ReviewSection/>
       <ToTopButton topRef={topRef} isTopButton={isTopButton} />
       <Footer />
     </>
