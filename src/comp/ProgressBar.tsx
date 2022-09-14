@@ -54,8 +54,8 @@ export const ProgressBar: React.FC<Props> = ({
         background: gradient
           ? `linear-gradient(to ${direction}, ${color} ${
               scroll / 2
-            }%,${gradientColor} ${scroll}%, transparent 0)`
-          : `linear-gradient(to ${direction}, ${color} ${scroll}%, transparent 0)`,
+            }%,${gradientColor} ${scroll}%, #e7c9ae 0)`
+          : `linear-gradient(to ${direction}, ${color} ${scroll}%, #e7c9ae 0)`,
       }}
     />
   );

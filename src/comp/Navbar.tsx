@@ -4,8 +4,6 @@ import {
   StyledNav,
   StyledNavItem,
   StyledText,
-  StyledProgressBar,
-  StyledProgressContainer,
   StyledImage,
   Container,
   StyledNavItems,
@@ -20,6 +18,7 @@ import burgerLogo from "./images/icons8-menu.svg";
 import closeIcon from "./images/icons8-close.svg";
 import { useState } from "react";
 import { ProgressBar } from "./ProgressBar";
+import {colors} from "../generalStyle";
 
 interface navbarProps {
   setTopButton: (value: boolean) => void;
@@ -101,11 +100,7 @@ export const Navbar = (props: navbarProps) => {
           <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
       </StyledNav>
-      {/*  @ts-ignore */}
-      <ProgressBar color="#002366" height={5} />
-      {/*<StyledProgressContainer>*/}
-      {/*  <StyledProgressBar width={`${scrollWidth}%`} />*/}
-      {/*</StyledProgressContainer>*/}
+      <ProgressBar color={colors.primary.base} height={5} />
     </Container>
   );
 };
