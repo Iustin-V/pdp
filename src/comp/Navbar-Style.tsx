@@ -97,16 +97,17 @@ export const StyledImage = styled.img<{
   width?: string;
   construction?: boolean;
 }>`
-height: ${(props) => props.height};
-width: ${(props) => props.width};
-${(props) =>
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  ${(props) =>
     props.construction &&
     "margin-left: 50px; filter: invert(13%) sepia(94%) saturate(1864%) hue-rotate(207deg) brightness(85%) contrast(110%);"}
-background-attachment: fixed;
+  background-attachment: fixed;
 
-@media (max-width: 768px) {
-  ${(props) => props.construction && "height:100px"}
-}
+  @media (max-width: 768px) {
+    height: 46px;
+    ${(props) => props.construction && "height:100px"}
+  }
 `;
 
 export const BurgerMenu = styled.button`
