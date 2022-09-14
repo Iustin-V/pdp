@@ -35,12 +35,8 @@ export const Footer = () => {
     { slug: "/", label: "Acasa" },
     { slug: "/blog", label: "Blog" },
     {
-      slug: "/consiliere-pentru-parinti-si-profesori",
-      label: "Consiliere pentru părinți și profesori",
-    },
-    {
-      slug: "/cursuri-de-dezvoltare-personala",
-      label: "Cursuri de dezvoltare personala",
+      slug: "/cursuri",
+      label: "Cursuri",
     },
     { slug: "/cutia-cu-povesti", label: "Cutia cu povesti" },
     { slug: "/povestea-saptamanii", label: "Povestea saptamanii" },

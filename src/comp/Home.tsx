@@ -6,6 +6,7 @@ import { AboutSection } from "./AboutStoryTeacherSection/AboutSection";
 import { TimeLineSection } from "./TimeLineSection/TimeLineSection";
 import { WeekStorySection } from "./WeekStorySection/WeekStorySection";
 import { ReviewSection } from "./ReviewSection/ReviewSection";
+import {Partners} from "./Partners/Partners";
 
 export const Home = () => {
   return (
@@ -17,6 +18,7 @@ export const Home = () => {
       <TimeLineSection />
       <WeekStorySection />
       <ReviewSection />
+        <Partners/>
     </>
   );
 };
