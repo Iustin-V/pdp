@@ -1,5 +1,4 @@
 import * as React from "react";
-import ProgressBar from "react-progressbar-on-scroll";
 
 import {
   StyledNav,
@@ -20,6 +19,7 @@ import logo from "./images/logo.png";
 import burgerLogo from "./images/icons8-menu.svg";
 import closeIcon from "./images/icons8-close.svg";
 import { useState } from "react";
+import { ProgressBar } from "./ProgressBar";
 
 interface navbarProps {
   setTopButton: (value: boolean) => void;
@@ -36,24 +36,20 @@ export const Navbar = (props: navbarProps) => {
     { name: "Evenimente", slug: "evenimente" },
     { name: "Vorbeste cu profa", slug: "vorbeste-cu-profa" },
   ];
-
   const [scrollWidth, setScrollWidth] = React.useState(0);
 
-  // React.useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     const percentScrolled =
-  //       (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
-  //       100;
-  //     if (window.scrollY > window!.visualViewport!.height - 160) {
-  //       setTopButton(true);
-  //     } else {
-  //       if (window.scrollY < window!.visualViewport!.height + 80) {
-  //         setTopButton(false);
-  //       }
-  //     }
-  //     setScrollWidth(Math.round(percentScrolled));
-  //   });
-  // }, [window.scrollY]);
+  React.useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > window!.visualViewport!.height - 160) {
+        setTopButton(true);
+      } else {
+        if (window.scrollY < window!.visualViewport!.height + 80) {
+          setTopButton(false);
+        }
+      }
+    });
+  }, [window.scrollY]);
+
 
   const value = navbarTexts.map((item) => {
     return (
@@ -106,6 +102,7 @@ export const Navbar = (props: navbarProps) => {
           <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
       </StyledNav>
+      {/*  @ts-ignore */}
       <ProgressBar color="#002366" height={5} />
       {/*<StyledProgressContainer>*/}
       {/*  <StyledProgressBar width={`${scrollWidth}%`} />*/}
