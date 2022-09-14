@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledIframeContainer = styled.div`
   height: 500px;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 40px auto;
 `;
 
 export const YoutubeEmbed = (props: any) => (

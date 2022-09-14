@@ -23,3 +23,16 @@
     height: 100%;
     object-fit: cover;
 }
+.swiper{
+    position: static;
+}
+
+.swiper-button-next{
+    right:5px;
+    left: auto;
+}
+
+.swiper-button-prev{
+left:5px;
+right: auto;
+}

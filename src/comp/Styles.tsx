@@ -109,7 +109,7 @@ export const MainTitle = styled.p`
     padding: 0;
     text-align: center;
     @media (max-width: 768px) {
-      font-size: ${fontSizes.mobile.heading.small};
+      font-size: ${fontSizes.mobile.heading.base};
     }
   }
 `;
@@ -143,6 +143,7 @@ export const SectionContainer = styled.div`
   max-width: 1440px;
   padding: 40px;
   margin: 0 auto;
+  position: relative;
 `;
 
 export const TitleSection = styled.h1<{ color: string }>`
@@ -152,13 +153,11 @@ export const TitleSection = styled.h1<{ color: string }>`
   text-align: center;
   margin-top: 0;
   @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.heading.small};
+    font-size: ${fontSizes.mobile.heading.base};
   }
 `;
 
 export const ParagraphItalicStyled = styled.p`
-  margin-left: 15%;
-  margin-right: 15%;
   text-align: center;
   color: #002366;
   font-family: "Nunito-Italic";
@@ -171,7 +170,6 @@ export const ParagraphItalicStyled = styled.p`
 
   @media (max-width: 768px) {
     font-size: ${fontSizes.desktop.paragraph.small};
-    margin: 0 5%;
   }
 `;
 
@@ -183,9 +181,8 @@ export const BackgroundWrapper = styled.div<{
   background-position: top;
   background-repeat: no-repeat;
   background-color: white;
+  background-size: cover;
   text-align: center;
-  padding-top: 5%;
-  padding-bottom: 5%;
   @media (max-width: 768px) {
     ${(props) => props.separatePage && "padding-top: 50px"}
   }

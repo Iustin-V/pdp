@@ -7,7 +7,7 @@ export const fontSizes = {
     },
     heading: {
       small: "25px",
-      base: "40px",
+      base: "32px",
       large: "50px",
     },
   },

@@ -2,7 +2,7 @@ import React from "react";
 import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
 import {
   BackgroundWrapper,
-  ParagraphItalicStyled,
+  ParagraphItalicStyled, SectionContainer,
   TitleSection,
 } from "../Styles";
 import Background from "../images/aboutBackground.png";
@@ -23,11 +23,13 @@ export const AboutSection = () => {
   return (
     <>
       <BackgroundWrapper imgUrl={Background}>
+      <SectionContainer>
         <TitleSection color={colors.primary.base}>
           Despre profa de povești
         </TitleSection>
         {ParagraphAboutSection}
         <YoutubeEmbed embedId="C_BkCoJVzBU" />
+    </SectionContainer>
       </BackgroundWrapper>
     </>
   );

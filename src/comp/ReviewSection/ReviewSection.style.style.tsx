@@ -11,7 +11,7 @@ export const TitleReviewSection = styled.h1<{ color: string }>`
   border-bottom: 2px solid #234b92ff;
   padding-bottom: 25px;
   @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.heading.small};
+    font-size: ${fontSizes.mobile.heading.base};
   }
 
 `;
@@ -42,4 +42,7 @@ export const InsideSlideWrapper = styled.div`
   margin-left: 15%;
   margin-right: 15%;
   text-align: center;
+@media(max-width: 768px){
+  margin:0;
+}
 `;
