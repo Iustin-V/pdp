@@ -1,4 +1,5 @@
 import * as React from "react";
+import ProgressBar from "react-progressbar-on-scroll";
 
 import {
   StyledNav,
@@ -38,21 +39,21 @@ export const Navbar = (props: navbarProps) => {
 
   const [scrollWidth, setScrollWidth] = React.useState(0);
 
-  React.useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const percentScrolled =
-        (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
-        100;
-      if (window.scrollY > window!.visualViewport!.height - 160) {
-        setTopButton(true);
-      } else {
-        if (window.scrollY < window!.visualViewport!.height + 80) {
-          setTopButton(false);
-        }
-      }
-      setScrollWidth(Math.round(percentScrolled));
-    });
-  }, [window.scrollY]);
+  // React.useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     const percentScrolled =
+  //       (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
+  //       100;
+  //     if (window.scrollY > window!.visualViewport!.height - 160) {
+  //       setTopButton(true);
+  //     } else {
+  //       if (window.scrollY < window!.visualViewport!.height + 80) {
+  //         setTopButton(false);
+  //       }
+  //     }
+  //     setScrollWidth(Math.round(percentScrolled));
+  //   });
+  // }, [window.scrollY]);
 
   const value = navbarTexts.map((item) => {
     return (
@@ -105,9 +106,10 @@ export const Navbar = (props: navbarProps) => {
           <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
       </StyledNav>
-      <StyledProgressContainer>
-        <StyledProgressBar width={`${scrollWidth}%`} />
-      </StyledProgressContainer>
+      <ProgressBar color="#002366" height={5} />
+      {/*<StyledProgressContainer>*/}
+      {/*  <StyledProgressBar width={`${scrollWidth}%`} />*/}
+      {/*</StyledProgressContainer>*/}
     </Container>
   );
 };
