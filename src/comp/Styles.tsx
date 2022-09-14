@@ -181,7 +181,7 @@ export const BackgroundWrapper = styled.div<{
   background-position: top;
   background-repeat: no-repeat;
   background-color: white;
-  background-size: cover;
+  background-size: 100%;
   text-align: center;
   @media (max-width: 768px) {
     ${(props) => props.separatePage && "padding-top: 50px"}
