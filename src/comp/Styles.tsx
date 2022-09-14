@@ -44,6 +44,9 @@ export const StyledToTopButton = styled.button<{ bottom: string }>`
   border-radius: 37%;
   overflow: hidden;
   transition: bottom 200ms ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   bottom: ${(props) => props.bottom};
 `;
 export const StyledImageNew = styled.img`
