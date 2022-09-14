@@ -1,14 +1,13 @@
-
 @font-face {
   font-family: "KaushanScript";
   src: local("KaushanScript"),
-  url('./fonts/Kaushan_Script/KaushanScript-Regular.ttf') format("truetype");
+    url("./fonts/Kaushan_Script/KaushanScript-Regular.ttf") format("truetype");
   font-weight: bold;
 }
 
 @font-face {
   font-family: "Nunito-Italic";
   src: local("Nunito-Italic"),
-  url('./fonts/Nunito/Nunito-VariableFont_wght.ttf') format("truetype");
+    url("./fonts/Nunito/Nunito-VariableFont_wght.ttf") format("truetype");
   font-weight: italic;
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import bookshelf from "./images/bookshelf.png";
-import {colors, fontSizes} from "../generalStyle";
+import { colors, fontSizes } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -67,6 +67,25 @@ export const MainPageText = styled.p`
   border: solid orange;
   border-width: 0 0 0 6px;
   padding-left: 50px;
+  transform: translateX(200%);
+  opacity: 0;
+  animation: slide-in-anim 1.5s ease-out forwards;
+
+  @keyframes slide-in-anim {
+    20% {
+      opacity: 0;
+    }
+    60% {
+      transform: translateX(-10%);
+    }
+    75% {
+      transform: translateX(5%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
   @media (max-width: 1200px) {
     padding: 50px 0 0 0;
     width: 100%;
@@ -132,7 +151,7 @@ export const TitleSection = styled.h1<{ color: string }>`
   @media (max-width: 768px) {
     font-size: ${fontSizes.heading.small};
   }
-`
+`;
 
 export const ParagraphItalicStyled = styled.p`
   margin-left: 15%;
@@ -149,13 +168,11 @@ export const ParagraphItalicStyled = styled.p`
 `;
 
 export const BackgroundWrapper = styled.div<{ imgUrl: string }>`
-          background-image: url(${(props) => props.imgUrl});
-          background-position: top;
-          background-repeat: no-repeat;
-          background-color: white;
-          text-align: center;
-          padding-top: 5%;
-          padding-bottom: 5%;
-    `
-;
-
+  background-image: url(${(props) => props.imgUrl});
+  background-position: top;
+  background-repeat: no-repeat;
+  background-color: white;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+`;
