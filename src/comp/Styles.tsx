@@ -7,8 +7,8 @@ export const StyledWrapper = styled.div`
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
   background-color: #fafafa;
 `;
-export const StyledPageWrapper = styled.div`
-  height: calc(100vh - 80px);
+export const StyledPageWrapper = styled.div<{ login?: boolean }>`
+  height: ${(props) => (props.login ? "100vh" : "calc(100vh - 80px)")};
   width: 100vw;
   display: flex;
   align-items: center;
@@ -58,6 +58,9 @@ export const MainPagePhoto = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+  }
 `;
 export const MainPageText = styled.p`
   color: whitesmoke;
