@@ -21,9 +21,7 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
   return (
     <BackgroundWrapper imgUrl={Background} separatePage={props.separatePage}>
       <SectionContainer>
-        <TitleSection color={"#e3b4d4"} >
-          Povestea Săptămânii
-        </TitleSection>
+        <TitleSection color={"#e3b4d4"}>Povestea Săptămânii</TitleSection>
         <YoutubeEmbed embedId="-WgvGqYRjuw" />
         {ParagraphAboutSection}
       </SectionContainer>
