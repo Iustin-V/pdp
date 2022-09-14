@@ -30,11 +30,11 @@ export const Navbar = (props: navbarProps) => {
   const [isActive, setIsActive] = useState(false);
   const [logoSrc, setLogoSrc] = useState(burgerLogo);
   const navbarTexts = [
-    "Cutia cu povești",
-    "Povestea săptămânii",
-    "Cursuri",
-    "Evenimente",
-    "Vorbește cu profa",
+    { name: "Cutia cu povești", slug: "cutia_cu_povesti" },
+    { name: "Povestea săptămânii", slug: "povestea_saptamanii" },
+    { name: "Cursuri", slug: "cursuri" },
+    { name: "Evenimente", slug: "evenimente" },
+    { name: "Vorbeste cu profa", slug: "vorbeste_cu_profa" },
   ];
 
   React.useEffect(() => {
@@ -57,8 +57,8 @@ export const Navbar = (props: navbarProps) => {
 
   const value = navbarTexts.map((item) => {
     return (
-      <StyledNavItem key={item} to={`/${item.toLowerCase() || "#  "}`}>
-        <StyledText>{item}</StyledText>
+      <StyledNavItem key={item.name} to={`/${item.slug || "#"}`}>
+        <StyledText>{item.name}</StyledText>
       </StyledNavItem>
     );
   });

@@ -1,20 +1,18 @@
 import styled from "styled-components";
-import {fontSizes} from "../../generalStyle";
-
+import { fontSizes } from "../../generalStyle";
 
 export const TitleReviewSection = styled.h1<{ color: string }>`
   font-family: "KaushanScript";
   font-size: 40px;
   color: ${(props) => props.color};
   text-align: center;
-  margin-left: 25%;
-  margin-right: 25%;
-  border-bottom: 2px solid #234B92FF;
-  padding-bottom: 60px;
-`
+  width:fit-content;
+  margin:0 auto 25px;
+  border-bottom: 2px solid #234b92ff;
+  padding-bottom: 25px;
+`;
 
 export const QuoteReviewSection = styled.q`
- 
   color: #002366;
   font-family: "Nunito-Italic";
   font-size: ${fontSizes.paragraph.small};
@@ -23,20 +21,21 @@ export const QuoteReviewSection = styled.q`
   line-height: 30px;
   width: initial;
   max-width: initial;
-`
-export const SliderWrapper = styled.div`
-  padding-top: 10%;
-  padding-bottom: 10%;
+`;
+export const StyledReviewSection = styled.div`
   background-color: rgb(248, 236, 212);
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export const NameReviewer = styled.p`
   font-size: ${fontSizes.paragraph.small};
   font-weight: 500;
   text-align: center;
-`
+`;
 
 export const InsideSlideWrapper = styled.div`
   margin-left: 15%;
   margin-right: 15%;
   text-align: center;
-`
+`;

@@ -2,7 +2,7 @@ import React from "react";
 import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
 import {
   BackgroundWrapper,
-  ParagraphItalicStyled,
+  ParagraphItalicStyled, SectionContainer,
   TitleSection,
 } from "../Styles";
 import Background from "../images/WeekStorySection.png";
@@ -16,12 +16,12 @@ export const WeekStorySection = () => {
   });
 
   return (
-    <>
       <BackgroundWrapper imgUrl={Background}>
+    <SectionContainer>
         <TitleSection color={"#e3b4d4"}>Povestea Săptămânii</TitleSection>
         <YoutubeEmbed embedId="-WgvGqYRjuw" />
         {ParagraphAboutSection}
-      </BackgroundWrapper>
-    </>
+    </SectionContainer>
+</BackgroundWrapper>
   );
 };

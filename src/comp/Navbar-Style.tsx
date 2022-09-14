@@ -92,9 +92,14 @@ export const StyledProgressContainer = styled.div`
   height: 8px;
   background: ${colors.secondary.lighter};
 `;
-export const StyledImage = styled.img<{ height?: string; width?: string }>`
+export const StyledImage = styled.img<{
+  height?: string;
+  width?: string;
+  construction?: boolean;
+}>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
+  ${(props) => props.construction && "margin-left: 50px;"}
   background-attachment: fixed;
 `;
 

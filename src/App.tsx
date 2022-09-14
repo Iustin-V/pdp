@@ -1,17 +1,35 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./comp/Home";
 import { StyledWrapper } from "./comp/Styles";
+import { Courses } from "./comp/Courses";
+import { WeekStorySection } from "./comp/WeekStorySection/WeekStorySection";
+import { Navbar } from "./comp/Navbar";
+import { ToTopButton } from "./comp/ToTopButton";
+import { Footer } from "./comp/Footer";
+import { WorkInProgress } from "./comp/WorkInProgress";
 
 function App() {
+  const topRef = React.useRef<null | HTMLDivElement>(null);
+
+  const [isTopButton, setTopButton] = React.useState(false);
   return (
     <StyledWrapper>
       <BrowserRouter>
+        <div ref={topRef} />
+        <Navbar setTopButton={setTopButton} />
+
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/cursuri" element={<WorkInProgress />} />
+          <Route path="/povestea_saptamanii" element={<WeekStorySection />} />
+          <Route path="/evenimente" element={<WorkInProgress />} />
+          <Route path="/cutia_cu_povesti" element={<WorkInProgress />} />
+          <Route path="/vorbeste_cu_profa" element={<WorkInProgress />} />
         </Routes>
+        <ToTopButton topRef={topRef} isTopButton={isTopButton} />
+        <Footer />
       </BrowserRouter>
     </StyledWrapper>
   );

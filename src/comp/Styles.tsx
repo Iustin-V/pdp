@@ -67,7 +67,7 @@ export const MainPageText = styled.p`
   border: solid orange;
   border-width: 0 0 0 6px;
   padding-left: 50px;
-  transform: translateX(200%);
+  transform: translateX(70%);
   opacity: 0;
   animation: slide-in-anim 1.5s ease-out forwards;
 
@@ -137,11 +137,10 @@ export const PageContainer = styled.div`
   }
 `;
 export const SectionContainer = styled.div`
+  width: calc(100% - 80px);
   max-width: 1440px;
   padding: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
 `;
 
 export const TitleSection = styled.h1<{ color: string }>`
