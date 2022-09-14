@@ -11,7 +11,6 @@ interface ToTopButtonInterface {
 export const ToTopButton = (props: ToTopButtonInterface) => {
   return (
     <>
-      {" "}
       <StyledToTopButton
         bottom={props.isTopButton ? "40px" : "-50px"}
         onClick={() =>

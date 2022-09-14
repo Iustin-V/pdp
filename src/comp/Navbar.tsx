@@ -28,7 +28,6 @@ interface navbarProps {
 export const Navbar = (props: navbarProps) => {
   const [isActive, setIsActive] = useState(false);
   const [logoSrc, setLogoSrc] = useState(burgerLogo);
-  const [isTopButton, setTopButton] = React.useState(false);
   const navbarTexts = [
     { name: "Cutia cu povești", slug: "cutia-cu-povesti" },
     { name: "Povestea săptămânii", slug: "povestea-saptamanii" },
@@ -36,15 +35,15 @@ export const Navbar = (props: navbarProps) => {
     { name: "Evenimente", slug: "evenimente" },
     { name: "Vorbeste cu profa", slug: "vorbeste-cu-profa" },
   ];
-  const [scrollWidth, setScrollWidth] = React.useState(0);
 
   React.useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > window!.visualViewport!.height - 160) {
-        setTopButton(true);
+        props.setTopButton(true);
+        console.log(window.scrollY)
       } else {
         if (window.scrollY < window!.visualViewport!.height + 80) {
-          setTopButton(false);
+          props.setTopButton(false);
         }
       }
     });
