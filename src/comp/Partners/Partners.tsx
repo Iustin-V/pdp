@@ -20,7 +20,6 @@ export const FlexWrapper = styled.div`
 export const Container = styled.div`
   max-width: 1440px;
   width: 100%;
-  padding: 40px;
   margin: auto;
   @media (max-width: 1200px) {
     max-width: 800px;
