@@ -37,21 +37,21 @@ export const Navbar = (props: navbarProps) => {
     { name: "Vorbeste cu profa", slug: "vorbeste-cu-profa" },
   ];
 
-  React.useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const percentScrolled =
-        (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
-        100;
-      if (window.scrollY > window!.visualViewport!.height - 160) {
-        props.setTopButton(true);
-      } else {
-        if (window.scrollY < window!.visualViewport!.height + 80) {
-          props.setTopButton(false);
-        }
-      }
-      setScrollWidth(percentScrolled);
-    });
-  }, [window.scrollY]);
+  // React.useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     const percentScrolled =
+  //       (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
+  //       100;
+  //     if (window.scrollY > window!.visualViewport!.height - 160) {
+  //       props.setTopButton(true);
+  //     } else {
+  //       if (window.scrollY < window!.visualViewport!.height + 80) {
+  //         props.setTopButton(false);
+  //       }
+  //     }
+  //     setScrollWidth(percentScrolled);
+  //   });
+  // }, [window.scrollY]);
 
   const value = navbarTexts.map((item) => {
     return (
@@ -104,9 +104,9 @@ export const Navbar = (props: navbarProps) => {
           <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
       </StyledNav>
-      <StyledProgressContainer>
-        <StyledProgressBar width={`${scrollWidth}%`} />
-      </StyledProgressContainer>
+      {/*<StyledProgressContainer>*/}
+      {/*  <StyledProgressBar width={`${scrollWidth}%`} />*/}
+      {/*</StyledProgressContainer>*/}
     </Container>
   );
 };
