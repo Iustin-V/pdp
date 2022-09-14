@@ -21,7 +21,8 @@ export const MainContentWrapper = styled.div<{
 }>`
   display: flex;
   flex-direction: ${(props) => props.flexDirection};
-  font-size: 30px;
+  font-size: ${fontSizes.desktop.paragraph.large
+  };
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -31,17 +32,17 @@ export const MainContentWrapper = styled.div<{
 export const StyledToTopButton = styled.button<{ bottom: string }>`
   height: 50px;
   width: 50px;
-  background-color: #002366;
+  opacity: 70%;
+  background-color: #7d7d7d;
   position: fixed;
   right: 40px;
   font-size: 3rem;
   z-index: 1;
   cursor: pointer;
-  color: green;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 22%;
+  border-radius: 37%;
   overflow: hidden;
   transition: bottom 200ms ease-in-out;
   bottom: ${(props) => props.bottom};
@@ -63,7 +64,7 @@ export const MainPageText = styled.p`
   color: whitesmoke;
   width: 50%;
   text-shadow: 1px 1px black;
-  font-size: 25px;
+  font-size: ${fontSizes.desktop.paragraph.large};
   border: solid orange;
   border-width: 0 0 0 6px;
   padding-left: 50px;
@@ -90,14 +91,14 @@ export const MainPageText = styled.p`
     padding: 50px 0 0 0;
     width: 100%;
     border-width: 6px 0 0 0;
-    @media (max-width: 500px) {
+    @media (max-width: 768px) {
       border-width: 3px 0 0 0;
-      font-size: 15px;
+      font-size: ${fontSizes.mobile.paragraph.base};
     }
   }
 `;
 export const MainTitle = styled.p`
-  font-size: 45px;
+  font-size: ${fontSizes.desktop.heading.small};;
   width: 50%;
   color: orange;
   text-shadow: 2px 2px black;
@@ -107,8 +108,8 @@ export const MainTitle = styled.p`
     width: 100%;
     padding: 0;
     text-align: center;
-    @media (max-width: 500px) {
-      font-size: 20px;
+    @media (max-width: 768px) {
+      font-size: ${fontSizes.mobile.heading.small};
     }
   }
 `;
@@ -146,12 +147,12 @@ export const SectionContainer = styled.div`
 
 export const TitleSection = styled.h1<{ color: string }>`
   font-family: "KaushanScript";
-  font-size: ${fontSizes.heading.base};
+  font-size: ${fontSizes.desktop.heading.base};
   color: ${(props) => props.color};
   text-align: center;
   margin-top: 0;
   @media (max-width: 768px) {
-    font-size: ${fontSizes.heading.small};
+    font-size: ${fontSizes.mobile.heading.small};
   }
 `;
 
@@ -161,15 +162,23 @@ export const ParagraphItalicStyled = styled.p`
   text-align: center;
   color: #002366;
   font-family: "Nunito-Italic";
-  font-size: ${fontSizes.paragraph.base};
+  font-size: ${fontSizes.desktop.paragraph.base};
   font-weight: 500;
   font-style: italic;
   line-height: 30px;
   width: initial;
   max-width: initial;
+
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.desktop.paragraph.small};
+    margin: 0 5%;
+  }
 `;
 
-export const BackgroundWrapper = styled.div<{ imgUrl: string }>`
+export const BackgroundWrapper = styled.div<{
+  imgUrl: string;
+  separatePage?: boolean;
+}>`
   background-image: url(${(props) => props.imgUrl});
   background-position: top;
   background-repeat: no-repeat;
@@ -177,4 +186,7 @@ export const BackgroundWrapper = styled.div<{ imgUrl: string }>`
   text-align: center;
   padding-top: 5%;
   padding-bottom: 5%;
+  @media (max-width: 768px) {
+    ${(props) => props.separatePage && "padding-top: 50px"}
+  }
 `;

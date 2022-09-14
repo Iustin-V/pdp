@@ -25,11 +25,14 @@ export const StyledFooterLink = styled(Link)`
   padding: 10px 15px;
   color: ${colors.primary.base};
   text-decoration: none;
-  font-size: ${fontSizes.paragraph.base};
+  font-size: ${fontSizes.desktop.paragraph.base};
   width: fit-content;
 
   :hover {
     color: white;
+  }
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.desktop.paragraph.small};
   }
 `;
 
@@ -50,6 +53,10 @@ export const StyledFooterSocialMedia = styled(Link)`
 export const StyledSMImage = styled.img`
   height: 40px;
   width: 40px;
+  @media (max-width: 768px) {
+    height: 24px;
+    width: 24px;
+  }
 `;
 
 export const StyledFooterLinksColumn = styled.div`
@@ -72,7 +79,7 @@ export const StyledFooterSocialMediaColumn = styled.div`
   row-gap: 20px;
   width: 50%;
   flex-wrap: wrap;
-  padding: 0px 15px;
+  padding: 0 15px;
   border-top: 2px solid ${colors.primary.lighter};
 
   @media (max-width: 1200px) {
@@ -85,10 +92,13 @@ export const StyledFooterSocialMediaColumn = styled.div`
 `;
 export const StyledHeaderText = styled.h2`
   color: ${colors.primary.darker};
-  font-size: ${fontSizes.paragraph.large};
+  font-size: ${fontSizes.desktop.paragraph.large};
   margin: 0;
   width: 100%;
   padding: 15px 15px;
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.desktop.paragraph.base};
+  }
 `;
 
 export const StyledSecondRow = styled.div`
@@ -104,6 +114,6 @@ export const StyledSecondRow = styled.div`
 export const StyledFooterText = styled.p`
   display: flex;
   justify-content: flex-start;
-  font-size: ${fontSizes.paragraph.small};
+  font-size: ${fontSizes.desktop.paragraph.small};
   color: white;
 `;

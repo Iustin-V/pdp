@@ -1,13 +1,27 @@
 export const fontSizes = {
-  paragraph: {
-    small: "16px",
-    base: "20px",
-    large: "24px",
+  mobile: {
+    paragraph: {
+      small: "16px",
+      base: "20px",
+      large: "24px",
+    },
+    heading: {
+      small: "25px",
+      base: "40px",
+      large: "50px",
+    },
   },
-  heading: {
-    small: "60px",
-    base: "80px",
-    large: "100px",
+  desktop: {
+    paragraph: {
+      small: "16px",
+      base: "20px",
+      large: "24px",
+    },
+    heading: {
+      small: "45px",
+      base: "60px",
+      large: "75px",
+    },
   },
 };
 

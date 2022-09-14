@@ -30,11 +30,11 @@ export const Navbar = (props: navbarProps) => {
   const [isActive, setIsActive] = useState(false);
   const [logoSrc, setLogoSrc] = useState(burgerLogo);
   const navbarTexts = [
-    { name: "Cutia cu povești", slug: "cutia_cu_povesti" },
-    { name: "Povestea săptămânii", slug: "povestea_saptamanii" },
+    { name: "Cutia cu povești", slug: "cutia-cu-povesti" },
+    { name: "Povestea săptămânii", slug: "povestea-saptamanii" },
     { name: "Cursuri", slug: "cursuri" },
     { name: "Evenimente", slug: "evenimente" },
-    { name: "Vorbeste cu profa", slug: "vorbeste_cu_profa" },
+    { name: "Vorbeste cu profa", slug: "vorbeste-cu-profa" },
   ];
 
   React.useEffect(() => {
@@ -42,12 +42,10 @@ export const Navbar = (props: navbarProps) => {
       const percentScrolled =
         (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
         100;
-      // @ts-ignore
-      if (window.scrollY > window?.visualViewport?.height - 160) {
+      if (window.scrollY > window!.visualViewport!.height - 160) {
         props.setTopButton(true);
       } else {
-        // @ts-ignore
-        if (window.scrollY < window?.visualViewport?.height + 80) {
+        if (window.scrollY < window!.visualViewport!.height + 80) {
           props.setTopButton(false);
         }
       }

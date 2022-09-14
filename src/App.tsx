@@ -12,8 +12,8 @@ import { WorkInProgress } from "./comp/WorkInProgress";
 
 function App() {
   const topRef = React.useRef<null | HTMLDivElement>(null);
-
   const [isTopButton, setTopButton] = React.useState(false);
+
   return (
     <StyledWrapper>
       <BrowserRouter>
@@ -23,10 +23,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cursuri" element={<WorkInProgress />} />
-          <Route path="/povestea_saptamanii" element={<WeekStorySection />} />
+          <Route
+            path="/povestea-saptamanii"
+            element={<WeekStorySection separatePage={true} />}
+          />
           <Route path="/evenimente" element={<WorkInProgress />} />
-          <Route path="/cutia_cu_povesti" element={<WorkInProgress />} />
-          <Route path="/vorbeste_cu_profa" element={<WorkInProgress />} />
+          <Route path="/cutia-cu-povesti" element={<WorkInProgress />} />
+          <Route path="/vorbeste-cu-profa" element={<WorkInProgress />} />
+          <Route path="/blog" element={<WorkInProgress />} />
         </Routes>
         <ToTopButton topRef={topRef} isTopButton={isTopButton} />
         <Footer />

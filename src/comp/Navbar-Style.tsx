@@ -71,7 +71,7 @@ export const StyledNavItem = styled(Link)`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: ${fontSizes.paragraph.base};
+  font-size: ${fontSizes.desktop.paragraph.base};
   padding: 0 15px;
 
   :hover {
@@ -99,8 +99,14 @@ export const StyledImage = styled.img<{
 }>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
-  ${(props) => props.construction && "margin-left: 50px;"}
+  ${(props) =>
+    props.construction &&
+    "margin-left: 50px; filter: invert(13%) sepia(94%) saturate(1864%) hue-rotate(207deg) brightness(85%) contrast(110%);"}
   background-attachment: fixed;
+
+  @media (max-width: 768px) {
+    ${(props) => props.construction && "height:100px"}
+  }
 `;
 
 export const BurgerMenu = styled.button`
