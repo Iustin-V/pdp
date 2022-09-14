@@ -90,10 +90,6 @@ export const StyledProgressBar = styled.div<{ width: string }>`
 export const StyledProgressContainer = styled.div`
   width: 100%;
   height: 8px;
-  position: fixed;
-  top:80px;
-  left:0;
-  z-index: 999;
   background: ${colors.secondary.lighter};
 `;
 export const StyledImage = styled.img<{
@@ -101,17 +97,20 @@ export const StyledImage = styled.img<{
   width?: string;
   construction?: boolean;
 }>`
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
-  ${(props) =>
-    props.construction &&
-    "margin-left: 50px; filter: invert(13%) sepia(94%) saturate(1864%) hue-rotate(207deg) brightness(85%) contrast(110%);"}
-  background-attachment: fixed;
-
-  @media (max-width: 768px) {
-    ${(props) => props.construction && "height:100px"}
-  }
+  height: 60px;
+  width: auto;
+ 
 `;
+// height: ${(props) => props.height};
+// width: ${(props) => props.width};
+// ${(props) =>
+//   props.construction &&
+//   "margin-left: 50px; filter: invert(13%) sepia(94%) saturate(1864%) hue-rotate(207deg) brightness(85%) contrast(110%);"}
+// background-attachment: fixed;
+//
+// @media (max-width: 768px) {
+//   ${(props) => props.construction && "height:100px"}
+// }
 
 export const BurgerMenu = styled.button`
   border: none;

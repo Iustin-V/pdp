@@ -25,9 +25,9 @@ interface navbarProps {
 }
 
 export const Navbar = (props: navbarProps) => {
-
   const [isActive, setIsActive] = useState(false);
   const [logoSrc, setLogoSrc] = useState(burgerLogo);
+  const [isTopButton, setTopButton] = React.useState(false);
   const navbarTexts = [
     { name: "Cutia cu povești", slug: "cutia-cu-povesti" },
     { name: "Povestea săptămânii", slug: "povestea-saptamanii" },
@@ -36,7 +36,23 @@ export const Navbar = (props: navbarProps) => {
     { name: "Vorbeste cu profa", slug: "vorbeste-cu-profa" },
   ];
 
+  const [scrollWidth, setScrollWidth] = React.useState(0);
 
+  React.useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const percentScrolled =
+        (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
+        100;
+      if (window.scrollY > window!.visualViewport!.height - 160) {
+        setTopButton(true);
+      } else {
+        if (window.scrollY < window!.visualViewport!.height + 80) {
+          setTopButton(false);
+        }
+      }
+      setScrollWidth(Math.round(percentScrolled));
+    });
+  }, [window.scrollY]);
 
   const value = navbarTexts.map((item) => {
     return (
@@ -89,6 +105,9 @@ export const Navbar = (props: navbarProps) => {
           <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
       </StyledNav>
+      <StyledProgressContainer>
+        <StyledProgressBar width={`${scrollWidth}%`} />
+      </StyledProgressContainer>
     </Container>
   );
 };
