@@ -131,6 +131,7 @@ export const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 40px;
+  margin: auto;
   @media (max-width: 1200px) {
     max-width: 800px;
     flex-direction: column;
@@ -147,6 +148,8 @@ export const TitleSection = styled.h1<{ color: string }>`
   font-family: "KaushanScript";
   font-size: ${fontSizes.heading.base};
   color: ${(props) => props.color};
+  text-align: center;
+  margin-top: 0;
   @media (max-width: 768px) {
     font-size: ${fontSizes.heading.small};
   }
