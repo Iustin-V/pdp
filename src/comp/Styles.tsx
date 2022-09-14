@@ -21,8 +21,7 @@ export const MainContentWrapper = styled.div<{
 }>`
   display: flex;
   flex-direction: ${(props) => props.flexDirection};
-  font-size: ${fontSizes.desktop.paragraph.large
-  };
+  font-size: ${fontSizes.desktop.paragraph.large};
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -98,7 +97,7 @@ export const MainPageText = styled.p`
   }
 `;
 export const MainTitle = styled.p`
-  font-size: ${fontSizes.desktop.heading.small};;
+  font-size: ${fontSizes.desktop.heading.small};
   width: 50%;
   color: orange;
   text-shadow: 2px 2px black;
@@ -183,6 +182,7 @@ export const BackgroundWrapper = styled.div<{
   background-color: white;
   background-size: 100%;
   text-align: center;
+  resizemode: "cover";
   @media (max-width: 768px) {
     ${(props) => props.separatePage && "padding-top: 50px"}
   }

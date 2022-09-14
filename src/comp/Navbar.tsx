@@ -25,7 +25,6 @@ interface navbarProps {
 }
 
 export const Navbar = (props: navbarProps) => {
-  const [scrollWidth, setScrollWidth] = React.useState(0);
 
   const [isActive, setIsActive] = useState(false);
   const [logoSrc, setLogoSrc] = useState(burgerLogo);
@@ -37,21 +36,7 @@ export const Navbar = (props: navbarProps) => {
     { name: "Vorbeste cu profa", slug: "vorbeste-cu-profa" },
   ];
 
-  // React.useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     const percentScrolled =
-  //       (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
-  //       100;
-  //     if (window.scrollY > window!.visualViewport!.height - 160) {
-  //       props.setTopButton(true);
-  //     } else {
-  //       if (window.scrollY < window!.visualViewport!.height + 80) {
-  //         props.setTopButton(false);
-  //       }
-  //     }
-  //     setScrollWidth(percentScrolled);
-  //   });
-  // }, [window.scrollY]);
+
 
   const value = navbarTexts.map((item) => {
     return (
@@ -104,9 +89,6 @@ export const Navbar = (props: navbarProps) => {
           <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
       </StyledNav>
-      {/*<StyledProgressContainer>*/}
-      {/*  <StyledProgressBar width={`${scrollWidth}%`} />*/}
-      {/*</StyledProgressContainer>*/}
     </Container>
   );
 };

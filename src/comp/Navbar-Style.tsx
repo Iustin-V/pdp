@@ -18,7 +18,7 @@ export const Container = styled.div<{ isActive: boolean }>`
   width: 100%;
   background-color: ${colors.secondary.base};
   top: 0;
-  z-index: 3;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,6 +90,10 @@ export const StyledProgressBar = styled.div<{ width: string }>`
 export const StyledProgressContainer = styled.div`
   width: 100%;
   height: 8px;
+  position: fixed;
+  top:80px;
+  left:0;
+  z-index: 999;
   background: ${colors.secondary.lighter};
 `;
 export const StyledImage = styled.img<{
