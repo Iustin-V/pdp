@@ -1,7 +1,9 @@
 import React from "react";
+
 import {
   VerticalTimeline,
   VerticalTimelineElement,
+  // @ts-ignore
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { colors } from "../../generalStyle";
