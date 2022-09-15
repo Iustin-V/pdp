@@ -7,6 +7,7 @@ import { TimeLineSection } from "./TimeLineSection/TimeLineSection";
 import { WeekStorySection } from "./WeekStorySection/WeekStorySection";
 import { ReviewSection } from "./ReviewSection/ReviewSection";
 import {Partners} from "./Partners/Partners";
+import {PrincipalesLinks} from "./PrincipalesLinksSection/PrincipalesLinks";
 
 export const Home = () => {
   return (
@@ -14,6 +15,7 @@ export const Home = () => {
       <StyledPageWrapper>
         <MainPage />
       </StyledPageWrapper>
+        <PrincipalesLinks />
       <AboutSection />
       <TimeLineSection />
       <WeekStorySection />
