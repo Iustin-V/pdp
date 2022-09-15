@@ -190,3 +190,13 @@ export const BackgroundWrapper = styled.div<{
   text-align: center;
   ${(props) => props.separatePage && "padding-top: 50px;"}
 `;
+
+export const WrapperCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 30px;
+  row-gap: 30px;
+  justify-content: center;
+  
+`;

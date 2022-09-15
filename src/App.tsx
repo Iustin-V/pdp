@@ -22,7 +22,7 @@ function App() {
         <Navbar setTopButton={setTopButton} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cursuri" element={<WorkInProgress />} />
+          <Route path="/cursuri" element={<Courses />} />
           <Route
             path="/povestea-saptamanii"
             element={<WeekStorySection separatePage={true} />}
