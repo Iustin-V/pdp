@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import bookshelf from "./images/bookshelf.png";
-import { colors, fontSizes } from "../generalStyle";
+import { fontSizes } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -191,6 +191,16 @@ export const BackgroundWrapper = styled.div<{
   ${(props) => props.separatePage && "padding-top: 50px;"}
 `;
 
+export const MarginTOPContainer =styled.div`
+margin-top:50px;
+
+  @media(max-width:1200px){
+  margin-top:30px;
+  }
+  @media(max-width:768px){
+  margin-top:0px;
+  }
+`
 export const WrapperCard = styled.div`
   display: flex;
   flex-direction: row;

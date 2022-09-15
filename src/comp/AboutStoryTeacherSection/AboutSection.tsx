@@ -4,6 +4,7 @@ import {
   BackgroundWrapper,
   ParagraphItalicStyled, SectionContainer,
   TitleSection,
+  MarginTOPContainer,
 } from "../Styles";
 import Background from "../images/aboutBackground.png";
 import { colors } from "../../generalStyle";
@@ -21,7 +22,7 @@ export const AboutSection = () => {
   });
 
   return (
-    <>
+    <MarginTOPContainer>
       <BackgroundWrapper imgUrl={Background}>
       <SectionContainer>
         <TitleSection color={colors.primary.base}>
@@ -31,6 +32,6 @@ export const AboutSection = () => {
         <YoutubeEmbed embedId="C_BkCoJVzBU" />
     </SectionContainer>
       </BackgroundWrapper>
-    </>
+    </MarginTOPContainer>
   );
 };
