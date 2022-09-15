@@ -67,8 +67,8 @@ export const Partners = () => {
             </TitleSection>
             <FlexWrapper>
                 <LogoSection onClick={redirectPartnerOana} src={OanaNiculescuLogo}/>
-                <LogoSection onClick={redirectPointsOfYou} src={LectiiViraleLogo}/>
-                <LogoSection onClick={redirectLectiiVirale}  src={PointsOfYouLogo}/>
+                <LogoSection onClick={redirectLectiiVirale} src={LectiiViraleLogo}/>
+                <LogoSection onClick={redirectPointsOfYou}  src={PointsOfYouLogo}/>
             </FlexWrapper>
         </Container>
     );
