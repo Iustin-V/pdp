@@ -9,10 +9,7 @@ import { Navbar } from "./comp/Navbar";
 import { ToTopButton } from "./comp/ToTopButton";
 import { Footer } from "./comp/Footer";
 import { WorkInProgress } from "./comp/WorkInProgress";
-import {
-  StyledProgressBar,
-  StyledProgressContainer,
-} from "./comp/Navbar-Style";
+import { Contact } from "./comp/Contact/Contact";
 
 function App() {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -32,7 +29,7 @@ function App() {
           />
           <Route path="/evenimente" element={<WorkInProgress />} />
           <Route path="/cutia-cu-povesti" element={<WorkInProgress />} />
-          <Route path="/vorbeste-cu-profa" element={<WorkInProgress />} />
+          <Route path="/vorbeste-cu-profa" element={<Contact />} />
           <Route path="/blog" element={<WorkInProgress />} />
         </Routes>
         <ToTopButton topRef={topRef} isTopButton={isTopButton} />

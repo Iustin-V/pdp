@@ -7,6 +7,7 @@ import {
   TitleSection,
 } from "../Styles";
 import Background from "../images/WeekStorySection.png";
+import { colors } from "../../generalStyle";
 interface weekStorySectionProps {
   separatePage?: boolean;
 }
@@ -21,7 +22,11 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
   return (
     <BackgroundWrapper imgUrl={Background} separatePage={props.separatePage}>
       <SectionContainer>
-        <TitleSection color={"#e3b4d4"}>Povestea Săptămânii</TitleSection>
+        <TitleSection
+          color={props.separatePage ? "#e3b4d4" : colors.primary.base}
+        >
+          Povestea Săptămânii
+        </TitleSection>
         <YoutubeEmbed embedId="-WgvGqYRjuw" />
         {ParagraphAboutSection}
       </SectionContainer>
