@@ -6,14 +6,13 @@ export const TitleReviewSection = styled.h1<{ color: string }>`
   font-size: ${fontSizes.desktop.heading.small};
   color: ${(props) => props.color};
   text-align: center;
-  width:fit-content;
-  margin:0 auto 25px;
+  width: fit-content;
+  margin: 0 auto 25px;
   border-bottom: 2px solid #234b92ff;
   padding-bottom: 25px;
   @media (max-width: 768px) {
     font-size: ${fontSizes.mobile.heading.base};
   }
-
 `;
 
 export const QuoteReviewSection = styled.q`
@@ -42,7 +41,7 @@ export const InsideSlideWrapper = styled.div`
   margin-left: 15%;
   margin-right: 15%;
   text-align: center;
-@media(max-width: 768px){
-  margin:0;
-}
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 `;

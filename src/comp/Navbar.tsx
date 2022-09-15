@@ -18,7 +18,7 @@ import burgerLogo from "./images/icons8-menu.svg";
 import closeIcon from "./images/icons8-close.svg";
 import { useState } from "react";
 import { ProgressBar } from "./ProgressBar";
-import {colors} from "../generalStyle";
+import { colors } from "../generalStyle";
 
 interface navbarProps {
   setTopButton: (value: boolean) => void;
@@ -39,7 +39,7 @@ export const Navbar = (props: navbarProps) => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > window!.visualViewport!.height - 160) {
         props.setTopButton(true);
-        console.log(window.scrollY)
+        console.log(window.scrollY);
       } else {
         if (window.scrollY < window!.visualViewport!.height + 80) {
           props.setTopButton(false);
@@ -47,7 +47,6 @@ export const Navbar = (props: navbarProps) => {
       }
     });
   }, [window.scrollY]);
-
 
   const value = navbarTexts.map((item) => {
     return (

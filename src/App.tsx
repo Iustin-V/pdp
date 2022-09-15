@@ -9,7 +9,10 @@ import { Navbar } from "./comp/Navbar";
 import { ToTopButton } from "./comp/ToTopButton";
 import { Footer } from "./comp/Footer";
 import { WorkInProgress } from "./comp/WorkInProgress";
-import {StyledProgressBar, StyledProgressContainer} from "./comp/Navbar-Style";
+import {
+  StyledProgressBar,
+  StyledProgressContainer,
+} from "./comp/Navbar-Style";
 
 function App() {
   const topRef = React.useRef<null | HTMLDivElement>(null);

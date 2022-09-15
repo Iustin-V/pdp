@@ -191,16 +191,16 @@ export const BackgroundWrapper = styled.div<{
   ${(props) => props.separatePage && "padding-top: 50px;"}
 `;
 
-export const MarginTOPContainer =styled.div`
-margin-top:50px;
+export const MarginTOPContainer = styled.div`
+  margin-top: 50px;
 
-  @media(max-width:1200px){
-  margin-top:30px;
+  @media (max-width: 1200px) {
+    margin-top: 30px;
   }
-  @media(max-width:768px){
-  margin-top:0px;
+  @media (max-width: 768px) {
+    margin-top: 0px;
   }
-`
+`;
 export const WrapperCard = styled.div`
   display: flex;
   flex-direction: row;
@@ -208,5 +208,4 @@ export const WrapperCard = styled.div`
   column-gap: 30px;
   row-gap: 30px;
   justify-content: center;
-  
 `;
