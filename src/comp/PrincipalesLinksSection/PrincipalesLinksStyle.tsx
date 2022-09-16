@@ -3,19 +3,15 @@ import { colors, fontSizes } from "../../generalStyle";
 import { Link } from "react-router-dom";
 
 export const RectangleStyled = styled.div`
-  width: 100%;
+  width: 99%;
   opacity: 0;
   background: #f8ecd4;
   position: absolute;
   z-index: 10;
-  left: 50%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  animation: slide-from-bottom 1.5s ease-out forwards;
-  animation-delay: 1.7s;
+  animation: slide-from-bottom 1.5s ease-out forwards 1.6s;
   margin-bottom: -60px;
   border-style: solid;
   border-width: 2px 2px 2px 2px;
@@ -24,33 +20,37 @@ export const RectangleStyled = styled.div`
   box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 32%);
 
   @media (max-width: 1200px) {
-    animation: slide-from-bottom-tablet 1.5s ease-out forwards;
+    animation: slide-from-bottom-tablet 1.5s ease-out;
     margin-bottom: -45px;
   }
 
   @media (max-width: 768px) {
     width: calc(100% - 80px);
     margin-bottom: -45px;
-    animation: slide-from-bottom-mobile 1.5s ease-out forwards;
+    animation: slide-from-bottom-mobile 1.5s ease-out ;
   }
 
   @keyframes slide-from-bottom {
     0% {
       max-width: 800px;
       opacity: 0;
+        left: 50%;
       transform: translate(-50%, 0%);
     }
     20% {
       opacity: 0;
+        left: 50%;
     }
     60% {
       transform: translate(-50%, 5%);
     }
     75% {
+      left: 50%;
       max-width: 800px;
       transform: translate(-50%, -15%);
     }
     100% {
+      left: 50%;
       opacity: 1;
       max-width: 1100px;
       transform: translate(-50%, -65%);
