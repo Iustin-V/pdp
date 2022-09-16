@@ -63,7 +63,7 @@ export const MainPagePhoto = styled.div<{ backgroundImage: string }>`
   width: 100%;
   background-repeat:no-repeat;
   background-position:center;
-  transform:background-position 1ms
+  transform:background-position 1ms;
   background-attachment: fixed;
   background-size:cover;
   background-image: url(${(props) => props.backgroundImage});

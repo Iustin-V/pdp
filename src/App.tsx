@@ -10,6 +10,7 @@ import { ToTopButton } from "./comp/ToTopButton";
 import { Footer } from "./comp/Footer";
 import { WorkInProgress } from "./comp/WorkInProgress";
 import { Contact } from "./comp/Contact/Contact";
+import {Events} from "./comp/Events/Events";
 
 function App() {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -27,7 +28,7 @@ function App() {
             path="/povestea-saptamanii"
             element={<WeekStorySection separatePage={true} />}
           />
-          <Route path="/evenimente" element={<WorkInProgress />} />
+          <Route path="/evenimente" element={<Events />} />
           <Route path="/cutia-cu-povesti" element={<WorkInProgress />} />
           <Route path="/vorbeste-cu-profa" element={<Contact />} />
           <Route path="/blog" element={<WorkInProgress />} />
