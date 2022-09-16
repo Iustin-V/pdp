@@ -20,14 +20,14 @@ export const RectangleStyled = styled.div`
   box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 32%);
 
   @media (max-width: 1200px) {
-    animation: slide-from-bottom-tablet 1.5s ease-out;
+    animation: slide-from-bottom-tablet 1.5s ease-out forwards 1.6s;
     margin-bottom: -45px;
   }
 
   @media (max-width: 768px) {
     width: calc(100% - 80px);
     margin-bottom: -45px;
-    animation: slide-from-bottom-mobile 1.5s ease-out;
+    animation: slide-from-bottom-mobile 1.5s ease-out forwards 1.6s;
   }
 
   @keyframes slide-from-bottom {
@@ -42,6 +42,7 @@ export const RectangleStyled = styled.div`
       left: 50%;
     }
     60% {
+      left: 50%;
       transform: translate(-50%, 5%);
     }
     75% {
@@ -98,7 +99,6 @@ export const RectangleStyled = styled.div`
     }
     60% {
       left: 50%;
-
       transform: translate(-50%, 5%);
     }
     75% {
