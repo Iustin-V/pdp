@@ -60,6 +60,13 @@ const AnimatedContainer = styled.div`
       transform: translateX(0);
     }
   }
+    @media (max-width: 768px) {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      display: flex;
+    }
+  
 `;
 const events = [
   {

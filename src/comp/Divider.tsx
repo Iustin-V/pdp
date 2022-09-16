@@ -7,6 +7,10 @@ const StyledDividerContainer = styled.div`
   max-width: 850px;
   width: 100%;
   margin-bottom: 30px;
+  @media (max-width: 768px) {
+    align-items: center;
+    max-width: calc(100vw - 80px);
+  }
 
 `;
 const StyledDivider = styled.hr`

@@ -14,10 +14,9 @@ export const StyledPageWrapper = styled.div<{ login?: boolean }>`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  @media (max-width:768px){
-  height:600px;
+  @media (max-width: 768px) {
+    height: 600px;
   }
-  
 `;
 export const MainContentWrapper = styled.div<{
   padding?: string;
@@ -31,7 +30,6 @@ export const MainContentWrapper = styled.div<{
   height: 100%;
   width: 100%;
   padding: ${(props) => props.padding};
- 
 `;
 export const StyledToTopButton = styled.button<{ bottom: string }>`
   height: 50px;
@@ -51,6 +49,8 @@ export const StyledToTopButton = styled.button<{ bottom: string }>`
   transition: bottom 200ms ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -webkit-appearance: none !important;
+
   appearance: none;
   bottom: ${(props) => props.bottom};
 `;
@@ -61,11 +61,11 @@ export const StyledImageNew = styled.img`
 export const MainPagePhoto = styled.div<{ backgroundImage: string }>`
   height: 100%;
   width: 100%;
-  background-repeat:no-repeat;
-  background-position:center;
-  transform:background-position 1ms;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: background-position 1ms;
   background-attachment: fixed;
-  background-size:cover;
+  background-size: cover;
   background-image: url(${(props) => props.backgroundImage});
   @media (max-width: 768px) {
     background-attachment: scroll;
