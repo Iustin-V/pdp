@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {fontSizes,colors} from "../../generalStyle";
-import arrow from "../images/arrow.png"
 
 export const StyledContactForm=styled.div`
 margin-top:85px;
@@ -30,21 +29,36 @@ export const StyledInput = styled.input`
   padding: 5px 10px;
   font-family:"Nunito-Italic";
   color: ${colors.primary.base};
+  
+  
+  :focus{
+    border: 1px solid ${colors.primary.base};
+    background: #f5f5f5;
+  }
 `;
 export const StyledButton = styled.input`
+
+  color: ${colors.primary.base};
   height: 40px;
   display: block;
   margin: 0 auto;
   line-height: 24px * 2;
-  padding: 0 20px;
-  background: #b4a087;
+  padding: 0 50px;
+  background:${colors.secondary.lighter};
+  
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
   outline: none;
-  border: 1px solid rgba(0, 0, 0, 1);
-
+  border: 1px solid ${colors.secondary.base};
+   font-size: ${fontSizes.desktop.paragraph.base};
+   font-weight: 600;
+   letter-spacing: 1px;
+  
+  border-radius:8px;
   :hover {
-    background: #f8f4e5;
+    background: white;
+    -webkit-box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
   }
 `;
 export const StyledContainer = styled.div`
@@ -53,6 +67,7 @@ export const StyledContainer = styled.div`
 export const StyledTextArea = styled.textarea`
   display: block;
   width: calc(100% - 22px);
+  max-width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
   font-family:"Nunito-Italic";
   margin-bottom: 24px;
@@ -63,10 +78,16 @@ export const StyledTextArea = styled.textarea`
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
+  
+   :focus{
+    border: 1px solid ${colors.primary.base};
+    background: #f5f5f5;
+  }
+  
 `;
 export const StyledSelect = styled.select`
   display: block;
-  width: 100%;
+  width: 50%;
   font-size: ${fontSizes.desktop.paragraph.base};
   font-family:"Nunito-Italic";
   margin-bottom: 24px;
@@ -77,8 +98,18 @@ export const StyledSelect = styled.select`
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
-  div{
-    max-width:300px;
-    background:red;
+  
+  :focus{
+    border: 1px solid ${colors.primary.base};
+    background: #f5f5f5;
   }
+ 
+
 `;
+
+export const StyledLabel=styled.label`
+  font-size: ${fontSizes.desktop.paragraph.base};
+  font-family:"Nunito-Italic";
+   color: ${colors.primary.base};
+   font-weight:600;
+`
