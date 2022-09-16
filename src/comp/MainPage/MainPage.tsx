@@ -6,7 +6,7 @@ import {
   PageContainer,
 } from "../Styles";
 
-import bookshelf from "../images/bookshelf.png";
+import bookshelf from "../images/bookshelf_compressed.png";
 import React from "react";
 
 export const MainPage = () => {
