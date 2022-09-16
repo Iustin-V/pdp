@@ -39,7 +39,6 @@ export const Navbar = (props: navbarProps) => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > window!.visualViewport!.height - 160) {
         props.setTopButton(true);
-        console.log(window.scrollY);
       } else {
         if (window.scrollY < window!.visualViewport!.height + 80) {
           props.setTopButton(false);

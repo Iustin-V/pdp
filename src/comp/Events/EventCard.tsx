@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "../../generalStyle";
+import { colors, fontSizes } from "../../generalStyle";
 import { Divider } from "../Divider";
 
 const StyledEventCardContainer = styled.div`
@@ -9,6 +9,10 @@ const StyledEventCardContainer = styled.div`
   gap: 30px;
   width: 100%;
   max-width: 850px;
+  @media (max-width: 768px) {
+    align-items: center;
+    max-width: calc(100vw - 80px);
+  }
 `;
 const StyledMedia = styled.img`
   height: 200px;
@@ -20,21 +24,35 @@ const StyledContent = styled.div`
   align-items: center;
 
   gap: 50px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const StyledTitle = styled.p`
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
-  font-size: 30px;
+  font-size: ${fontSizes.mobile.heading.base};
   margin: 0;
   color: ${colors.primary.base};
+
+  @media (max-width: 768px) {
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+  }
 `;
 const StyledParagraph = styled.p`
-  width: 500px;
+  width: 100%;
   margin: 0;
   flex-direction: column;
   gap: 10px;
   display: flex;
   color: #002366;
-
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.mobile.paragraph.small};
+    align-items: center;
+    
+  }
+  }
 `;
 const StyledButton = styled.button`
   background-color: #002366;
