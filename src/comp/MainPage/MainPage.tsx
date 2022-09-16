@@ -5,12 +5,14 @@ import {
   MainTitle,
   PageContainer,
 } from "../Styles";
+
+import bookshelf from "../images/bookshelf.png";
 import React from "react";
 
 export const MainPage = () => {
   return (
     <>
-      <MainPagePhoto>
+      <MainPagePhoto backgroundImage={bookshelf}>
         <MainContentWrapper flexDirection="row">
           <PageContainer>
             <MainTitle>Cadoul tau e mai frumos cand spune o poveste</MainTitle>

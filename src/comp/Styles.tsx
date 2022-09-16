@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import bookshelf from "./images/bookshelf.png";
 import { fontSizes } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
@@ -8,12 +7,17 @@ export const StyledWrapper = styled.div`
   background-color: #fafafa;
 `;
 export const StyledPageWrapper = styled.div<{ login?: boolean }>`
-  height: ${(props) => (props.login ? "100vh" : "calc(100vh - 80px)")};
-  width: 100vw;
+  height: 750px;
+  margin-top: 85px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  @media (max-width:768px){
+  height:600px;
+  }
+  
 `;
 export const MainContentWrapper = styled.div<{
   padding?: string;
@@ -24,9 +28,10 @@ export const MainContentWrapper = styled.div<{
   font-size: ${fontSizes.desktop.paragraph.large};
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   padding: ${(props) => props.padding};
+ 
 `;
 export const StyledToTopButton = styled.button<{ bottom: string }>`
   height: 50px;
@@ -53,14 +58,15 @@ export const StyledImageNew = styled.img`
   filter: invert(100%);
   height: 30px;
 `;
-export const MainPagePhoto = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-image: url(${bookshelf});
+export const MainPagePhoto = styled.div<{ backgroundImage: string }>`
+  height: 100%;
+  width: 100%;
+  background-repeat:no-repeat;
+  background-position:center;
+  transform:background-position 1ms
   background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
+  background-image: url(${(props) => props.backgroundImage});
   @media (max-width: 768px) {
     background-attachment: scroll;
   }
@@ -118,18 +124,7 @@ export const MainTitle = styled.p`
     }
   }
 `;
-export const IconWrapper = styled.div<{ top: string }>`
-  width: 80vw;
-  height: 300px;
-  background-color: wheat;
-  position: absolute;
-  top: ${(props) => props.top};
-  border-radius: 50px;
-  border: 10px solid orange;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 export const PageContainer = styled.div`
   max-width: 1440px;
   width: 100%;

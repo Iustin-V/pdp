@@ -125,6 +125,10 @@ export const StyledIconLink = styled(Link)`
     width: 100%;
     padding: 5px;
   }
+  @media (max-width: 350px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 export const StyledIcon = styled.img`
   width: auto;
