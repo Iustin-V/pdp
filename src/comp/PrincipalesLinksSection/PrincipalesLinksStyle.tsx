@@ -27,19 +27,19 @@ export const RectangleStyled = styled.div`
   @media (max-width: 768px) {
     width: calc(100% - 80px);
     margin-bottom: -45px;
-    animation: slide-from-bottom-mobile 1.5s ease-out ;
+    animation: slide-from-bottom-mobile 1.5s ease-out;
   }
 
   @keyframes slide-from-bottom {
     0% {
       max-width: 800px;
       opacity: 0;
-        left: 50%;
+      left: 50%;
       transform: translate(-50%, 0%);
     }
     20% {
       opacity: 0;
-        left: 50%;
+      left: 50%;
     }
     60% {
       transform: translate(-50%, 5%);
@@ -61,21 +61,25 @@ export const RectangleStyled = styled.div`
     0% {
       max-width: 500px;
       opacity: 0;
+      left: 50%;
       transform: translate(-50%, 0%);
     }
     20% {
+      left: 50%;
       opacity: 0;
     }
     60% {
+      left: 50%;
       transform: translate(-50%, 5%);
     }
     75% {
+      left: 50%;
       max-width: 500px;
       transform: translate(-50%, -15%);
     }
     100% {
       opacity: 1;
-
+      left: 50%;
       max-width: 688px;
       transform: translate(-50%, -65%);
     }
@@ -83,23 +87,28 @@ export const RectangleStyled = styled.div`
 
   @keyframes slide-from-bottom-mobile {
     0% {
+      left: 50%;
       max-width: 500px;
       opacity: 0;
       transform: translate(-50%, 0%);
     }
     20% {
+      left: 50%;
       opacity: 0;
     }
     60% {
+      left: 50%;
+
       transform: translate(-50%, 5%);
     }
     75% {
+      left: 50%;
       max-width: 500px;
       transform: translate(-50%, -15%);
     }
     100% {
       opacity: 1;
-
+      left: 50%;
       max-width: 688px;
       transform: translate(-50%, -65%);
     }
