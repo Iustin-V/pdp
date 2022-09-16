@@ -198,5 +198,39 @@ export const WrapperCard = styled.div`
   column-gap: 30px;
   row-gap: 30px;
   justify-content: center;
-  
 `;
+export const Border =styled.hr`
+  border: 0;
+  clear: both;
+  display: block;
+  margin: 2.4rem auto;
+  text-align: center;
+  width: 100%;
+  background: rgba(1, 15, 30, 0.1);
+  height: 1px;
+  overflow: hidden;
+  position: relative;
+  
+  &:after {
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-name: progress;
+    background: #002366;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    width: 80px;
+  }
+
+  @keyframes progress {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(1440px);
+    }
+  }
+  
+`

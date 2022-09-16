@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import {Button, CardActionArea, CardActions} from "@mui/material";
 import clock from "./Assets/clock-regular.svg";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
+import linkGenerate from "../generalFunction";
+
 
 const CardMediaStyled = styled.img`
   width: 100%;
@@ -13,18 +16,19 @@ const CardMediaStyled = styled.img`
     transform: scale(1.15, 1.15);
   }
 
-  transition: transform 1s ease-in-out
+  transition: transform 1s ease-in-out;
 `;
 const StyledCard = styled(Card)`
-  margin-top:40px;
-  margin-bottom:40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
   :hover {
     -webkit-box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
     box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
   }
-  transition: box-shadow 1s ease-in-out
-`
 
+  transition: box-shadow 1s ease-in-out;
+`;
 
 interface DetailedAboutCard {
     image: any;
@@ -34,6 +38,7 @@ interface DetailedAboutCard {
     title: string;
 }
 
+
 export const MultiActionAreaCard = (props: DetailedAboutCard) => {
     return (
         <StyledCard sx={{maxWidth: 250}}>
@@ -41,7 +46,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
                 <CardMediaStyled src={props.image} alt="courses"/>
                 <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
-                        {props.price} Ron
+                        {props.price}
                     </Typography>
                     <Typography variant="h5" color="text.secondary">
                         {props.title}
@@ -55,10 +60,12 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
-                    Cumpără
-                </Button>
+                <Link style={{textDecoration: "none"}} to={linkGenerate(props.title)}>
+                    <Button size="small" color="primary">
+                        Cumpără
+                    </Button>
+                </Link>
             </CardActions>
         </StyledCard>
     );
-}
+};
