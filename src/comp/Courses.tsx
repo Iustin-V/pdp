@@ -20,21 +20,18 @@ export const Courses = () => {
             title: "Cum să-mi transform visul în realitate?",
             time: "20:00",
             price: "500 Ron",
-            lesson: 4,
             image: firstCard,
         },
         {
             title: "Cum să ating steaua la care visez",
             time: "20:00",
             price: "500 Ron",
-            lesson: 4,
             image: firstCard,
         },
         {
             title: "Cine mă privește din oglindă?",
             time: "20:00",
             price: "500 Ron",
-            lesson: 4,
             image: firstCard,
         },
 
@@ -44,21 +41,18 @@ export const Courses = () => {
             title: "Cheia fericirii este la tine în buzunar!",
             time: "20:00",
             price: "800 Ron",
-            lesson: 4,
             image: firstCard,
         },
         {
             title: "Ieșirea din matrice",
             time: "20:00",
             price: "800 Ron",
-            lesson: 4,
             image: firstCard,
         },
         {
             title: "Dicționarul limbii pe care o vorbim în familie",
             time: "20:00",
             price: "800 Ron",
-            lesson: 4,
             image: firstCard,
         },
     ];
@@ -69,7 +63,6 @@ export const Courses = () => {
                 title={item.title}
                 time={item.time}
                 price={item.price}
-                lessons={item.lesson}
                 image={item.image}
             />
         );

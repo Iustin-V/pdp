@@ -33,7 +33,6 @@ const StyledCard = styled(Card)`
 interface DetailedAboutCard {
     image: any;
     price: string;
-    lessons: number;
     time: string;
     title: string;
 }
@@ -51,9 +50,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
                     <Typography variant="h5" color="text.secondary">
                         {props.title}
                     </Typography>
-                    <Typography variant="h6" color="text.primary">
-                        {props.lessons} Lessons
-                    </Typography>
+
                     <Typography variant="h6" color="text.primary">
                         <img src={clock} alt="clock" height={"15px"}/> {props.time}
                     </Typography>
