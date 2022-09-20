@@ -5,7 +5,7 @@ export const StyledContactForm=styled.div`
 margin-top:85px;
 max-width:1440px;
 margin: 125px auto 0; 
-
+padding: 0 40px 40px;
 `
 
 
@@ -23,7 +23,6 @@ export const StyledInput = styled.input`
   border: 1px solid grey;
   border-radius:5px;
   background: #f8f4e5;
-  min-width: 250px;
   outline: none;
   padding: 5px 10px;
   font-family:"Nunito-Italic";
@@ -33,6 +32,9 @@ export const StyledInput = styled.input`
   :focus{
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
+  }
+    @media(max-width:768px){
+   font-size:${fontSizes.mobile.paragraph.small}
   }
 `;
 export const StyledButton = styled.input`
@@ -64,6 +66,10 @@ export const StyledButton = styled.input`
   pointer-events:none;
   color:grey;
   }
+  
+    @media(max-width:768px){
+   font-size:${fontSizes.mobile.paragraph.small}
+  }
 `;
 export const StyledContainer = styled.div`
   margin: 35px 0;
@@ -77,7 +83,6 @@ export const StyledTextArea = styled.textarea`
   border: 1px solid grey;
   border-radius:5px;
   background: #f8f4e5;
-  min-width: 250px;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
@@ -85,6 +90,9 @@ export const StyledTextArea = styled.textarea`
    :focus{
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
+  }
+    @media(max-width:768px){
+   font-size:${fontSizes.mobile.paragraph.small}
   }
   
 `;
@@ -97,7 +105,6 @@ export const StyledSelect = styled.select`
   border: 1px solid grey;
   border-radius:5px;
   background: #f8f4e5;
-  min-width: 250px;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
@@ -105,6 +112,10 @@ export const StyledSelect = styled.select`
   :focus{
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
+  }
+  
+  @media(max-width:768px){
+   font-size:${fontSizes.mobile.paragraph.small}
   }
  
 
@@ -115,6 +126,10 @@ export const StyledLabel=styled.label`
   font-family:"Nunito-Italic";
    color: ${colors.primary.base};
    font-weight:600;
+   
+     @media(max-width:768px){
+   font-size:${fontSizes.mobile.paragraph.small}
+  }
 `
 export const StyledError=styled.p`
 color:red;

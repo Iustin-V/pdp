@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { Home } from "./comp/Home";
 import { StyledWrapper } from "./comp/Styles";
 import { Courses } from "./comp/Courses";
@@ -11,6 +11,9 @@ import { Footer } from "./comp/Footer";
 import { WorkInProgress } from "./comp/WorkInProgress";
 import { Contact } from "./comp/Contact/Contact";
 import {Events} from "./comp/Events/Events";
+import ScrollToTop from "./ScrollToTop";
+
+
 
 function App() {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -21,6 +24,7 @@ function App() {
       <BrowserRouter>
         <div ref={topRef} />
         <Navbar setTopButton={setTopButton} />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cursuri" element={<Courses />} />
