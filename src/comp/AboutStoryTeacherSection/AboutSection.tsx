@@ -1,5 +1,6 @@
 import React from "react";
 import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
+// @ts-ignore
 import {
   BackgroundWrapper,
   ParagraphItalicStyled,
