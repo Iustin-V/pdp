@@ -25,6 +25,7 @@ function App() {
 
   const setCookieFunction = (value: any) => {
     localStorage.setItem("locale", value);
+    window.location.reload();
 
     console.log("language cookie", value);
   };
@@ -32,7 +33,11 @@ function App() {
   //usereducer
   React.useEffect(() => {
     axios
-      .get("http://localhost:1337/api/engs?populate=deep")
+      .get(
+        `http://localhost:1337/api/engs?locale=${
+          localStorage.locale || "en"
+        }&populate=deep`
+      )
       .then(({ data }) => {
         // @ts-ignore
         setAllCategories(data.data[0]?.attributes);
@@ -55,7 +60,7 @@ function App() {
           <div ref={topRef} />
           <StyledPageWrapper>
             <button onClick={() => setCookieFunction("en")}>en</button>
-            <button onClick={() => setCookieFunction("ro")}>ro</button>
+            <button onClick={() => setCookieFunction("ro-RO")}>ro</button>
             <button onClick={() => setCookieFunction("fr")}>fr</button>
           </StyledPageWrapper>
           <Navbar navbarData={navbarData} setTopButton={setTopButton} />
