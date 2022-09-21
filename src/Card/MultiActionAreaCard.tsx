@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import clock from "./Assets/clock-regular.svg";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
+import linkGenerate from "../generalFunction";
+
 
 const CardMediaStyled = styled.img`
   width: 100%;
@@ -26,38 +29,38 @@ const StyledCard = styled(Card)`
 `;
 
 interface DetailedAboutCard {
-  image: any;
-  price: string;
-  lessons: number;
-  time: string;
-  title: string;
+    image: any;
+    price: string;
+    time: string;
+    title: string;
 }
 
 export const MultiActionAreaCard = (props: DetailedAboutCard) => {
-  return (
-    <StyledCard sx={{ maxWidth: 250 }}>
-      <CardActionArea>
-        <CardMediaStyled src={props.image} alt="courses" />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {props.price} Ron
-          </Typography>
-          <Typography variant="h5" color="text.secondary">
-            {props.title}
-          </Typography>
-          <Typography variant="h6" color="text.primary">
-            {props.lessons} Lessons
-          </Typography>
-          <Typography variant="h6" color="text.primary">
-            <img src={clock} alt="clock" height={"15px"} /> {props.time}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Cumpără
-        </Button>
-      </CardActions>
-    </StyledCard>
-  );
+    return (
+        <StyledCard sx={{maxWidth: 250}}>
+            <CardActionArea>
+                <CardMediaStyled src={props.image} alt="courses"/>
+                <CardContent>
+                    <Typography variant="h6" color="text.secondary" style={{color:'#002366', margin:' 10px 0'}}>
+                        {props.title}
+                    </Typography>
+                    <div style={{display:"flex",justifyContent:'space-between'}}>
+                    <Typography variant="h6" color="text.secondary" style={{color:'#002366'}}>
+                        <img src={clock} alt="clock" height={"15px"}/> {props.time}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary" style={{color:'#002366'}}>
+                        Pret:{props.price}
+                    </Typography>
+                    </div>
+                </CardContent>
+            </CardActionArea>
+            <CardActions style={{ justifyContent:'center',borderTop: '1px solid #b4a087',margin:' 0px 10px'}}>
+                <Link style={{textDecoration: "none"}} to={linkGenerate(props.title)}>
+                    <Button size="small" color="primary" style={{textAlign:'center'}}>
+                        <Typography   style={{color:'#002366'}} variant="h6"> Cumpără </Typography>
+                    </Button>
+                </Link>
+            </CardActions>
+        </StyledCard>
+    );
 };
