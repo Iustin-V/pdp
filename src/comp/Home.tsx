@@ -9,14 +9,17 @@ import { ReviewSection } from "./ReviewSection/ReviewSection";
 import { Partners } from "./Partners/Partners";
 import { PrincipalesLinks } from "./PrincipalesLinksSection/PrincipalesLinks";
 
-export const Home = () => {
+interface HomeProps {
+  mainPageData: any;
+}
+export const Home = (props: HomeProps) => {
   return (
     <>
       <StyledPageWrapper>
-        <MainPage />
+        <MainPage firstSection={props?.mainPageData?.firstSection} />
       </StyledPageWrapper>
-      <PrincipalesLinks />
-      <AboutSection />
+      <PrincipalesLinks  mainLinks={props?.mainPageData?.mainLinks}/>
+      <AboutSection aboutSectionData={props?.mainPageData?.about}/>
       <TimeLineSection />
       <WeekStorySection />
       <ReviewSection />

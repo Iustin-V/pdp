@@ -10,7 +10,10 @@ import {
 import Background from "../images/aboutBackground.png";
 import { colors } from "../../generalStyle";
 
-export const AboutSection = () => {
+interface AboutSectionProps {
+  aboutSectionData: any;
+}
+export const AboutSection = (props: AboutSectionProps) => {
   let Paragraph = [
     "Eu nu am ales să fiu profesor. Când am terminat facultatea, am spus că voi merge să predau limba engleză o vreme, cât să îmi câștig existența până când voi găsi un post de translator într-o firmă celebră. Nu eram pregătită să trec de partea cealaltă a catedrei, acolo unde aflasem că e locul unor persoane severe și inflexibile, care îți cântăreau, cu privirea pe deasupra ochelarilor, orice comportament și îți scădeau nota la orice cuvânt folosit nefericit.",
     "Treptat, fiecare generație de elevi m-a convins că, de fapt, locul de la catedră este al celor care iubesc să învețe pe copii cum să își așeze pasiunea în muncă, libertatea în opțiuni și fericirea în viața de zi cu zi.",
@@ -27,9 +30,9 @@ export const AboutSection = () => {
       <BackgroundWrapper imgUrl={Background}>
         <SectionContainer>
           <TitleSection color={colors.primary.base}>
-            Despre profa de povești
+            {props.aboutSectionData?.title}
           </TitleSection>
-          {ParagraphAboutSection}
+          {props.aboutSectionData?.description}
           <YoutubeEmbed embedId="C_BkCoJVzBU" />
         </SectionContainer>
       </BackgroundWrapper>

@@ -29,18 +29,23 @@ const PrincipalesLinksArray = [
     link: "/povestea-saptamanii",
   },
 ];
-
-export const PrincipalesLinks = () => {
+interface PrincipalesLinks {
+  mainLinks: any;
+}
+export const PrincipalesLinks = (props: PrincipalesLinks) => {
   return (
     <RectangleStyled>
-      {PrincipalesLinksArray.map((item, key) => {
-        return (
-          <StyledIconLink key={key} to={item.link}>
-            <StyledIcon src={item.icon} alt={"idea"} />
-            <StyledIconLabel>{item.label}</StyledIconLabel>
-          </StyledIconLink>
-        );
-      })}
+      {props?.mainLinks?.map(
+        (item: { url: string; label: string ,image:any}, key: number) => {
+          return (
+            <StyledIconLink key={key} to={item?.url}>
+              {}
+              <StyledIcon src={item?.image} alt={"idea"} />
+              <StyledIconLabel>{item?.label}</StyledIconLabel>
+            </StyledIconLink>
+          );
+        }
+      )}
     </RectangleStyled>
   );
 };

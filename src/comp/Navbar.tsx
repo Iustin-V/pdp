@@ -19,8 +19,10 @@ import closeIcon from "./images/icons8-close.svg";
 import { useState } from "react";
 import { ProgressBar } from "./ProgressBar";
 import { colors } from "../generalStyle";
+import { PDPContext } from "../App";
 
 interface navbarProps {
+  navbarData?: any;
   setTopButton: (value: boolean) => void;
 }
 
@@ -35,6 +37,8 @@ export const Navbar = (props: navbarProps) => {
     { name: "Vorbeste cu profa", slug: "vorbeste-cu-profa" },
   ];
 
+  const values = React.useContext(PDPContext);
+
   React.useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > window!.visualViewport!.height - 160) {
@@ -47,13 +51,17 @@ export const Navbar = (props: navbarProps) => {
     });
   }, [window.scrollY]);
 
-  const value = navbarTexts.map((item) => {
-    return (
-      <StyledNavItem key={item.name} to={`/${item.slug || "#"}`}>
-        <StyledText>{item.name}</StyledText>
-      </StyledNavItem>
-    );
-  });
+  console.log("values", values);
+  console.log("props?.navbarData?.links", props?.navbarData?.links);
+  const value = props?.navbarData?.links?.map(
+    (item: { label: string; url: string }) => {
+      return (
+        <StyledNavItem key={item.label} to={`/${item.url || "#"}`}>
+          <StyledText>{item.label}</StyledText>
+        </StyledNavItem>
+      );
+    }
+  );
 
   const Logo = () => {
     return (

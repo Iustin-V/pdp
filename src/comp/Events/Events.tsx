@@ -97,6 +97,7 @@ const events = [
     alt: "eventPicture",
     date: "Jan 01.01.2022",
   },
+
 ];
 const eventCards = events.map((event) => (
   <AnimatedContainer>
