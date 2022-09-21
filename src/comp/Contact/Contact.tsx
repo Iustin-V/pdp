@@ -9,6 +9,8 @@ import {
   StyledContactForm,
   StyledLabel,
   StyledError,
+  ContactFormBackground,
+  TextsSection
 } from "./Contact-Style";
 import { colors } from "../../generalStyle";
 import React, {useEffect } from "react";
@@ -92,11 +94,14 @@ export const Contact = () => {
   }, [nameError, emailError, phoneError, messageError]);
 
   return (
+      <ContactFormBackground>
     <StyledContactForm>
+      <TextsSection>
       <TitleSection color={colors.primary.base}>
         Vorbeste cu profa de povești
       </TitleSection>
       <ParagraphItalicStyled>{paragraphText}</ParagraphItalicStyled>
+      </TextsSection>
       <StyledForm
         action="https://public.herotofu.com/v1/62aea5a0-34f8-11ed-9de0-b73c4b901972"
         method="post"
@@ -180,5 +185,6 @@ export const Contact = () => {
         </StyledContainer>
       </StyledForm>
     </StyledContactForm>
+      </ContactFormBackground>
   );
 };

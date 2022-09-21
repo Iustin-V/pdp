@@ -1,20 +1,51 @@
 import styled from "styled-components";
 import {fontSizes,colors} from "../../generalStyle";
+import background from "../images/contact-background-overlay.jpg"
 
-export const StyledContactForm=styled.div`
-margin-top:85px;
-max-width:1440px;
-margin: 125px auto 0; 
-padding: 0 40px 40px;
+export const ContactFormBackground=styled.div`
+
+background-image:url(${background});
+background-size:cover;
 `
 
+export const StyledContactForm=styled.div`
+
+margin-top:85px;
+max-width:1440px;
+margin: 85px auto 0; 
+padding:40px;
+display:flex;
+flex-direction:row;
+column-gap:40px;
+justify-content: center;
+
+@media(max-width:1200px){
+flex-direction:column;
+align-items:center;
+}
+`
+export const TextsSection=styled.div`
+max-width:465px;
+
+@media(max-width:1200px){
+max-width:100%;
+}
+`
 
 export const StyledForm = styled.form`
   border-radius: 25px;
   background: #f8ecd4;
-  max-width:1100px;
-  padding:40px;
-  margin:0 auto 40px;
+  max-width:600px;
+  width:100%;
+  padding: 20px 40px;
+  margin:30px 0 40px;
+  border: 1px solid ${colors.primary.base};
+  
+  
+@media(max-width:1200px){
+max-width:calc(100% - 40px);
+ padding: 20px 20px;
+}
 `;
 export const StyledInput = styled.input`
   display: block;
@@ -68,7 +99,8 @@ export const StyledButton = styled.input`
   }
   
     @media(max-width:768px){
-   font-size:${fontSizes.mobile.paragraph.small}
+   font-size:${fontSizes.mobile.paragraph.small};
+    padding: 0 10px;
   }
 `;
 export const StyledContainer = styled.div`
@@ -126,6 +158,7 @@ export const StyledLabel=styled.label`
   font-family:"Nunito-Italic";
    color: ${colors.primary.base};
    font-weight:600;
+   position:relative;
    
      @media(max-width:768px){
    font-size:${fontSizes.mobile.paragraph.small}
@@ -135,8 +168,13 @@ export const StyledError=styled.p`
 color:red;
 background: #ffcccc;
 margin:0;
+max-width:calc(100% - 20px);
 padding:3px 10px;
 font-weight: 300;
 position:absolute;
-font-size:${fontSizes.desktop.paragraph.small}
+font-size:${fontSizes.desktop.paragraph.small};
+
+@media(max-width:768px){
+font-size:12px;
+}
 `
