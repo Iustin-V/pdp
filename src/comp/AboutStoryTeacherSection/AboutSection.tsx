@@ -2,8 +2,10 @@ import React from "react";
 import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
 import {
   BackgroundWrapper,
-  ParagraphItalicStyled, SectionContainer,
+  ParagraphItalicStyled,
+  SectionContainer,
   TitleSection,
+  MarginTOPContainer,
 } from "../Styles";
 import Background from "../images/aboutBackground.png";
 import { colors } from "../../generalStyle";
@@ -21,16 +23,16 @@ export const AboutSection = () => {
   });
 
   return (
-    <>
+    <MarginTOPContainer>
       <BackgroundWrapper imgUrl={Background}>
-      <SectionContainer>
-        <TitleSection color={colors.primary.base}>
-          Despre profa de povești
-        </TitleSection>
-        {ParagraphAboutSection}
-        <YoutubeEmbed embedId="C_BkCoJVzBU" />
-    </SectionContainer>
+        <SectionContainer>
+          <TitleSection color={colors.primary.base}>
+            Despre profa de povești
+          </TitleSection>
+          {ParagraphAboutSection}
+          <YoutubeEmbed embedId="C_BkCoJVzBU" />
+        </SectionContainer>
       </BackgroundWrapper>
-    </>
+    </MarginTOPContainer>
   );
 };

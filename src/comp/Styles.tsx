@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import bookshelf from "./images/bookshelf.png";
-import { colors, fontSizes } from "../generalStyle";
+import { fontSizes } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -8,12 +7,16 @@ export const StyledWrapper = styled.div`
   background-color: #fafafa;
 `;
 export const StyledPageWrapper = styled.div<{ login?: boolean }>`
-  height: ${(props) => (props.login ? "100vh" : "calc(100vh - 80px)")};
-  width: 100vw;
+  height: 750px;
+  margin-top: 85px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  @media (max-width: 768px) {
+    height: 600px;
+  }
 `;
 export const MainContentWrapper = styled.div<{
   padding?: string;
@@ -24,8 +27,8 @@ export const MainContentWrapper = styled.div<{
   font-size: ${fontSizes.desktop.paragraph.large};
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   padding: ${(props) => props.padding};
 `;
 export const StyledToTopButton = styled.button<{ bottom: string }>`
@@ -46,6 +49,8 @@ export const StyledToTopButton = styled.button<{ bottom: string }>`
   transition: bottom 200ms ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -webkit-appearance: none !important;
+
   appearance: none;
   bottom: ${(props) => props.bottom};
 `;
@@ -53,14 +58,15 @@ export const StyledImageNew = styled.img`
   filter: invert(100%);
   height: 30px;
 `;
-export const MainPagePhoto = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-image: url(${bookshelf});
-  background-attachment: fixed;
-  background-position: center;
+export const MainPagePhoto = styled.div<{ backgroundImage: string }>`
+  height: 100%;
+  width: 100%;
   background-repeat: no-repeat;
+  background-position: center;
+  transform: background-position 1ms;
+  background-attachment: fixed;
   background-size: cover;
+  background-image: url(${(props) => props.backgroundImage});
   @media (max-width: 768px) {
     background-attachment: scroll;
   }
@@ -118,18 +124,7 @@ export const MainTitle = styled.p`
     }
   }
 `;
-export const IconWrapper = styled.div<{ top: string }>`
-  width: 80vw;
-  height: 300px;
-  background-color: wheat;
-  position: absolute;
-  top: ${(props) => props.top};
-  border-radius: 50px;
-  border: 10px solid orange;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 export const PageContainer = styled.div`
   max-width: 1440px;
   width: 100%;
@@ -191,6 +186,16 @@ export const BackgroundWrapper = styled.div<{
   ${(props) => props.separatePage && "padding-top: 50px;"}
 `;
 
+export const MarginTOPContainer = styled.div`
+  margin-top: 50px;
+
+  @media (max-width: 1200px) {
+    margin-top: 30px;
+  }
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
+`;
 export const WrapperCard = styled.div`
   display: flex;
   flex-direction: row;
@@ -199,38 +204,3 @@ export const WrapperCard = styled.div`
   row-gap: 30px;
   justify-content: center;
 `;
-export const Border =styled.hr`
-  border: 0;
-  clear: both;
-  display: block;
-  margin: 2.4rem auto;
-  text-align: center;
-  width: 100%;
-  background: rgba(1, 15, 30, 0.1);
-  height: 1px;
-  overflow: hidden;
-  position: relative;
-  
-  &:after {
-    animation-duration: 2s;
-    animation-timing-function: ease;
-    animation-iteration-count: infinite;
-    animation-name: progress;
-    background: #002366;
-    content: "";
-    display: block;
-    height: 1px;
-    position: absolute;
-    width: 80px;
-  }
-
-  @keyframes progress {
-    0% {
-      transform: translateX(0px);
-    }
-    100% {
-      transform: translateX(1440px);
-    }
-  }
-  
-`
