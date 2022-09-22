@@ -10,7 +10,8 @@ import {
   StyledLabel,
   StyledError,
   ContactFormBackground,
-  TextsSection
+  TextsSection,
+  StyledImageTeacher
 } from "./Contact-Style";
 import { colors } from "../../generalStyle";
 import React, {useEffect } from "react";
@@ -20,6 +21,7 @@ import {
   nameValidation,
   phoneValidation,
 } from "../../inputsValidations";
+import teachericon from "../images/teacher-icon.png"
 
 export interface formFields {
   name: string;
@@ -96,7 +98,9 @@ export const Contact = () => {
   return (
       <ContactFormBackground>
     <StyledContactForm>
+
       <TextsSection>
+        <StyledImageTeacher src={teachericon} alt="teachericon"></StyledImageTeacher>
       <TitleSection color={colors.primary.base}>
         Vorbeste cu profa de povești
       </TitleSection>

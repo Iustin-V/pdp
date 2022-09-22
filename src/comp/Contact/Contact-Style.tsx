@@ -24,6 +24,7 @@ export const StyledContactForm = styled.div`
   }
 `;
 export const TextsSection = styled.div`
+ position:relative;
   max-width: 465px;
   height: fit-content;
   border-radius: 25px;
@@ -35,16 +36,33 @@ export const TextsSection = styled.div`
   }
 
   @media (max-width: 1200px) {
+    margin-top:100px;
     width: 100%;
     max-width: calc(100% - 40px);
     margin-bottom: 20px;
   }
   @media (max-width: 768px) {
+  margin-top:50px;
     p {
       margin-bottom: 0;
     }
   }
 `;
+export const StyledImageTeacher=styled.img`
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1) translateY(-100%);
+    position:absolute;
+    top:-1px;
+    
+    @media (max-width: 1200px) {
+    height:120px;
+    object-fit:contain;
+  }
+  @media (max-width: 768px) {
+    height:80px;
+    object-fit:contain;
+  }
+`
 
 export const StyledForm = styled.form`
   border-radius: 25px;
@@ -156,6 +174,7 @@ export const StyledSelect = styled.select`
   }
 
   @media (max-width: 768px) {
+     width: 100%;
     font-size: ${fontSizes.mobile.paragraph.small};
   }
 `;
