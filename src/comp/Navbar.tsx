@@ -50,7 +50,7 @@ export const Navbar = (props: navbarProps) => {
 
   const value = navbarTexts.map((item) => {
     return (
-      <StyledNavItem key={item.name} to={`/${item.slug || "#"}`}>
+      <StyledNavItem onClick={()=>{handleClose()}} key={item.name} to={`/${item.slug || "#"}`}>
         <StyledText>{item.name}</StyledText>
       </StyledNavItem>
     );
