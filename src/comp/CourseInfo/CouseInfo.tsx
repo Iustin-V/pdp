@@ -6,6 +6,7 @@ import {VerticalTimeline, VerticalTimelineElement,} from "react-vertical-timelin
 import React from "react";
 import {ContactFormBackground} from "../Contact/Contact-Style";
 import teachericon from "../images/teacher-icon.png";
+import {Link} from "react-router-dom";
 
 
 export const StyledPageCourseInfo = styled.div`
@@ -62,25 +63,10 @@ export const CourseInfoStyledButton = styled.button`
   color: #001F61;
   font-family: "KaushanScript";
 
-  &:after {
-    content: '';
-    position: absolute;
-    transform: translateX(-55px) translateY(-40px);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: 0px 0px 50px transparent;
-    transition: 500ms;
-  }
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
-  }
-
-  &:focus {
-    outline: none;
   }
 `;
 
@@ -96,6 +82,9 @@ export const CourseInfo = (props: coursesInfo) => {
         "Cum acceez resursele necesare pentru îndeplinirea obiectivelor?",
         "Am ce mi-am dorit! Ce urmează acum?",
     ];
+    const setCourse = (title: string) => {
+        localStorage.setItem("course", title);
+    }
 
     const coursesTimeLine = timelineElements.map((element, index) => {
         return (
@@ -124,6 +113,7 @@ export const CourseInfo = (props: coursesInfo) => {
         );
     });
 
+    // @ts-ignore
     return (
         <ContactFormBackground backgroundImage={backgroundImage}>
             <StyledPageCourseInfo>
@@ -136,8 +126,12 @@ export const CourseInfo = (props: coursesInfo) => {
                         <ImageCourseInfo src={teachericon} alt="teachericon"/>
                         {coursesTimeLine}
                     </VerticalTimeline>
-                    <CourseInfoStyledButton>Cumpără</CourseInfoStyledButton>
-
+                    <Link to={'/vorbeste-cu-profa'}>
+                        <CourseInfoStyledButton onClick={() => {
+                            setCourse('course3');
+                            // Trebuie luat value din Contact
+                        }}> Cumpără</CourseInfoStyledButton>
+                    </Link>
 
                 </SectionContainer>
 
