@@ -52,7 +52,7 @@ export const ReviewSection = () => {
   ];
   const ReviewsSection = Reviewers.map((review, index) => {
     return (
-      <SwiperSlide>
+      <SwiperSlide key={index}>
         <InsideSlideWrapper>
           <QuoteReviewSection>{review.review}</QuoteReviewSection>
           <NameReviewer>{review.name}</NameReviewer>
