@@ -1,4 +1,6 @@
 import { ParagraphItalicStyled, TitleSection } from "../Styles";
+import background from "../images/contact-background-overlay.jpg"
+
 import {
   StyledForm,
   StyledContainer,
@@ -94,7 +96,7 @@ export const Contact = () => {
   }, [nameError, emailError, phoneError, messageError]);
 
   return (
-      <ContactFormBackground>
+      <ContactFormBackground backgroundImage={background}>
     <StyledContactForm>
       <TextsSection>
       <TitleSection color={colors.primary.base}>

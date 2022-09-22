@@ -164,7 +164,7 @@ export const ParagraphItalicStyled = styled.p`
   font-size: ${fontSizes.desktop.paragraph.base};
   font-weight: 500;
   font-style: italic;
-  line-height: 30px;
+  line-height: 3=0px;
   width: initial;
   max-width: initial;
 
