@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "./Card.style.css";
 import {ParagraphItalicStyled, TitleSection} from "../Styles";
 import {colors} from "../../generalStyle";
 import backgroundImage from '../images/CourseInfo.jpg'
