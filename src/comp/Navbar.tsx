@@ -19,6 +19,7 @@ import closeIcon from "./images/icons8-close.svg";
 import { useState } from "react";
 import { ProgressBar } from "./ProgressBar";
 import { colors } from "../generalStyle";
+import { LanguageSelector } from "./LanguageSelector";
 
 interface navbarProps {
   setTopButton: (value: boolean) => void;
@@ -94,6 +95,7 @@ export const Navbar = (props: navbarProps) => {
       <StyledNav height="80px">
         <Logo />
         <StyledNavItems>{value}</StyledNavItems>
+        <LanguageSelector />
         <StyledMobileNav>
           <MobileMenu isActive={isActive} logoSrc={logoSrc} />
         </StyledMobileNav>
