@@ -1,105 +1,115 @@
 import styled from "styled-components";
-import {fontSizes,colors} from "../../generalStyle";
-import background from "../images/contact-background-overlay.jpg"
+import { fontSizes, colors } from "../../generalStyle";
+import background from "../images/contact-background-overlay.jpg";
 
-export const ContactFormBackground=styled.div`
+export const ContactFormBackground = styled.div`
+  background-image: url(${background});
+  background-size: cover;
+`;
 
-background-image:url(${background});
-background-size:cover;
-`
+export const StyledContactForm = styled.div`
+  margin-top: 85px;
+  max-width: 1440px;
+  margin: 85px auto 0;
+  padding: 40px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 40px;
+  justify-content: center;
+  align-items: center;
 
-export const StyledContactForm=styled.div`
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+export const TextsSection = styled.div`
+  max-width: 465px;
+  height: fit-content;
+  border-radius: 25px;
+  background: #f8ecd4;
+  border: 1px solid ${colors.primary.base};
+  padding: 20px;
+  h1 {
+    margin: 0;
+  }
 
-margin-top:85px;
-max-width:1440px;
-margin: 85px auto 0; 
-padding:40px;
-display:flex;
-flex-direction:row;
-column-gap:40px;
-justify-content: center;
-
-@media(max-width:1200px){
-flex-direction:column;
-align-items:center;
-}
-`
-export const TextsSection=styled.div`
-max-width:465px;
-
-@media(max-width:1200px){
-max-width:100%;
-}
-`
+  @media (max-width: 1200px) {
+    width: 100%;
+    max-width: calc(100% - 40px);
+    margin-bottom: 20px;
+  }
+  @media (max-width: 768px) {
+    p {
+      margin-bottom: 0;
+    }
+  }
+`;
 
 export const StyledForm = styled.form`
   border-radius: 25px;
   background: #f8ecd4;
-  max-width:600px;
-  width:100%;
+  max-width: 600px;
+  width: 100%;
   padding: 20px 40px;
-  margin:30px 0 40px;
   border: 1px solid ${colors.primary.base};
-  
-  
-@media(max-width:1200px){
-max-width:calc(100% - 40px);
- padding: 20px 20px;
-}
+
+  @media (max-width: 1200px) {
+    max-width: calc(100% - 40px);
+    padding: 20px 20px;
+  }
 `;
 export const StyledInput = styled.input`
   display: block;
   width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
   border: 1px solid grey;
-  border-radius:5px;
+  border-radius: 5px;
   background: #f8f4e5;
   outline: none;
   padding: 5px 10px;
-  font-family:"Nunito-Italic";
+  font-family: "Nunito-Italic";
   color: ${colors.primary.base};
-  
-  
-  :focus{
+
+  :focus {
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
-    @media(max-width:768px){
-   font-size:${fontSizes.mobile.paragraph.small}
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.mobile.paragraph.small};
   }
 `;
 export const StyledButton = styled.input`
-
   color: ${colors.primary.base};
   height: 40px;
   display: block;
   margin: 0 auto;
   line-height: 24px * 2;
   padding: 0 50px;
-  background:${colors.secondary.lighter};
-  
+  background: ${colors.secondary.lighter};
+
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
   outline: none;
   border: 1px solid ${colors.secondary.base};
-   font-size: ${fontSizes.desktop.paragraph.base};
-   font-weight: 600;
-   letter-spacing: 1px;
-  
-  border-radius:8px;
+  font-size: ${fontSizes.desktop.paragraph.base};
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  border-radius: 8px;
   :hover {
     background: white;
     -webkit-box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
     box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
   }
-  
-  :disabled{
-  pointer-events:none;
-  color:grey;
+
+  :disabled {
+    pointer-events: none;
+    color: grey;
   }
-  
-    @media(max-width:768px){
-   font-size:${fontSizes.mobile.paragraph.small};
+
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.mobile.paragraph.small};
     padding: 0 10px;
   }
 `;
@@ -107,74 +117,71 @@ export const StyledContainer = styled.div`
   margin: 35px 0;
 `;
 export const StyledTextArea = styled.textarea`
-    display: block;
+  display: block;
   width: calc(100% - 22px);
   max-width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
-  font-family:"Nunito-Italic";
+  font-family: "Nunito-Italic";
   border: 1px solid grey;
-  border-radius:5px;
+  border-radius: 5px;
   background: #f8f4e5;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
-  
-   :focus{
+
+  :focus {
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
-    @media(max-width:768px){
-   font-size:${fontSizes.mobile.paragraph.small}
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.mobile.paragraph.small};
   }
-  
 `;
 export const StyledSelect = styled.select`
   display: block;
   width: 50%;
   font-size: ${fontSizes.desktop.paragraph.base};
-  font-family:"Nunito-Italic";
+  font-family: "Nunito-Italic";
   margin-bottom: 24px;
   border: 1px solid grey;
-  border-radius:5px;
+  border-radius: 5px;
   background: #f8f4e5;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
-  
-  :focus{
+
+  :focus {
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
-  
-  @media(max-width:768px){
-   font-size:${fontSizes.mobile.paragraph.small}
-  }
- 
 
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.mobile.paragraph.small};
+  }
 `;
 
-export const StyledLabel=styled.label`
+export const StyledLabel = styled.label`
   font-size: ${fontSizes.desktop.paragraph.base};
-  font-family:"Nunito-Italic";
-   color: ${colors.primary.base};
-   font-weight:600;
-   position:relative;
-   
-     @media(max-width:768px){
-   font-size:${fontSizes.mobile.paragraph.small}
-  }
-`
-export const StyledError=styled.p`
-color:red;
-background: #ffcccc;
-margin:0;
-max-width:calc(100% - 20px);
-padding:3px 10px;
-font-weight: 300;
-position:absolute;
-font-size:${fontSizes.desktop.paragraph.small};
+  font-family: "Nunito-Italic";
+  color: ${colors.primary.base};
+  font-weight: 600;
+  position: relative;
 
-@media(max-width:768px){
-font-size:12px;
-}
-`
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.mobile.paragraph.small};
+  }
+`;
+export const StyledError = styled.p`
+  color: red;
+  background: #ffcccc;
+  margin: 0;
+  max-width: calc(100% - 20px);
+  padding: 3px 10px;
+  font-weight: 300;
+  position: absolute;
+  font-size: ${fontSizes.desktop.paragraph.small};
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
