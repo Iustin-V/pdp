@@ -6,6 +6,8 @@ import backgroundImage from '../images/CourseInfo.jpg'
 import {VerticalTimeline, VerticalTimelineElement,} from "react-vertical-timeline-component";
 import React from "react";
 import {ContactFormBackground} from "../Contact/Contact-Style";
+import teachericon from "../images/teacher-icon.png";
+
 
 export const StyledPageCourseInfo = styled.div`
   margin-top: 80px;
@@ -29,6 +31,23 @@ export const IndexSection = styled.h2`
   margin-top: 6px;
 `;
 
+export const ImageCourseInfo = styled.img`
+  position: absolute;
+  right: 0;
+  top: 96px;
+  transform: translateY(-100%);
+  z-index: 2;
+  height: 140px;
+  @media (max-width: 1160px) {
+    height: 120px;
+    top: 64px;
+  }
+  @media (max-width: 770px) {
+    height: 95px;
+    top: 64px;
+  }
+`
+
 export const CourseInfoStyledButton = styled.button`
   margin-right: 100px;
   width: 150px;
@@ -40,8 +59,8 @@ export const CourseInfoStyledButton = styled.button`
   border: 5px solid white;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
   transition: 500ms;
-  border-radius: 25px;
-  color:#001F61;
+  border-radius: 15px;
+  color: #001F61;
   font-family: "KaushanScript";
 
   &:after {
@@ -66,7 +85,12 @@ export const CourseInfoStyledButton = styled.button`
   }
 `;
 
-export const CourseInfo = () => {
+interface coursesInfo {
+    title: string;
+    array?: [];
+}
+
+export const CourseInfo = (props: coursesInfo) => {
     const timelineElements = [
         "\n" + "Care e diferența dintre un vis și un obiectiv?",
         "Cum îmi stabilesc corect un obiectiv?",
@@ -106,12 +130,16 @@ export const CourseInfo = () => {
             <StyledPageCourseInfo>
                 <SectionContainer>
                     <TitleSection color={colors.primary.base}>
-                        Cum să-mi transform visul în realitate?
+                        {props.title}
                     </TitleSection>
+
                     <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
+                        <ImageCourseInfo src={teachericon} alt="teachericon"/>
                         {coursesTimeLine}
                     </VerticalTimeline>
                     <CourseInfoStyledButton>Cumpără</CourseInfoStyledButton>
+
+
                 </SectionContainer>
 
             </StyledPageCourseInfo>

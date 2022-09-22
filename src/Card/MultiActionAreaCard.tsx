@@ -57,7 +57,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
             <CardActions style={{ justifyContent:'center',borderTop: '1px solid #b4a087',margin:' 0px 10px'}}>
                 <Link style={{textDecoration: "none"}} to={linkGenerate(props.title)}>
                     <Button size="small" color="primary" style={{textAlign:'center'}}>
-                        <Typography   style={{color:'#002366'}} variant="h6"> Cumpără </Typography>
+                        <Typography   style={{color:'#002366'}} variant="h6">Detalii Curs</Typography>
                     </Button>
                 </Link>
             </CardActions>
