@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import {colors, fontSizes} from "../../generalStyle";
+import {fontSizes,colors} from "../../generalStyle";
+import background from "../images/contact-background-overlay.jpg"
 
 export const ContactFormBackground = styled.div<{ backgroundImage: string }>`
 
@@ -8,7 +9,6 @@ export const ContactFormBackground = styled.div<{ backgroundImage: string }>`
 `
 
 export const StyledContactForm = styled.div`
-
   margin-top: 85px;
   max-width: 1440px;
   margin: 85px auto 0;
@@ -17,29 +17,61 @@ export const StyledContactForm = styled.div`
   flex-direction: row;
   column-gap: 40px;
   justify-content: center;
+  align-items: center;
 
   @media (max-width: 1200px) {
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 export const TextsSection = styled.div`
+ position:relative;
   max-width: 465px;
+  height: fit-content;
+  border-radius: 25px;
+  background: #f8ecd4;
+  border: 1px solid ${colors.primary.base};
+  padding: 20px;
+  h1 {
+    margin: 0;
+  }
 
   @media (max-width: 1200px) {
-    max-width: 100%;
+    margin-top:100px;
+    width: 100%;
+    max-width: calc(100% - 40px);
+    margin-bottom: 20px;
+  }
+  @media (max-width: 768px) {
+  margin-top:50px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+`;
+export const StyledImageTeacher=styled.img`
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1) translateY(-100%);
+    position:absolute;
+    top:-1px;
+    
+    @media (max-width: 1200px) {
+    height:120px;
+    object-fit:contain;
+  }
+  @media (max-width: 768px) {
+    height:80px;
+    object-fit:contain;
   }
 `
 
 export const StyledForm = styled.form`
   border-radius: 25px;
   background: #f8ecd4;
-  max-width: 600px;
-  width: 100%;
+  max-width:600px;
+  width:100%;
   padding: 20px 40px;
-  margin: 30px 0 40px;
   border: 1px solid ${colors.primary.base};
-
 
   @media (max-width: 1200px) {
     max-width: calc(100% - 40px);
@@ -51,33 +83,30 @@ export const StyledInput = styled.input`
   width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
   border: 1px solid grey;
-  border-radius: 5px;
+  border-radius:5px;
   background: #f8f4e5;
   outline: none;
   padding: 5px 10px;
-  font-family: "Nunito-Italic";
+  font-family:"Nunito-Italic";
   color: ${colors.primary.base};
-
 
   :focus {
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
-
   @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.paragraph.small}
+    font-size: ${fontSizes.mobile.paragraph.small};
   }
 `;
 export const StyledButton = styled.input`
-
   color: ${colors.primary.base};
   height: 40px;
   display: block;
   margin: 0 auto;
   line-height: 24px * 2;
   padding: 0 50px;
-  background: ${colors.secondary.lighter};
-
+  background:${colors.secondary.lighter};
+  
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
   outline: none;
@@ -87,20 +116,19 @@ export const StyledButton = styled.input`
   letter-spacing: 1px;
 
   border-radius: 8px;
-
   :hover {
     background: white;
     -webkit-box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
     box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
   }
-
-  :disabled {
-    pointer-events: none;
-    color: grey;
+  
+  :disabled{
+  pointer-events:none;
+  color:grey;
   }
-
-  @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.paragraph.small};
+  
+    @media(max-width:768px){
+   font-size:${fontSizes.mobile.paragraph.small};
     padding: 0 10px;
   }
 `;
@@ -108,54 +136,51 @@ export const StyledContainer = styled.div`
   margin: 35px 0;
 `;
 export const StyledTextArea = styled.textarea`
-  display: block;
+    display: block;
   width: calc(100% - 22px);
   max-width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
-  font-family: "Nunito-Italic";
+  font-family:"Nunito-Italic";
   border: 1px solid grey;
-  border-radius: 5px;
+  border-radius:5px;
   background: #f8f4e5;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
-
-  :focus {
+  
+   :focus{
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
-
   @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.paragraph.small}
+    font-size: ${fontSizes.mobile.paragraph.small};
   }
-
 `;
 export const StyledSelect = styled.select`
   display: block;
   width: 50%;
   font-size: ${fontSizes.desktop.paragraph.base};
-  font-family: "Nunito-Italic";
+  font-family:"Nunito-Italic";
   margin-bottom: 24px;
   border: 1px solid grey;
-  border-radius: 5px;
+  border-radius:5px;
   background: #f8f4e5;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
-
-  :focus {
+  
+  :focus{
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
 
   @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.paragraph.small}
+     width: 100%;
+    font-size: ${fontSizes.mobile.paragraph.small};
   }
-
-
 `;
 
-export const StyledLabel = styled.label`
+export const StyledLabel=styled.label`
   font-size: ${fontSizes.desktop.paragraph.base};
   font-family: "Nunito-Italic";
   color: ${colors.primary.base};
@@ -163,9 +188,9 @@ export const StyledLabel = styled.label`
   position: relative;
 
   @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.paragraph.small}
+    font-size: ${fontSizes.mobile.paragraph.small};
   }
-`
+`;
 export const StyledError = styled.p`
   color: red;
   background: #ffcccc;
@@ -179,4 +204,4 @@ export const StyledError = styled.p`
   @media (max-width: 768px) {
     font-size: 12px;
   }
-`
+`;

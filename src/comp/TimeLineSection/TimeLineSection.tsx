@@ -25,6 +25,7 @@ export const TimeLineSection = () => {
   const timeLine = timelineElements.map((element, index) => {
     return (
       <VerticalTimelineElement
+        key={index}
         className={`vertical-timeline-element--${
           index % 2 === 0 ? "work" : "education"
         }`}

@@ -19,8 +19,8 @@ export const AboutSection = () => {
     "Le-am lucrat efectiv cu elevi, profesori și părinți din România și Marea Britanie. De la cei mai vulnerabili dintre adolescenții din sistemul de penitenciare din Anglia și copiii care își vedeau banii de alocație dați de statul britanic cheltuiți de părinții lor pe droguri și băutură, până la cei mai inteligenți și ascultători dintre olimpicii noștri. Cu părinți care nu învățaseră de la nimeni nici ce e iubirea și nici cum să o arate copiilor lor. Cu oameni nefericiți care aveau nevoie să se simtă acceptați și iubiți pentru cine sunt ei, și nu pentru ceea ce fac ei.",
     "Acum împart ce știu cu oricine alege să își afle măștile pe care le poartă fără să știe și care îi împiedică să fie fericiți.",
   ];
-  const ParagraphAboutSection = Paragraph.map((item) => {
-    return <ParagraphItalicStyled>{item}</ParagraphItalicStyled>;
+  const ParagraphAboutSection = Paragraph.map((item,key) => {
+    return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;
   });
 
   return (
