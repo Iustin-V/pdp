@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { fontSizes, colors } from "../../generalStyle";
-import background from "../images/contact-background-overlay.jpg";
+import {fontSizes,colors} from "../../generalStyle";
+import background from "../images/contact-background-overlay.jpg"
 
-export const ContactFormBackground = styled.div`
-  background-image: url(${background});
+export const ContactFormBackground = styled.div<{ backgroundImage: string }>`
+
+  background-image: url(${(props) => props.backgroundImage});
   background-size: cover;
-`;
+`
 
 export const StyledContactForm = styled.div`
   margin-top: 85px;
@@ -67,8 +68,8 @@ export const StyledImageTeacher=styled.img`
 export const StyledForm = styled.form`
   border-radius: 25px;
   background: #f8ecd4;
-  max-width: 600px;
-  width: 100%;
+  max-width:600px;
+  width:100%;
   padding: 20px 40px;
   border: 1px solid ${colors.primary.base};
 
@@ -82,11 +83,11 @@ export const StyledInput = styled.input`
   width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
   border: 1px solid grey;
-  border-radius: 5px;
+  border-radius:5px;
   background: #f8f4e5;
   outline: none;
   padding: 5px 10px;
-  font-family: "Nunito-Italic";
+  font-family:"Nunito-Italic";
   color: ${colors.primary.base};
 
   :focus {
@@ -104,8 +105,8 @@ export const StyledButton = styled.input`
   margin: 0 auto;
   line-height: 24px * 2;
   padding: 0 50px;
-  background: ${colors.secondary.lighter};
-
+  background:${colors.secondary.lighter};
+  
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
   outline: none;
@@ -120,14 +121,14 @@ export const StyledButton = styled.input`
     -webkit-box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
     box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
   }
-
-  :disabled {
-    pointer-events: none;
-    color: grey;
+  
+  :disabled{
+  pointer-events:none;
+  color:grey;
   }
-
-  @media (max-width: 768px) {
-    font-size: ${fontSizes.mobile.paragraph.small};
+  
+    @media(max-width:768px){
+   font-size:${fontSizes.mobile.paragraph.small};
     padding: 0 10px;
   }
 `;
@@ -135,19 +136,19 @@ export const StyledContainer = styled.div`
   margin: 35px 0;
 `;
 export const StyledTextArea = styled.textarea`
-  display: block;
+    display: block;
   width: calc(100% - 22px);
   max-width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
-  font-family: "Nunito-Italic";
+  font-family:"Nunito-Italic";
   border: 1px solid grey;
-  border-radius: 5px;
+  border-radius:5px;
   background: #f8f4e5;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
-
-  :focus {
+  
+   :focus{
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
@@ -159,16 +160,16 @@ export const StyledSelect = styled.select`
   display: block;
   width: 50%;
   font-size: ${fontSizes.desktop.paragraph.base};
-  font-family: "Nunito-Italic";
+  font-family:"Nunito-Italic";
   margin-bottom: 24px;
   border: 1px solid grey;
-  border-radius: 5px;
+  border-radius:5px;
   background: #f8f4e5;
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
-
-  :focus {
+  
+  :focus{
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }
@@ -179,7 +180,7 @@ export const StyledSelect = styled.select`
   }
 `;
 
-export const StyledLabel = styled.label`
+export const StyledLabel=styled.label`
   font-size: ${fontSizes.desktop.paragraph.base};
   font-family: "Nunito-Italic";
   color: ${colors.primary.base};
