@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import { fontSizes } from "../../generalStyle";
+import {colors, fontSizes} from "../../generalStyle";
 
 export const TitleReviewSection = styled.h1<{ color: string }>`
   font-family: "KaushanScript";
   font-size: ${fontSizes.desktop.heading.small};
   color: ${(props) => props.color};
   text-align: center;
-  width: fit-content;
-  margin: 0 auto 25px;
-  border-bottom: 2px solid #234b92ff;
-  padding-bottom: 25px;
+  margin:0;
   @media (max-width: 768px) {
     font-size: ${fontSizes.mobile.heading.base};
   }
@@ -31,7 +28,7 @@ export const StyledReviewSection = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const NameReviewer = styled.p`
+export const InfoReviewer = styled.p`
   font-size: ${fontSizes.desktop.paragraph.small};
   font-weight: 500;
   text-align: center;
@@ -45,3 +42,24 @@ export const InsideSlideWrapper = styled.div`
     margin: 0;
   }
 `;
+
+export const StyledReviewIcon=styled.img`
+height:100px;
+`
+
+export const StyledTitleContainer=styled.div`
+display:flex;
+flex-direction:row;
+align-items:center;
+justify-content:center;
+margin:0 auto 25px;
+border:solid;
+border-width:0 0 1px 0;
+border-color:${colors.primary.base};
+width:fit-content;
+
+ @media(max-width:1200px){
+ flex-direction:column;
+ padding-bottom:10px;
+ }
+`

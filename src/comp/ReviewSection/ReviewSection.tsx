@@ -1,21 +1,22 @@
 import React from "react";
-// @ts-ignore
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "./ReviewSection.styles.css";
-// @ts-ignore
 import { Navigation } from "swiper";
 import { colors } from "../../generalStyle";
 import {
   InsideSlideWrapper,
-  NameReviewer,
+  InfoReviewer,
   QuoteReviewSection,
   StyledReviewSection,
   TitleReviewSection,
+  StyledReviewIcon,
+  StyledTitleContainer
 } from "./ReviewSection.style.style";
 import { SectionContainer } from "../Styles";
+import reviewIcon from "../images/icons8-chat-100.png";
+
 
 export const ReviewSection = () => {
   const Reviewers = [
@@ -55,8 +56,7 @@ export const ReviewSection = () => {
       <SwiperSlide key={index}>
         <InsideSlideWrapper>
           <QuoteReviewSection>{review.review}</QuoteReviewSection>
-          <NameReviewer>{review.name}</NameReviewer>
-          <p>{review.age}</p>
+          <InfoReviewer>{review.name} - {review.age}</InfoReviewer>
         </InsideSlideWrapper>
       </SwiperSlide>
     );
@@ -65,10 +65,13 @@ export const ReviewSection = () => {
   return (
     <StyledReviewSection>
       <SectionContainer>
+        <StyledTitleContainer>
+        <StyledReviewIcon src={reviewIcon} alt="reviewIcon"></StyledReviewIcon>
         <TitleReviewSection color={colors.primary.base}>
           Ce spun cei care au vorbit deja cu profa
         </TitleReviewSection>
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        </StyledTitleContainer>
+        <Swiper speed={1000} navigation={true} modules={[Navigation]} className="mySwiper">
           {ReviewsSection}
         </Swiper>
       </SectionContainer>
