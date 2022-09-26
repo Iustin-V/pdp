@@ -5,7 +5,7 @@ import { colors } from "../../generalStyle";
 import { EventCard } from "./EventCard";
 import eventMedia from "../images/event-media.jpg";
 
-const StyledEventsPage = styled.div`
+export const StyledEventsPage = styled.div`
   margin-top: 80px;
   width: 100vw;
   display: flex;
@@ -68,7 +68,7 @@ const AnimatedContainer = styled.div`
     }
   
 `;
-const events = [
+export const events = [
   {
     title: "Cum să-mi transform visul în realitate?",
     text: "A fost odată ca niciodată, că de n-ar fi, nu s-ar povesti! Câtă curiozitate și plăcere încă ne stârnesc cuvintele acestea, ce așteptare nerăbdătoare le urmează pe ele și ne farmecă pe noi? Poveștile ne caută prin suflete și răscolesc amintiri până găsesc cel mai vulnerabil colțișor al inimii și acolo râcâie, mângâie, și în final vindecă. Cum povestim în așa fel încât să vindecăm rănile ascunse acolo, în adânc? Ce cuvinte și imagini folosim, în ce contexte și de…",

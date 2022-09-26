@@ -1,7 +1,12 @@
+import React from "react";
 import styled from "styled-components";
 
 import { colors, fontSizes } from "../../generalStyle";
 import { Divider } from "../Divider";
+import linkGenerate from "../../generalFunction";
+import { Link } from "react-router-dom";
+import { useGlobalState } from "../UseEventState";
+import { dispatchEventCardData } from "../../App";
 
 const StyledEventCardContainer = styled.div`
   display: flex;
@@ -75,6 +80,7 @@ interface EventCardProps {
   imageAlt: string;
   date: string;
 }
+
 export const EventCard = (props: EventCardProps) => {
   return (
     <>
@@ -85,7 +91,24 @@ export const EventCard = (props: EventCardProps) => {
           <StyledMedia src={props.eventImage} alt={props.imageAlt} />
           <StyledParagraph>
             {props.text}
-            <StyledButton>Afla mai mult</StyledButton>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={linkGenerate(props.title)}
+            >
+              <StyledButton
+                onClick={
+                  /*// @ts-ignore*/
+                  dispatchEventCardData({
+                    title: props.title,
+                    date: props.date,
+                    image: props.eventImage,
+                    imageAlt: props.imageAlt,
+                  })
+                }
+              >
+                Afla mai mult
+              </StyledButton>
+            </Link>
           </StyledParagraph>
         </StyledContent>
       </StyledEventCardContainer>
