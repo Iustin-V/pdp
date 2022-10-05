@@ -16,6 +16,7 @@ import {Events} from "./comp/Events/Events";
 import ScrollToTop from "./ScrollToTop";
 import linkGenerate from "./generalFunction";
 import {CourseInfo} from "./comp/CourseInfo/CouseInfo";
+import Login from "./comp/Login/Login";
 
 
 export const PDPContext = React.createContext({});
@@ -91,6 +92,8 @@ function App() {
                         <Route path="/cutia-cu-povesti" element={<WorkInProgress/>}/>
                         <Route path="/vorbeste-cu-profa" element={<Contact/>}/>
                         <Route path="/blog" element={<WorkInProgress/>}/>
+                        <Route path="/login" element={<Login/>}/>
+
                         {coursesLinkRoutes}
                     </Routes>
                     <ToTopButton topRef={topRef} isTopButton={isTopButton}/>
@@ -98,7 +101,8 @@ function App() {
                 </BrowserRouter>
             </PDPContext.Provider>
         </StyledWrapper>
-    );
+    )
+        ;
 }
 
 export default App;
