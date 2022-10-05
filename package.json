@@ -63,5 +63,6 @@
     "@types/react-vertical-timeline-component": "^3.3.3",
     "@types/styled-components": "^5.1.26",
     "prettier": "2.7.1"
-  }
+  },
+  "proxy": "http://localhost:8800/api"
 }

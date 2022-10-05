@@ -7,6 +7,7 @@ import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.png";
 import http from "../../http";
 
 import styled from "styled-components";
+import useFetch from "../../hooks/useFetch";
 
 export const LogoSection = styled.img`
   width: 276px;
@@ -30,42 +31,30 @@ export const Container = styled.div`
 `;
 
 export const Partners = () => {
-  //
-  // const [pets, setPets] = useState("");
-  // const [nav_value, set_nav_value] = useState("PetList");
-  // const [petId, setPetId] = useState("");
-  // const getPetId = (id:string) => {
-  //     setPetId(id);
-  // };
-  //
-  // // @ts-ignore
-  // useEffect(() => {
-  //     const readAllPets = async () => {
-  //         const response = await http.get("/api/pets");
-  //         const responseArr = Object.values(response.data.data);
-  //         console.log(response)
-  //         // @ts-ignore
-  //         setPets(responseArr);
-  //     };
-  //     return readAllPets;
-  // }, []);
-  function redirectPartnerOana() {
-    window.location.href = "https://oananiculae.com/";
-  }
-  function redirectPointsOfYou() {
-    window.location.href = "https://www.points-of-you.ro/";
-  }
-  function redirectLectiiVirale() {
-    window.location.href = "https://lectii-virtuale.ro/";
-  }
-  return (
-    <Container>
-      <TitleSection color={colors.primary.base}>Parteneri</TitleSection>
-      <FlexWrapper>
-        <LogoSection onClick={redirectPartnerOana} src={OanaNiculescuLogo} />
-        <LogoSection onClick={redirectLectiiVirale} src={LectiiViraleLogo} />
-        <LogoSection onClick={redirectPointsOfYou} src={PointsOfYouLogo} />
-      </FlexWrapper>
-    </Container>
-  );
+
+    const {data, loading, error} = useFetch("/sections/getBySectionName?name=Prezentation Page2")
+    console.log(data)
+
+    function redirectPartnerOana() {
+        window.location.href = "https://oananiculae.com/";
+    }
+
+    function redirectPointsOfYou() {
+        window.location.href = "https://www.points-of-you.ro/";
+    }
+
+    function redirectLectiiVirale() {
+        window.location.href = "https://lectii-virtuale.ro/";
+    }
+
+    return (
+        <Container>
+            <TitleSection color={colors.primary.base}>Parteneri</TitleSection>
+            <FlexWrapper>
+                <LogoSection onClick={redirectPartnerOana} src={OanaNiculescuLogo}/>
+                <LogoSection onClick={redirectLectiiVirale} src={LectiiViraleLogo}/>
+                <LogoSection onClick={redirectPointsOfYou} src={PointsOfYouLogo}/>
+            </FlexWrapper>
+        </Container>
+    );
 };
