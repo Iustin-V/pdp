@@ -41,7 +41,7 @@ export const Partners = () => {
         const getData = async () => {
             try {
                 const result = await axios("https://api-example2.onrender.com/api/sections")
-                console.log(result)
+                console.log(result.data)
 
             } catch (err) {
                 console.log(err)
