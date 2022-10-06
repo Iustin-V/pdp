@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { TitleSection } from "../Styles";
-import { colors } from "../../generalStyle";
+import React from "react";
+import {TitleSection} from "../Styles";
+import {colors} from "../../generalStyle";
 import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.png";
 import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.png";
 import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.png";
-import http from "../../http";
 
 import styled from "styled-components";
 import useFetch from "../../hooks/useFetch";
@@ -31,9 +30,9 @@ export const Container = styled.div`
 `;
 
 export const Partners = () => {
-
-    const {data, loading, error} = useFetch("/sections/getBySectionName?name=Prezentation Page2")
-    console.log(data)
+    console.log('start')
+    const {data, loading, error} = useFetch("/sections")
+    console.log(data, 'data from fetch')
 
     function redirectPartnerOana() {
         window.location.href = "https://oananiculae.com/";
