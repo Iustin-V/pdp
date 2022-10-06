@@ -9,10 +9,12 @@ const useFetch = (url) => {
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
-            console.log(url,'url')
+            console.log(url, 'url')
             try {
-                const res = await axios.get(url)
-                console.log(url,'url')
+                // const res = await axios.get(url)
+                const result = await fetch('https://api-example2.onrender.com/api/sections');
+                const res = await result.json();
+                console.log(url, 'url')
                 setData(res.data)
             } catch (err) {
                 setError(err)
