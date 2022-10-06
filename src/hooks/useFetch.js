@@ -9,11 +9,11 @@ const useFetch = (url) => {
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
-            console.log(url,'url')
             try {
-                const res = await axios.get(url)
-                console.log(url,'url')
+                const response = await fetch("https://api-example2.onrender.com/api/sections")
+                const res = response.json()
                 setData(res.data)
+                console.log(data, 'data from useFetch')
             } catch (err) {
                 setError(err)
             }
@@ -21,7 +21,6 @@ const useFetch = (url) => {
         };
         fetchData();
     }, [url])
-
 
     const reFetch = async () => {
         setLoading(true)
