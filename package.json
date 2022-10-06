@@ -64,5 +64,5 @@
     "@types/styled-components": "^5.1.26",
     "prettier": "2.7.1"
   },
-  "proxy": "http://localhost:8800/api"
+  "proxy": "https://api-example2.onrender.com/api"
 }
