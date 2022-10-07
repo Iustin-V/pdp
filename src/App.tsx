@@ -96,7 +96,6 @@ function App() {
     <Contact />,
   ];
   const navbarLinks = navbarText.map((link, index) => {
-    console.log(arrayNavbarLinks[index], "dadadam");
     return (
       <Route
         path={`/${linkGenerate(link)}`}
@@ -117,6 +116,7 @@ function App() {
             {navbarLinks}
             <Route path="/blog" element={<WorkInProgress />} />
             <Route path="/login" element={<Login />} />
+
             {coursesLinkRoutes}
           </Routes>
           <ToTopButton topRef={topRef} isTopButton={isTopButton} />

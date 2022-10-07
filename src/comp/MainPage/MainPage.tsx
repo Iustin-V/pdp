@@ -7,21 +7,32 @@ import {
 } from "../Styles";
 
 import bookshelf from "../images/bookshelf_compressed.png";
-import React from "react";
+import React, { useState } from "react";
+import { PDPContext } from "../../App";
+import { getData } from "../../utils/getData";
 
 export const MainPage = () => {
+  const contextLocal = React.useContext(PDPContext);
+  const [sectionText, setSectionTexts] = useState([]);
+
+  React.useEffect(() => {
+    const mainPage = getData(contextLocal, "MainPage");
+    setSectionTexts(mainPage);
+  }, [contextLocal]);
+
   return (
     <>
       <MainPagePhoto backgroundImage={bookshelf}>
         <MainContentWrapper flexDirection="row">
           <PageContainer>
-            <MainTitle>Cadoul tau e mai frumos cand spune o poveste</MainTitle>
-            <MainPageText>
-              „Să-ți spun o poveste!”, și dintr-o dată, totul în jur pare că nu
-              mai are importanță, zgomotele se estompează, imaginile din fundal
-              devin neclare, rămâne doar curiozitatea pentru întâmplările pe
-              care urmează să le aflu.
-            </MainPageText>
+            {
+              // @ts-ignore
+              <MainTitle>{sectionText.title}</MainTitle>
+            }
+              {
+                  // @ts-ignore
+            <MainPageText>{sectionText.subTitle}</MainPageText>
+              }
           </PageContainer>
         </MainContentWrapper>
       </MainPagePhoto>
