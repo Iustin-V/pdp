@@ -40,7 +40,7 @@ function App() {
   const [navbarText, setNavbarTexts] = useState([]);
 
   const { data, loading, error } = useFetch(
-    `http://localhost:8800/api/sections/sectionByLanguage?language=${
+    `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
       localStorage.locale || "ro"
     }`
   );
