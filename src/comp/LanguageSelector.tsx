@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import { StyledSelect } from "./Contact/Contact-Style";
 import React from "react";
-
-import roFlag from "./images/roflag.png";
 import { colors, fontSizes } from "../generalStyle";
 
 const StyledDropdown = styled.select`
@@ -20,7 +17,7 @@ const StyledDropdown = styled.select`
 `;
 const setCookie = (value: string) => {
   localStorage.setItem("locale", value);
-  window.location.reload();
+  window.location.href = "/";
 };
 export const LanguageSelector = () => {
   return (

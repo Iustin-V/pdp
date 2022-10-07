@@ -64,5 +64,5 @@
     "@types/styled-components": "^5.1.26",
     "prettier": "2.7.1"
   },
-  "proxy": "https://api-example2.onrender.com/api"
+  "proxy": "https://github-repos.onrender.com/api/"
 }

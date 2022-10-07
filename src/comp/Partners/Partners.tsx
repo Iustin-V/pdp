@@ -37,11 +37,9 @@ export const Partners = () => {
         const [error, setError] = useState(null);
         const [isLoaded, setIsLoaded] = useState(false);
         const [items, setItems] = useState([]);
-
         const getData = async () => {
             try {
                 const result = await axios("https://api-example2.onrender.com/api/sections")
-                console.log(result.data)
 
             } catch (err) {
                 console.log(err)
@@ -50,7 +48,7 @@ export const Partners = () => {
 
         useEffect(() => {
             getData()
-        });
+        },[]);
 
         function redirectPartnerOana() {
             window.location.href = "https://oananiculae.com/";
