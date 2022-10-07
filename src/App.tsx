@@ -134,6 +134,7 @@ function App() {
             {navbarLinks}
             <Route path="/blog" element={<WorkInProgress />} />
             <Route path="/login" element={<Login />} />
+
             {coursesLinkRoutes}
           </Routes>
           <ToTopButton topRef={topRef} isTopButton={isTopButton} />
