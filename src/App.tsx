@@ -17,6 +17,8 @@ import linkGenerate from "./generalFunction";
 import {CourseInfo} from "./comp/CourseInfo/CouseInfo";
 import Login from "./comp/Login/Login";
 import useFetch from "./hooks/useFetch";
+import { getData } from "./utils/getData";
+import {StoryBoxPage} from "./comp/StoryBox/StoryBox";
 import {getData} from "./utils/getData";
 import {StoryBoxPage} from "./comp/StoryBox/StoryBox";
 
