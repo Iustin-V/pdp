@@ -18,8 +18,12 @@ import { CourseInfo } from "./comp/CourseInfo/CouseInfo";
 import Login from "./comp/Login/Login";
 import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
+import { EditModal } from "./comp/EditModal/EditModal";
 
-export const PDPContext = React.createContext({});
+export const PDPContext = React.createContext({
+  allCategories: [],
+  editFunction: (data: any) => false,
+});
 
 export interface Category {
   content: string[];
@@ -38,6 +42,8 @@ function App() {
   const [isTopButton, setTopButton] = React.useState(false);
   const [allCategories, setAllCategories] = React.useState([]);
   const [navbarText, setNavbarTexts] = useState([]);
+  const [modalData, setModalData] = useState([]);
+  const [editModal, setEditModal] = useState<boolean>(false);
 
   const { data, loading, error } = useFetch(
     `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
@@ -45,12 +51,17 @@ function App() {
     }`
   );
 
+  const editFunction = (data: any) => {
+    setModalData(data);
+    setEditModal(true);
+  };
+
   React.useEffect(() => {
     if (data.length !== 0) {
       console.log(data, "data");
       // @ts-ignore
       setAllCategories(data);
-      setNavbarTexts(getData(data, "Navbar").subTitle);
+      setNavbarTexts(getData(data, "Navbar")?.subTitle);
     }
   }, [loading]);
 
@@ -95,7 +106,7 @@ function App() {
     <Events />,
     <Contact />,
   ];
-  const navbarLinks = navbarText.map((link, index) => {
+  const navbarLinks = navbarText?.map((link, index) => {
     console.log(arrayNavbarLinks[index], "dadadam");
     return (
       <Route
@@ -107,7 +118,20 @@ function App() {
 
   return (
     <StyledWrapper>
-      <PDPContext.Provider value={allCategories}>
+      {editModal && (
+        <EditModal
+          modalData={modalData}
+          editModal={editModal}
+          setEditModal={setEditModal}
+        />
+      )}
+      <PDPContext.Provider
+        value={{
+          allCategories,
+          //@ts-ignore
+          editFunction,
+        }}
+      >
         <BrowserRouter>
           <div ref={topRef} />
           <Navbar allCategories={allCategories} setTopButton={setTopButton} />

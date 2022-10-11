@@ -1,4 +1,5 @@
 import {
+  EditButton,
   MainContentWrapper,
   MainPagePhoto,
   MainPageText,
@@ -8,8 +9,11 @@ import {
 
 import bookshelf from "../images/bookshelf_compressed.png";
 import React from "react";
+import { PDPContext } from "../../App";
 
 export const MainPage = () => {
+  const contextLocal = React.useContext(PDPContext);
+
   return (
     <>
       <MainPagePhoto backgroundImage={bookshelf}>
@@ -23,6 +27,9 @@ export const MainPage = () => {
               care urmează să le aflu.
             </MainPageText>
           </PageContainer>
+          <EditButton onClick={() => contextLocal?.editFunction("asdsd")}>
+            EDIT
+          </EditButton>
         </MainContentWrapper>
       </MainPagePhoto>
     </>
