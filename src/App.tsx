@@ -1,20 +1,20 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import "./App.css";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Home} from "./comp/Home";
-import {StyledWrapper} from "./comp/Styles";
-import {Courses} from "./comp/Courses";
-import {WeekStorySection} from "./comp/WeekStorySection/WeekStorySection";
-import {Navbar} from "./comp/Navbar";
-import {ToTopButton} from "./comp/ToTopButton";
-import {Footer} from "./comp/Footer";
-import {WorkInProgress} from "./comp/WorkInProgress";
-import {Contact} from "./comp/Contact/Contact";
-import {Events} from "./comp/Events/Events";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./comp/Home";
+import { StyledWrapper } from "./comp/Styles";
+import { Courses } from "./comp/Courses";
+import { WeekStorySection } from "./comp/WeekStorySection/WeekStorySection";
+import { Navbar } from "./comp/Navbar";
+import { ToTopButton } from "./comp/ToTopButton";
+import { Footer } from "./comp/Footer";
+import { WorkInProgress } from "./comp/WorkInProgress";
+import { Contact } from "./comp/Contact/Contact";
+import { Events } from "./comp/Events/Events";
 import ScrollToTop from "./ScrollToTop";
 import linkGenerate from "./generalFunction";
-import {CourseInfo} from "./comp/CourseInfo/CouseInfo";
+import { CourseInfo } from "./comp/CourseInfo/CouseInfo";
 import Login from "./comp/Login/Login";
 import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
@@ -46,11 +46,10 @@ function App() {
     const [navbarText, setNavbarTexts] = useState([]);
     const [allLinkCourses, setLinkCourses] = useState([{title: '', price: '', time: '', text: [], image: ""}])
     const [linkPathCourses, setLinkPathCourses] = useState('')
-  const [modalData, setModalData] = useState([]);
-  const [editModal, setEditModal] = useState<boolean>(false);
+    const [modalData, setModalData] = useState([]);
+    const [editModal, setEditModal] = useState<boolean>(false);
 
-
-  const {data, loading, error} = useFetch(
+    const {data, loading, error} = useFetch(
         `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
             localStorage.locale || "ro"
         }`
@@ -105,31 +104,31 @@ function App() {
         );
     });
 
-  return (
-    <StyledWrapper>
-      {editModal && (
-        <EditModal
-          modalData={modalData}
-          editModal={editModal}
-          setEditModal={setEditModal}
-        />
-      )}
-      <PDPContext.Provider
-        value={{
-          allCategories,
-          //@ts-ignore
-          editFunction,
-        }}
-      >
-        <BrowserRouter>
-          <div ref={topRef} />
-          <Navbar allCategories={allCategories} setTopButton={setTopButton} />
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {navbarLinks}
-            <Route path="/blog" element={<WorkInProgress />} />
-            <Route path="/login" element={<Login />} />
+    return (
+        <StyledWrapper>
+          {editModal && (
+              <EditModal
+                  modalData={modalData}
+                  editModal={editModal}
+                  setEditModal={setEditModal}
+              />
+          )}
+          <PDPContext.Provider
+              value={{
+                allCategories,
+                //@ts-ignore
+                editFunction,
+              }}
+          >
+                <BrowserRouter>
+                    <div ref={topRef}/>
+                    <Navbar allCategories={allCategories} setTopButton={setTopButton}/>
+                    <ScrollToTop/>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        {navbarLinks}
+                        <Route path="/blog" element={<WorkInProgress/>}/>
+                        <Route path="/login" element={<Login/>}/>
 
                         {coursesLinkRoutes}
                     </Routes>
