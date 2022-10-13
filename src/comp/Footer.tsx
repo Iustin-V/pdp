@@ -88,7 +88,7 @@ export const Footer = () => {
         }
     }
     const redirectLink = (link: string) => {
-        window.location.href = link
+        window.open(link)
     }
 
     const FooterLinkColumn = contentFooterLinks.content?.map((link) => {
