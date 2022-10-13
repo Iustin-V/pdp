@@ -42,7 +42,7 @@ export const Partners = () => {
 
 
         const redirectLink = (link: string) => {
-            window.location.href = link
+            window.open(link)
         }
 
         const partnersPhotos = [OanaNiculescuLogo, PointsOfYouLogo, LectiiViraleLogo]
