@@ -1,12 +1,11 @@
 import {Border, ParagraphItalicStyled, SectionContainer, TitleSection, WrapperCard,} from "./Styles";
 import {colors} from "../generalStyle";
 import {MultiActionAreaCard} from "../Card/MultiActionAreaCard";
-import firstCard from "../Card/Assets/first_image.jpg";
-import secondImage from "../Card/Assets/second_image.jpg";
-import thirdSecond from "../Card/Assets/third_image.jpg";
-
 
 import styled from "styled-components";
+import React, {useState} from "react";
+import {PDPContext} from "../App";
+import {getData} from "../utils/getData";
 
 export const StyledPageCourses = styled.div`
   margin-top: 80px;
@@ -19,49 +18,85 @@ export const StyledPageCourses = styled.div`
 
 
 export const Courses = () => {
-    const coursesChildren = [
-        {
-            title: "Cum să-mi transform visul în realitate?",
-            time: "20:00",
-            price: "500 Ron",
-            image: firstCard,
-        },
-        {
-            title: "Cum să ating steaua la care visez",
-            time: "20:00",
-            price: "500 Ron",
-            image: secondImage,
-        },
-        {
-            title: "Cine mă privește din oglindă?",
-            time: "20:00",
-            price: "500 Ron",
-            image: thirdSecond,
-        },
+    const contextLocal: object = React.useContext(PDPContext);
+    const [contentCourseChildParents, setContentCourseChildParents] = useState({
+        title: '',
+        subTitle: '',
+        content: [{title: '', price: '', time: '', text: [], image: ""}]
+    });
+    const [refactorTitle, setRefactorTitle] = useState([])
+    const [refactorTitleCourseTeacher, setRefactorTitleCourseTeacher] = useState([])
 
-    ];
+    const [contentCourseTeacher, setContentCourseTeacher] = useState({
+        title: '',
+        subTitle: '',
+        content: [{title: '', price: '', time: '', text: [], image: ""}]
+    });
+    React.useEffect(() => {
+        const textCourseChildParents = getData(contextLocal, "CourseChildParents");
+        setContentCourseChildParents(textCourseChildParents);
+        setRefactorTitle(textCourseChildParents.title.split('-'))
+
+        const textCourseTeacher = getData(contextLocal, "CourseTeacher");
+        setContentCourseTeacher(textCourseTeacher);
+        setRefactorTitleCourseTeacher(textCourseTeacher.title.split('-'))
+
+    }, [contextLocal]);
+
+
+    // const coursesChildren = [
+    //     {
+    //         title: "Cum să-mi transform visul în realitate?",
+    //         time: "20:00",
+    //         price: "500 Ron",
+    //         image: "https://upcdn.io/W142hJk/raw/demo/4xUx8m5.jpg",
+    //
+    //     },
+    //     {
+    //         title: "Cum să ating steaua la care visez",
+    //         time: "20:00",
+    //         price: "500 Ron",
+    //         image: "https://upcdn.io/W142hJk/raw/demo/AFy6Kpq.jpg",
+    //     },
+    //     {
+    //         title: "Cine mă privește din oglindă?",
+    //         time: "20:00",
+    //         price: "500 Ron",
+    //         image: "https://upcdn.io/W142hJk/raw/demo/A6LPuVW.jpg",
+    //     },
+    // ];
     const coursesTeachers = [
         {
             title: "Cheia fericirii este la tine în buzunar!",
             time: "20:00",
             price: "800 Ron",
-            image: firstCard,
+            image: "https://upcdn.io/W142hJk/raw/demo/62vWWRM.jpg",
         },
         {
             title: "Ieșirea din matrice",
             time: "20:00",
             price: "800 Ron",
-            image: firstCard,
+            image: "https://upcdn.io/W142hJk/raw/demo/3LA2gKf.jpg",
         },
         {
             title: "Dicționarul limbii pe care o vorbim în familie",
             time: "20:00",
             price: "800 Ron",
-            image: firstCard,
+            image: "https://upcdn.io/W142hJk/raw/demo/3T2HGnU.jpg",
         },
     ];
 
-    const showCoursesCard = coursesChildren.map((item) => {
+    const showCoursesCardChildParents = contentCourseChildParents.content?.map((item) => {
+        return (
+            <MultiActionAreaCard
+                title={item.title}
+                time={item.time}
+                price={item.price}
+                image={item.image}
+            />
+        );
+    });
+    const showCoursesCardParentsTeacher = contentCourseTeacher.content?.map((item) => {
         return (
             <MultiActionAreaCard
                 title={item.title}
@@ -77,39 +112,24 @@ export const Courses = () => {
             <StyledPageCourses>
                 <SectionContainer>
                     <TitleSection color={colors.primary.base}>
-                        Cursuri de dezvoltare personală <br/> -pentru părinți și copii-{" "}
+                        {refactorTitle[0]} <br/> -{refactorTitle[1]}-
                     </TitleSection>
                     <ParagraphItalicStyled>
-                        Programele pentru copii și adolescenți sunt rezultatul a 25 de ani
-                        plini de activități realizate cu copiii și adolescenții din România și
-                        Marea Britanie. Am adunat experiențe minunate din mii de ore petrecute
-                        în compania copiilor care aveau nevoi și valori total diferite
-                        provenite din experiențe de viață diverse, de la copiii a căror
-                        nefericire era aceea că părinții nu le cumpărau ultimul joc video,
-                        până la aceia care creșteau în alte familii decât cele naturale și
-                        fericirea lor însemna a primi ghetuțe noi de Crăciun. În sipetul meu
-                        sunt atât de multe povești, încât copiii vor găsi tot ce au nevoie în
-                        orice moment al creșterii lor!
+                        {contentCourseChildParents.subTitle[0]}
                     </ParagraphItalicStyled>
-                    <WrapperCard>{showCoursesCard}</WrapperCard>
+                    <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
                 </SectionContainer>
             </StyledPageCourses>
             <Border/>
             <StyledPageCourses>
                 <SectionContainer>
                     <TitleSection color={colors.primary.base}>
-                        Consiliere <br/> -pentru părinți și profesori-{" "}
+                        {refactorTitleCourseTeacher[0]} <br/> -{refactorTitleCourseTeacher[1]}-
                     </TitleSection>
                     <ParagraphItalicStyled>
-                        La finalul zilei, domnișoara cu gene aplicate care are ultimul telefon de fițe are nevoie de
-                        același lucru ca băiețelul care merge la culcare flămând: iubirea părinților și acceptarea
-                        adulților semnificativi din jurul lor. Cum facem noi, ca părinți și educatori, să le transmitem
-                        acest sentiment astfel încât să ajungă la ei? Acestea sunt doar câteva probleme pe care le vom
-                        discuta la cursurile Profei de povești. Vă invit să alegeți ce vi se potrivește cel mai bine,
-                        iar daca nu găsiți ceea ce căutați, doar spuneți, sunt aici tocmai pentru a personaliza împreună
-                        cursurile mele pentru nevoile dumneavoastră!
+                        {contentCourseTeacher.subTitle[0]}
                     </ParagraphItalicStyled>
-                    <WrapperCard>{showCoursesCard}</WrapperCard>
+                    <WrapperCard>{showCoursesCardParentsTeacher}</WrapperCard>
                 </SectionContainer>
             </StyledPageCourses>
         </>

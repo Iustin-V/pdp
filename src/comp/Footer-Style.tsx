@@ -36,7 +36,7 @@ export const StyledFooterLink = styled(Link)`
   }
 `;
 
-export const StyledFooterSocialMedia = styled(Link)`
+export const StyledFooterSocialMedia = styled.div`
   padding: 10px;
   background-color: ${colors.primary.base};
   border: 1px solid ${colors.primary.base};

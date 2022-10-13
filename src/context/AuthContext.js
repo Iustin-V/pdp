@@ -17,7 +17,6 @@ const AuthReducer = (state, action) => {
                 error: null,
             }
         case "LOGIN_SUCCESS":
-            console.log(action.payload, 'auth')
             return {
                 user: action.payload,
                 loading: false,
@@ -41,10 +40,6 @@ const AuthReducer = (state, action) => {
 }
 export const AuthContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE)
-
-    useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(state.user))
-    }, [state.user])
 
     return (
         <AuthContext.Provider

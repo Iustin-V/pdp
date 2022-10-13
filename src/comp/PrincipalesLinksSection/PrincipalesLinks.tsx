@@ -19,40 +19,19 @@ export const PrincipalesLinks = () => {
     const mainPage = getData(contextLocal, "MainPage");
     setContentTexts(mainPage.content);
   }, [contextLocal]);
-  console.log(contentText, "da");
 
-  const PrincipalesLinksArray = [
-    {
-      icon: idea,
-      alt: "cursuri",
-      label: "Cursuri",
-      link: "/cursuri",
-    },
-    {
-      icon: talkWithTeacher,
-      alt: "talkWithTeacher",
-      label: "Vorbeste cu profa",
-      link: "/vorbeste-cu-profa",
-    },
-    {
-      icon: storytelling,
-      alt: "storytelling",
-      label: "Povestea saptamanii",
-      link: "/povestea-saptamanii",
-    },
-  ];
+  const ImageArray = [idea, talkWithTeacher, storytelling];
 
   return (
     <RectangleStyled>
       {contentText?.map(
         (
-          item: { link: string; icon: string; label: string; alt: string },
+          item: { link: string; label: string; alt: string },
           key
         ) => {
-            console.log(item.icon,'dada')
           return (
             <StyledIconLink key={key} to={item.link}>
-              <StyledIcon src=  {`../images/${item.icon}`}           alt={"idea"} />
+              <StyledIcon src={ImageArray[key]} alt={`${item.label} Pic`} />
               <StyledIconLabel>{item.label}</StyledIconLabel>
             </StyledIconLink>
           );
