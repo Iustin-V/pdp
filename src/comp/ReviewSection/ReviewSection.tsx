@@ -11,6 +11,7 @@ import {
     QuoteReviewSection,
     StyledReviewIcon,
     StyledReviewSection,
+    StyledRoundedImage,
     StyledTitleContainer,
     TitleReviewSection
 } from "./ReviewSection.style.style";
@@ -24,7 +25,11 @@ export const ReviewSection = () => {
 
 
     const contextLocal: object = React.useContext(PDPContext);
-    const [contentText, setContentTexts] = useState({title: '', content: [{text: '', name: "", age: ""}], video: ''});
+    const [contentText, setContentTexts] = useState({
+        title: '',
+        content: [{text: '', name: "", age: "", avatar: ""}],
+        video: ''
+    });
 
     React.useEffect(() => {
         const textData = getData(contextLocal, "ReviewSection");
@@ -64,9 +69,11 @@ export const ReviewSection = () => {
         },
     ];
     const ReviewsSection = contentText.content?.map((review, index) => {
+
         return (
             <SwiperSlide key={index}>
                 <InsideSlideWrapper>
+                    <StyledRoundedImage src={review.avatar} alt="Avatar"/>
                     <QuoteReviewSection>{review.text}</QuoteReviewSection>
                     <InfoReviewer>{review.name} - {review.age}</InfoReviewer>
                 </InsideSlideWrapper>

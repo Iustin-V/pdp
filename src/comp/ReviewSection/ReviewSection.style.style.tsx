@@ -63,3 +63,9 @@ width:fit-content;
  padding-bottom:10px;
  }
 `
+export const StyledRoundedImage=styled.img`
+  border-radius: 50%;
+  height:150px !important;
+  width:150px !important;
+  margin: auto;
+`
