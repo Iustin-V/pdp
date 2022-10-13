@@ -29,7 +29,6 @@ const Login = () => {
   };
   React.useEffect(() => {
     if (localStorage.user != 'null'  ) {
-      console.log("aaaaaaa", localStorage.user, typeof localStorage.user);
       window.location.href = "/";
     }
   }, []);
@@ -42,7 +41,6 @@ const Login = () => {
         "https://api-example2.onrender.com/api/auth/login",
         credentials
       );
-      console.log(res.data, "res");
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/");
     } catch (err) {
@@ -51,7 +49,6 @@ const Login = () => {
     }
   };
 
-  console.log(error);
   return (
     <div className="login">
       <div className="lContainer">

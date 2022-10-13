@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {TitleSection} from "../Styles";
 import {colors} from "../../generalStyle";
 import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.png";
@@ -6,7 +6,8 @@ import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.png";
 import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.png";
 
 import styled from "styled-components";
-import axios from "axios";
+import {PDPContext} from "../../App";
+import {getData} from "../../utils/getData";
 
 export const LogoSection = styled.img`
   width: 276px;
@@ -30,45 +31,34 @@ export const Container = styled.div`
 `;
 
 export const Partners = () => {
-        // console.log('start')
-        // const {data, loading, error} = useFetch("/sections")
-        // console.log(data, 'data from fetch')
 
-        const [error, setError] = useState(null);
-        const [isLoaded, setIsLoaded] = useState(false);
-        const [items, setItems] = useState([]);
-        const getData = async () => {
-            try {
-                const result = await axios("https://api-example2.onrender.com/api/sections")
+        const contextLocal: object = React.useContext(PDPContext);
+        const [contentText, setContentTexts] = useState({title: ''});
 
-            } catch (err) {
-                console.log(err)
-            }
+        React.useEffect(() => {
+            const textData = getData(contextLocal, "Partners");
+            setContentTexts(textData);
+        }, [contextLocal]);
+
+
+        const redirectLink = (link: string) => {
+            window.location.href = link
         }
 
-        useEffect(() => {
-            getData()
-        },[]);
+        const partnersPhotos = [OanaNiculescuLogo, PointsOfYouLogo, LectiiViraleLogo]
+        const partnersLink = ["https://oananiculae.com/", "https://www.points-of-you.ro/", "https://lectii-virtuale.ro/"]
 
-        function redirectPartnerOana() {
-            window.location.href = "https://oananiculae.com/";
-        }
+        const LogoSections =
+            partnersLink.map((link, index) => {
+                return (<LogoSection onClick={() => redirectLink(partnersLink[index])} src={partnersPhotos[index]}/>)
+            })
 
-        function redirectPointsOfYou() {
-            window.location.href = "https://www.points-of-you.ro/";
-        }
-
-        function redirectLectiiVirale() {
-            window.location.href = "https://lectii-virtuale.ro/";
-        }
 
         return (
             <Container>
-                <TitleSection color={colors.primary.base}>Parteneri</TitleSection>
+                <TitleSection color={colors.primary.base}>{contentText.title}</TitleSection>
                 <FlexWrapper>
-                    <LogoSection onClick={redirectPartnerOana} src={OanaNiculescuLogo}/>
-                    <LogoSection onClick={redirectLectiiVirale} src={LectiiViraleLogo}/>
-                    <LogoSection onClick={redirectPointsOfYou} src={PointsOfYouLogo}/>
+                    {LogoSections}
                 </FlexWrapper>
             </Container>
         );

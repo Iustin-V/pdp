@@ -7,6 +7,7 @@ import clock from "./Assets/clock-regular.svg";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import linkGenerate from "../generalFunction";
+import {useState} from "react";
 
 
 const CardMediaStyled = styled.img`
@@ -36,12 +37,28 @@ interface DetailedAboutCard {
 }
 
 export const MultiActionAreaCard = (props: DetailedAboutCard) => {
+    const [buttonText, setButtonText] = useState('')
+
+    React.useEffect(() => {
+        switch (localStorage.locale) {
+            case 'ro':
+                setButtonText('Detalii curs')
+                break;
+            case 'en':
+                setButtonText('Course details')
+                break;
+            case 'fr':
+                setButtonText('Détails du cours')
+                break;
+        }
+    }, []);
+
     return (
         <StyledCard sx={{maxWidth: 250}}>
             <CardActionArea>
                 <CardMediaStyled src={props.image} alt="courses"/>
                 <CardContent>
-                    <Typography variant="h6" color="text.secondary" style={{color:'#002366', margin:' 10px 0'}}>
+                    <Typography variant="h6" color="text.secondary" style={{color:'#002366', margin:' 10px 0',minHeight:'64px'}}>
                         {props.title}
                     </Typography>
                     <div style={{display:"flex",justifyContent:'space-between'}}>
@@ -57,7 +74,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
             <CardActions style={{ justifyContent:'center',borderTop: '1px solid #b4a087',margin:' 0px 10px'}}>
                 <Link style={{textDecoration: "none"}} to={linkGenerate(props.title)}>
                     <Button size="small" color="primary" style={{textAlign:'center'}}>
-                        <Typography   style={{color:'#002366'}} variant="h6">Detalii Curs</Typography>
+                        <Typography   style={{color:'#002366'}} variant="h6">{buttonText}</Typography>
                     </Button>
                 </Link>
             </CardActions>

@@ -3,10 +3,13 @@ import {ParagraphItalicStyled, TitleSection} from "../Styles";
 import {colors} from "../../generalStyle";
 import backgroundImage from '../images/CourseInfo.jpg'
 import {VerticalTimeline, VerticalTimelineElement,} from "react-vertical-timeline-component";
-import React from "react";
+import React, {useState} from "react";
 import {ContactFormBackground} from "../Contact/Contact-Style";
-import teachericon from "../images/teacher-icon.png";
+import teacherIcon from "../images/teacher-icon.png";
 import {Link} from "react-router-dom";
+import {getData} from "../../utils/getData";
+import {PDPContext} from "../../App";
+import linkGenerate from "../../generalFunction";
 
 
 export const StyledPageCourseInfo = styled.div`
@@ -73,20 +76,43 @@ export const CourseInfoStyledButton = styled.button`
 interface coursesInfo {
     title: string;
     array?: [];
+    text?: Array<string>;
 }
 
 export const CourseInfo = (props: coursesInfo) => {
-    const timelineElements = [
-        "\n" + "Care e diferența dintre un vis și un obiectiv?",
-        "Cum îmi stabilesc corect un obiectiv?",
-        "Cum acceez resursele necesare pentru îndeplinirea obiectivelor?",
-        "Am ce mi-am dorit! Ce urmează acum?",
-    ];
+
+    const contextLocal: object = React.useContext(PDPContext);
+    const [talkWithTeacher, setLinkTalkWithTeacher] = useState({subTitle: []});
+
+    React.useEffect(() => {
+        const textData = getData(contextLocal, "Navbar");
+        // @ts-ignore
+        setLinkTalkWithTeacher(linkGenerate(textData.subTitle[4]));
+    }, [contextLocal]);
+
+    const [buttonText, setButtonText] = useState('')
     const setCourse = (title: string) => {
         localStorage.setItem("course", title);
     }
 
-    const coursesTimeLine = timelineElements.map((element, index) => {
+    React.useEffect(() => {
+        switch (localStorage.locale) {
+            case 'ro':
+                setButtonText('Cumpără')
+                break;
+            case 'en':
+                setButtonText('Buy')
+                break;
+            case 'fr':
+                setButtonText('Acheter')
+                break;
+        }
+        // @ts-ignore
+
+    }, []);
+
+
+    const coursesTimeLine = props.text?.map((element, index) => {
         return (
             <VerticalTimelineElement
                 className={`vertical-timeline-element--${
@@ -123,14 +149,14 @@ export const CourseInfo = (props: coursesInfo) => {
                     </TitleSection>
 
                     <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
-                        <ImageCourseInfo src={teachericon} alt="teachericon"/>
+                        <ImageCourseInfo src={teacherIcon} alt="teacherIcon"/>
                         {coursesTimeLine}
                     </VerticalTimeline>
-                    <Link to={'/vorbeste-cu-profa'}>
-                        <CourseInfoStyledButton onClick={() => {
-                            setCourse('course3');
+                    <Link to={`/${talkWithTeacher}`}>
+                        <CourseInfoStyledButton onClick={(event) => {
+                            setCourse(props.title)
                             // Trebuie luat value din Contact
-                        }}> Cumpără</CourseInfoStyledButton>
+                        }}> {buttonText}</CourseInfoStyledButton>
                     </Link>
 
                 </SectionContainer>

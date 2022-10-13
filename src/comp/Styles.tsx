@@ -177,6 +177,7 @@ export const BackgroundWrapper = styled.div<{
     imgUrl: string;
     separatePage?: boolean;
 }>`
+  margin-top: 80px;
   background-image: url(${(props) => props.imgUrl});
   background-position: top;
   background-repeat: no-repeat;
@@ -205,7 +206,7 @@ export const WrapperCard = styled.div`
   justify-content: center;
 `;
 
-export const Border =styled.hr`
+export const Border = styled.hr`
   border: 0;
   clear: both;
   display: block;
@@ -216,7 +217,7 @@ export const Border =styled.hr`
   height: 1px;
   overflow: hidden;
   position: relative;
-  
+
   &:after {
     animation-duration: 2s;
     animation-timing-function: ease;
@@ -238,5 +239,5 @@ export const Border =styled.hr`
       transform: translateX(1440px);
     }
   }
-  
+
 `
