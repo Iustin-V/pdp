@@ -157,7 +157,7 @@ export const StyledTextArea = styled.textarea`
 `;
 export const StyledSelect = styled.select`
   display: block;
-  width: 50%;
+  width: 100%;
   font-size: ${fontSizes.desktop.paragraph.base};
   font-family: "Nunito-Italic";
   margin-bottom: 24px;

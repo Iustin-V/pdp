@@ -3,6 +3,13 @@ import {
   DoubleContainer,
   FormContainer,
   StoryDescription,
+  SectionContainerStoryBox,
+  StyledBoxOpened,
+    StyledBall,
+  StyledStar,
+    StyledAirplane,
+  StyledHeart,
+  StyledBee
 } from "./StoryBoxStyle";
 import {
   StyledButton,
@@ -10,11 +17,23 @@ import {
   StyledError,
   StyledForm,
   StyledInput,
-  StyledLabel, StyledSelect,
+  StyledLabel,
+  StyledSelect,
   StyledTextArea,
 } from "../Contact/Contact-Style";
-import React from "react";
-import {emailValidation, messageValidation, nameValidation} from "../../inputsValidations";
+import React, {useEffect} from "react";
+import {
+  emailValidation,
+  messageValidation,
+  nameValidation,
+} from "../../inputsValidations";
+import openBox from "../images/transparent-box-black-open-bure.png"
+import ball from "../images/ball.png"
+import heart from "../images/heart.png"
+import star from "../images/star.png"
+import bee from "../images/bee.png"
+import airplane from "../images/airplane.png"
+import closedBox from "../images/closedBox.png"
 
 export interface storyBoxFields {
   name: string;
@@ -24,10 +43,10 @@ export interface storyBoxFields {
   event: string;
   description: string;
   details: string;
-  format:string;
-  email:string;
-  address:string;
-  date:string;
+  format: string;
+  email: string;
+  address: string;
+  date: string;
 }
 
 let formFields: storyBoxFields = {
@@ -38,19 +57,20 @@ let formFields: storyBoxFields = {
   event: "",
   description: "",
   details: "",
-  format:"",
-  email:"",
-  address:"",
-  date:""
+  format: "",
+  email: "",
+  address: "",
+  date: "",
 };
-export function getCurrentDate(separator:string){
-
-  let newDate = new Date()
+export function getCurrentDate(separator: string) {
+  let newDate = new Date();
   let date = newDate.getDate();
   let month = newDate.getMonth() + 1;
   let year = newDate.getFullYear();
 
-  return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date<10?`0${date}`:`${date}`}`
+  return `${year}${separator}${
+    month < 10 ? `0${month}` : `${month}`
+  }${separator}${date < 10 ? `0${date}` : `${date}`}`;
 }
 
 export const StoryBoxSection = () => {
@@ -60,10 +80,10 @@ export const StoryBoxSection = () => {
   const [eventError, setEventError] = React.useState("");
   const [descriptionError, setDescriptionError] = React.useState("");
   const [detailsError, setDetailsError] = React.useState("");
-  const [formatValue,setFormatValue]=React.useState("")
-  const [emailError,setEmailError]=React.useState("")
-  const [addressError,setAddressError]=React.useState("")
-
+  const [formatValue, setFormatValue] = React.useState("");
+  const [emailError, setEmailError] = React.useState("");
+  const [addressError, setAddressError] = React.useState("");
+  const [disabledSubmitButton, setDisabledSubmitButton] = React.useState(true);
 
   const onChangeHandle = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -108,9 +128,43 @@ export const StoryBoxSection = () => {
     }
   };
 
-const currentData=getCurrentDate('-')
+  useEffect(() => {
+    if (
+        nameError === "" &&
+        storyFrameworkError === "" &&
+        relationError === "" &&
+        eventError === "" &&
+        descriptionError === "" &&
+        detailsError === "" &&
+        (emailError === "" ||
+        addressError === "")
+    ) {
+      if (
+          formFields.name !== "" &&
+          formFields.storyFramework !== "" &&
+          formFields.relation !== "" &&
+          formFields.event !== "" &&
+          formFields.description !== "" &&
+          formFields.details !== "" &&
+          formFields.format !== "" &&
+          (formFields.email !== "" ||
+          formFields.address !== "" ) &&
+          formFields.date !== ""
+      ) {
+        setDisabledSubmitButton(false);
+      } else {
+        setDisabledSubmitButton(true);
+      }
+    } else {
+      setDisabledSubmitButton(true);
+    }
+  }, [nameError, storyFrameworkError,relationError,eventError,descriptionError,detailsError,emailError,addressError]);
+  console.log(
+      formFields );
+
+  const currentData = getCurrentDate("-");
   return (
-    <SectionContainer>
+    <SectionContainerStoryBox>
       <DoubleContainer>
         <FormContainer>
           <StyledForm
@@ -193,15 +247,14 @@ const currentData=getCurrentDate('-')
               <StyledLabel>
                 Data la care dorești să primești cadoul:*
                 <StyledInput
-                    placeholder=""
-                    name="date"
-                    id="date"
-                    type="date"
-                    value={currentData}
-                    min={currentData}
-                    max="2030-12-31"
-                    required
-                    onChange={onChangeHandle}
+                  placeholder=""
+                  name="date"
+                  id="date"
+                  type="date"
+                  min={currentData}
+                  max="2030-12-31"
+                  required
+                  onChange={onChangeHandle}
                 />
               </StyledLabel>
             </StyledContainer>
@@ -238,58 +291,72 @@ const currentData=getCurrentDate('-')
               <StyledLabel>
                 Doresc povestea în format:*
                 <StyledSelect
-                    id="format"
-                    name="format"
-                    onChange={(e) => {
-                      formFields.format = e.target.value;
-                      setFormatValue(e.target.value)
-                    }}
-                    required
-
+                  id="format"
+                  name="format"
+                  onChange={(e) => {
+                    formFields.format = e.target.value;
+                    setFormatValue(e.target.value);
+                  }}
+                  required
                 >
                   <option value="">Selecteaza un format</option>
-                  <option value="audioFormat">Audio pe canalul de Youtube "Profa de Povesti"</option>
-                  <option value="dvdFormat">Inregistrata pe suport audio DVD</option>
+                  <option value="audioFormat">
+                    Audio pe canalul de Youtube "Profa de Povesti"
+                  </option>
+                  <option value="dvdFormat">
+                    Inregistrata pe suport audio DVD
+                  </option>
                   <option value="printedFormat">Tiparita</option>
                 </StyledSelect>
               </StyledLabel>
             </StyledContainer>
-            {formatValue && formatValue==="audioFormat" ? <StyledContainer>
-              <StyledLabel>
-                Email*
-                <StyledInput
+            {formatValue && formatValue === "audioFormat" ? (
+              <StyledContainer>
+                <StyledLabel>
+                  Email*
+                  <StyledInput
                     placeholder="Email"
                     name="Email"
                     id="email"
                     type="email"
                     required
                     onChange={onChangeHandle}
-                />
-                {emailError && <StyledError>{emailError}</StyledError>}
-              </StyledLabel>
-            </StyledContainer>
-                :
-                formatValue !=="" ?
-                <StyledContainer>
-              <StyledLabel>
-                Adresa de livrare*
-                <StyledInput
+                  />
+                  {emailError && <StyledError>{emailError}</StyledError>}
+                </StyledLabel>
+              </StyledContainer>
+            ) : formatValue !== "" ? (
+              <StyledContainer>
+                <StyledLabel>
+                  Adresa de livrare*
+                  <StyledInput
                     placeholder="Address"
                     name="address"
                     id="address"
                     type="text"
                     required
                     onChange={onChangeHandle}
-                />
-                {addressError && <StyledError>{addressError}</StyledError>}
-              </StyledLabel>
-            </StyledContainer> : null}
+                  />
+                  {addressError && <StyledError>{addressError}</StyledError>}
+                </StyledLabel>
+              </StyledContainer>
+            ) : null}
             <StyledContainer>
-              <StyledButton type="submit" value="Trimite" />
+              <StyledButton type="submit" value="Trimite" disabled={disabledSubmitButton} />
             </StyledContainer>
           </StyledForm>
         </FormContainer>
         <StoryDescription>
+          {disabledSubmitButton ?
+              <><StyledBall src={ball}/>
+            <StyledStar src={star}/>
+            <StyledHeart src={heart}/>
+            <StyledBee src={bee}/>
+            <StyledAirplane src={airplane}/>
+            <StyledBoxOpened src={openBox}/>
+          </> :
+              <StyledBoxOpened src={closedBox}/>
+          }
           <ParagraphItalicStyled>
             Alege să dăruiești o poveste! Trimite Profei de povești numele
             persoanei care primește cadoul, elemente dragi sau semnificative
@@ -300,6 +367,7 @@ const currentData=getCurrentDate('-')
           </ParagraphItalicStyled>
         </StoryDescription>
       </DoubleContainer>
-    </SectionContainer>
+
+    </SectionContainerStoryBox>
   );
 };
