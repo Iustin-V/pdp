@@ -10,10 +10,10 @@ import { Partners } from "./Partners/Partners";
 import { MainLinks } from "./MainLinksSection/MainLinks";
 
 export const Home = () => {
-    return (
+  return (
     <>
       <StyledPageWrapper>
-          <MainPage />
+        <MainPage />
       </StyledPageWrapper>
       <MainLinks />
       <AboutSection />
