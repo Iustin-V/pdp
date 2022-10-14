@@ -11,7 +11,6 @@ const StyledDividerContainer = styled.div`
     align-items: center;
     max-width: calc(100vw - 80px);
   }
-
 `;
 const StyledDivider = styled.hr`
   border-top: 2px solid #002366;

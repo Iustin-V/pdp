@@ -175,7 +175,7 @@ export const ParagraphItalicStyled = styled.p`
 
 export const BackgroundWrapper = styled.div<{
   imgUrl: string;
-  separatePage?: boolean;
+  notSeparatePage?: boolean;
 }>`
   background-image: url(${(props) => props.imgUrl});
   background-position: top;
@@ -183,7 +183,7 @@ export const BackgroundWrapper = styled.div<{
   background-color: white;
   background-size: 100%;
   text-align: center;
-  ${(props) => props.separatePage && "padding-top: 50px;"}
+  ${(props) => !props.notSeparatePage && "padding-top: 50px;"}
 `;
 
 export const MarginTOPContainer = styled.div`
@@ -240,9 +240,17 @@ export const Border = styled.hr`
   }
 `;
 
-export const EditButton = styled.button`
-  height: 50px;
-  width: 100px;
+export const StyledEditButton = styled.button`
+  height: fit-content;
+  width: fit-content;
   background-color: #f8ecd4;
+  font-size: 24px;
   font-weight: 700;
+  padding: 15px;
+  cursor: grab;
+  border: 5px solid black;
+  border-radius:15px;
+  :hover {
+    background-color: #b4a087;
+  }
 `;

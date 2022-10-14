@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import {colors, fontSizes} from "../../generalStyle";
+import { colors, fontSizes } from "../../generalStyle";
 
 export const TitleReviewSection = styled.h1<{ color: string }>`
   font-family: "KaushanScript";
   font-size: ${fontSizes.desktop.heading.small};
   color: ${(props) => props.color};
   text-align: center;
-  margin:0;
+  margin: 0;
   @media (max-width: 768px) {
     font-size: ${fontSizes.mobile.heading.base};
   }
@@ -43,29 +43,29 @@ export const InsideSlideWrapper = styled.div`
   }
 `;
 
-export const StyledReviewIcon=styled.img`
-height:100px;
-`
+export const StyledReviewIcon = styled.img`
+  height: 100px;
+`;
 
-export const StyledTitleContainer=styled.div`
-display:flex;
-flex-direction:row;
-align-items:center;
-justify-content:center;
-margin:0 auto 25px;
-border:solid;
-border-width:0 0 1px 0;
-border-color:${colors.primary.base};
-width:fit-content;
+export const StyledTitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  border: solid;
+  border-width: 0 0 1px 0;
+  border-color: ${colors.primary.base};
+  width: fit-content;
 
- @media(max-width:1200px){
- flex-direction:column;
- padding-bottom:10px;
- }
-`
-export const StyledRoundedImage=styled.img`
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+`;
+export const StyledRoundedImage = styled.img`
   border-radius: 50%;
-  height:150px !important;
-  width:150px !important;
+  height: 150px !important;
+  width: 150px !important;
   margin: auto;
-`
+`;

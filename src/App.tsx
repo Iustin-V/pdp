@@ -26,118 +26,122 @@ export const PDPContext = React.createContext({
 });
 
 export interface Category {
-    content: string[];
-    img: string[];
-    language: string;
-    sectionName: string;
-    subTitle: string[];
-    video: string[];
-    links: string[];
-    contain: string[];
-    title: string;
-    _id: string;
-    __v: number;
+  content: string[];
+  img: string[];
+  language: string;
+  sectionName: string;
+  subTitle: string[];
+  video: string[];
+  links: string[];
+  contain: string[];
+  title: string;
+  _id: string;
+  __v: number;
 }
 
 function App() {
-    const topRef = React.useRef<null | HTMLDivElement>(null);
-    const [isTopButton, setTopButton] = React.useState(false);
-    const [allCategories, setAllCategories] = React.useState([]);
-    const [navbarText, setNavbarTexts] = useState([]);
-    const [allLinkCourses, setLinkCourses] = useState([{title: '', price: '', time: '', text: [], image: ""}])
-    const [linkPathCourses, setLinkPathCourses] = useState('')
-    const [modalData, setModalData] = useState([]);
-    const [editModal, setEditModal] = useState<boolean>(false);
+  const topRef = React.useRef<null | HTMLDivElement>(null);
+  const [isTopButton, setTopButton] = React.useState(false);
+  const [allCategories, setAllCategories] = React.useState([]);
+  const [navbarText, setNavbarTexts] = useState([]);
+  const [allLinkCourses, setLinkCourses] = useState([
+    { title: "", price: "", time: "", text: [], image: "" },
+  ]);
+  const [linkPathCourses, setLinkPathCourses] = useState("");
+  const [modalData, setModalData] = useState([]);
+  const [editModal, setEditModal] = useState<boolean>(false);
 
-    const {data, loading, error} = useFetch(
-        `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
-            localStorage.locale || "ro"
-        }`
-    );
+  const { data, loading, error } = useFetch(
+    `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
+      localStorage.locale || "ro"
+    }`
+  );
 
   const editFunction = (data: any) => {
     setModalData(data);
     setEditModal(true);
   };
 
+
   React.useEffect(() => {
-        if (data.length !== 0) {
-            setAllCategories(data);
-            setNavbarTexts(getData(data, "Navbar").subTitle);
-            const allData = getData(data, "CourseChildParents").content.concat(getData(data, "CourseTeacher").content)
-            setLinkCourses(allData)
-        }
-        switch (localStorage.locale) {
-            case 'ro':
-                setLinkPathCourses('cursuri')
-                break;
-            case 'en':
-                setLinkPathCourses('courses')
-                break;
-            case 'fr':
-                setLinkPathCourses('cours')
-                break;
-        }
-    }, [loading]);
+    if (data.length !== 0) {
+      setAllCategories(data);
+      setNavbarTexts(getData(data, "Navbar").subTitle);
+      const allData = getData(data, "CourseChildParents").content.concat(
+        getData(data, "CourseTeacher").content
+      );
+      setLinkCourses(allData);
+    }
+    switch (localStorage.locale) {
+      case "ro":
+        setLinkPathCourses("cursuri");
+        break;
+      case "en":
+        setLinkPathCourses("courses");
+        break;
+      case "fr":
+        setLinkPathCourses("cours");
+        break;
+    }
+  }, [loading]);
 
-    const coursesLinkRoutes = allLinkCourses.map((link) => {
-        return (
-            <Route
-                path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
-                element={<CourseInfo title={link.title} text={link.text}/>}
-            />
-        );
-    });
-    const arrayNavbarLinks = [
-        <WorkInProgress/>,
-        <WeekStorySection/>,
-        <Courses/>,
-        <Events/>,
-        <Contact/>,
-    ];
-    const navbarLinks = navbarText.map((link, index) => {
-        return (
-            <Route
-                path={`/${linkGenerate(link)}`}
-                element={arrayNavbarLinks[index]}
-            />
-        );
-    });
-
+  const coursesLinkRoutes = allLinkCourses.map((link) => {
     return (
-        <StyledWrapper>
-          {editModal && (
-              <EditModal
-                  modalData={modalData}
-                  editModal={editModal}
-                  setEditModal={setEditModal}
-              />
-          )}
-          <PDPContext.Provider
-              value={{
-                allCategories,
-                //@ts-ignore
-                editFunction,
-              }}
-          >
-                <BrowserRouter>
-                    <div ref={topRef}/>
-                    <Navbar allCategories={allCategories} setTopButton={setTopButton}/>
-                    <ScrollToTop/>
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        {navbarLinks}
-                        <Route path="/blog" element={<WorkInProgress/>}/>
-                        <Route path="/login" element={<Login/>}/>
-
-                        {coursesLinkRoutes}
-                    </Routes>
-                    <ToTopButton topRef={topRef} isTopButton={isTopButton}/>
-                    <Footer/>
-                </BrowserRouter>
-            </PDPContext.Provider>
-        </StyledWrapper>
+      <Route
+        path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
+        element={<CourseInfo title={link.title} text={link.text} />}
+      />
     );
+  });
+  const arrayNavbarLinks = [
+    <WorkInProgress />,
+    <WeekStorySection />,
+    <Courses />,
+    <Events />,
+    <Contact />,
+  ];
+  const navbarLinks = navbarText.map((link, index) => {
+    return (
+      <Route
+        path={`/${linkGenerate(link)}`}
+        element={arrayNavbarLinks[index]}
+      />
+    );
+  });
+
+  return (
+    <StyledWrapper>
+      {editModal && (
+        <EditModal
+          modalData={modalData}
+          editModal={editModal}
+          setEditModal={setEditModal}
+        />
+      )}
+      <PDPContext.Provider
+        value={{
+          allCategories,
+          //@ts-ignore
+          editFunction,
+        }}
+      >
+        <BrowserRouter>
+          <div ref={topRef} />
+          <Navbar allCategories={allCategories} setTopButton={setTopButton} />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {navbarLinks}
+            <Route path="/blog" element={<WorkInProgress />} />
+            <Route path="/login" element={<Login />} />
+            {coursesLinkRoutes}
+          </Routes>
+          <ToTopButton topRef={topRef} isTopButton={isTopButton} />
+          <Footer />
+        </BrowserRouter>
+      </PDPContext.Provider>
+    </StyledWrapper>
+  );
 }
 
 export default App;

@@ -11,13 +11,12 @@ export const ModalCover = styled.div`
   justify-content: center;
   z-index: 999;
 `;
-export const ContentContainer=styled.div`
-
+export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-`
+`;
 export const ModalWrapper = styled.div`
   height: 700px;
   width: 500px;
@@ -29,11 +28,12 @@ export const ModalWrapper = styled.div`
   overflow: auto;
 `;
 
-export const StyledTextArea = styled.textarea`
+export const StyledTextArea = styled.textarea<{ minHeight?: string }>`
   min-width: 400px;
   max-width: 400px;
-  min-height: 50px;
+  min-height: ${(props) => props.minHeight || "50px"};
   max-height: 600px;
+  margin-bottom: 15px;
 `;
 
 export const StyledText = styled.p`
@@ -54,5 +54,6 @@ export const StyledSaveButton = styled.button`
   background-color: #f8ecd4;
   font-size: 30px;
   margin-top: 50px;
-  :hover{}
+  :hover {
+  }
 `;

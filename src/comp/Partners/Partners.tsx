@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import {TitleSection} from "../Styles";
-import {colors} from "../../generalStyle";
+import React, { useState } from "react";
+import { TitleSection } from "../Styles";
+import { colors } from "../../generalStyle";
 import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.png";
 import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.png";
 import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.png";
 
 import styled from "styled-components";
-import {PDPContext} from "../../App";
-import {getData} from "../../utils/getData";
+import { PDPContext } from "../../App";
+import { getData } from "../../utils/getData";
 
 export const LogoSection = styled.img`
   width: 276px;
@@ -31,36 +31,43 @@ export const Container = styled.div`
 `;
 
 export const Partners = () => {
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
+  const [contentText, setContentTexts] = useState({ title: "" });
 
-        const contextLocal: object = React.useContext(PDPContext);
-        const [contentText, setContentTexts] = useState({title: ''});
+  React.useEffect(() => {
+    const textData = getData(contextLocal?.allCategories, "Partners");
+    setContentTexts(textData);
+  }, [contextLocal]);
 
-        React.useEffect(() => {
-            const textData = getData(contextLocal, "Partners");
-            setContentTexts(textData);
-        }, [contextLocal]);
+  const redirectLink = (link: string) => {
+    window.open(link);
+  };
 
+  const partnersPhotos = [OanaNiculescuLogo, PointsOfYouLogo, LectiiViraleLogo];
+  const partnersLink = [
+    "https://oananiculae.com/",
+    "https://www.points-of-you.ro/",
+    "https://lectii-virtuale.ro/",
+  ];
 
-        const redirectLink = (link: string) => {
-            window.open(link)
-        }
+  const LogoSections = partnersLink.map((link, index) => {
+    return (
+      <LogoSection
+        onClick={() => redirectLink(partnersLink[index])}
+        src={partnersPhotos[index]}
+      />
+    );
+  });
 
-        const partnersPhotos = [OanaNiculescuLogo, PointsOfYouLogo, LectiiViraleLogo]
-        const partnersLink = ["https://oananiculae.com/", "https://www.points-of-you.ro/", "https://lectii-virtuale.ro/"]
-
-        const LogoSections =
-            partnersLink.map((link, index) => {
-                return (<LogoSection onClick={() => redirectLink(partnersLink[index])} src={partnersPhotos[index]}/>)
-            })
-
-
-        return (
-            <Container>
-                <TitleSection color={colors.primary.base}>{contentText.title}</TitleSection>
-                <FlexWrapper>
-                    {LogoSections}
-                </FlexWrapper>
-            </Container>
-        );
-    }
-;
+  return (
+    <Container>
+      <TitleSection color={colors.primary.base}>
+        {contentText?.title}
+      </TitleSection>
+      <FlexWrapper>{LogoSections}</FlexWrapper>
+    </Container>
+  );
+};
