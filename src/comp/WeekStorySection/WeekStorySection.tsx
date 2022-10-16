@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
 import {
   BackgroundWrapper,
@@ -21,6 +22,7 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
     editFunction: (data: any) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
+
   const [contentText, setContentTexts] = useState({
     title: "",
     content: [],

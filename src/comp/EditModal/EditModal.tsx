@@ -51,17 +51,29 @@ export const EditModal = (props: EditModalProps) => {
     document.body.style.overflow = "unset";
   };
 
-  const handleMessageChange = (event: any) => {
-    setUpdateObject({
-      ...updateObject,
-      [event.target.name]: event.target.value,
-    });
+  const handleMessageChange = (event: any, index?: number) => {
+    if (index) {
+      setUpdateObject({
+        [event.target.name]: [
+          //@ts-ignore
+          ...updateObject[event.target.name],
+          event.target.value,
+        ],
+      });
+    } else {
+      setUpdateObject({
+        ...updateObject,
+        [event.target.name]: event.target.value,
+      });
+    }
+    console.log(updateObject, "updateObject");
+    //@ts-ignore
+    console.log(...updateObject, "asdasda");
   };
 
   console.log("localModalData", localModalData);
   const textEditors = Object.keys(localModalData).map(
     (element: string, index: number) => {
-
       if (
         [
           "video",
@@ -79,10 +91,10 @@ export const EditModal = (props: EditModalProps) => {
               {capitalizeFirstLetter(element)}
             </StyledText>
             {Array.isArray(localModalData[element]) ? (
-              localModalData[element].map((item: any) => {
+              localModalData[element].map((item: any, index: number) => {
                 return (
                   <StyledTextArea
-                    onChange={(e) => handleMessageChange(e)}
+                    onChange={(e) => handleMessageChange(e, index)}
                     name={element}
                     minHeight={
                       item.length > 50
