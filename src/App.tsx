@@ -19,8 +19,6 @@ import Login from "./comp/Login/Login";
 import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
 import {StoryBoxPage} from "./comp/StoryBox/StoryBox";
-import {getData} from "./utils/getData";
-import {StoryBoxPage} from "./comp/StoryBox/StoryBox";
 
 
 export const PDPContext = React.createContext({});
@@ -71,7 +69,7 @@ function App() {
         );
     });
     const arrayNavbarLinks = [
-        <WorkInProgress/>,
+        <StoryBoxPage/>,
         <WeekStorySection/>,
         <Courses/>,
         <Events/>,
