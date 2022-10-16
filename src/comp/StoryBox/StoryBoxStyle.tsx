@@ -84,8 +84,8 @@ export const StyledStar=styled.img`
   top:40%;
   transform:translateY(-50%);
  animation:
-    x1 2s linear infinite alternate,
-    y1 2s infinite cubic-bezier(0.2,667,0.8,400) alternate;
+    x1 3s linear infinite alternate,
+    y1 3s infinite cubic-bezier(0.2,667,0.8,400) alternate;
     
     
 
