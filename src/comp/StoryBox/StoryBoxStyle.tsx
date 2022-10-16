@@ -18,6 +18,12 @@ display:flex;
 flex-directionl:row;
 align-items:center;
 justify-content:space-between;
+
+
+@media (max-width:1200px){
+flex-direction:column;
+
+}
 `
 
 export const StoryDescription=styled.div`
@@ -29,6 +35,11 @@ align-items:center;
 position:relative;
 margin:0 80px;
 
+
+@media (max-width:1200px){
+width:100%;
+
+}
 `
 
 export const FormContainer=styled.div`
@@ -40,6 +51,14 @@ font-size:${fontSizes.desktop.paragraph.small}
 > form {
 width:auto;
 }
+
+
+@media (max-width:1200px){
+width:100%;
+
+}
+
+
 `
 
 export const SectionContainerStoryBox=styled.div`
