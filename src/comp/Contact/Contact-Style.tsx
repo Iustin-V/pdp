@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {fontSizes,colors} from "../../generalStyle";
-import background from "../images/contact-background-overlay.jpg"
 
 export const ContactFormBackground = styled.div<{ backgroundImage: string }>`
 
@@ -147,6 +146,7 @@ export const StyledTextArea = styled.textarea`
   padding: 5px 10px;
   outline: none;
   color: ${colors.primary.base};
+ min-height:120px;
   
    :focus{
     border: 1px solid ${colors.primary.base};
@@ -158,7 +158,7 @@ export const StyledTextArea = styled.textarea`
 `;
 export const StyledSelect = styled.select`
   display: block;
-  width: 50%;
+  width: 100%;
   font-size: ${fontSizes.desktop.paragraph.base};
   font-family:"Nunito-Italic";
   margin-bottom: 24px;

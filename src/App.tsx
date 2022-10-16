@@ -17,7 +17,9 @@ import linkGenerate from "./generalFunction";
 import {CourseInfo} from "./comp/CourseInfo/CouseInfo";
 import Login from "./comp/Login/Login";
 import useFetch from "./hooks/useFetch";
-import {getData} from "./utils/getData";
+import { getData } from "./utils/getData";
+import {StoryBoxPage} from "./comp/StoryBox/StoryBox";
+
 
 export const PDPContext = React.createContext({});
 
@@ -43,31 +45,20 @@ function App() {
     const [allLinkCourses, setLinkCourses] = useState([{title: '', price: '', time: '', text: [], image: ""}])
     const [linkPathCourses, setLinkPathCourses] = useState('')
 
-    const {data, loading, error} = useFetch(
-        `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
-            localStorage.locale || "ro"
-        }`
-    );
+  const { data, loading, error } = useFetch(
+    `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
+      localStorage.locale || "ro"
+    }`
+  );
 
-    React.useEffect(() => {
-        if (data.length !== 0) {
-            setAllCategories(data);
-            setNavbarTexts(getData(data, "Navbar").subTitle);
-            const allData = getData(data, "CourseChildParents").content.concat(getData(data, "CourseTeacher").content)
-            setLinkCourses(allData)
-        }
-        switch (localStorage.locale) {
-            case 'ro':
-                setLinkPathCourses('cursuri')
-                break;
-            case 'en':
-                setLinkPathCourses('courses')
-                break;
-            case 'fr':
-                setLinkPathCourses('cours')
-                break;
-        }
-    }, [loading]);
+  React.useEffect(() => {
+    if (data.length !== 0) {
+      console.log(data, "data");
+      // @ts-ignore
+      setAllCategories(data);
+      setNavbarTexts(getData(data, "Navbar").subTitle);
+    }
+  }, [loading]);
 
     const coursesLinkRoutes = allLinkCourses.map((link) => {
         return (
@@ -78,7 +69,7 @@ function App() {
         );
     });
     const arrayNavbarLinks = [
-        <WorkInProgress/>,
+        <StoryBoxPage/>,
         <WeekStorySection/>,
         <Courses/>,
         <Events/>,

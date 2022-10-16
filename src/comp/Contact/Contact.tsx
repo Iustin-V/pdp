@@ -22,23 +22,23 @@ import teacherIcon from "../images/teacher-icon.png";
 import {PDPContext} from "../../App";
 import {getData} from "../../utils/getData";
 
-export interface formFields {
-    name: string;
-    email: string;
-    phoneNumber: string;
-    course: string;
-    message: string;
+export interface formFieldsType {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  course: string;
+  message: string;
 }
 
 const paragraphText =
     "Vrei să trimiți un mesaj Profei de povești? Completează formularul următor și voi răspunde cât ai clipi!";
 
-let formFields: formFields = {
-    name: "",
-    email: "",
-    phoneNumber: "",
-    course: "",
-    message: "",
+let formFields: formFieldsType = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  course: "",
+  message: "",
 };
 
 export const Contact = () => {
