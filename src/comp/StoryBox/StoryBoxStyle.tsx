@@ -52,8 +52,12 @@ font-size:${fontSizes.desktop.paragraph.small}
 width:auto;
 }
 
-
 @media (max-width:1200px){
+max-width:700px;
+
+}
+
+@media (max-width:768px){
 width:100%;
 
 }
