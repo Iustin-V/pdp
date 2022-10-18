@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors, fontSizes } from "../generalStyle";
+import { colors } from "../generalStyle";
 
 export const Overlay = styled.div`
   position: absolute;
@@ -71,11 +71,31 @@ export const StyledNavItem = styled(Link)`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: ${fontSizes.desktop.paragraph.base};
+  font-size: 18px;
   padding: 0 15px;
+  position: relative;
 
   :hover {
     background-color: ${colors.secondary.lighter};
+    transition: background-color 0.5s;
+  }
+
+  @media (min-width: 1200px) {
+    &::before {
+      content: " ";
+      width: 0%;
+    }
+
+    &:hover::before {
+      content: " ";
+      position: absolute;
+      bottom: 27px;
+      width: 80%;
+
+      height: 2px;
+      background: ${colors.primary.base};
+      transition: all 1.5s;
+    }
   }
 `;
 export const StyledText = styled.p`
@@ -114,24 +134,36 @@ export const BurgerMenu = styled.button`
   border: none;
   background: transparent;
   img {
-    height: 40px;
+    margin-left: 10px;
+    height: 28px;
     fill: ${colors.primary.base};
+  }
+`;
+
+export const ItemsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 1200px) {
+    flex-direction: row;
   }
 `;
 
 export const StyledLateralMenu = styled.div<{ lateralActive: boolean }>`
   position: absolute;
-  top: 80px;
+  top: 85px;
   right: ${(props) => (props.lateralActive ? "0" : "-300px")};
   transition: right 3s;
-  height: fit-content;
+  height: calc(100vh - 85px);
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   width: 300px;
   background: ${colors.secondary.base};
 
   a {
     width: calc(100% - 30px);
+    height: fit-content;
     padding: 20px 15px;
     text-align: left;
     justify-content: flex-start;

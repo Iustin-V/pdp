@@ -13,6 +13,7 @@ import {
     StyledNavItem,
     StyledNavItems,
     StyledText,
+    ItemsWrapper
 } from "./Navbar-Style";
 import logo from "./images/logo.png";
 import burgerLogo from "./images/icons8-menu.svg";
@@ -105,14 +106,17 @@ export const Navbar = (props: navbarProps) => {
 
     return (
         <Container isActive={isActive}>
-            {isActive && <Overlay/>}
+            {isActive && <Overlay onClick={handleClose}/>}
             <StyledNav height="80px">
                 <Logo/>
-                <StyledNavItems>{value}</StyledNavItems>
-                <LanguageSelector/>
+                <ItemsWrapper>
+                    <StyledNavItems>{value}</StyledNavItems>
+                    <LanguageSelector/>
+
                 <StyledMobileNav>
                     <MobileMenu isActive={isActive} logoSrc={logoSrc}/>
                 </StyledMobileNav>
+                </ItemsWrapper>
             </StyledNav>
             <ProgressBar color={colors.primary.base} height={5}/>
         </Container>

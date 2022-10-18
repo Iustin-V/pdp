@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import React from "react";
-import { colors, fontSizes } from "../generalStyle";
+import { colors } from "../generalStyle";
 
 const StyledDropdown = styled.select`
   display: block;
-  width: 100px;
-  font-size: ${fontSizes.desktop.paragraph.base};
+  font-size: 18px;
   font-family: "Nunito-Italic";
   padding: 5px 10px;
   border: none;
@@ -14,6 +13,17 @@ const StyledDropdown = styled.select`
   font-weight: 700;
   letter-spacing: 1px;
   color: ${colors.primary.base};
+   :hover {
+    background-color: ${colors.secondary.lighter};
+  }
+  
+  @media(max-width:1200px){
+   font-size: 14px;
+  
+  }
+  
+  
+ 
 `;
 const setCookie = (value: string) => {
   localStorage.setItem("locale", value);
@@ -29,9 +39,9 @@ export const LanguageSelector = () => {
         defaultValue={localStorage.locale}
         onChange={(e) => setCookie(e.target.value)}
       >
-        <option value="ro">RO</option>
-        <option value="en">EN</option>
-        <option value="fr">FR</option>
+        <option value="ro">🇷🇴 RO</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="fr">🇫🇷 FR</option>
       </StyledDropdown>
     </>
   );
