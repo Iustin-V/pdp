@@ -19,6 +19,7 @@ import Login from "./comp/Login/Login";
 import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
 import { StoryBoxPage } from "./comp/StoryBox/StoryBox";
+import { EventInfo } from "./comp/Events/EventInfo";
 
 export const PDPContext = React.createContext({});
 
@@ -44,10 +45,14 @@ function App() {
   const [allLinkCourses, setLinkCourses] = useState([
     { title: "", price: "", time: "", text: [], image: "" },
   ]);
+  const [allEvents, setAllEvents] = useState([
+    { titleSection: "", text: "", image: "", alt: "", date: "" },
+  ]);
   const [linkPathCourses, setLinkPathCourses] = useState("");
+  const [linkPathEvents, setLinkPathEvents] = useState("");
 
   const { data, loading, error } = useFetch(
-    `https://api-example2.onrender.com/api/sections/sectionByLanguage?language=${
+    `http://localhost:8800/api/sections/sectionByLanguage?language=${
       localStorage.locale || "ro"
     }`
   );
@@ -62,19 +67,42 @@ function App() {
         getData(data, "CourseTeacher").content
       );
       setLinkCourses(allData);
+
+      const eventData = getData(data, "EventsSection").content;
+      setAllEvents(eventData);
     }
     switch (localStorage.locale) {
       case "ro":
         setLinkPathCourses("cursuri");
+        setLinkPathEvents("evenimente");
         break;
       case "en":
         setLinkPathCourses("courses");
+        setLinkPathEvents("events");
         break;
       case "fr":
         setLinkPathCourses("cours");
+        setLinkPathEvents("evenements");
         break;
     }
   }, [loading]);
+
+  const eventsLinkRoutes = allEvents.map((link) => {
+    return (
+      <Route
+        path={`/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
+        element={
+          <EventInfo
+            title={link?.titleSection}
+            eventImage={link?.image}
+            text={link?.text}
+            date={link?.date}
+            imageAlt={link?.alt}
+          />
+        }
+      />
+    );
+  });
 
   const coursesLinkRoutes = allLinkCourses.map((link) => {
     return (
@@ -115,6 +143,7 @@ function App() {
             <Route path="/login" element={<Login />} />
 
             {coursesLinkRoutes}
+            {eventsLinkRoutes}
           </Routes>
           <ToTopButton topRef={topRef} isTopButton={isTopButton} />
           <Footer />

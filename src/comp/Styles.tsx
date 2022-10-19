@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {fontSizes} from "../generalStyle";
+import { fontSizes } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -19,8 +19,8 @@ export const StyledPageWrapper = styled.div<{ login?: boolean }>`
   }
 `;
 export const MainContentWrapper = styled.div<{
-    padding?: string;
-    flexDirection: string;
+  padding?: string;
+  flexDirection: string;
 }>`
   display: flex;
   flex-direction: ${(props) => props.flexDirection};
@@ -138,9 +138,9 @@ export const PageContainer = styled.div`
     flex-direction: column;
   }
 `;
-export const SectionContainer = styled.div`
+export const SectionContainer = styled.div<{ maxWidth?: string }>`
   width: calc(100% - 80px);
-  max-width: 1440px;
+  max-width: ${(props) => `${props.maxWidth}px` || "1440px"};
   padding: 40px;
   margin: 0 auto;
   position: relative;
@@ -174,8 +174,8 @@ export const ParagraphItalicStyled = styled.p`
 `;
 
 export const BackgroundWrapper = styled.div<{
-    imgUrl: string;
-    separatePage?: boolean;
+  imgUrl: string;
+  separatePage?: boolean;
 }>`
   margin-top: 80px;
   background-image: url(${(props) => props.imgUrl});
@@ -239,5 +239,4 @@ export const Border = styled.hr`
       transform: translateX(1440px);
     }
   }
-
-`
+`;
