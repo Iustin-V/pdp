@@ -114,9 +114,10 @@ export const Contact = () => {
         break;
     }
   }, []);
-  const optionCourses = allLinkCourses?.map((course) => {
+  const optionCourses = allLinkCourses?.map((course, key) => {
     return (
       <option
+        key={key}
         value={course.title}
         selected={course.title === localStorage.course}
       >

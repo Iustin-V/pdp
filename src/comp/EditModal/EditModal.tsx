@@ -1,3 +1,6 @@
+import React from "react";
+import axios from "axios";
+
 import {
   ModalCover,
   ModalWrapper,
@@ -8,8 +11,6 @@ import {
 } from "./EditModalStyle";
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
-import React from "react";
-import axios from "axios";
 
 interface EditModalProps {
   modalData: any;
@@ -23,6 +24,8 @@ export const EditModal = (props: EditModalProps) => {
   const localModalData = props?.modalData;
   const [message, setMessage] = React.useState([]);
   const [updateObject, setUpdateObject] = React.useState({});
+  const [updateArray, setUpdateArray] = React.useState([]);
+  const [initialArray, setInitialArray] = React.useState([]);
   const arr = [""];
   if (props.editModal) {
     document.body.style.overflow = "hidden";
@@ -33,44 +36,76 @@ export const EditModal = (props: EditModalProps) => {
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2ZjN2M1N2RlYmYxOTE4ZWI1Mjc5MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NjU3NDM0Mjl9.xiEvj5nl3X2edINIShjEl3k9M12cvgnWTm8Fvi7b0Lg",
     },
   };
+
+  React.useEffect(() => {
+    setUpdateArray(initialArray);
+  }, [initialArray]);
+
   const saveModal = () => {
-    // props.handleSave;
     axios.put(
       `https://api-example2.onrender.com/api/sections/${localModalData?._id}`,
       {
         ...updateObject,
+        // content: ['Researchers have discovered that when we listen to stories, more chemicals are released in the brain associated with various emotional states. Thus, stories give meaning and emotion to our existence, motivate us and make us reflect on everything that happens around us. That\'s why stories chaaange behavior without resorting to the system of punishments and rewards.asddas','Les chercheurs ont découvert que lorsque nous écoutons des histoires, plus de produits chimiques sont libérés dans le cerveau associés à divers états émotionnels. Ainsi, les histoires donnent du sens et de l\'émotion à notre existence, nous motivent et nous font réfléchir sur tout ce qui se passe autour de nous. C\'est pourquoi les histoires changent les comportements sans recourir au système des punitions et des récompenses.','Nous avons assez de réunions, de conférences, de devoirs et de devoirs ! Les histoires sont amusantes, éducatives, motivantes et stimulent la créativité, ce qui nous aide dans tous les domaines de la vie. Les histoires nous donnent différents points de vue sur la même réalité et nous font trouver des solutions ingénieuses à des problèmes que je pensais peut-être insolubles.','Et des réponses aux questions non encore posées.'],
+        //@ts-ignore
+
+        content: updateArray,
       }
     );
-    // @ts-ignore
-    setMessage(arr);
-
     exitModal();
   };
+
   const exitModal = () => {
     props.setEditModal(false);
     document.body.style.overflow = "unset";
   };
+  // console.log("localModalData", capitalizeFirstLetter);
 
-  const handleMessageChange = (event: any, index?: number) => {
-    if (index) {
-      setUpdateObject({
-        [event.target.name]: [
-          //@ts-ignore
-          ...updateObject[event.target.name],
-          event.target.value,
-        ],
-      });
-    } else {
-      setUpdateObject({
-        ...updateObject,
-        [event.target.name]: event.target.value,
-      });
-    }
-    console.log(updateObject, "updateObject");
+  const handleMessageChange = (event: any) => {
     //@ts-ignore
-    console.log(...updateObject, "asdasda");
+    console.log("event.target.value", event.target.value);
+
+    setUpdateObject({
+      ...updateObject,
+      [event.target.name]: event.target.value,
+    });
+
+    console.log("updateObject", updateObject);
   };
 
+  const handleArrayMessageChange = (
+    event: any,
+    index?: number,
+    isObject?: boolean
+  ) => {
+    console.log("initialArray", initialArray);
+
+    console.log("initialArray1", initialArray.slice(0, index));
+    if (isObject) {
+      // @ts-ignore
+      setUpdateArray([
+        ...updateArray.slice(0, index),
+        { [event.target.name]: event.target.value },
+        // @ts-ignore
+        ...updateArray.slice(index + 1, initialArray.length),
+      ]);
+    } else {
+      setInitialArray(props.modalData[event.target.name]);
+      // @ts-ignore
+      // la copy paste trb adaugat un space la final ca sa  citeasca
+      //schimbat content hardcodat
+      setUpdateArray([
+        ...updateArray.slice(0, index),
+        event.target.value,
+        // @ts-ignore
+        ...updateArray.slice(index + 1, initialArray.length),
+      ]);
+    }
+
+    console.log("verificare", updateArray.slice(0, index));
+
+    console.log("updateArray", updateArray);
+  };
   console.log("localModalData", localModalData);
   const textEditors = Object.keys(localModalData).map(
     (element: string, index: number) => {
@@ -92,18 +127,49 @@ export const EditModal = (props: EditModalProps) => {
             </StyledText>
             {Array.isArray(localModalData[element]) ? (
               localModalData[element].map((item: any, index: number) => {
+                // typeof item === "object" &&
+                // console.log("item", Object.keys(item));
+                if (typeof item === "object") {
+                  return Object.keys(item).map((objData: string) => {
+                    return (
+                      <>
+                        {Array.isArray(item[objData]) ? (
+                          <></>
+                        ) : (
+                          <>
+                            <StyledText color={colors.primary.base}>
+                              {capitalizeFirstLetter(objData)}{" "}
+                            </StyledText>
+                            <StyledTextArea
+                              onChange={(e) =>
+                                handleArrayMessageChange(e, index, true)
+                              }
+                              name={item}
+                            >
+                              {item[objData]}
+                            </StyledTextArea>
+                          </>
+                        )}{" "}
+                      </>
+                    );
+                  });
+                }
                 return (
-                  <StyledTextArea
-                    onChange={(e) => handleMessageChange(e, index)}
-                    name={element}
-                    minHeight={
-                      item.length > 50
-                        ? (item.length / 3 + 20).toString() + "px"
-                        : ""
-                    }
-                  >
-                    {item}
-                  </StyledTextArea>
+                  <>
+                    <StyledTextArea
+                      onChange={(e) =>
+                        handleArrayMessageChange(e, index, false)
+                      }
+                      name={element}
+                      minHeight={
+                        item.length > 50
+                          ? (item.length / 3 + 20).toString() + "px"
+                          : ""
+                      }
+                    >
+                      {item}
+                    </StyledTextArea>
+                  </>
                 );
               })
             ) : (

@@ -60,9 +60,10 @@ export const Courses = () => {
   }, [contextLocal]);
 
   const showCoursesCardChildParents = contentCourseChildParents.content?.map(
-    (item) => {
+    (item, key) => {
       return (
         <MultiActionAreaCard
+          key={key}
           title={item.title}
           time={item.time}
           price={item.price}
@@ -72,9 +73,10 @@ export const Courses = () => {
     }
   );
   const showCoursesCardParentsTeacher = contentCourseTeacher.content?.map(
-    (item) => {
+    (item, key) => {
       return (
         <MultiActionAreaCard
+          key={key}
           title={item.title}
           time={item.time}
           price={item.price}
@@ -96,11 +98,10 @@ export const Courses = () => {
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
         </SectionContainer>
-
       </StyledPageCourses>
       <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentCourseChildParents}
+        editFunction={contextLocal?.editFunction}
+        sectionText={contentCourseChildParents}
       />
       <Border />
       <StyledPageCourses>
@@ -116,8 +117,8 @@ export const Courses = () => {
         </SectionContainer>
       </StyledPageCourses>
       <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentCourseTeacher}
+        editFunction={contextLocal?.editFunction}
+        sectionText={contentCourseTeacher}
       />
     </>
   );

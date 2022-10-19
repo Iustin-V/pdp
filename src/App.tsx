@@ -62,7 +62,6 @@ function App() {
     setEditModal(true);
   };
 
-
   React.useEffect(() => {
     if (data.length !== 0) {
       setAllCategories(data);
@@ -85,9 +84,10 @@ function App() {
     }
   }, [loading]);
 
-  const coursesLinkRoutes = allLinkCourses.map((link) => {
+  const coursesLinkRoutes = allLinkCourses.map((link, key) => {
     return (
       <Route
+        key={key}
         path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
         element={<CourseInfo title={link.title} text={link.text} />}
       />
