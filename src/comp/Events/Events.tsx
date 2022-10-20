@@ -82,7 +82,6 @@ export const Events = () => {
   }, []);
   // @ts-ignore
   const eventCards = dataSection.content?.map((event, key) => {
-    console.log("event", event);
     return (
       <>
         <AnimatedContainer>
@@ -98,7 +97,6 @@ export const Events = () => {
       </>
     );
   });
-  console.log("dataSection", dataSection);
   return (
     <StyledEventsPage>
       <SectionContainer>

@@ -107,8 +107,6 @@ export const CourseInfo = (props: coursesInfo) => {
                 setButtonText('Acheter')
                 break;
         }
-        // @ts-ignore
-
     }, []);
 
 
@@ -139,7 +137,6 @@ export const CourseInfo = (props: coursesInfo) => {
         );
     });
 
-    // @ts-ignore
     return (
         <ContactFormBackground backgroundImage={backgroundImage}>
             <StyledPageCourseInfo>

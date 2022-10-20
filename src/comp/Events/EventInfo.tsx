@@ -2,24 +2,22 @@ import React from "react";
 
 import {Border, SectionContainer, TitleSection} from "../Styles";
 import {colors, fontSizes} from "../../generalStyle";
-import {
-  StyledPageEventInfo,
-  StyledParagraph,
-} from "./EventStyle";
+import {StyledPageEventInfo, StyledParagraph,} from "./EventStyle";
 import styled from "styled-components";
-import { eventTranslates } from "../../Translates/Translates";
-import { Link } from "react-router-dom";
+import {eventTranslates} from "../../Translates/Translates";
+import { useNavigate } from 'react-router-dom';
 import {redirectLink} from "../../utils/redirectLink";
 
 interface EventInfoProps {
-  title: string;
-  text: string;
-  eventImage: string;
-  imageAlt: string;
-  date: string;
-  ora?: string;
-  site?: string;
+    title: string;
+    text: string;
+    eventImage: string;
+    imageAlt: string;
+    date: string;
+    ora?: string;
+    site?: string;
 }
+
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,10 +28,11 @@ const StyledContent = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
-  p{
-  
+
+  p {
+
     max-width: fit-content;
-  font-size:${fontSizes.desktop.paragraph.base};
+    font-size: ${fontSizes.desktop.paragraph.base};
   }
 `;
 const StyledBox = styled.div`
@@ -41,46 +40,46 @@ const StyledBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+
   align-items: center;
   width: 100%;
-  padding:15px 0;
-  row-gap:20px;
-  
-  @media (max-width:1200px){
-  flex-direction: column;
+  padding: 15px 0;
+  row-gap: 20px;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
     align-items: flex-start;
   }
-  
+
   p {
-  display:block;
+    display: block;
   }
-  p > span:hover {
-  {
-   cursor:pointer;
-   text-decoration:underline;
-   
-   }
+
+  p > span:hover { {
+    cursor: pointer;
+    text-decoration: underline;
+
   }
-  
+  }
+
 `;
 
 const StyledBoxHead = styled(StyledParagraph)`
-  width:100%;
+  width: 100%;
   align-items: flex-start;
-  font-size:25px !important;
+  font-size: 25px !important;
 `;
 const PictureWrapper = styled.div`
   width: 100%;
-  
+
   img {
-  object-fit:cover;
-  object-position:bottom;
-  height:400px;
-  width:100%;
-  
+    object-fit: cover;
+    object-position: bottom;
+    height: 400px;
+    width: 100%;
+
   }
-  
+
 `;
 const BackButton = styled.button`
   width: fit-content;
@@ -93,64 +92,66 @@ const BackButton = styled.button`
   border: 2px solid ${colors.primary.lighter};
   left: 40px;
   top: 120px;
-  
+
   ::before {
-  content: '\\00ab';
-  position: absolute;
-  font-size:30px;
-  opacity: 0;
-  top: 16px;
-  transform:translateY(-50%);
-  left: -20px;
-  transition: 0.5s;
-}
-  
+    content: '\\00ab';
+    position: absolute;
+    font-size: 30px;
+    opacity: 0;
+    top: 16px;
+    transform: translateY(-50%);
+    left: -20px;
+    transition: 0.5s;
+  }
+
   :hover {
     ::before {
-  opacity: 1;
-  left: 5px;
+      opacity: 1;
+      left: 5px;
     }
+
     border: 2px solid ${colors.primary.base};
-    background-color:${colors.primary.lighter}
+    background-color: ${colors.primary.lighter}
   }
-  
-  @media (max-width:1200px){
-  display:none;
-  visibility:hidden;
+
+  @media (max-width: 1200px) {
+    display: none;
+    visibility: hidden;
   }
 `;
 export const EventInfo = (props: EventInfoProps) => {
-  return (
-    <StyledPageEventInfo>
-      <Link style={{ textDecoration: "none" }} to={'/'}>
-        <BackButton>{"Back"}</BackButton>
-      </Link>
-      <SectionContainer maxWidth={"1000"}>
-        <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
-        <StyledContent>
-          <PictureWrapper>
-            <img
-                src={props.eventImage}
-                alt={props.imageAlt}
-            />
-          </PictureWrapper>
-          <StyledParagraph>{props.text}</StyledParagraph>
-          <Border/>
-          <StyledBox>
-            <StyledBoxHead>
-              {
-                // @ts-ignore
-                eventTranslates[localStorage.locale || "ro"]
-              }:
-            </StyledBoxHead>
-            <StyledParagraph>Date: {props.date}</StyledParagraph>
-            <StyledParagraph>Time: 20:00{props.ora}</StyledParagraph>
-            <StyledParagraph>
-              Website: <span onClick={() => redirectLink(props.site )}>www.REDIRECTSITE.ro{props.site}</span>
-            </StyledParagraph>
-          </StyledBox>
-        </StyledContent>
-      </SectionContainer>
-    </StyledPageEventInfo>
-  );
+    let navigate = useNavigate();
+
+    return (
+        <StyledPageEventInfo>
+            <BackButton onClick={() => navigate(-1)}>{"Back"}</BackButton>
+            <SectionContainer maxWidth={"1000"}>
+                <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
+                <StyledContent>
+                    <PictureWrapper>
+                        <img
+                            src={props.eventImage}
+                            alt={props.imageAlt}
+                        />
+                    </PictureWrapper>
+                    <StyledParagraph>{props.text}</StyledParagraph>
+                    <Border/>
+                    <StyledBox>
+                        <StyledBoxHead>
+                            {
+                                // @ts-ignore
+                                eventTranslates[localStorage.locale || "ro"]
+                            }:
+                        </StyledBoxHead>
+                        <StyledParagraph>Date: {props.date}</StyledParagraph>
+                        <StyledParagraph>Time: 20:00{props.ora}</StyledParagraph>
+                        <StyledParagraph>
+                            Website: <span
+                            onClick={() => redirectLink(props.site)}>www.REDIRECTSITE.ro{props.site}</span>
+                        </StyledParagraph>
+                    </StyledBox>
+                </StyledContent>
+            </SectionContainer>
+        </StyledPageEventInfo>
+    );
 };
