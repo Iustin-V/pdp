@@ -44,48 +44,6 @@ export const Courses = () => {
     }, [contextLocal]);
 
 
-    // const coursesChildren = [
-    //     {
-    //         title: "Cum să-mi transform visul în realitate?",
-    //         time: "20:00",
-    //         price: "500 Ron",
-    //         image: "https://upcdn.io/W142hJk/raw/demo/4xUx8m5.jpg",
-    //
-    //     },
-    //     {
-    //         title: "Cum să ating steaua la care visez",
-    //         time: "20:00",
-    //         price: "500 Ron",
-    //         image: "https://upcdn.io/W142hJk/raw/demo/AFy6Kpq.jpg",
-    //     },
-    //     {
-    //         title: "Cine mă privește din oglindă?",
-    //         time: "20:00",
-    //         price: "500 Ron",
-    //         image: "https://upcdn.io/W142hJk/raw/demo/A6LPuVW.jpg",
-    //     },
-    // ];
-    const coursesTeachers = [
-        {
-            title: "Cheia fericirii este la tine în buzunar!",
-            time: "20:00",
-            price: "800 Ron",
-            image: "https://upcdn.io/W142hJk/raw/demo/62vWWRM.jpg",
-        },
-        {
-            title: "Ieșirea din matrice",
-            time: "20:00",
-            price: "800 Ron",
-            image: "https://upcdn.io/W142hJk/raw/demo/3LA2gKf.jpg",
-        },
-        {
-            title: "Dicționarul limbii pe care o vorbim în familie",
-            time: "20:00",
-            price: "800 Ron",
-            image: "https://upcdn.io/W142hJk/raw/demo/3T2HGnU.jpg",
-        },
-    ];
-
     const showCoursesCardChildParents = contentCourseChildParents.content?.map((item) => {
         return (
             <MultiActionAreaCard
