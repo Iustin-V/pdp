@@ -20,21 +20,22 @@ import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
 import { StoryBoxPage } from "./comp/StoryBox/StoryBox";
 import { EventInfo } from "./comp/Events/EventInfo";
+import Loading from "./comp/Loading/Loading";
 
 export const PDPContext = React.createContext({});
 
 export interface Category {
-  content: string[];
-  img: string[];
-  language: string;
-  sectionName: string;
-  subTitle: string[];
-  video: string[];
-  links: string[];
-  contain: string[];
-  title: string;
-  _id: string;
-  __v: number;
+    content: string[];
+    img: string[];
+    language: string;
+    sectionName: string;
+    subTitle: string[];
+    video: string[];
+    links: string[];
+    contain: string[];
+    title: string;
+    _id: string;
+    __v: number;
 }
 
 function App() {
@@ -118,7 +119,6 @@ function App() {
     <Contact />,
   ];
   const navbarLinks = navbarText.map((link, index) => {
-    console.log("link", linkGenerate(link), index);
     return (
       <Route
         path={`/${linkGenerate(link)}`}
@@ -127,28 +127,29 @@ function App() {
     );
   });
 
-  return (
-    <StyledWrapper>
-      <PDPContext.Provider value={allCategories}>
-        <BrowserRouter>
-          <div ref={topRef} />
-          <Navbar allCategories={allCategories} setTopButton={setTopButton} />
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {navbarLinks}
-            <Route path="/blog" element={<WorkInProgress />} />
-            <Route path="/login" element={<Login />} />
+    return (
+        <StyledWrapper>
+            {data.length === 0 ? <Loading/> :
+                <PDPContext.Provider value={allCategories}>
+                <BrowserRouter>
+                    <div ref={topRef}/>
+                    <Navbar allCategories={allCategories} setTopButton={setTopButton}/>
+                    <ScrollToTop/>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        {navbarLinks}
+                        <Route path="/blog" element={<WorkInProgress/>}/>
+                        <Route path="/login" element={<Login/>}/>
 
-            {coursesLinkRoutes}
-            {eventsLinkRoutes}
-          </Routes>
-          <ToTopButton topRef={topRef} isTopButton={isTopButton} />
-          <Footer />
-        </BrowserRouter>
-      </PDPContext.Provider>
-    </StyledWrapper>
-  );
+                        {coursesLinkRoutes}
+                      {eventsLinkRoutes}
+                    </Routes>
+                    <ToTopButton topRef={topRef} isTopButton={isTopButton}/>
+                    <Footer/>
+                </BrowserRouter>
+            </PDPContext.Provider>}
+        </StyledWrapper>
+    );
 }
 
 export default App;
