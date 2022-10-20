@@ -45,7 +45,7 @@ export const StyledParagraph = styled.p`
   flex-direction: column;
   gap: 10px;
   display: flex;
-  color: #002366;
+  color: ${colors.primary.base};
   @media (max-width: 768px) {
     font-size: ${fontSizes.mobile.paragraph.small};
     align-items: center;

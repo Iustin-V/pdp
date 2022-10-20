@@ -1,16 +1,15 @@
 import React from "react";
 
-import { SectionContainer, TitleSection } from "../Styles";
-import { colors } from "../../generalStyle";
+import {Border, SectionContainer, TitleSection} from "../Styles";
+import {colors, fontSizes} from "../../generalStyle";
 import {
-  StyledMedia,
   StyledPageEventInfo,
   StyledParagraph,
 } from "./EventStyle";
 import styled from "styled-components";
 import { eventTranslates } from "../../Translates/Translates";
-import linkGenerate from "../../generalFunction";
 import { Link } from "react-router-dom";
+import {redirectLink} from "../../utils/redirectLink";
 
 interface EventInfoProps {
   title: string;
@@ -27,83 +26,127 @@ const StyledContent = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 30px;
-  gap: 50px;
+  gap: 20px;
   @media (max-width: 768px) {
     flex-direction: column;
+  }
+  p{
+  
+    max-width: fit-content;
+  font-size:${fontSizes.desktop.paragraph.base};
   }
 `;
 const StyledBox = styled.div`
   height: fit-content;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  
   align-items: center;
   width: 100%;
-  align-items: flex-start;
+  padding:15px 0;
+  row-gap:20px;
+  
+  @media (max-width:1200px){
+  flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  p {
+  display:block;
+  }
+  p > span:hover {
+  {
+   cursor:pointer;
+   text-decoration:underline;
+   
+   }
+  }
+  
 `;
 
-const StyledBoxHeader = styled(StyledParagraph)`
-  top: -39px;
-  width: fit-content;
-  position: relative;
-  left: -115px;
-  border: 5px solid blue;
-  background: white;
-`;
 const StyledBoxHead = styled(StyledParagraph)`
-  margin-bottom: 25px;
-  padding: 0 0 15px;
+  width:100%;
   align-items: flex-start;
+  font-size:25px !important;
 `;
 const PictureWrapper = styled.div`
   width: 100%;
-  height: 300px;
-  overflow: hidden;
-  object-position: 50% 50%;
+  
+  img {
+  object-fit:cover;
+  object-position:bottom;
+  height:400px;
+  width:100%;
+  
+  }
+  
 `;
 const BackButton = styled.button`
   width: fit-content;
-  height: 100px;
   background-color: ${colors.primary.base};
   color: white;
-  font-size: 26px;
-  padding: 20px;
-  border-radius: 15px;
+  font-size: 16px;
+  padding: 10px 25px;
+  border-radius: 10px;
   position: absolute;
+  border: 2px solid ${colors.primary.lighter};
   left: 40px;
   top: 120px;
+  
+  ::before {
+  content: '\\00ab';
+  position: absolute;
+  font-size:30px;
+  opacity: 0;
+  top: 16px;
+  transform:translateY(-50%);
+  left: -20px;
+  transition: 0.5s;
+}
+  
   :hover {
-    opacity: 80%;
+    ::before {
+  opacity: 1;
+  left: 5px;
+    }
+    border: 2px solid ${colors.primary.base};
+    background-color:${colors.primary.lighter}
+  }
+  
+  @media (max-width:1200px){
+  display:none;
+  visibility:hidden;
   }
 `;
 export const EventInfo = (props: EventInfoProps) => {
   return (
     <StyledPageEventInfo>
       <Link style={{ textDecoration: "none" }} to={'/'}>
-        <BackButton>{"< Back"}</BackButton>
+        <BackButton>{"Back"}</BackButton>
       </Link>
       <SectionContainer maxWidth={"1000"}>
         <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
         <StyledContent>
           <PictureWrapper>
-            <StyledMedia
-              src={props.eventImage}
-              alt={props.imageAlt}
-              height={"800px"}
+            <img
+                src={props.eventImage}
+                alt={props.imageAlt}
             />
           </PictureWrapper>
           <StyledParagraph>{props.text}</StyledParagraph>
+          <Border/>
           <StyledBox>
             <StyledBoxHead>
               {
                 // @ts-ignore
                 eventTranslates[localStorage.locale || "ro"]
-              }
+              }:
             </StyledBoxHead>
             <StyledParagraph>Date: {props.date}</StyledParagraph>
             <StyledParagraph>Time: 20:00{props.ora}</StyledParagraph>
             <StyledParagraph>
-              Website: www.muieGarda.ro{props.site}
+              Website: <span onClick={() => redirectLink(props.site )}>www.REDIRECTSITE.ro{props.site}</span>
             </StyledParagraph>
           </StyledBox>
         </StyledContent>

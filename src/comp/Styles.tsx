@@ -219,7 +219,7 @@ export const Border = styled.hr`
   position: relative;
 
   &:after {
-    animation-duration: 2s;
+    animation-duration: 6s;
     animation-timing-function: ease;
     animation-iteration-count: infinite;
     animation-name: progress;

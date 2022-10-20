@@ -8,6 +8,7 @@ import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.png";
 import styled from "styled-components";
 import {PDPContext} from "../../App";
 import {getData} from "../../utils/getData";
+import {redirectLink} from "../../utils/redirectLink";
 
 export const LogoSection = styled.img`
   width: 276px;
@@ -40,10 +41,6 @@ export const Partners = () => {
             setContentTexts(textData);
         }, [contextLocal]);
 
-
-        const redirectLink = (link: string) => {
-            window.open(link)
-        }
 
         const partnersPhotos = [OanaNiculescuLogo, PointsOfYouLogo, LectiiViraleLogo]
         const partnersLink = ["https://oananiculae.com/", "https://www.points-of-you.ro/", "https://lectii-virtuale.ro/"]

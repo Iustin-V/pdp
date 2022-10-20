@@ -52,15 +52,13 @@ function App() {
   const [linkPathEvents, setLinkPathEvents] = useState("");
 
   const { data, loading, error } = useFetch(
-    `http://localhost:8800/api/sections/sectionByLanguage?language=${
-      localStorage.locale || "ro"
-    }`
+      `https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${
+          localStorage.locale || "ro"
+      }`
   );
 
   React.useEffect(() => {
     if (data.length !== 0) {
-      console.log(data, "data");
-      // @ts-ignore
       setAllCategories(data);
       setNavbarTexts(getData(data, "Navbar").subTitle);
       const allData = getData(data, "CourseChildParents").content.concat(
