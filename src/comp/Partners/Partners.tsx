@@ -12,6 +12,7 @@ import { redirectLink } from "../../utils/redirectLink";
 
 export const LogoSection = styled.img`
   width: 276px;
+  cursor: pointer;
 `;
 export const FlexWrapper = styled.div`
   display: flex;
