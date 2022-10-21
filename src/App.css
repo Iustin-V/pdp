@@ -9,5 +9,29 @@
   font-family: "Nunito-Italic";
   src: local("Nunito-Italic"),
     url("./fonts/Nunito/Nunito-VariableFont_wght.ttf") format("truetype");
-  font-weight: italic;
+}
+
+.opened {
+  right: 0px !important;
+}
+
+.menubuttonopened > span:nth-of-type(1) {
+  transform-origin: bottom;
+  transform: rotatez(45deg) translate(5px, 1px);
+}
+
+.menubuttonopened > span:nth-of-type(2) {
+  transform-origin: top;
+  transform: rotatez(-45deg);
+}
+
+.menubuttonopened > span:nth-of-type(3) {
+  transform-origin: bottom;
+  width: 50% !important;
+  border-radius: 0 10px 10px 0;
+  transform: translate(14px, -7px) rotatez(45deg);
+}
+
+.visible {
+  visibility: visible !important;
 }

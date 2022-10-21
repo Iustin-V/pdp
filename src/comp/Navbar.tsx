@@ -16,8 +16,6 @@ import {
   ItemsWrapper,
 } from "./Navbar-Style";
 import logo from "./images/logo.png";
-import burgerLogo from "./images/icons8-menu.svg";
-import closeIcon from "./images/icons8-close.svg";
 import { ProgressBar } from "./ProgressBar";
 import { colors } from "../generalStyle";
 import { LanguageSelector } from "./LanguageSelector";
@@ -33,8 +31,6 @@ interface navbarProps {
 export const Navbar = (props: navbarProps) => {
   const contextLocal = React.useContext(PDPContext);
 
-  const [isActive, setIsActive] = useState(false);
-  const [logoSrc, setLogoSrc] = useState(burgerLogo);
   const [navbarText, setNavbarTexts] = useState([]);
 
   React.useEffect(() => {
@@ -80,32 +76,36 @@ export const Navbar = (props: navbarProps) => {
 
   const handleClose = () => {
     document.body.style.overflow = "auto";
-    setLogoSrc(burgerLogo);
-    setIsActive(false);
+    document?.getElementById("lateralmenu")?.classList.remove("opened");
+    document
+      ?.getElementById("menubutton")
+      ?.classList.remove("menubuttonopened");
+    document?.getElementById("overlay")?.classList.remove("visible");
   };
   const handleOpen = () => {
     document.body.style.overflow = "hidden";
-    setLogoSrc(closeIcon);
-    setIsActive(true);
+    document?.getElementById("lateralmenu")?.classList.toggle("opened");
+    document
+      ?.getElementById("menubutton")
+      ?.classList.toggle("menubuttonopened");
+    document?.getElementById("overlay")?.classList.toggle("visible");
   };
-  const MobileMenu = (props: { isActive: boolean; logoSrc: string }) => {
+  const MobileMenu = () => {
     return (
       <>
-        <BurgerMenu
-          onClick={props.logoSrc === burgerLogo ? handleOpen : handleClose}
-        >
-          <img src={props.logoSrc} alt="burgerMenu" />
+        <BurgerMenu id={"menubutton"} onClick={handleOpen}>
+          <span></span>
+          <span></span>
+          <span></span>
         </BurgerMenu>
-        <StyledLateralMenu lateralActive={props.isActive}>
-          {value}
-        </StyledLateralMenu>
+        <StyledLateralMenu id={"lateralmenu"}>{value}</StyledLateralMenu>
       </>
     );
   };
 
   return (
-    <Container isActive={isActive}>
-      {isActive && <Overlay onClick={handleClose} />}
+    <Container>
+      <Overlay id="overlay" onClick={handleClose} />
       <StyledNav height="80px">
         <Logo />
         <ItemsWrapper>
@@ -113,7 +113,7 @@ export const Navbar = (props: navbarProps) => {
           <LanguageSelector />
 
           <StyledMobileNav>
-            <MobileMenu isActive={isActive} logoSrc={logoSrc} />
+            <MobileMenu />
           </StyledMobileNav>
         </ItemsWrapper>
       </StyledNav>

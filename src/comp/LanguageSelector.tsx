@@ -8,13 +8,17 @@ const StyledDropdown = styled.select`
   font-family: "Nunito-Italic";
   padding: 5px 10px;
   border: none;
+  height: 75px;
+  margin-top: 5px;
   background: transparent;
   outline: none;
   font-weight: 700;
   letter-spacing: 1px;
   color: ${colors.primary.base};
   :hover {
+    border-radius: 15px 15px 0 0;
     background-color: ${colors.secondary.lighter};
+    transition: background-color 1s ease;
   }
 
   @media (max-width: 1200px) {

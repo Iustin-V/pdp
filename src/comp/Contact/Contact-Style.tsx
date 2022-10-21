@@ -144,9 +144,9 @@ export const StyledTextArea = styled.textarea`
   outline: none;
   resize: none;
   color: ${colors.primary.base};
- height:120px;
-  
-   :focus{
+  height: 120px;
+
+  :focus {
     border: 1px solid ${colors.primary.base};
     background: #f5f5f5;
   }

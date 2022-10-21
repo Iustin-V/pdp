@@ -26,9 +26,9 @@ export const AboutSection = () => {
     setContentTexts(textData);
   }, [contextLocal]);
 
-    const ParagraphAboutSection = contentText.content?.map((item, key) => {
-        return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;
-    });
+  const ParagraphAboutSection = contentText.content?.map((item, key) => {
+    return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;
+  });
 
   return (
     <MarginTOPContainer>

@@ -129,9 +129,9 @@ export const StyledIconLink = styled(Link)`
       color: #ffa500;
     }
     img {
-     opacity:1;
-     transform: scale(1.1);
-     transition: 1s ease;
+      opacity: 1;
+      transform: scale(1.1);
+      transition: 1s ease;
     }
   }
 
@@ -148,7 +148,7 @@ export const StyledIcon = styled.img`
   width: auto;
   height: 150px;
   margin-top: -20px;
-  opacity:0.8;
+  opacity: 0.8;
   transition: 1s ease;
   @media (max-width: 1200px) {
     height: 120px;

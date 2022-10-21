@@ -7,13 +7,14 @@ export const Overlay = styled.div`
   z-index: -1;
   width: 100%;
   height: 100vh;
-  top: 88px;
+  top: 85px;
   left: 0;
   background-color: rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  visibility: hidden;
 `;
 
-export const Container = styled.div<{ isActive: boolean }>`
+export const Container = styled.div`
   position: fixed;
   width: 100%;
   background-color: ${colors.secondary.base};
@@ -65,7 +66,8 @@ export const StyledLogoItem = styled(Link)`
 
 export const StyledNavItem = styled(Link)`
   width: fit-content;
-  height: 100%;
+  height: 75px;
+  margin-top: 5px;
   color: ${colors.primary.base};
   display: flex;
   align-items: center;
@@ -74,12 +76,15 @@ export const StyledNavItem = styled(Link)`
   font-size: 18px;
   padding: 0 15px;
   position: relative;
-
+  border-radius: 15px 15px 0 0;
   :hover {
     background-color: ${colors.secondary.lighter};
-    transition: background-color 0.5s;
+    transition: background-color 1s;
   }
-
+  @media (max-width: 1200px) {
+    border-radius: 15px 0 0 15px;
+    margin-left: 5px;
+  }
   @media (min-width: 1200px) {
     &::before {
       content: " ";
@@ -130,13 +135,31 @@ export const StyledImage = styled.img<{
   }
 `;
 
-export const BurgerMenu = styled.button`
+export const BurgerMenu = styled.div`
   border: none;
   background: transparent;
-  img {
-    margin-left: 10px;
-    height: 28px;
-    fill: ${colors.primary.base};
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  transform: rotatey(180deg);
+  span {
+    background: ${colors.primary.base};
+    border-radius: 10px;
+    height: 5px;
+    margin: 3px 0;
+    transition: 0.9s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+  span:nth-of-type(1) {
+    width: 50%;
+  }
+
+  span:nth-of-type(2) {
+    width: 100%;
+  }
+
+  span:nth-of-type(3) {
+    width: 75%;
   }
 `;
 
@@ -149,11 +172,11 @@ export const ItemsWrapper = styled.div`
   }
 `;
 
-export const StyledLateralMenu = styled.div<{ lateralActive: boolean }>`
+export const StyledLateralMenu = styled.div`
   position: absolute;
   top: 85px;
-  right: ${(props) => (props.lateralActive ? "0" : "-300px")};
-  transition: right 3s;
+  right: -300px;
+  transition: 0.7s;
   height: calc(100vh - 85px);
   display: flex;
   flex-direction: column;
