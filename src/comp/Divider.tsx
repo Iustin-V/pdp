@@ -16,7 +16,7 @@ const StyledDividerContainer = styled.div`
 const StyledDivider = styled.hr`
   border-top: 2px solid #002366;
   border-radius: 5px;
-  width: 400px;
+  width: calc(50% - 70px);
   height: 0;
 `;
 const StyledDividerText = styled.p`

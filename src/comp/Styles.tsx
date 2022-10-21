@@ -140,7 +140,7 @@ export const PageContainer = styled.div`
 `;
 export const SectionContainer = styled.div<{ maxWidth?: string }>`
   width: calc(100% - 80px);
-  max-width: ${(props) => `${props.maxWidth}px` || "1440px"};
+  max-width: ${(props) => props.maxWidth || "1440"}px;
   padding: 40px;
   margin: 0 auto;
   position: relative;
@@ -236,7 +236,7 @@ export const Border = styled.hr`
       transform: translateX(0px);
     }
     100% {
-      transform: translateX(1440px);
+      transform: translateX(2000px);
     }
   }
 `;

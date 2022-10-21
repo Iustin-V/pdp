@@ -137,7 +137,6 @@ export const StyledContainer = styled.div`
 export const StyledTextArea = styled.textarea`
     display: block;
   width: calc(100% - 22px);
-  max-width: calc(100% - 22px);
   font-size: ${fontSizes.desktop.paragraph.base};
   font-family:"Nunito-Italic";
   border: 1px solid grey;
@@ -145,8 +144,9 @@ export const StyledTextArea = styled.textarea`
   background: #f8f4e5;
   padding: 5px 10px;
   outline: none;
+  resize: none;
   color: ${colors.primary.base};
- min-height:120px;
+ height:120px;
   
    :focus{
     border: 1px solid ${colors.primary.base};

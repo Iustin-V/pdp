@@ -15,6 +15,11 @@ export const StyledEventCardContainer = styled.div`
 export const StyledMedia = styled.img<{ height?: string }>`
 
   height: ${(props) => props.height || "200px"};
+  
+  @media(max-width:768px){
+  height:auto;
+  width:100%;
+  }
 `;
 export const StyledContent = styled.div`
   display: inherit;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { colors, fontSizes } from "../../generalStyle";
 import { Divider } from "../Divider";
 import linkGenerate from "../../generalFunction";
 import { Link } from "react-router-dom";
@@ -37,7 +36,6 @@ const StyledElipsisParagraph = styled(StyledParagraph)`
 
 `;
 export const EventCard = (props: EventCardProps) => {
-  console.log("eventprops", props);
   return (
     <>
       <Divider date={props.date} />

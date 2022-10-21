@@ -1,16 +1,18 @@
 import styled from "styled-components";
-import {ParagraphItalicStyled, TitleSection} from "../Styles";
-import {colors} from "../../generalStyle";
-import backgroundImage from '../images/CourseInfo.jpg'
-import {VerticalTimeline, VerticalTimelineElement,} from "react-vertical-timeline-component";
-import React, {useState} from "react";
-import {ContactFormBackground} from "../Contact/Contact-Style";
+import { ParagraphItalicStyled, TitleSection } from "../Styles";
+import { colors } from "../../generalStyle";
+import backgroundImage from "../images/CourseInfo.jpg";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import React, { useState } from "react";
+import { ContactFormBackground } from "../Contact/Contact-Style";
 import teacherIcon from "../images/teacher-icon.png";
-import {Link} from "react-router-dom";
-import {getData} from "../../utils/getData";
-import {PDPContext} from "../../App";
+import { Link } from "react-router-dom";
+import { getData } from "../../utils/getData";
+import { PDPContext } from "../../App";
 import linkGenerate from "../../generalFunction";
-
 
 export const StyledPageCourseInfo = styled.div`
   margin-top: 80px;
@@ -49,7 +51,7 @@ export const ImageCourseInfo = styled.img`
     height: 95px;
     top: 64px;
   }
-`
+`;
 
 export const CourseInfoStyledButton = styled.button`
   margin-right: 100px;
@@ -63,9 +65,8 @@ export const CourseInfoStyledButton = styled.button`
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
   transition: 500ms;
   border-radius: 15px;
-  color: #001F61;
+  color: #001f61;
   font-family: "KaushanScript";
-
 
   &:hover {
     transform: translateY(-5px);
@@ -74,91 +75,92 @@ export const CourseInfoStyledButton = styled.button`
 `;
 
 interface coursesInfo {
-    title: string;
-    array?: [];
-    text?: Array<string>;
+  title: string;
+  array?: [];
+  text?: Array<string>;
 }
 
 export const CourseInfo = (props: coursesInfo) => {
+  const contextLocal: object = React.useContext(PDPContext);
+  const [talkWithTeacher, setLinkTalkWithTeacher] = useState({ subTitle: [] });
 
-    const contextLocal: object = React.useContext(PDPContext);
-    const [talkWithTeacher, setLinkTalkWithTeacher] = useState({subTitle: []});
+  React.useEffect(() => {
+    const textData = getData(contextLocal, "Navbar");
+    textData &&
+      textData.subTitle &&
+      // @ts-ignore
+      setLinkTalkWithTeacher(linkGenerate(textData.subTitle[4]));
+  }, [contextLocal]);
 
-    React.useEffect(() => {
-        const textData = getData(contextLocal, "Navbar");
-        // @ts-ignore
-        setLinkTalkWithTeacher(linkGenerate(textData.subTitle[4]));
-    }, [contextLocal]);
+  const [buttonText, setButtonText] = useState("");
+  const setCourse = (title: string) => {
+    localStorage.setItem("course", title);
+  };
 
-    const [buttonText, setButtonText] = useState('')
-    const setCourse = (title: string) => {
-        localStorage.setItem("course", title);
+  React.useEffect(() => {
+    switch (localStorage.locale) {
+      case "ro":
+        setButtonText("Cumpără");
+        break;
+      case "en":
+        setButtonText("Buy");
+        break;
+      case "fr":
+        setButtonText("Acheter");
+        break;
     }
+  }, []);
 
-    React.useEffect(() => {
-        switch (localStorage.locale) {
-            case 'ro':
-                setButtonText('Cumpără')
-                break;
-            case 'en':
-                setButtonText('Buy')
-                break;
-            case 'fr':
-                setButtonText('Acheter')
-                break;
-        }
-    }, []);
-
-
-    const coursesTimeLine = props.text?.map((element, index) => {
-        return (
-            <VerticalTimelineElement
-                className={`vertical-timeline-element--${
-                    index % 2 === 0 ? "work" : "education"
-                }`}
-                contentStyle={{
-                    background: index % 2 === 0 ? "#f8ecd4" : "",
-                    color: colors.primary.base,
-                }}
-                contentArrowStyle={{
-                    borderRight: `7px solid ${
-                        index % 2 === 0 ? "" : "#f8ecd4"
-                    } ${"#f8ecd4"}`,
-                }}
-                icon={<IndexSection>{index + 1}</IndexSection>}
-                iconStyle={{
-                    background: "#f8ecd4",
-                    color: "#fff",
-                    textAlign: "center",
-                }}
-            >
-                <ParagraphItalicStyled>{element}</ParagraphItalicStyled>
-            </VerticalTimelineElement>
-        );
-    });
-
+  const coursesTimeLine = props.text?.map((element, index) => {
     return (
-        <ContactFormBackground backgroundImage={backgroundImage}>
-            <StyledPageCourseInfo>
-                <SectionContainer>
-                    <TitleSection color={colors.primary.base}>
-                        {props.title}
-                    </TitleSection>
-
-                    <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
-                        <ImageCourseInfo src={teacherIcon} alt="teacherIcon"/>
-                        {coursesTimeLine}
-                    </VerticalTimeline>
-                    <Link to={`/${talkWithTeacher}`}>
-                        <CourseInfoStyledButton onClick={(event) => {
-                            setCourse(props.title)
-                            // Trebuie luat value din Contact
-                        }}> {buttonText}</CourseInfoStyledButton>
-                    </Link>
-
-                </SectionContainer>
-
-            </StyledPageCourseInfo>
-        </ContactFormBackground>
+      <VerticalTimelineElement
+        className={`vertical-timeline-element--${
+          index % 2 === 0 ? "work" : "education"
+        }`}
+        contentStyle={{
+          background: index % 2 === 0 ? "#f8ecd4" : "",
+          color: colors.primary.base,
+        }}
+        contentArrowStyle={{
+          borderRight: `7px solid ${
+            index % 2 === 0 ? "" : "#f8ecd4"
+          } ${"#f8ecd4"}`,
+        }}
+        icon={<IndexSection>{index + 1}</IndexSection>}
+        iconStyle={{
+          background: "#f8ecd4",
+          color: "#fff",
+          textAlign: "center",
+        }}
+      >
+        <ParagraphItalicStyled>{element}</ParagraphItalicStyled>
+      </VerticalTimelineElement>
     );
+  });
+
+  return (
+    <ContactFormBackground backgroundImage={backgroundImage}>
+      <StyledPageCourseInfo>
+        <SectionContainer>
+          <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
+
+          <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
+            <ImageCourseInfo src={teacherIcon} alt="teacherIcon" />
+            {coursesTimeLine}
+          </VerticalTimeline>
+          <Link to={`/${talkWithTeacher}`}>
+            <CourseInfoStyledButton
+              onClick={(event) => {
+                setCourse(props.title);
+                // Trebuie luat value din Contact
+              }}
+            >
+              {" "}
+              {buttonText}
+            </CourseInfoStyledButton>
+          </Link>
+        </SectionContainer>
+      </StyledPageCourseInfo>
+    </ContactFormBackground>
+  );
 };
