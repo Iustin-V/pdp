@@ -9,3 +9,8 @@ export const eventTranslates = {
   en: "Details",
   fr: "Détails",
 };
+export const unknownPageText={
+  ro: "Aceasta pagina nu exista",
+  en: "This page does not exist",
+  fr: "Cette page n'existe pas",
+}

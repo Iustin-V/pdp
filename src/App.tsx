@@ -21,6 +21,7 @@ import { getData } from "./utils/getData";
 import { StoryBoxPage } from "./comp/StoryBox/StoryBox";
 import { EventInfo } from "./comp/Events/EventInfo";
 import Loading from "./comp/Loading/Loading";
+import { UnknownRoute } from "./UnknownRoute";
 
 export const PDPContext = React.createContext({});
 
@@ -155,6 +156,8 @@ function App() {
 
               {coursesLinkRoutes}
               {eventsLinkRoutes}
+
+              <Route path="*" element={<UnknownRoute />} />
             </Routes>
             <ToTopButton topRef={topRef} isTopButton={isTopButton} />
             <Footer />
