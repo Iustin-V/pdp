@@ -5,11 +5,11 @@ import {
   StoryDescription,
   SectionContainerStoryBox,
   StyledBoxOpened,
-    StyledBall,
+  StyledBall,
   StyledStar,
-    StyledAirplane,
+  StyledAirplane,
   StyledHeart,
-  StyledBee
+  StyledBee,
 } from "./StoryBoxStyle";
 import {
   StyledButton,
@@ -21,19 +21,19 @@ import {
   StyledSelect,
   StyledTextArea,
 } from "../Contact/Contact-Style";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   emailValidation,
   messageValidation,
   nameValidation,
 } from "../../inputsValidations";
-import openBox from "../images/transparent-box-black-open-bure.png"
-import ball from "../images/ball.png"
-import heart from "../images/heart.png"
-import star from "../images/star.png"
-import bee from "../images/bee.png"
-import airplane from "../images/airplane.png"
-import closedBox from "../images/closedBox.png"
+import openBox from "../images/transparent-box-black-open-bure.png";
+import ball from "../images/ball.png";
+import heart from "../images/heart.png";
+import star from "../images/star.png";
+import bee from "../images/bee.png";
+import airplane from "../images/airplane.png";
+import closedBox from "../images/closedBox.png";
 
 export interface storyBoxFields {
   name: string;
@@ -130,26 +130,24 @@ export const StoryBoxSection = () => {
 
   useEffect(() => {
     if (
-        nameError === "" &&
-        storyFrameworkError === "" &&
-        relationError === "" &&
-        eventError === "" &&
-        descriptionError === "" &&
-        detailsError === "" &&
-        (emailError === "" ||
-        addressError === "")
+      nameError === "" &&
+      storyFrameworkError === "" &&
+      relationError === "" &&
+      eventError === "" &&
+      descriptionError === "" &&
+      detailsError === "" &&
+      (emailError === "" || addressError === "")
     ) {
       if (
-          formFields.name !== "" &&
-          formFields.storyFramework !== "" &&
-          formFields.relation !== "" &&
-          formFields.event !== "" &&
-          formFields.description !== "" &&
-          formFields.details !== "" &&
-          formFields.format !== "" &&
-          (formFields.email !== "" ||
-          formFields.address !== "" ) &&
-          formFields.date !== ""
+        formFields.name !== "" &&
+        formFields.storyFramework !== "" &&
+        formFields.relation !== "" &&
+        formFields.event !== "" &&
+        formFields.description !== "" &&
+        formFields.details !== "" &&
+        formFields.format !== "" &&
+        (formFields.email !== "" || formFields.address !== "") &&
+        formFields.date !== ""
       ) {
         setDisabledSubmitButton(false);
       } else {
@@ -158,9 +156,17 @@ export const StoryBoxSection = () => {
     } else {
       setDisabledSubmitButton(true);
     }
-  }, [nameError, storyFrameworkError,relationError,eventError,descriptionError,detailsError,emailError,addressError]);
-  console.log(
-      formFields );
+  }, [
+    nameError,
+    storyFrameworkError,
+    relationError,
+    eventError,
+    descriptionError,
+    detailsError,
+    emailError,
+    addressError,
+  ]);
+  console.log(formFields);
 
   const currentData = getCurrentDate("-");
   return (
@@ -342,21 +348,27 @@ export const StoryBoxSection = () => {
               </StyledContainer>
             ) : null}
             <StyledContainer>
-              <StyledButton type="submit" value="Trimite" disabled={disabledSubmitButton} />
+              <StyledButton
+                type="submit"
+                value="Trimite"
+                disabled={disabledSubmitButton}
+              />
             </StyledContainer>
           </StyledForm>
         </FormContainer>
         <StoryDescription>
-          {disabledSubmitButton ?
-              <><StyledBall src={ball}/>
-            <StyledStar src={star}/>
-            <StyledHeart src={heart}/>
-            <StyledBee src={bee}/>
-            <StyledAirplane src={airplane}/>
-            <StyledBoxOpened src={openBox}/>
-          </> :
-              <StyledBoxOpened src={closedBox}/>
-          }
+          {disabledSubmitButton ? (
+            <>
+              <StyledBall src={ball} />
+              <StyledStar src={star} />
+              <StyledHeart src={heart} />
+              <StyledBee src={bee} />
+              <StyledAirplane src={airplane} />
+              <StyledBoxOpened src={openBox} />
+            </>
+          ) : (
+            <StyledBoxOpened src={closedBox} />
+          )}
           <ParagraphItalicStyled>
             Alege să dăruiești o poveste! Trimite Profei de povești numele
             persoanei care primește cadoul, elemente dragi sau semnificative
@@ -367,7 +379,6 @@ export const StoryBoxSection = () => {
           </ParagraphItalicStyled>
         </StoryDescription>
       </DoubleContainer>
-
     </SectionContainerStoryBox>
   );
 };

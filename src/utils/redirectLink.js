@@ -1,3 +1,3 @@
 export const redirectLink = (link) => {
-    window.open(link)
-}
+  window.open(link);
+};

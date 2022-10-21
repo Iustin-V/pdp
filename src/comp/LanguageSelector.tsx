@@ -13,17 +13,13 @@ const StyledDropdown = styled.select`
   font-weight: 700;
   letter-spacing: 1px;
   color: ${colors.primary.base};
-   :hover {
+  :hover {
     background-color: ${colors.secondary.lighter};
   }
-  
-  @media(max-width:1200px){
-   font-size: 14px;
-  
+
+  @media (max-width: 1200px) {
+    font-size: 14px;
   }
-  
-  
- 
 `;
 const setCookie = (value: string) => {
   localStorage.setItem("locale", value);

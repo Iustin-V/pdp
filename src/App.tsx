@@ -25,17 +25,17 @@ import Loading from "./comp/Loading/Loading";
 export const PDPContext = React.createContext({});
 
 export interface Category {
-    content: string[];
-    img: string[];
-    language: string;
-    sectionName: string;
-    subTitle: string[];
-    video: string[];
-    links: string[];
-    contain: string[];
-    title: string;
-    _id: string;
-    __v: number;
+  content: string[];
+  img: string[];
+  language: string;
+  sectionName: string;
+  subTitle: string[];
+  video: string[];
+  links: string[];
+  contain: string[];
+  title: string;
+  _id: string;
+  __v: number;
 }
 
 function App() {
@@ -47,15 +47,23 @@ function App() {
     { title: "", price: "", time: "", text: [], image: "" },
   ]);
   const [allEvents, setAllEvents] = useState([
-    { titleSection: "", text: "", image: "", alt: "", date: "" },
+    {
+      titleSection: "",
+      text: "",
+      image: "",
+      alt: "",
+      date: "",
+      time: "",
+      website: "",
+    },
   ]);
   const [linkPathCourses, setLinkPathCourses] = useState("");
   const [linkPathEvents, setLinkPathEvents] = useState("");
 
   const { data, loading, error } = useFetch(
-      `https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${
-          localStorage.locale || "ro"
-      }`
+    `https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${
+      localStorage.locale || "ro"
+    }`
   );
 
   React.useEffect(() => {
@@ -96,6 +104,8 @@ function App() {
             eventImage={link?.image}
             text={link?.text}
             date={link?.date}
+            time={link?.time}
+            website={link?.website}
             imageAlt={link?.alt}
           />
         }
@@ -127,29 +137,32 @@ function App() {
     );
   });
 
-    return (
-        <StyledWrapper>
-            {data.length === 0 ? <Loading/> :
-                <PDPContext.Provider value={allCategories}>
-                <BrowserRouter>
-                    <div ref={topRef}/>
-                    <Navbar allCategories={allCategories} setTopButton={setTopButton}/>
-                    <ScrollToTop/>
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        {navbarLinks}
-                        <Route path="/blog" element={<WorkInProgress/>}/>
-                        <Route path="/login" element={<Login/>}/>
+  return (
+    <StyledWrapper>
+      {data.length === 0 ? (
+        <Loading />
+      ) : (
+        <PDPContext.Provider value={allCategories}>
+          <BrowserRouter>
+            <div ref={topRef} />
+            <Navbar allCategories={allCategories} setTopButton={setTopButton} />
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              {navbarLinks}
+              <Route path="/blog" element={<WorkInProgress />} />
+              <Route path="/login" element={<Login />} />
 
-                        {coursesLinkRoutes}
-                      {eventsLinkRoutes}
-                    </Routes>
-                    <ToTopButton topRef={topRef} isTopButton={isTopButton}/>
-                    <Footer/>
-                </BrowserRouter>
-            </PDPContext.Provider>}
-        </StyledWrapper>
-    );
+              {coursesLinkRoutes}
+              {eventsLinkRoutes}
+            </Routes>
+            <ToTopButton topRef={topRef} isTopButton={isTopButton} />
+            <Footer />
+          </BrowserRouter>
+        </PDPContext.Provider>
+      )}
+    </StyledWrapper>
+  );
 }
 
 export default App;

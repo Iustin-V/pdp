@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ThreeDots from "../../utils/loader";
-import LogoImage from '../images/logo.png'
-import TeacherIcon from '../images/teacher-icon.png'
+import LogoImage from "../images/logo.png";
+import TeacherIcon from "../images/teacher-icon.png";
 
 export const LoadingContainer = styled.div`
   height: 100vh;
@@ -29,14 +29,13 @@ export const LogoImageContainer = styled(ThreeDots)`
   }
   @media (max-width: 324px) {
     width: 150px;
-    top:-91px;
-    left:125px
+    top: -91px;
+    left: 125px;
   }
 `;
 
 export const ImageStyled = styled.img.attrs({
-    src: `${LogoImage}`
-
+  src: `${LogoImage}`,
 })`
   @media (max-width: 840px) {
     width: 200px;
@@ -49,10 +48,10 @@ export const ImageStyled = styled.img.attrs({
     width: 125px;
     margin-left: 50px;
   }
-`
+`;
 
 export const TeacherIconStyled = styled.img.attrs({
-    src: `${TeacherIcon}`
+  src: `${TeacherIcon}`,
 })`
   position: absolute;
   bottom: 0px;
@@ -68,5 +67,4 @@ export const TeacherIconStyled = styled.img.attrs({
     width: 125px;
     margin-left: 50px;
   }
-`
-
+`;

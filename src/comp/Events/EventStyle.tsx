@@ -13,7 +13,6 @@ export const StyledEventCardContainer = styled.div`
   }
 `;
 export const StyledMedia = styled.img<{ height?: string }>`
-
   height: ${(props) => props.height || "200px"};
   
   @media(max-width:768px){
@@ -44,17 +43,18 @@ export const StyledTitle = styled.p`
     text-align: center;
   }
 `;
-export const StyledParagraph = styled.p`
+export const StyledParagraph = styled.p<{ textAlign?: string }>`
   width: 100%;
   margin: 0;
   flex-direction: column;
   gap: 10px;
   display: flex;
   color: ${colors.primary.base};
+  ${(props) => `text-align: ${props.textAlign};
+  line-height:1.6rem;`};
   @media (max-width: 768px) {
     font-size: ${fontSizes.mobile.paragraph.small};
     align-items: center;
-    
   }
 `;
 export const StyledPageEventInfo = styled.div`
@@ -67,11 +67,11 @@ export const StyledPageEventInfo = styled.div`
 `;
 export const StyledButton = styled.button`
   background-color: #002366;
-  width: 150px;
+  width: fit-content;
   border-radius: 12px;
   border: none;
   color: white;
-  padding: 12px;
+  padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

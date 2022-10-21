@@ -25,10 +25,7 @@ export const PrincipalesLinks = () => {
   return (
     <RectangleStyled>
       {contentText?.map(
-        (
-          item: { link: string; label: string; alt: string },
-          key
-        ) => {
+        (item: { link: string; label: string; alt: string }, key) => {
           return (
             <StyledIconLink key={key} to={item.link}>
               <StyledIcon src={ImageArray[key]} alt={`${item.label} Pic`} />

@@ -28,7 +28,7 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
   React.useEffect(() => {
-    if (localStorage.user != 'null'  ) {
+    if (localStorage.user != "null") {
       window.location.href = "/";
     }
   }, []);

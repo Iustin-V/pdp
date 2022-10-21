@@ -29,10 +29,10 @@ export const MainPage = () => {
               // @ts-ignore
               <MainTitle>{sectionText.title}</MainTitle>
             }
-              {
-                  // @ts-ignore
-            <MainPageText>{sectionText.subTitle}</MainPageText>
-              }
+            {
+              // @ts-ignore
+              <MainPageText>{sectionText.subTitle}</MainPageText>
+            }
           </PageContainer>
         </MainContentWrapper>
       </MainPagePhoto>

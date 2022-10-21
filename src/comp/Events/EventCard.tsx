@@ -29,11 +29,9 @@ const StyledFlexContainer = styled.div`
 `;
 const StyledElipsisParagraph = styled(StyledParagraph)`
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  
-
 `;
 export const EventCard = (props: EventCardProps) => {
   return (

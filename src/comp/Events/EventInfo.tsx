@@ -1,21 +1,21 @@
 import React from "react";
 
-import {Border, SectionContainer, TitleSection} from "../Styles";
-import {colors, fontSizes} from "../../generalStyle";
-import {StyledPageEventInfo, StyledParagraph,} from "./EventStyle";
+import { Border, SectionContainer, TitleSection } from "../Styles";
+import { colors, fontSizes } from "../../generalStyle";
+import { StyledPageEventInfo, StyledParagraph } from "./EventStyle";
 import styled from "styled-components";
-import {eventTranslates} from "../../Translates/Translates";
-import { useNavigate } from 'react-router-dom';
-import {redirectLink} from "../../utils/redirectLink";
+import { eventTranslates } from "../../Translates/Translates";
+import { useNavigate } from "react-router-dom";
+import { redirectLink } from "../../utils/redirectLink";
 
 interface EventInfoProps {
-    title: string;
-    text: string;
-    eventImage: string;
-    imageAlt: string;
-    date: string;
-    ora?: string;
-    site?: string;
+  title: string;
+  text: string;
+  eventImage: string;
+  imageAlt: string;
+  date: string;
+  time?: string;
+  website?: string;
 }
 
 const StyledContent = styled.div`
@@ -30,7 +30,6 @@ const StyledContent = styled.div`
   }
 
   p {
-
     max-width: fit-content;
     font-size: ${fontSizes.desktop.paragraph.base};
   }
@@ -55,13 +54,12 @@ const StyledBox = styled.div`
     display: block;
   }
 
-  p > span:hover { {
-    cursor: pointer;
-    text-decoration: underline;
-
+  p > span:hover {
+     {
+      cursor: pointer;
+      text-dectimetion: underline;
+    }
   }
-  }
-
 `;
 
 const StyledBoxHead = styled(StyledParagraph)`
@@ -77,9 +75,7 @@ const PictureWrapper = styled.div`
     object-position: bottom;
     height: 400px;
     width: 100%;
-
   }
-
 `;
 const BackButton = styled.button`
   width: fit-content;
@@ -94,7 +90,7 @@ const BackButton = styled.button`
   top: 120px;
 
   ::before {
-    content: '\\00ab';
+    content: "\\00ab";
     position: absolute;
     font-size: 30px;
     opacity: 0;
@@ -111,7 +107,7 @@ const BackButton = styled.button`
     }
 
     border: 2px solid ${colors.primary.base};
-    background-color: ${colors.primary.lighter}
+    background-color: ${colors.primary.lighter};
   }
 
   @media (max-width: 1200px) {
@@ -120,38 +116,44 @@ const BackButton = styled.button`
   }
 `;
 export const EventInfo = (props: EventInfoProps) => {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
-    return (
-        <StyledPageEventInfo>
-            <BackButton onClick={() => navigate(-1)}>{"Back"}</BackButton>
-            <SectionContainer maxWidth={"1000"}>
-                <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
-                <StyledContent>
-                    <PictureWrapper>
-                        <img
-                            src={props.eventImage}
-                            alt={props.imageAlt}
-                        />
-                    </PictureWrapper>
-                    <StyledParagraph>{props.text}</StyledParagraph>
-                    <Border/>
-                    <StyledBox>
-                        <StyledBoxHead>
-                            {
-                                // @ts-ignore
-                                eventTranslates[localStorage.locale || "ro"]
-                            }:
-                        </StyledBoxHead>
-                        <StyledParagraph>Date: {props.date}</StyledParagraph>
-                        <StyledParagraph>Time: 20:00{props.ora}</StyledParagraph>
-                        <StyledParagraph>
-                            Website: <span
-                            onClick={() => redirectLink(props.site)}>www.REDIRECTSITE.ro{props.site}</span>
-                        </StyledParagraph>
-                    </StyledBox>
-                </StyledContent>
-            </SectionContainer>
-        </StyledPageEventInfo>
-    );
+  return (
+    <StyledPageEventInfo>
+      <BackButton onClick={() => navigate(-1)}>{"Back"}</BackButton>
+      <SectionContainer maxWidth={"1000"}>
+        <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
+        <StyledContent>
+          <PictureWrapper>
+            <img src={props.eventImage} alt={props.imageAlt} />
+          </PictureWrapper>
+          <StyledParagraph textAlign="center">{props.text}</StyledParagraph>
+          <Border />
+          <StyledBox>
+            <StyledBoxHead>
+              {
+                // @ts-ignore
+                eventTranslates[localStorage.locale || "ro"]
+              }
+              :
+            </StyledBoxHead>
+            {props.date && (
+              <StyledParagraph>Date: {props.date}</StyledParagraph>
+            )}
+            {props.time && (
+              <StyledParagraph>Time: {props.time}</StyledParagraph>
+            )}
+            {props.website && (
+              <StyledParagraph>
+                Website:
+                <span onClick={() => redirectLink(props.website)}>
+                  {props.website}
+                </span>
+              </StyledParagraph>
+            )}
+          </StyledBox>
+        </StyledContent>
+      </SectionContainer>
+    </StyledPageEventInfo>
+  );
 };
