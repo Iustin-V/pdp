@@ -1,6 +1,6 @@
 import { StyledPageWrapper, TitleSection } from "./comp/Styles";
 import { colors } from "./generalStyle";
-import unknownRouteImage from "./comp/images/unknownPage.jpg";
+import unknownRouteImage from "./comp/images/unknownPage.webp";
 import { unknownPageText } from "./Translates/Translates";
 import { ContactFormBackground } from "./comp/Contact/Contact-Style";
 
