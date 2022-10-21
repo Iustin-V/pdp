@@ -11,6 +11,7 @@ import {
 } from "./EditModalStyle";
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
+import Login from "../Login/Login";
 
 interface EditModalProps {
   modalData: any;
@@ -22,11 +23,13 @@ interface EditModalProps {
 
 export const EditModal = (props: EditModalProps) => {
   const localModalData = props?.modalData;
-  const [message, setMessage] = React.useState([]);
   const [updateObject, setUpdateObject] = React.useState({});
+  const [intermediaryObject, setUpdateIntermediaryObject] = React.useState({});
   const [updateArray, setUpdateArray] = React.useState([]);
+  const [updateObjectArray, setUpdateObjectArray] = React.useState([{}]);
   const [initialArray, setInitialArray] = React.useState([]);
-  const arr = [""];
+  const [initialObjectArray, setInitialObjectArray] = React.useState([]);
+
   if (props.editModal) {
     document.body.style.overflow = "hidden";
   }
@@ -38,18 +41,20 @@ export const EditModal = (props: EditModalProps) => {
   };
 
   React.useEffect(() => {
+    setUpdateObjectArray(initialObjectArray);
     setUpdateArray(initialArray);
-  }, [initialArray]);
+  }, [initialArray, initialObjectArray]);
 
   const saveModal = () => {
     axios.put(
-      `https://api-example2.onrender.com/api/sections/${localModalData?._id}`,
+      `https://pdp-api.onrender.com /api/sections/${localModalData?._id}`,
       {
         ...updateObject,
         // content: ['Researchers have discovered that when we listen to stories, more chemicals are released in the brain associated with various emotional states. Thus, stories give meaning and emotion to our existence, motivate us and make us reflect on everything that happens around us. That\'s why stories chaaange behavior without resorting to the system of punishments and rewards.asddas','Les chercheurs ont découvert que lorsque nous écoutons des histoires, plus de produits chimiques sont libérés dans le cerveau associés à divers états émotionnels. Ainsi, les histoires donnent du sens et de l\'émotion à notre existence, nous motivent et nous font réfléchir sur tout ce qui se passe autour de nous. C\'est pourquoi les histoires changent les comportements sans recourir au système des punitions et des récompenses.','Nous avons assez de réunions, de conférences, de devoirs et de devoirs ! Les histoires sont amusantes, éducatives, motivantes et stimulent la créativité, ce qui nous aide dans tous les domaines de la vie. Les histoires nous donnent différents points de vue sur la même réalité et nous font trouver des solutions ingénieuses à des problèmes que je pensais peut-être insolubles.','Et des réponses aux questions non encore posées.'],
         //@ts-ignore
 
-        content: updateArray,
+        // content: updateArray,
+        content: updateObjectArray,
       }
     );
     exitModal();
@@ -73,38 +78,45 @@ export const EditModal = (props: EditModalProps) => {
     console.log("updateObject", updateObject);
   };
 
-  const handleArrayMessageChange = (
-    event: any,
-    index?: number,
-    isObject?: boolean
-  ) => {
+  const handleArrayMessageChange = (event: any, index?: number) => {
     console.log("initialArray", initialArray);
 
     console.log("initialArray1", initialArray.slice(0, index));
-    if (isObject) {
+    setInitialArray(props.modalData[event.target.name]);
+    // @ts-ignore
+    // la copy paste trb adaugat un space la final ca sa  citeasca
+    setUpdateArray([
+      ...updateArray.slice(0, index),
+      event.target.value,
       // @ts-ignore
-      setUpdateArray([
-        ...updateArray.slice(0, index),
-        { [event.target.name]: event.target.value },
-        // @ts-ignore
-        ...updateArray.slice(index + 1, initialArray.length),
-      ]);
-    } else {
-      setInitialArray(props.modalData[event.target.name]);
-      // @ts-ignore
-      // la copy paste trb adaugat un space la final ca sa  citeasca
-      //schimbat content hardcodat
-      setUpdateArray([
-        ...updateArray.slice(0, index),
-        event.target.value,
-        // @ts-ignore
-        ...updateArray.slice(index + 1, initialArray.length),
-      ]);
-    }
+      ...updateArray.slice(index + 1, initialArray.length),
+    ]);
 
     console.log("verificare", updateArray.slice(0, index));
 
     console.log("updateArray", updateArray);
+  };
+
+  const handleObjectArrayMessageChange = (
+    event: any,
+    name: string,
+    index: number
+  ) => {
+    setInitialObjectArray(props.modalData["content"]);
+    setUpdateIntermediaryObject(updateObjectArray[index]);
+    console.log("updateObjectArray", updateObjectArray, event);
+
+    console.log("updateinitialObjectArray", initialObjectArray);
+    console.log("updateStuff", {
+      [name]: event.target.value,
+    });
+    console.log("updateStuff2", updateObjectArray[index]);
+
+    setUpdateObjectArray([
+      ...updateObjectArray.slice(0, index),
+      { ...intermediaryObject, [name]: event.target.value },
+      ...updateObjectArray.slice(index + 1, initialObjectArray.length),
+    ]);
   };
   console.log("localModalData", localModalData);
   const textEditors = Object.keys(localModalData).map(
@@ -142,14 +154,18 @@ export const EditModal = (props: EditModalProps) => {
                             </StyledText>
                             <StyledTextArea
                               onChange={(e) =>
-                                handleArrayMessageChange(e, index, true)
+                                handleObjectArrayMessageChange(
+                                  e,
+                                  objData,
+                                  index
+                                )
                               }
                               name={item}
                             >
                               {item[objData]}
                             </StyledTextArea>
                           </>
-                        )}{" "}
+                        )}
                       </>
                     );
                   });
@@ -157,9 +173,7 @@ export const EditModal = (props: EditModalProps) => {
                 return (
                   <>
                     <StyledTextArea
-                      onChange={(e) =>
-                        handleArrayMessageChange(e, index, false)
-                      }
+                      onChange={(e) => handleArrayMessageChange(e, index)}
                       name={element}
                       minHeight={
                         item.length > 50
