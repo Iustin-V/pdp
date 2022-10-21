@@ -51,8 +51,8 @@ export const StyledFooterSocialMedia = styled.div`
   }
 `;
 export const StyledSMImage = styled.img`
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   @media (max-width: 768px) {
     height: 24px;
     width: 24px;

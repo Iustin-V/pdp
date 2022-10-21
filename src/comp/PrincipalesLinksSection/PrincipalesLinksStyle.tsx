@@ -128,6 +128,11 @@ export const StyledIconLink = styled(Link)`
     h3 {
       color: #ffa500;
     }
+    img {
+     opacity:1;
+     transform: scale(1.1);
+     transition: 1s ease;
+    }
   }
 
   @media (max-width: 768px) {
@@ -143,6 +148,8 @@ export const StyledIcon = styled.img`
   width: auto;
   height: 150px;
   margin-top: -20px;
+  opacity:0.8;
+  transition: 1s ease;
   @media (max-width: 1200px) {
     height: 120px;
     margin-top: -10px;
@@ -154,6 +161,7 @@ export const StyledIcon = styled.img`
 `;
 export const StyledIconLabel = styled.h3`
 animation: font-up 3s;
+animation-delay:2s;
 color:${colors.secondary.base};
 font-size:${fontSizes.mobile.heading.base};
 margin:0;
