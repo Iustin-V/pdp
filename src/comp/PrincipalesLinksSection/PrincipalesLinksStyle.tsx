@@ -17,7 +17,7 @@ export const RectangleStyled = styled.div`
   border-width: 2px 2px 2px 2px;
   border-radius: 5px;
   border-color: ${colors.secondary.base};
-  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 32%);
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 32%);
 
   @media (max-width: 1200px) {
     animation: slide-from-bottom-tablet 1.5s ease-out forwards 1.6s;
@@ -156,7 +156,7 @@ export const StyledIcon = styled.img`
   }
   @media (max-width: 768px) {
     height: 80px;
-    margin-top: 0px;
+    margin-top: 0;
   }
 `;
 export const StyledIconLabel = styled.h3`

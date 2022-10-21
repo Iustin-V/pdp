@@ -8,13 +8,14 @@ export const StyledFooter = styled.div`
   background-color: ${colors.secondary.base};
 `;
 export const StyledFirstRow = styled.div`
-  padding: 40px 40px;
+  padding: 20px 40px;
   width: calc(100% - 80px);
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-
+  align-items: center;
+  justify-content: space-around;
   @media (max-width: 1200px) {
     flex-direction: column;
     row-gap: 56px;
@@ -36,7 +37,7 @@ export const StyledFooterLink = styled(Link)`
   }
 `;
 
-export const StyledFooterSocialMedia = styled.div`
+export const StyledFooterSocialMedia = styled.div<{ name?: string }>`
   padding: 10px;
   background-color: ${colors.primary.base};
   border: 1px solid ${colors.primary.base};
@@ -44,10 +45,27 @@ export const StyledFooterSocialMedia = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.7s ease;
 
   :hover {
-    background: ${colors.primary.lighter};
-    border: 1px solid white;
+    background: white;
+    border: 1px solid black;
+    img {
+      filter: ${(props) => {
+        switch (props.name) {
+          case "twitter":
+            return "invert(53%) sepia(61%) saturate(3037%) hue-rotate(176deg) brightness(100%) contrast(91%);";
+          case "youtube":
+            return "invert(32%) sepia(98%) saturate(7135%) hue-rotate(355deg) brightness(110%) contrast(125%);";
+          case "facebook":
+            return "invert(49%) sepia(10%) saturate(3784%) hue-rotate(184deg) brightness(74%) contrast(83%);";
+          case "instagram":
+            return "unset;border-radius: 6px;   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);";
+          case "tiktok":
+            return "unset;background-color:#000000;box-shadow:2px 2px #00f2ea,-2px -2px #ff0050;";
+        }
+      }};
+    }
   }
 `;
 export const StyledSMImage = styled.img`
@@ -59,12 +77,13 @@ export const StyledSMImage = styled.img`
   }
 `;
 
-export const StyledFooterLinksColumn = styled.div`
+export const LogoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-right: 100px;
-  width: 50%;
-  border-top: 2px solid ${colors.primary.lighter};
+  width: fit-content;
+  //border-top: 2px solid ${colors.primary.lighter};
 
   @media (max-width: 1200px) {
     width: 100%;
@@ -72,22 +91,22 @@ export const StyledFooterLinksColumn = styled.div`
   }
 `;
 export const StyledFooterSocialMediaColumn = styled.div`
-  height: fit-content;
+  justify-content: right;
   display: flex;
   flex-direction: row;
   column-gap: 20px;
   row-gap: 20px;
-  width: 50%;
+  width: fit-content;
   flex-wrap: wrap;
-  padding: 0 15px;
-  border-top: 2px solid ${colors.primary.lighter};
+  height: 100%;
+  align-items: center;
 
   @media (max-width: 1200px) {
     width: auto;
   }
 
   h2 {
-    padding: 15px 0px;
+    padding: 15px 0;
   }
 `;
 export const StyledHeaderText = styled.h2`

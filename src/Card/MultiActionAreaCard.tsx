@@ -86,7 +86,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
         style={{
           justifyContent: "center",
           borderTop: "1px solid #b4a087",
-          margin: " 0px 10px",
+          margin: " 0 10px",
         }}
       >
         <Link style={{ textDecoration: "none" }} to={linkGenerate(props.title)}>

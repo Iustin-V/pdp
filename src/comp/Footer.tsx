@@ -1,12 +1,10 @@
 import {
+  LogoContainer,
   StyledFirstRow,
   StyledFooter,
-  StyledFooterLink,
-  StyledFooterLinksColumn,
   StyledFooterSocialMedia,
   StyledFooterSocialMediaColumn,
   StyledFooterText,
-  StyledHeaderText,
   StyledSecondRow,
   StyledSMImage,
 } from "./Footer-Style";
@@ -16,17 +14,12 @@ import instagramIcon from "./images/social-media/icons8-instagram.svg";
 import tiktokIcon from "./images/social-media/icons8-tiktok.svg";
 import twitterIcon from "./images/social-media/icons8-twitter.svg";
 import whiteLogo from "./images/logo-white.png";
-import { StyledImage, StyledLogoItem, StyledText } from "./Navbar-Style";
+import { StyledImage, StyledLogoItem } from "./Navbar-Style";
 import * as React from "react";
 import { useState } from "react";
 import { PDPContext } from "../App";
 import { getData } from "../utils/getData";
 import linkGenerate from "../generalFunction";
-
-interface footerLink {
-  slug: string;
-  label: string;
-}
 
 interface socialMedia {
   name: string;
@@ -36,15 +29,9 @@ interface socialMedia {
 
 export const Footer = () => {
   const contextLocal: object = React.useContext(PDPContext);
-  const [contentFooterLinks, setContentFooterLinks] = useState({
-    title: "",
-    content: [],
-  });
   const [contentMediaLinks, setContentMediaLinks] = useState({ title: "" });
 
   React.useEffect(() => {
-    const dataFooterLinks = getData(contextLocal, "FooterLinks");
-    setContentFooterLinks(dataFooterLinks);
     const dataMedia = getData(contextLocal, "FooterSocialLinks");
     setContentMediaLinks(dataMedia);
   }, [contextLocal]);
@@ -97,16 +84,11 @@ export const Footer = () => {
     window.open(link);
   };
 
-  const FooterLinkColumn = contentFooterLinks.content?.map((link) => {
-    return (
-      <StyledFooterLink key={link} to={changePage(link)}>
-        <StyledText>{link}</StyledText>
-      </StyledFooterLink>
-    );
-  });
   const FooterSocialMediaColumn = socialMediaLinks.map((socialMedia, index) => {
+    console.log(socialMedia, "socialMedia");
     return (
       <StyledFooterSocialMedia
+        name={socialMedia.name}
         key={socialMedia.name}
         onClick={() => redirectLink(socialMedia.link)}
       >
@@ -126,19 +108,15 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <StyledFirstRow>
-        <StyledFooterLinksColumn>
-          <StyledHeaderText>{contentFooterLinks.title}: </StyledHeaderText>
-          {FooterLinkColumn}
-        </StyledFooterLinksColumn>
+        <LogoContainer>
+          <FooterLogo />
+          <StyledFooterText>2022 © Profa De Povesti</StyledFooterText>
+        </LogoContainer>
         <StyledFooterSocialMediaColumn>
-          <StyledHeaderText>{contentMediaLinks.title}: </StyledHeaderText>
           {FooterSocialMediaColumn}
         </StyledFooterSocialMediaColumn>
       </StyledFirstRow>
-      <StyledSecondRow>
-        <FooterLogo />
-        <StyledFooterText>2022 © Profa De Povesti</StyledFooterText>
-      </StyledSecondRow>
+      <StyledSecondRow></StyledSecondRow>
     </StyledFooter>
   );
 };

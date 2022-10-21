@@ -54,8 +54,8 @@ export const TeacherIconStyled = styled.img.attrs({
   src: `${TeacherIcon}`,
 })`
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 0;
+  right: 0;
   @media (max-width: 840px) {
     width: 200px;
   }

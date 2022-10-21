@@ -62,7 +62,7 @@ export const CourseInfoStyledButton = styled.button`
   letter-spacing: 2px;
   background: rgb(248, 236, 212);
   border: 5px solid white;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.4);
   transition: 500ms;
   border-radius: 15px;
   color: #001f61;
@@ -70,7 +70,7 @@ export const CourseInfoStyledButton = styled.button`
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
   }
 `;
 

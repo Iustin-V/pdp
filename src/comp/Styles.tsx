@@ -164,7 +164,7 @@ export const ParagraphItalicStyled = styled.p`
   font-size: ${fontSizes.desktop.paragraph.base};
   font-weight: 500;
   font-style: italic;
-  line-height: 3=0px;
+  line-height: 3=0;
   width: initial;
   max-width: initial;
 
@@ -194,7 +194,7 @@ export const MarginTOPContainer = styled.div`
     margin-top: 30px;
   }
   @media (max-width: 768px) {
-    margin-top: 0px;
+    margin-top: 0;
   }
 `;
 export const WrapperCard = styled.div`
@@ -233,7 +233,7 @@ export const Border = styled.hr`
 
   @keyframes progress {
     0% {
-      transform: translateX(0px);
+      transform: translateX(0);
     }
     100% {
       transform: translateX(2000px);
