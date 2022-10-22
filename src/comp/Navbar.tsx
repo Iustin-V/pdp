@@ -86,7 +86,7 @@ export const Navbar = (props: navbarProps) => {
     document?.getElementById("overlay")?.classList.remove("visible");
   };
   const handleOpen = () => {
-    document.body.style.overflow = "hidden";
+    document.body.classList.toggle("overflow");
     document?.getElementById("lateralmenu")?.classList.toggle("opened");
     document
       ?.getElementById("menubutton")
