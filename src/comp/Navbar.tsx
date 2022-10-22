@@ -35,7 +35,7 @@ export const Navbar = (props: navbarProps) => {
 
   React.useEffect(() => {
     const navbar = getData(contextLocal, "Navbar");
-    setNavbarTexts(navbar.subTitle);
+    setNavbarTexts(navbar.content);
   }, [contextLocal]);
 
   React.useEffect(() => {

@@ -14,6 +14,7 @@ import instagramIcon from "./images/social-media/icons8-instagram.svg";
 import tiktokIcon from "./images/social-media/icons8-tiktok.svg";
 import twitterIcon from "./images/social-media/icons8-twitter.svg";
 import whiteLogo from "./images/logo-white.png";
+import redEclipse from "./images/RedEclipse.png";
 import { StyledImage, StyledLogoItem } from "./Navbar-Style";
 import * as React from "react";
 import { useState } from "react";
@@ -116,7 +117,10 @@ export const Footer = () => {
           {FooterSocialMediaColumn}
         </StyledFooterSocialMediaColumn>
       </StyledFirstRow>
-      <StyledSecondRow></StyledSecondRow>
+      <StyledSecondRow>
+        <img src={redEclipse} alt="RedEclipseLogo" />
+
+      </StyledSecondRow>
     </StyledFooter>
   );
 };

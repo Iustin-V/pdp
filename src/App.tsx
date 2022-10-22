@@ -70,7 +70,7 @@ function App() {
   React.useEffect(() => {
     if (data.length !== 0) {
       setAllCategories(data);
-      setNavbarTexts(getData(data, "Navbar").subTitle);
+      setNavbarTexts(getData(data, "Navbar").content);
       const allData = getData(data, "CourseChildParents").content.concat(
         getData(data, "CourseTeacher").content
       );

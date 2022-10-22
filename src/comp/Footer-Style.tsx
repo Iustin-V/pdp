@@ -15,10 +15,13 @@ export const StyledFirstRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   @media (max-width: 1200px) {
     flex-direction: column;
-    row-gap: 56px;
+    row-gap: 25px;
+  }
+  @media (max-width: 768px) {
+    row-gap: 14px;
   }
 `;
 
@@ -104,7 +107,10 @@ export const StyledFooterSocialMediaColumn = styled.div`
   @media (max-width: 1200px) {
     width: auto;
   }
-
+  @media (max-width: 768px) {
+    justify-content: center;
+    column-gap: 15px;
+  }
   h2 {
     padding: 15px 0;
   }
@@ -125,9 +131,19 @@ export const StyledSecondRow = styled.div`
   max-width: 1440px;
   display: flex;
   margin: 0 auto;
-  flex-direction: column;
-  padding: 40px 55px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 55px;
   border-top: 2px solid ${colors.primary.lighter};
+  gap: 5px;
+  img {
+    height: 80px;
+    object-fit: contain;
+    @media (max-width: 768px) {
+      height: 46px;
+    }
+  }
 `;
 
 export const StyledFooterText = styled.p`
