@@ -240,3 +240,17 @@ export const Border = styled.hr`
     }
   }
 `;
+export const StyledEditButton = styled.button`
+  height: fit-content;
+  width: fit-content;
+  background-color: #f8ecd4;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 15px;
+  cursor: grab;
+  border: 5px solid black;
+  border-radius:15px;
+  :hover {
+    background-color: #b4a087;
+  }
+`;

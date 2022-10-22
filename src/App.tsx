@@ -22,6 +22,7 @@ import { StoryBoxPage } from "./comp/StoryBox/StoryBox";
 import { EventInfo } from "./comp/Events/EventInfo";
 import Loading from "./comp/Loading/Loading";
 import { UnknownRoute } from "./UnknownRoute";
+import { EditModal } from "./comp/EditModal/EditModal";
 
 export const PDPContext = React.createContext({});
 
@@ -44,6 +45,8 @@ function App() {
   const [isTopButton, setTopButton] = React.useState(false);
   const [allCategories, setAllCategories] = React.useState([]);
   const [navbarText, setNavbarTexts] = useState([]);
+  const [modalData, setModalData] = useState([]);
+  const [editModal, setEditModal] = useState<boolean>(false);
   const [allLinkCourses, setLinkCourses] = useState([
     { title: "", price: "", time: "", text: [], image: "" },
   ]);
@@ -66,7 +69,10 @@ function App() {
       localStorage.locale || "ro"
     }`
   );
-
+  const editFunction = (data: any) => {
+    setModalData(data);
+    setEditModal(true);
+  };
   React.useEffect(() => {
     if (data.length !== 0) {
       setAllCategories(data);
@@ -143,26 +149,44 @@ function App() {
       {data.length === 0 ? (
         <Loading />
       ) : (
-        <PDPContext.Provider value={allCategories}>
-          <BrowserRouter>
-            <div ref={topRef} />
-            <Navbar allCategories={allCategories} setTopButton={setTopButton} />
-            <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              {navbarLinks}
-              <Route path="/blog" element={<WorkInProgress />} />
-              <Route path="/login" element={<Login />} />
+        <>
+          {editModal && (
+            <EditModal
+              modalData={modalData}
+              editModal={editModal}
+              setEditModal={setEditModal}
+            />
+          )}
+          <PDPContext.Provider
+            value={{
+              allCategories,
+              //@ts-ignore
+              editFunction,
+            }}
+          >
+            <BrowserRouter>
+              <div ref={topRef} />
+              <Navbar
+                allCategories={allCategories}
+                setTopButton={setTopButton}
+              />
+              <ScrollToTop />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                {navbarLinks}
+                <Route path="/blog" element={<WorkInProgress />} />
+                <Route path="/login" element={<Login />} />
 
-              {coursesLinkRoutes}
-              {eventsLinkRoutes}
+                {coursesLinkRoutes}
+                {eventsLinkRoutes}
 
-              <Route path="*" element={<UnknownRoute />} />
-            </Routes>
-            <ToTopButton topRef={topRef} isTopButton={isTopButton} />
-            <Footer />
-          </BrowserRouter>
-        </PDPContext.Provider>
+                <Route path="*" element={<UnknownRoute />} />
+              </Routes>
+              <ToTopButton topRef={topRef} isTopButton={isTopButton} />
+              <Footer />
+            </BrowserRouter>
+          </PDPContext.Provider>
+        </>
       )}
     </StyledWrapper>
   );

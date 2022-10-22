@@ -10,6 +10,7 @@ import bookshelf from "../images/bookshelf_compressed.png";
 import React, { useState } from "react";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
+import { EditButton } from "../EditButton";
 
 export const MainPage = () => {
   const contextLocal = React.useContext(PDPContext);
