@@ -12,9 +12,14 @@ import Background from "../images/aboutBackground.png";
 import { colors } from "../../generalStyle";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
+import {EditButton} from "../EditButton";
 
 export const AboutSection = () => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
+
   const [contentText, setContentTexts] = useState({
     title: "",
     content: [],
@@ -22,7 +27,7 @@ export const AboutSection = () => {
   });
 
   React.useEffect(() => {
-    const textData = getData(contextLocal, "AboutSection");
+    const textData = getData(contextLocal?.allCategories, "AboutSection");
     setContentTexts(textData);
   }, [contextLocal]);
 
@@ -41,6 +46,10 @@ export const AboutSection = () => {
           <YoutubeEmbed embedId={contentText.video} />
         </SectionContainer>
       </BackgroundWrapper>
+      <EditButton
+          editFunction={contextLocal?.editFunction}
+          sectionText={contentText}
+      />
     </MarginTOPContainer>
   );
 };

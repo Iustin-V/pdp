@@ -81,11 +81,14 @@ interface coursesInfo {
 }
 
 export const CourseInfo = (props: coursesInfo) => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [talkWithTeacher, setLinkTalkWithTeacher] = useState({ subTitle: [] });
 
   React.useEffect(() => {
-    const textData = getData(contextLocal, "Navbar");
+    const textData = getData(contextLocal?.allCategories, "Navbar");
     textData &&
       textData.subTitle &&
       // @ts-ignore

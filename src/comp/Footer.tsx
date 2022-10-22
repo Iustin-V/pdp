@@ -29,11 +29,14 @@ interface socialMedia {
 }
 
 export const Footer = () => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [contentMediaLinks, setContentMediaLinks] = useState({ title: "" });
 
   React.useEffect(() => {
-    const dataMedia = getData(contextLocal, "FooterSocialLinks");
+    const dataMedia = getData(contextLocal?.allCategories, "FooterSocialLinks");
     setContentMediaLinks(dataMedia);
   }, [contextLocal]);
 

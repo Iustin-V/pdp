@@ -16,7 +16,10 @@ interface weekStorySectionProps {
 }
 
 export const WeekStorySection = (props: weekStorySectionProps) => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({
     title: "",
     content: [],
@@ -24,7 +27,7 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
   });
 
   React.useEffect(() => {
-    const textData = getData(contextLocal, "WeekStorySection");
+    const textData = getData(contextLocal?.allCategories, "WeekStorySection");
     setContentTexts(textData);
   }, [contextLocal]);
 

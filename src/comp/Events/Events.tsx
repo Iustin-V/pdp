@@ -72,13 +72,16 @@ const AnimatedContainer = styled.div`
 `;
 
 export const Events = () => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [dataSection, setDataSection] = useState({
     content: [{ titleSection: "", text: "", image: "", alt: "", date: "" }],
     title: "",
   });
   React.useEffect(() => {
-    setDataSection(getData(contextLocal, "EventsSection"));
+    setDataSection(getData(contextLocal?.allCategories, "EventsSection"));
   }, []);
   // @ts-ignore
   const eventCards = dataSection.content?.map((event, key) => {

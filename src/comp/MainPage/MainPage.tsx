@@ -13,11 +13,14 @@ import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
 
 export const MainPage = () => {
-  const contextLocal = React.useContext(PDPContext);
-  const [sectionText, setSectionTexts] = useState([]);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
+  const [sectionText, setSectionTexts] = useState({ title: "", subTitle: [] });
 
   React.useEffect(() => {
-    const mainPage = getData(contextLocal, "MainPage");
+    const mainPage = getData(contextLocal?.allCategories, "MainPage");
     setSectionTexts(mainPage);
   }, [contextLocal]);
 
@@ -26,15 +29,13 @@ export const MainPage = () => {
       <MainPagePhoto backgroundImage={bookshelf}>
         <MainContentWrapper flexDirection="row">
           <PageContainer>
-            {
-              // @ts-ignore
-              <MainTitle>{sectionText.title}</MainTitle>
-            }
-            {
-              // @ts-ignore
-              <MainPageText>{sectionText.subTitle}</MainPageText>
-            }
+            {<MainTitle>{sectionText.title}</MainTitle>}
+            {<MainPageText>{sectionText.subTitle}</MainPageText>}
           </PageContainer>
+          <EditButton
+              editFunction={contextLocal?.editFunction}
+              sectionText={sectionText}
+          />
         </MainContentWrapper>
       </MainPagePhoto>
     </>

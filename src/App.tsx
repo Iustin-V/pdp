@@ -24,7 +24,10 @@ import Loading from "./comp/Loading/Loading";
 import { UnknownRoute } from "./UnknownRoute";
 import { EditModal } from "./comp/EditModal/EditModal";
 
-export const PDPContext = React.createContext({});
+export const PDPContext = React.createContext({
+  allCategories: [],
+  editFunction: (data: any) => false,
+});
 
 export interface Category {
   content: string[];

@@ -29,12 +29,15 @@ interface navbarProps {
 }
 
 export const Navbar = (props: navbarProps) => {
-  const contextLocal = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
 
   const [navbarText, setNavbarTexts] = useState([]);
 
   React.useEffect(() => {
-    const navbar = getData(contextLocal, "Navbar");
+    const navbar = getData(contextLocal?.allCategories, "Navbar");
     setNavbarTexts(navbar.content);
   }, [contextLocal]);
 
