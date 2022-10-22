@@ -33,11 +33,14 @@ export const Container = styled.div`
 `;
 
 export const Partners = () => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({ title: "" });
 
   React.useEffect(() => {
-    const textData = getData(contextLocal, "Partners");
+    const textData = getData(contextLocal?.allCategories, "Partners");
     setContentTexts(textData);
   }, [contextLocal]);
 

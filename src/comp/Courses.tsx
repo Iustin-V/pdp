@@ -23,7 +23,10 @@ export const StyledPageCourses = styled.div`
 `;
 
 export const Courses = () => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [contentCourseChildParents, setContentCourseChildParents] = useState({
     title: "",
     subTitle: "",
@@ -40,11 +43,17 @@ export const Courses = () => {
     content: [{ title: "", price: "", time: "", text: [], image: "" }],
   });
   React.useEffect(() => {
-    const textCourseChildParents = getData(contextLocal, "CourseChildParents");
+    const textCourseChildParents = getData(
+      contextLocal?.allCategories,
+      "CourseChildParents"
+    );
     setContentCourseChildParents(textCourseChildParents);
     setRefactorTitle(textCourseChildParents.title.split("-"));
 
-    const textCourseTeacher = getData(contextLocal, "CourseTeacher");
+    const textCourseTeacher = getData(
+      contextLocal?.allCategories,
+      "CourseTeacher"
+    );
     setContentCourseTeacher(textCourseTeacher);
     setRefactorTitleCourseTeacher(textCourseTeacher.title.split("-"));
   }, [contextLocal]);

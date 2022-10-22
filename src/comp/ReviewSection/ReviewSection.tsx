@@ -21,7 +21,10 @@ import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
 
 export const ReviewSection = () => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({
     title: "",
     content: [{ text: "", name: "", age: "", avatar: "" }],
@@ -29,7 +32,7 @@ export const ReviewSection = () => {
   });
 
   React.useEffect(() => {
-    const textData = getData(contextLocal, "ReviewSection");
+    const textData = getData(contextLocal?.allCategories, "ReviewSection");
     setContentTexts(textData);
   }, [contextLocal]);
 

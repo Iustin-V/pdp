@@ -16,12 +16,15 @@ import { getData } from "../../utils/getData";
 import { PDPContext } from "../../App";
 
 export const TimeLineSection = () => {
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
 
   const [contentText, setContentTexts] = useState({ title: "", content: [] });
 
   React.useEffect(() => {
-    const textData = getData(contextLocal, "TimeLineSelection");
+    const textData = getData(contextLocal?.allCategories, "TimeLineSelection");
     setContentTexts(textData);
   }, [contextLocal]);
 

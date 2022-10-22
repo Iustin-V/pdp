@@ -89,13 +89,19 @@ export const Contact = () => {
     },
   };
 
-  const contextLocal: object = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   React.useEffect(() => {
-    const allData = getData(contextLocal, "CourseChildParents").content.concat(
-      getData(contextLocal, "CourseTeacher").content
+    const allData = getData(
+      contextLocal?.allCategories,
+      "CourseChildParents"
+    ).content.concat(
+      getData(contextLocal?.allCategories, "CourseTeacher").content
     );
     setLinkCourses(allData);
-    setTextSection(getData(contextLocal, "ContactSection"));
+    setTextSection(getData(contextLocal?.allCategories, "ContactSection"));
 
     switch (localStorage.locale) {
       case "ro":

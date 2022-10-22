@@ -12,11 +12,14 @@ import { getData } from "../../utils/getData";
 import { PDPContext } from "../../App";
 
 export const PrincipalesLinks = () => {
-  const contextLocal = React.useContext(PDPContext);
+  const contextLocal: {
+    editFunction: (data: any) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState([]);
 
   React.useEffect(() => {
-    const mainPage = getData(contextLocal, "MainPage");
+    const mainPage = getData(contextLocal?.allCategories, "MainPage");
     setContentTexts(mainPage.content);
   }, [contextLocal]);
 
