@@ -85,14 +85,14 @@ export const CourseInfo = (props: coursesInfo) => {
     editFunction: (data: any) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
-  const [talkWithTeacher, setLinkTalkWithTeacher] = useState({ subTitle: [] });
+  const [talkWithTeacher, setLinkTalkWithTeacher] = useState({ content: [] });
 
   React.useEffect(() => {
     const textData = getData(contextLocal?.allCategories, "Navbar");
     textData &&
-      textData.subTitle &&
+      textData.content &&
       // @ts-ignore
-      setLinkTalkWithTeacher(linkGenerate(textData.subTitle[4]));
+      setLinkTalkWithTeacher(linkGenerate(textData.content[4]));
   }, [contextLocal]);
 
   const [buttonText, setButtonText] = useState("");
