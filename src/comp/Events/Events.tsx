@@ -6,6 +6,7 @@ import { EventCard } from "./EventCard";
 import React, { useState } from "react";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
+import {EditButton} from "../EditButton";
 
 const StyledEventsPage = styled.div`
   margin-top: 80px;
@@ -112,6 +113,10 @@ export const Events = () => {
           {eventCards}
         </StyledContent>
       </SectionContainer>
+      <EditButton
+          editFunction={contextLocal?.editFunction}
+          sectionText={dataSection}
+      />
     </StyledEventsPage>
   );
 };
