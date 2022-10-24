@@ -169,7 +169,7 @@ export const StoryBoxSection = (props: BoxSection) => {
         emailError,
         addressError,
     ]);
-    console.log(formFields);
+
 
     const currentData = getCurrentDate("-");
     return (

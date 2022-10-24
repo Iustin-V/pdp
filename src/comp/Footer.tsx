@@ -89,7 +89,6 @@ export const Footer = () => {
   };
 
   const FooterSocialMediaColumn = socialMediaLinks.map((socialMedia, index) => {
-    console.log(socialMedia, "socialMedia");
     return (
       <StyledFooterSocialMedia
         name={socialMedia.name}

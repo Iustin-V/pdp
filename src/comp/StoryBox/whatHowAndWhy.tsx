@@ -13,7 +13,6 @@ interface sectionDetails {
 
 
 export const WhatHowAndWhySection = (props: sectionDetails) => {
-    console.log(props.title, props.subTitle, props.sectionContent,'sectioncont')
     let Paragraph = props.sectionContent;
     const ParagraphAboutSection = Paragraph.map((item, key) => {
         return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;

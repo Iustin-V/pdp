@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import linkGenerate from "../generalFunction";
 import { useState } from "react";
 
+import { Tooltip } from "../comp/Styles";
+
 const CardMediaStyled = styled.img`
   width: 100%;
 
@@ -19,8 +21,10 @@ const CardMediaStyled = styled.img`
   transition: transform 1s ease-in-out;
 `;
 const StyledCard = styled(Card)`
+  position: relative;
   margin-top: 40px;
   margin-bottom: 40px;
+  overflow: initial;
   :hover {
     -webkit-box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
     box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
@@ -29,10 +33,15 @@ const StyledCard = styled(Card)`
 `;
 
 interface DetailedAboutCard {
+  item: object;
   image: any;
   price: string;
   time: string;
   title: string;
+  index: number;
+  content: object;
+  setDeleteModal: any;
+  setDeleteMOdalOpen: any;
 }
 
 export const MultiActionAreaCard = (props: DetailedAboutCard) => {
@@ -52,8 +61,21 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
     }
   }, []);
 
+  const handleDelete = (data: object, index: number) => {
+    props.setDeleteModal({ data, index });
+    props.setDeleteMOdalOpen(true);
+  };
+
   return (
     <StyledCard sx={{ maxWidth: 250 }}>
+      {localStorage.user !== "null" && <button
+          className={"delete-button"}
+          onClick={() => {
+            handleDelete(props.content, props.index);
+          }}
+      >
+        <Tooltip>Delete this course</Tooltip>X
+      </button>}
       <CardActionArea>
         <CardMediaStyled src={props.image} alt="courses" />
         <CardContent>

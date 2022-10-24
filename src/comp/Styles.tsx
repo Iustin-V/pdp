@@ -249,8 +249,22 @@ export const StyledEditButton = styled.button`
   padding: 15px;
   cursor: grab;
   border: 5px solid black;
-  border-radius:15px;
+  border-radius: 15px;
   :hover {
     background-color: #b4a087;
   }
+`;
+
+export const Tooltip = styled.span`
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+  z-index: 1;
+  left:-3px;
+  transform:translateX(-100%);
 `;

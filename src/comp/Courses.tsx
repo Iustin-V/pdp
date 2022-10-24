@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import { PDPContext } from "../App";
 import { getData } from "../utils/getData";
 import { EditButton } from "./EditButton";
+import { DeleteModal } from "./DeleteModal";
 
 export const StyledPageCourses = styled.div`
   margin-top: 80px;
@@ -37,6 +38,8 @@ export const Courses = () => {
   const [refactorTitleCourseTeacher, setRefactorTitleCourseTeacher] = useState(
     []
   );
+  const [deleteModal, setDeleteModal] = useState({data:{},index:0});
+  const [deleteMOdalOpen, setDeleteMOdalOpen] = useState(false);
 
   const [contentCourseTeacher, setContentCourseTeacher] = useState({
     title: "",
@@ -58,27 +61,44 @@ export const Courses = () => {
     setContentCourseTeacher(textCourseTeacher);
     setRefactorTitleCourseTeacher(textCourseTeacher.title.split("-"));
   }, [contextLocal]);
+  React.useEffect(() => {
+    if(deleteMOdalOpen)
+      document.body.style.overflow='hidden'
+    else
+      document.body.style.overflow='auto'
+  }, [deleteMOdalOpen]);
 
   const showCoursesCardChildParents = contentCourseChildParents.content?.map(
-    (item) => {
+    (item, index: number) => {
       return (
         <MultiActionAreaCard
           title={item.title}
           time={item.time}
           price={item.price}
           image={item.image}
+          item={item}
+          index={index}
+          content={contentCourseChildParents}
+          setDeleteModal={setDeleteModal}
+          setDeleteMOdalOpen={setDeleteMOdalOpen}
         />
       );
     }
   );
   const showCoursesCardParentsTeacher = contentCourseTeacher.content?.map(
-    (item) => {
+    (item, index: number) => {
       return (
         <MultiActionAreaCard
           title={item.title}
           time={item.time}
           price={item.price}
           image={item.image}
+          item={item}
+          index={index}
+          content={contentCourseTeacher}
+          setDeleteModal={setDeleteModal}
+          setDeleteMOdalOpen={setDeleteMOdalOpen}
+
         />
       );
     }
@@ -86,6 +106,7 @@ export const Courses = () => {
 
   return (
     <>
+      {deleteMOdalOpen && <DeleteModal modalData={deleteModal}  setDeleteMOdalOpen={setDeleteMOdalOpen}/>}
       <StyledPageCourses>
         <SectionContainer>
           <TitleSection color={colors.primary.base}>
