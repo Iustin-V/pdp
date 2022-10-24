@@ -51,6 +51,7 @@ export const StyledFooterSocialMedia = styled.div<{ name?: string }>`
   transition: 0.7s ease;
 
   :hover {
+  cursor:pointer;
     background: white;
     border: 1px solid black;
     img {
