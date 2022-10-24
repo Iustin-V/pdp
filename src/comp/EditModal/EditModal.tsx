@@ -145,6 +145,11 @@ export const EditModal = (props: EditModalProps) => {
                                   )
                                 }
                                 name={item}
+                                minHeight={
+                                  item[objData].length > 50
+                                      ? (item[objData].length / 3 + 20).toString() + "px"
+                                      : ""
+                                }
                               >
                                 {item[objData]}
                               </StyledTextArea>
@@ -176,6 +181,11 @@ export const EditModal = (props: EditModalProps) => {
             <StyledTextArea
               onChange={(e) => handleMessageChange(e)}
               name={element}
+              minHeight={
+                localModalData[element].length > 50
+                    ? (localModalData[element].length / 3 + 20).toString() + "px"
+                    : ""
+              }
             >
               {localModalData[element]}
             </StyledTextArea>
