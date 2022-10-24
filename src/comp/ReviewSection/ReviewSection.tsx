@@ -47,10 +47,6 @@ export const ReviewSection = () => {
             {review.name} - {review.age}
           </InfoReviewer>
         </InsideSlideWrapper>
-        <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentText}
-        />
       </SwiperSlide>
     );
   });
@@ -76,6 +72,10 @@ export const ReviewSection = () => {
           {ReviewsSection}
         </Swiper>
       </SectionContainer>
+      <EditButton
+          editFunction={contextLocal?.editFunction}
+          sectionText={contentText}
+      />
     </StyledReviewSection>
   );
 };
