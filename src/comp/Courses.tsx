@@ -12,6 +12,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { PDPContext } from "../App";
 import { getData } from "../utils/getData";
+import { EditButton } from "./EditButton";
 
 export const StyledPageCourses = styled.div`
   margin-top: 80px;
@@ -95,6 +96,10 @@ export const Courses = () => {
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
         </SectionContainer>
+        <EditButton
+          editFunction={contextLocal?.editFunction}
+          sectionText={contentCourseChildParents}
+        />
       </StyledPageCourses>
       <Border />
       <StyledPageCourses>
@@ -108,6 +113,10 @@ export const Courses = () => {
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardParentsTeacher}</WrapperCard>
         </SectionContainer>
+        <EditButton
+          editFunction={contextLocal?.editFunction}
+          sectionText={contentCourseTeacher}
+        />
       </StyledPageCourses>
     </>
   );

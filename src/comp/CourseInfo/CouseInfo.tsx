@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { getData } from "../../utils/getData";
 import { PDPContext } from "../../App";
 import linkGenerate from "../../generalFunction";
+import { courseButtonTranslates } from "../../Translates/Translates";
 
 export const StyledPageCourseInfo = styled.div`
   margin-top: 80px;
@@ -95,24 +96,9 @@ export const CourseInfo = (props: coursesInfo) => {
       setLinkTalkWithTeacher(linkGenerate(textData.content[4]));
   }, [contextLocal]);
 
-  const [buttonText, setButtonText] = useState("");
   const setCourse = (title: string) => {
     localStorage.setItem("course", title);
   };
-
-  React.useEffect(() => {
-    switch (localStorage.locale) {
-      case "ro":
-        setButtonText("Cumpără");
-        break;
-      case "en":
-        setButtonText("Buy");
-        break;
-      case "fr":
-        setButtonText("Acheter");
-        break;
-    }
-  }, []);
 
   const coursesTimeLine = props.text?.map((element, index) => {
     return (
@@ -158,8 +144,10 @@ export const CourseInfo = (props: coursesInfo) => {
                 // Trebuie luat value din Contact
               }}
             >
-              {" "}
-              {buttonText}
+              {
+                // @ts-ignore
+                courseButtonTranslates[localStorage?.locale || "ro"]
+              }
             </CourseInfoStyledButton>
           </Link>
         </SectionContainer>
