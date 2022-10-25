@@ -50,13 +50,17 @@ export const EditModal = (props: EditModalProps) => {
     } else if (updateObjectArray.length > 0) {
       content = updateObjectArray;
     }
-    axios.put(
-      `https://pdp-api.onrender.com/api/sections/${localModalData?._id}`,
-      {
+    axios
+      .put(`https://pdp-api.onrender.com/api/sections/${localModalData?._id}`, {
         ...updateObject,
         content,
-      }
-    );
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log("EditError", error);
+      });
     exitModal();
   };
 
@@ -147,8 +151,11 @@ export const EditModal = (props: EditModalProps) => {
                                 name={item}
                                 minHeight={
                                   item[objData].length > 50
-                                      ? (item[objData].length / 3 + 20).toString() + "px"
-                                      : ""
+                                    ? (
+                                        item[objData].length / 3 +
+                                        20
+                                      ).toString() + "px"
+                                    : ""
                                 }
                               >
                                 {item[objData]}
@@ -183,8 +190,8 @@ export const EditModal = (props: EditModalProps) => {
               name={element}
               minHeight={
                 localModalData[element].length > 50
-                    ? (localModalData[element].length / 3 + 20).toString() + "px"
-                    : ""
+                  ? (localModalData[element].length / 3 + 20).toString() + "px"
+                  : ""
               }
             >
               {localModalData[element]}
@@ -201,7 +208,7 @@ export const EditModal = (props: EditModalProps) => {
           <StyledText color={colors.primary.base}>Edit Section</StyledText>
           {textEditors}
           <StyledSaveButton onClick={saveModal}>Save</StyledSaveButton>
-          <StyledSaveButton onClick={exitModal}>CLOSE</StyledSaveButton>
+          <StyledSaveButton onClick={exitModal}>Close</StyledSaveButton>
         </ContentContainer>
       </ModalWrapper>
     </ModalCover>

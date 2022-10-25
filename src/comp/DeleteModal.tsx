@@ -31,6 +31,7 @@ const StyledModal = styled.div`
   }
 `;
 export const DeleteModal = (props: any) => {
+
   return (
     <StyledOverlay>
       <StyledModal>
@@ -43,6 +44,7 @@ export const DeleteModal = (props: any) => {
             onClick={() => {
                 deleteObject(props.modalData.data, props.modalData.index)
                 props.setDeleteMOdalOpen(false);
+
             }
             }
           >
@@ -53,7 +55,7 @@ export const DeleteModal = (props: any) => {
               props.setDeleteMOdalOpen(false);
             }}
           >
-            NO{" "}
+            NO
           </StyledSaveButton>
         </div>
       </StyledModal>

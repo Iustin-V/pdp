@@ -23,10 +23,12 @@ import { EventInfo } from "./comp/Events/EventInfo";
 import Loading from "./comp/Loading/Loading";
 import { UnknownRoute } from "./UnknownRoute";
 import { EditModal } from "./comp/EditModal/EditModal";
+import { CreateModal } from "./comp/CreateModal/CreateModal";
+import { DeleteModal } from "./comp/DeleteModal";
 
 export const PDPContext = React.createContext({
   allCategories: [],
-  editFunction: (data: any) => false,
+  editFunction: (data: any, type: string) => false,
 });
 
 export interface Category {
@@ -50,6 +52,14 @@ function App() {
   const [navbarText, setNavbarTexts] = useState([]);
   const [modalData, setModalData] = useState([]);
   const [editModal, setEditModal] = useState<boolean>(false);
+  const [createModal, setCreateModal] = useState<{
+    visibility: boolean;
+    schema: string;
+  }>({
+    visibility: false,
+    schema: "none",
+  });
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [allLinkCourses, setLinkCourses] = useState([
     { title: "", price: "", time: "", text: [], image: "" },
   ]);
@@ -66,15 +76,29 @@ function App() {
   ]);
   const [linkPathCourses, setLinkPathCourses] = useState("");
   const [linkPathEvents, setLinkPathEvents] = useState("");
-
   const { data, loading, error } = useFetch(
     `https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${
       localStorage.locale || "ro"
     }`
   );
-  const editFunction = (data: any) => {
+  const editFunction = (data: any, type: string) => {
+    switch (type) {
+      case "edit": {
+        setEditModal(true);
+        break;
+      }
+      case "createCourse":
+        setCreateModal({ visibility: true, schema: "course" });
+        break;
+      case "createEvent":
+        setCreateModal({ visibility: true, schema: "event" });
+        break;
+
+      case "delete":
+        setDeleteModal(true);
+        break;
+    }
     setModalData(data);
-    setEditModal(true);
   };
   React.useEffect(() => {
     if (data.length !== 0) {
@@ -161,6 +185,19 @@ function App() {
               modalData={modalData}
               editModal={editModal}
               setEditModal={setEditModal}
+            />
+          )}
+          {createModal.visibility && (
+            <CreateModal
+              data={modalData}
+              createModalSchema={createModal.schema}
+              setCreateModal={setCreateModal}
+            />
+          )}
+          {deleteModal && (
+            <DeleteModal
+              modalData={modalData}
+              setDeleteMOdalOpen={setDeleteModal}
             />
           )}
           <PDPContext.Provider

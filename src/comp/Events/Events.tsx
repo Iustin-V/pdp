@@ -6,7 +6,8 @@ import { EventCard } from "./EventCard";
 import React, { useState } from "react";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
-import {EditButton} from "../EditButton";
+import { EditButton } from "../EditButton";
+import { CreateButton } from "../CreateButton";
 
 const StyledEventsPage = styled.div`
   margin-top: 80px;
@@ -74,7 +75,7 @@ const AnimatedContainer = styled.div`
 
 export const Events = () => {
   const contextLocal: {
-    editFunction: (data: any) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [dataSection, setDataSection] = useState({
@@ -85,6 +86,7 @@ export const Events = () => {
     setDataSection(getData(contextLocal?.allCategories, "EventsSection"));
   }, []);
   // @ts-ignore
+  console.log("eventData", dataSection);
   const eventCards = dataSection.content?.map((event, key) => {
     return (
         <AnimatedContainer key={key}>
@@ -112,9 +114,15 @@ export const Events = () => {
           {eventCards}
         </StyledContent>
       </SectionContainer>
+      <CreateButton
+        createFunction={contextLocal?.editFunction}
+        sectionText={dataSection}
+        createType="createEvent"
+      />
+
       <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={dataSection}
+        editFunction={contextLocal?.editFunction}
+        sectionText={dataSection}
       />
     </StyledEventsPage>
   );

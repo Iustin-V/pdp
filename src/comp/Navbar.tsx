@@ -30,7 +30,7 @@ interface navbarProps {
 
 export const Navbar = (props: navbarProps) => {
   const contextLocal: {
-    editFunction: (data: any) => boolean;
+    editFunction: (data: any,type:string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
 

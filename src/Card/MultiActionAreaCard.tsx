@@ -10,6 +10,7 @@ import linkGenerate from "../generalFunction";
 import { useState } from "react";
 
 import { Tooltip } from "../comp/Styles";
+import { PDPContext } from "../App";
 
 const CardMediaStyled = styled.img`
   width: 100%;
@@ -40,11 +41,14 @@ interface DetailedAboutCard {
   title: string;
   index: number;
   content: object;
-  setDeleteModal: any;
-  setDeleteMOdalOpen: any;
 }
 
 export const MultiActionAreaCard = (props: DetailedAboutCard) => {
+  const contextLocal: {
+    editFunction: (data: any, type: string) => boolean;
+    allCategories: any[];
+  } = React.useContext(PDPContext);
+
   const [buttonText, setButtonText] = useState("");
 
   React.useEffect(() => {
@@ -61,18 +65,16 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
     }
   }, []);
 
-  const handleDelete = (data: object, index: number) => {
-    props.setDeleteModal({ data, index });
-    props.setDeleteMOdalOpen(true);
-  };
-
   return (
     <StyledCard sx={{ maxWidth: 250 }}>
       {localStorage.user !== "null" && (
         <button
           className={"delete-button"}
           onClick={() => {
-            handleDelete(props.content, props.index);
+            contextLocal?.editFunction(
+              { data: props.content, index: props.index },
+              "delete"
+            );
           }}
         >
           <Tooltip>Delete this course</Tooltip>X

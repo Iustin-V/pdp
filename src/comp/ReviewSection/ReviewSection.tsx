@@ -23,7 +23,7 @@ import { EditButton } from "../EditButton";
 
 export const ReviewSection = () => {
   const contextLocal: {
-    editFunction: (data: any) => boolean;
+    editFunction: (data: any,type:string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({

@@ -83,7 +83,7 @@ interface coursesInfo {
 
 export const CourseInfo = (props: coursesInfo) => {
   const contextLocal: {
-    editFunction: (data: any) => boolean;
+    editFunction: (data: any,type:string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [talkWithTeacher, setLinkTalkWithTeacher] = useState({ content: [] });

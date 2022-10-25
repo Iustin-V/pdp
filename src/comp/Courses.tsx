@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import { PDPContext } from "../App";
 import { getData } from "../utils/getData";
 import { EditButton } from "./EditButton";
-import { DeleteModal } from "./DeleteModal";
+import { CreateButton } from "./CreateButton";
 
 export const StyledPageCourses = styled.div`
   margin-top: 80px;
@@ -26,7 +26,7 @@ export const StyledPageCourses = styled.div`
 
 export const Courses = () => {
   const contextLocal: {
-    editFunction: (data: any) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [contentCourseChildParents, setContentCourseChildParents] = useState({
@@ -38,8 +38,6 @@ export const Courses = () => {
   const [refactorTitleCourseTeacher, setRefactorTitleCourseTeacher] = useState(
     []
   );
-  const [deleteModal, setDeleteModal] = useState({data:{},index:0});
-  const [deleteMOdalOpen, setDeleteMOdalOpen] = useState(false);
 
   const [contentCourseTeacher, setContentCourseTeacher] = useState({
     title: "",
@@ -61,12 +59,11 @@ export const Courses = () => {
     setContentCourseTeacher(textCourseTeacher);
     setRefactorTitleCourseTeacher(textCourseTeacher.title.split("-"));
   }, [contextLocal]);
-  React.useEffect(() => {
-    if(deleteMOdalOpen)
-      document.body.style.overflow='hidden'
-    else
-      document.body.style.overflow='auto'
-  }, [deleteMOdalOpen]);
+  // React.useEffect(() => {
+  //   if (deleteMOdalOpen || isCreateModalVisible)
+  //     document.body.style.overflow = "hidden";
+  //   else document.body.style.overflow = "auto";
+  // }, [deleteMOdalOpen, isCreateModalVisible]);
 
   const showCoursesCardChildParents = contentCourseChildParents.content?.map(
     (item, index: number) => {
@@ -80,8 +77,6 @@ export const Courses = () => {
           item={item}
           index={index}
           content={contentCourseChildParents}
-          setDeleteModal={setDeleteModal}
-          setDeleteMOdalOpen={setDeleteMOdalOpen}
         />
       );
     }
@@ -98,17 +93,14 @@ export const Courses = () => {
           item={item}
           index={index}
           content={contentCourseTeacher}
-          setDeleteModal={setDeleteModal}
-          setDeleteMOdalOpen={setDeleteMOdalOpen}
-
         />
       );
     }
   );
+  console.log("coursesdata", contentCourseChildParents);
 
   return (
     <>
-      {deleteMOdalOpen && <DeleteModal modalData={deleteModal}  setDeleteMOdalOpen={setDeleteMOdalOpen}/>}
       <StyledPageCourses>
         <SectionContainer>
           <TitleSection color={colors.primary.base}>
@@ -119,6 +111,12 @@ export const Courses = () => {
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
         </SectionContainer>
+        <CreateButton
+          createFunction={contextLocal?.editFunction}
+          sectionText={contentCourseChildParents}
+          createType="createCourse"
+        />
+
         <EditButton
           editFunction={contextLocal?.editFunction}
           sectionText={contentCourseChildParents}
@@ -136,6 +134,11 @@ export const Courses = () => {
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardParentsTeacher}</WrapperCard>
         </SectionContainer>
+        <CreateButton
+          createFunction={contextLocal?.editFunction}
+          sectionText={contentCourseChildParents}
+          createType="createCourse"
+        />
         <EditButton
           editFunction={contextLocal?.editFunction}
           sectionText={contentCourseTeacher}
