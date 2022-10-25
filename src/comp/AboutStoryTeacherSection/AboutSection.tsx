@@ -8,7 +8,7 @@ import {
   SectionContainer,
   TitleSection,
 } from "../Styles";
-import Background from "../images/aboutBackground.png";
+import Background from "../images/aboutBackground.webp";
 import { colors } from "../../generalStyle";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";

@@ -2,7 +2,7 @@ import {BackgroundWrapper, ParagraphItalicStyled, SectionContainer, TitleSection
 import {SubtitleSection} from "./StoryBoxStyle";
 import {colors} from "../../generalStyle";
 import React from "react";
-import storyboxBG from "../images/aboutBackground.png";
+import storyboxBG from "../images/aboutBackground.webp";
 
 interface sectionDetails {
     title: string,

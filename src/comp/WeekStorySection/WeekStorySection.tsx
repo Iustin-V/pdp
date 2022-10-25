@@ -6,7 +6,7 @@ import {
   SectionContainer,
   TitleSection,
 } from "../Styles";
-import Background from "../images/WeekStorySection.png";
+import Background from "../images/WeekStorySection.webp";
 import { colors } from "../../generalStyle";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";

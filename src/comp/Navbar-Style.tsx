@@ -123,7 +123,8 @@ export const StyledImage = styled.img<{
   construction?: boolean;
 }>`
   height: ${(props) => props.height};
-  width: ${(props) => props.width};
+  width: ${(props) => props.width || "250px"};
+ 
   ${(props) =>
     props.construction &&
     "margin-left: 50px; filter: invert(13%) sepia(94%) saturate(1864%) hue-rotate(207deg) brightness(85%) contrast(110%);"}
@@ -131,6 +132,7 @@ export const StyledImage = styled.img<{
 
   @media (max-width: 768px) {
     height: 46px;
+    width:144px;
     ${(props) => props.construction && "height:100px"}
   }
 `;

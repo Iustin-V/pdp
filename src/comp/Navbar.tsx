@@ -55,7 +55,7 @@ export const Navbar = (props: navbarProps) => {
 
   const value =
     navbarText &&
-    navbarText.map((item, key) => {
+    navbarText.map((item) => {
       return (
         <StyledNavItem
           onClick={() => {
@@ -72,7 +72,7 @@ export const Navbar = (props: navbarProps) => {
   const Logo = () => {
     return (
       <StyledLogoItem key="" to={`/`}>
-        <StyledImage height="70px" src={logo} alt="logo" />
+        <StyledImage height="70px" width="218px" src={logo} alt="logo" />
       </StyledLogoItem>
     );
   };

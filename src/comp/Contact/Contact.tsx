@@ -23,7 +23,7 @@ import {
   nameValidation,
   phoneValidation,
 } from "../../inputsValidations";
-import teacherIcon from "../images/teacher-icon.png";
+import teacherIcon from "../images/teacher-icon.webp";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
 
@@ -35,8 +35,6 @@ export interface formFieldsType {
   message: string;
 }
 
-const paragraphText =
-  "Vrei să trimiți un mesaj Profei de povești? Completează formularul următor și voi răspunde cât ai clipi!";
 
 let formFields: formFieldsType = {
   name: "",

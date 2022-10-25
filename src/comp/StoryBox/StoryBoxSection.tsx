@@ -23,7 +23,7 @@ import {
 } from "../Contact/Contact-Style";
 import React, {useEffect} from "react";
 import {emailValidation, messageValidation, nameValidation,} from "../../inputsValidations";
-import openBox from "../images/transparent-box-black-open-bure.png";
+import openBox from "../images/transparent-box-black-open-bure.webp";
 import ball from "../images/ball.png";
 import heart from "../images/heart.png";
 import star from "../images/star.png";
@@ -403,15 +403,15 @@ export const StoryBoxSection = (props: BoxSection) => {
                 <StoryDescription>
                     {disabledSubmitButton ? (
                         <>
-                            <StyledBall src={ball}/>
-                            <StyledStar src={star}/>
-                            <StyledHeart src={heart}/>
-                            <StyledBee src={bee}/>
-                            <StyledAirplane src={airplane}/>
-                            <StyledBoxOpened src={openBox}/>
+                            <StyledBall src={ball} alt={"Ball"}/>
+                            <StyledStar src={star} alt={"Star"}/>
+                            <StyledHeart src={heart} alt={"Heart"}/>
+                            <StyledBee src={bee} alt={"Bee"}/>
+                            <StyledAirplane src={airplane} alt={"Airplane"}/>
+                            <StyledBoxOpened open={true} src={openBox} alt={"openBox"}/>
                         </>
                     ) : (
-                        <StyledBoxOpened src={closedBox}/>
+                        <StyledBoxOpened open={false} src={closedBox} alt={"closedBox"}/>
                     )}
                     <ParagraphItalicStyled>
                         {props.boxSection}

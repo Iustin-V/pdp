@@ -140,9 +140,11 @@ export const StyledSecondRow = styled.div`
   gap: 5px;
   img {
     height: 80px;
+    width:250px;
     object-fit: contain;
     @media (max-width: 768px) {
       height: 46px;
+          width:144px;
     }
   }
 `;
@@ -151,5 +153,5 @@ export const StyledFooterText = styled.p`
   display: flex;
   justify-content: flex-start;
   font-size: ${fontSizes.desktop.paragraph.small};
-  color: white;
+  color: ${colors.primary.base};
 `;

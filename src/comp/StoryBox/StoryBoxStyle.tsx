@@ -64,8 +64,9 @@ export const SectionContainerStoryBox = styled.div`
   position: relative;
 `;
 
-export const StyledBoxOpened = styled.img`
+export const StyledBoxOpened = styled.img<{open:boolean }>`
   height: 400px;
+ width: ${(props) => props.open ? "364px": "auto"};
 `;
 export const StyledBall = styled.img`
   height: 30px;

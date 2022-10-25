@@ -57,6 +57,7 @@ export const StyledToTopButton = styled.button<{ bottom: string }>`
 export const StyledImageNew = styled.img`
   filter: invert(100%);
   height: 30px;
+  width: 55px;
 `;
 export const MainPagePhoto = styled.div<{ backgroundImage: string }>`
   height: 100%;

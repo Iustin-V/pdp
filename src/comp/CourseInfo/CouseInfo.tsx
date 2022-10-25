@@ -8,7 +8,7 @@ import {
 } from "react-vertical-timeline-component";
 import React, { useState } from "react";
 import { ContactFormBackground } from "../Contact/Contact-Style";
-import teacherIcon from "../images/teacher-icon.png";
+import teacherIcon from "../images/teacher-icon.webp";
 import { Link } from "react-router-dom";
 import { getData } from "../../utils/getData";
 import { PDPContext } from "../../App";
@@ -140,7 +140,7 @@ export const CourseInfo = (props: coursesInfo) => {
           </VerticalTimeline>
           <Link to={`/${talkWithTeacher}`}>
             <CourseInfoStyledButton
-              onClick={(event) => {
+              onClick={() => {
                 setCourse(props.title);
                 // Trebuie luat value din Contact
               }}

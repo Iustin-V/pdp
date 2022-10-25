@@ -1,7 +1,7 @@
 import React from "react";
 
 import { StyledImageNew, StyledToTopButton } from "./Styles";
-import arrow from "./images/arrow.png";
+import arrow from "./images/arrow.webp";
 
 interface ToTopButtonInterface {
   topRef: React.RefObject<HTMLDivElement>;
