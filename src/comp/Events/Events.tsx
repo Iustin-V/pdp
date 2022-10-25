@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { SectionContainer, TitleSection } from "../Styles";
+import {SectionContainer, TitleSection, Tooltip} from "../Styles";
 import { colors } from "../../generalStyle";
 import { EventCard } from "./EventCard";
 import React, { useState } from "react";
@@ -90,6 +90,17 @@ export const Events = () => {
   const eventCards = dataSection.content?.map((event, key) => {
     return (
         <AnimatedContainer key={key}>
+            {localStorage.user !== "null" && ( <button
+                className={"delete-button"}
+                onClick={() => {
+                    contextLocal?.editFunction(
+                        { data: dataSection, index: key },
+                        "delete"
+                    );
+                }}
+            >
+                <Tooltip>Delete this event</Tooltip>X
+            </button>)}
           <EventCard
             key={key}
             title={event.titleSection}
