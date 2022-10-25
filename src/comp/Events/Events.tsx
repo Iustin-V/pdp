@@ -87,8 +87,7 @@ export const Events = () => {
   // @ts-ignore
   const eventCards = dataSection.content?.map((event, key) => {
     return (
-      <>
-        <AnimatedContainer>
+        <AnimatedContainer key={key}>
           <EventCard
             key={key}
             title={event.titleSection}
@@ -98,7 +97,7 @@ export const Events = () => {
             date={event.date}
           />
         </AnimatedContainer>
-      </>
+
     );
   });
   return (

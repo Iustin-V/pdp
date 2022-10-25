@@ -103,6 +103,7 @@ export const CourseInfo = (props: coursesInfo) => {
   const coursesTimeLine = props.text?.map((element, index) => {
     return (
       <VerticalTimelineElement
+          key={index}
         className={`vertical-timeline-element--${
           index % 2 === 0 ? "work" : "education"
         }`}
@@ -133,7 +134,7 @@ export const CourseInfo = (props: coursesInfo) => {
         <SectionContainer>
           <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
 
-          <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
+          <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"} >
             <ImageCourseInfo src={teacherIcon} alt="teacherIcon" />
             {coursesTimeLine}
           </VerticalTimeline>

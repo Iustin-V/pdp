@@ -54,6 +54,7 @@ export const Partners = () => {
   const LogoSections = partnersLink.map((link, index) => {
     return (
       <LogoSection
+          key={index}
         onClick={() => redirectLink(partnersLink[index])}
         src={partnersPhotos[index]}
       />

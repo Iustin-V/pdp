@@ -104,9 +104,10 @@ function App() {
     }
   }, [loading]);
 
-  const eventsLinkRoutes = allEvents.map((link) => {
+  const eventsLinkRoutes = allEvents.map((link,key) => {
     return (
       <Route
+          key={key}
         path={`/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
         element={
           <EventInfo
@@ -123,9 +124,10 @@ function App() {
     );
   });
 
-  const coursesLinkRoutes = allLinkCourses.map((link) => {
+  const coursesLinkRoutes = allLinkCourses.map((link,key) => {
     return (
       <Route
+          key={key}
         path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
         element={<CourseInfo title={link.title} text={link.text} />}
       />
@@ -141,6 +143,7 @@ function App() {
   const navbarLinks = navbarText.map((link, index) => {
     return (
       <Route
+          key={index}
         path={`/${linkGenerate(link)}`}
         element={arrayNavbarLinks[index]}
       />

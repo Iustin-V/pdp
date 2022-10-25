@@ -72,6 +72,7 @@ export const Courses = () => {
     (item, index: number) => {
       return (
         <MultiActionAreaCard
+            key={index}
           title={item.title}
           time={item.time}
           price={item.price}
@@ -89,6 +90,7 @@ export const Courses = () => {
     (item, index: number) => {
       return (
         <MultiActionAreaCard
+            key={index}
           title={item.title}
           time={item.time}
           price={item.price}
