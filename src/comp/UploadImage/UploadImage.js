@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { StyledUploadImage } from "./UploadImageStyle";
 
 export const UploadImage = (props) => {
   const [postImage, setPostImage] = useState({
@@ -38,8 +39,8 @@ export const UploadImage = (props) => {
     e.preventDefault();
     createPost(postImage);
   };
-  console.log('props.objData',props.objData)
-  console.log('props.usedImage',props.usedImage)
+  console.log("props.objData", props.objData);
+  console.log("props.usedImage", props.usedImage);
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -51,12 +52,31 @@ export const UploadImage = (props) => {
           onChange={(e) => handleFileUpload(e)}
         />
         <button
-          onClick={()=>props?.uploadFunction(postImage.myFile, props?.objData, props?.index,true)}
+          onClick={() =>
+            props?.uploadFunction(
+              postImage.myFile,
+              props?.objData,
+              props?.index,
+              true
+            )
+          }
         >
           Submit
         </button>
       </form>
-      <img src={postImage.myFile.length!==0?postImage.myFile:props?.usedImage[props.index]?.image} width="500px" />
+      <StyledUploadImage
+        existingImage={
+          postImage.myFile ||
+          props?.usedImage[props.index]?.image ||
+          props?.usedImage[props.index]?.icon
+        }
+        src={
+          postImage.myFile.length !== 0
+            ? postImage.myFile
+            : props?.usedImage[props.index]?.image ||
+              props?.usedImage[props.index]?.icon
+        }
+      />
     </>
   );
 };

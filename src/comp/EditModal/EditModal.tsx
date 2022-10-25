@@ -27,7 +27,9 @@ export const EditModal = (props: EditModalProps) => {
   const [updateArray, setUpdateArray] = React.useState([]);
   const [updateObjectArray, setUpdateObjectArray] = React.useState([{}]);
   const [initialArray, setInitialArray] = React.useState([]);
-  const [initialObjectArray, setInitialObjectArray] = React.useState(props.modalData["content"]);
+  const [initialObjectArray, setInitialObjectArray] = React.useState(
+    props.modalData["content"]
+  );
 
   if (props.editModal) {
     document.body.style.overflow = "hidden";
@@ -97,7 +99,7 @@ export const EditModal = (props: EditModalProps) => {
   ) => {
     setInitialObjectArray(props.modalData["content"]);
     if (image) {
-      console.log(event,name,index)
+      console.log(event, name, index);
       setUpdateObjectArray([
         ...updateObjectArray.slice(0, index),
         { ...updateObjectArray[index], [name]: event },
@@ -110,7 +112,7 @@ export const EditModal = (props: EditModalProps) => {
         ...updateObjectArray.slice(index + 1, initialObjectArray.length),
       ]);
     }
-    console.log(updateObjectArray)
+    console.log(updateObjectArray);
   };
 
   const textEditors = Object.keys(localModalData).map((element: string) => {

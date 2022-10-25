@@ -19,7 +19,7 @@ export const Container = styled.div`
   width: 100%;
   background-color: ${colors.secondary.base};
   top: 0;
-  z-index: 999;
+  z-index: 998;
   display: flex;
   flex-direction: column;
   justify-content: center;

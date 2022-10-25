@@ -11,6 +11,7 @@ import {
 } from "../EditModal/EditModalStyle";
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
+import { UploadImage } from "../UploadImage/UploadImage";
 
 interface CreateModalProps {
   data: any;
@@ -22,6 +23,7 @@ interface CreateModalProps {
 export const CreateModal = (props: CreateModalProps) => {
   const [updateObject, setUpdateObject] = React.useState({});
   const [updateArray, setUpdateArray] = React.useState([]);
+  const [buttonDisabled, setButtonDisabled] = React.useState(false);
 
   const [courseType, setCourseType] = React.useState({
     title: "",
@@ -30,24 +32,10 @@ export const CreateModal = (props: CreateModalProps) => {
     price: "",
     time: "",
   });
+  if (props.data) {
+    document.body.style.overflow = "hidden";
+  }
   React.useEffect(() => {
-    // props.createModalSchema === "course"
-    //     ? {
-    //       title: "",
-    //       image: "",
-    //       text: ["", "", "", ""],
-    //       price: "",
-    //       time: "",
-    //     }
-    //     : {
-    //       alt: "",
-    //       date: "",
-    //       image: "",
-    //       text: "",
-    //       time: "",
-    //       titleSection: "",
-    //       website: "",
-    //     }
     if (props.createModalSchema === "course") {
       setCourseType({
         title: "",
@@ -69,15 +57,7 @@ export const CreateModal = (props: CreateModalProps) => {
       });
     }
   }, [props.createModalSchema]);
-  // const [eventType, setEventType] = React.useState({
-  //   alt: "",
-  //   date: "",
-  //   image: "",
-  //   text: "",
-  //   time: "",
-  //   titleSection: "",
-  //   website: "",
-  // });
+
 
   const handleCreate = () => {
     let text: undefined;
@@ -107,11 +87,21 @@ export const CreateModal = (props: CreateModalProps) => {
     exitModal();
   };
   console.log("asdasdas", props.data);
-  const handleMessageChange = (event: any) => {
-    setUpdateObject({
-      ...updateObject,
-      [event.target.name]: event.target.value,
-    });
+  const handleMessageChange = (
+    event: any,
+    name?: any,
+    index?: number,
+    image?: boolean
+  ) => {
+    image
+      ? setUpdateObject({
+          ...updateObject,
+          [name]: event,
+        })
+      : setUpdateObject({
+          ...updateObject,
+          [event.target.name]: event.target.value,
+        });
   };
   const handleArrayMessageChange = (event: any, index?: number) => {
     // setInitialArray(props.data[event.target.name]);
@@ -141,75 +131,91 @@ export const CreateModal = (props: CreateModalProps) => {
     props.setCreateModal({ visibility: false, schema: "none" });
     document.body.style.overflow = "unset";
   };
-  const createInputs = Object.keys(courseType).map((element: string) => {
-    return (
-      <>
-        <StyledText color={colors.primary.base}>
-          {capitalizeFirstLetter(element)}
-        </StyledText>
-        {
-          // @ts-ignore
-          Array.isArray(courseType[element]) ? (
-            <>
-              {
-                // @ts-ignore
-                courseType[element].map((item: any, index: number) => {
-                  return (
-                    <>
-                      <StyledTextArea
-                        onChange={(e) => handleArrayMessageChange(e, index)}
-                        name={element}
-                        minHeight={
-                          item.length > 50
-                            ? (item.length / 3 + 20).toString() + "px"
-                            : ""
-                        }
-                      >
-                        {item}
-                      </StyledTextArea>
-                    </>
-                  );
-                })
-              }
-              <StyledSaveButton
-                onClick={
+  const createInputs = Object.keys(courseType).map(
+    (element: string, index: number) => {
+      return (
+        <>
+          <StyledText color={colors.primary.base}>
+            {capitalizeFirstLetter(element)}
+          </StyledText>
+          {
+            // @ts-ignore
+
+            Array.isArray(courseType[element]) ? (
+              <>
+                {
                   // @ts-ignore
-                  () => handleEditArray(true)
+                  courseType[element].map((item: any, index: number) => {
+                    return (
+                      <>
+                        <StyledTextArea
+                          onChange={(e) => handleArrayMessageChange(e, index)}
+                          name={element}
+                          minHeight={
+                            item.length > 50
+                              ? (item.length / 3 + 20).toString() + "px"
+                              : ""
+                          }
+                        >
+                          {item}
+                        </StyledTextArea>
+                      </>
+                    );
+                  })
                 }
-              >
-                +
-              </StyledSaveButton>
-              <StyledSaveButton
-                onClick={
-                  // @ts-ignore
-                  () => handleEditArray(false)
-                }
-              >
-                -
-              </StyledSaveButton>
-            </>
-          ) : (
-            <StyledTextArea
-              onChange={(e) => handleMessageChange(e)}
-              name={element}
-              minHeight={
-                // @ts-ignore
-                courseType[element].length > 50
-                  ? // @ts-ignore
-                    (courseType[element].length / 3 + 20).toString() + "px"
-                  : ""
-              }
-            >
-              {
-                // @ts-ignore
-                courseType[element]
-              }
-            </StyledTextArea>
-          )
-        }
-      </>
-    );
-  });
+                <StyledSaveButton
+                  onClick={
+                    // @ts-ignore
+                    () => handleEditArray(true)
+                  }
+                >
+                  +
+                </StyledSaveButton>
+                <StyledSaveButton
+                  onClick={
+                    // @ts-ignore
+                    () => handleEditArray(false)
+                  }
+                >
+                  -
+                </StyledSaveButton>
+              </>
+            ) : (
+              <>
+                {element === "image" || element === "icon" ? (
+                  <UploadImage
+                    uploadFunction={handleMessageChange}
+                    objData={element}
+                    index={index}
+                    //@ts-ignore
+                    usedImage={updateObject}
+                  />
+                ) : (
+                  <StyledTextArea
+                    onChange={(e) => handleMessageChange(e)}
+                    name={element}
+                    minHeight={
+                      // @ts-ignore
+                      courseType[element].length > 50
+                        ? // @ts-ignore
+                          (courseType[element].length / 3 + 20).toString() +
+                          "px"
+                        : ""
+                    }
+                  >
+                    {
+                      // @ts-ignore
+                      courseType[element]
+                    }
+                  </StyledTextArea>
+                )}
+              </>
+            )
+          }
+        </>
+      );
+    }
+  );
 
   return (
     <ModalCover>
@@ -217,7 +223,9 @@ export const CreateModal = (props: CreateModalProps) => {
         <ContentContainer>
           <StyledText color={colors.primary.base}>Create new course</StyledText>
           {createInputs}
-          <StyledSaveButton onClick={handleCreate}>Create</StyledSaveButton>
+          <StyledSaveButton onClick={handleCreate} disabled={buttonDisabled}>
+            Create
+          </StyledSaveButton>
           <StyledSaveButton onClick={exitModal}>Close</StyledSaveButton>
         </ContentContainer>
       </ModalWrapper>
