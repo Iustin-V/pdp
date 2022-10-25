@@ -11,6 +11,7 @@ import {
 } from "./EditModalStyle";
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
+import {UploadImage} from "../UploadImage/UploadImage";
 
 interface EditModalProps {
   modalData: any;
@@ -205,6 +206,7 @@ export const EditModal = (props: EditModalProps) => {
     <ModalCover>
       <ModalWrapper>
         <ContentContainer>
+          <UploadImage></UploadImage>
           <StyledText color={colors.primary.base}>Edit Section</StyledText>
           {textEditors}
           <StyledSaveButton onClick={saveModal}>Save</StyledSaveButton>
