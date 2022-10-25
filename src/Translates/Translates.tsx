@@ -25,3 +25,9 @@ export const courseButtonTranslates={
     en: "Buy",
     fr: "Acheter",
 }
+
+export const loadingTranslates = {
+    ro: "Bine ai venit! ",
+    en: "Welcome !",
+    fr: "Accueillir !",
+}

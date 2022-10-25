@@ -1,5 +1,6 @@
 import {CloudStyled, ImageStyled, LoadingContainer, LogoImageContainer, TeacherIconStyled} from "./LoadingStyle";
 import Typewriter from 'typewriter-effect';
+import {courseButtonTranslates, loadingTranslates} from "../../Translates/Translates";
 
 const Loading = () => {
     // @ts-ignore
@@ -18,7 +19,7 @@ const Loading = () => {
                             typewriter.pauseFor(500)
                         }}
                         options={{
-                            strings: [`<span style="font-size: 30px">Bine ai venit!</span>`],
+                            strings: [`<span style="font-size: 30px">${loadingTranslates[localStorage?.locale || "ro"]}</span>`],
                             autoStart: true,
                             loop: true,
                         }}/>
