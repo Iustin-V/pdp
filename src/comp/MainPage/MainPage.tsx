@@ -6,7 +6,7 @@ import {
   PageContainer,
 } from "../Styles";
 
-import bookshelf from "../images/bookshelf_compressed.png";
+import bookshelf from "../images/bookshelf_compressed.webp";
 import React, { useState } from "react";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";

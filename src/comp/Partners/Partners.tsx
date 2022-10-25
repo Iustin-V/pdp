@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { TitleSection } from "../Styles";
 import { colors } from "../../generalStyle";
-import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.png";
-import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.png";
-import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.png";
+import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.webp";
+import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.webp";
+import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.webp";
 
 import styled from "styled-components";
 import { PDPContext } from "../../App";
@@ -57,6 +57,7 @@ export const Partners = () => {
           key={index}
         onClick={() => redirectLink(partnersLink[index])}
         src={partnersPhotos[index]}
+          alt={`logo${index}`}
       />
     );
   });

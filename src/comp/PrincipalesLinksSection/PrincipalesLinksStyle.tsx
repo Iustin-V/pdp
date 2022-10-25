@@ -162,7 +162,7 @@ export const StyledIcon = styled.img`
 export const StyledIconLabel = styled.h3`
 animation: font-up 3s;
 animation-delay:2s;
-color:${colors.secondary.base};
+color:${colors.primary.base};
 font-size:${fontSizes.mobile.heading.base};
 margin:0;
 text-decoration:none;

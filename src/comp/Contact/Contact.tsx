@@ -1,5 +1,5 @@
 import { ParagraphItalicStyled, TitleSection } from "../Styles";
-import background from "../images/contact-background-overlay.jpg";
+import background from "../images/contact-background-overlay.webp";
 
 import {
   ContactFormBackground,

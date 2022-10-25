@@ -24,12 +24,12 @@ import {
 import React, {useEffect} from "react";
 import {emailValidation, messageValidation, nameValidation,} from "../../inputsValidations";
 import openBox from "../images/transparent-box-black-open-bure.webp";
-import ball from "../images/ball.png";
-import heart from "../images/heart.png";
+import ball from "../images/ball.webp";
+import heart from "../images/heart.webp";
 import star from "../images/star.webp";
-import bee from "../images/bee.png";
-import airplane from "../images/airplane.png";
-import closedBox from "../images/closedBox.png";
+import bee from "../images/bee.webp";
+import airplane from "../images/airplane.webp";
+import closedBox from "../images/closedBox.webp";
 import {StoryBoxFromTranslates} from "../../Translates/Translates";
 
 export interface storyBoxFields {

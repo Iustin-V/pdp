@@ -68,36 +68,43 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
 
   return (
     <StyledCard sx={{ maxWidth: 250 }}>
-      {localStorage.user !== "null" && <button
+      {localStorage.user !== "null" && (
+        <button
           className={"delete-button"}
           onClick={() => {
             handleDelete(props.content, props.index);
           }}
-      >
-        <Tooltip>Delete this course</Tooltip>X
-      </button>}
+        >
+          <Tooltip>Delete this course</Tooltip>X
+        </button>
+      )}
       <CardActionArea>
         <CardMediaStyled src={props.image} alt="courses" />
         <CardContent>
           <Typography
-            variant="h6"
+            variant="h2"
             color="text.secondary"
-            style={{ color: "#002366", margin: " 10px 0", minHeight: "64px" }}
+            style={{
+              color: "#002366",
+              margin: " 10px 0",
+              minHeight: "64px",
+              fontSize: "20px",
+            }}
           >
             {props.title}
           </Typography>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Typography
-              variant="h6"
+              variant="h2"
               color="text.secondary"
-              style={{ color: "#002366" }}
+              style={{ color: "#002366", fontSize: "20px" }}
             >
               <img src={clock} alt="clock" height={"15px"} /> {props.time}
             </Typography>
             <Typography
-              variant="h6"
+              variant="h2"
               color="text.secondary"
-              style={{ color: "#002366" }}
+              style={{ color: "#002366", fontSize: "20px" }}
             >
               Pret:{props.price}
             </Typography>
@@ -113,7 +120,10 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
       >
         <Link style={{ textDecoration: "none" }} to={linkGenerate(props.title)}>
           <Button size="small" color="primary" style={{ textAlign: "center" }}>
-            <Typography style={{ color: "#002366" }} variant="h6">
+            <Typography
+              style={{ color: "#002366", fontSize: "20px" }}
+              variant="h2"
+            >
               {buttonText}
             </Typography>
           </Button>

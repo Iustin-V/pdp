@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ParagraphItalicStyled, TitleSection } from "../Styles";
 import { colors } from "../../generalStyle";
-import backgroundImage from "../images/CourseInfo.jpg";
+import backgroundImage from "../images/CourseInfo.webp";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
