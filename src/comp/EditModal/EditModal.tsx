@@ -11,7 +11,7 @@ import {
 } from "./EditModalStyle";
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
-import {UploadImage} from "../UploadImage/UploadImage";
+import { UploadImage } from "../UploadImage/UploadImage";
 
 interface EditModalProps {
   modalData: any;
@@ -27,7 +27,7 @@ export const EditModal = (props: EditModalProps) => {
   const [updateArray, setUpdateArray] = React.useState([]);
   const [updateObjectArray, setUpdateObjectArray] = React.useState([{}]);
   const [initialArray, setInitialArray] = React.useState([]);
-  const [initialObjectArray, setInitialObjectArray] = React.useState([]);
+  const [initialObjectArray, setInitialObjectArray] = React.useState(props.modalData["content"]);
 
   if (props.editModal) {
     document.body.style.overflow = "hidden";
@@ -92,15 +92,25 @@ export const EditModal = (props: EditModalProps) => {
   const handleObjectArrayMessageChange = (
     event: any,
     name: string,
-    index: number
+    index: number,
+    image?: boolean
   ) => {
     setInitialObjectArray(props.modalData["content"]);
-
-    setUpdateObjectArray([
-      ...updateObjectArray.slice(0, index),
-      { ...updateObjectArray[index], [name]: event.target.value },
-      ...updateObjectArray.slice(index + 1, initialObjectArray.length),
-    ]);
+    if (image) {
+      console.log(event,name,index)
+      setUpdateObjectArray([
+        ...updateObjectArray.slice(0, index),
+        { ...updateObjectArray[index], [name]: event },
+        ...updateObjectArray.slice(index + 1, initialObjectArray.length),
+      ]);
+    } else {
+      setUpdateObjectArray([
+        ...updateObjectArray.slice(0, index),
+        { ...updateObjectArray[index], [name]: event.target.value },
+        ...updateObjectArray.slice(index + 1, initialObjectArray.length),
+      ]);
+    }
+    console.log(updateObjectArray)
   };
 
   const textEditors = Object.keys(localModalData).map((element: string) => {
@@ -132,39 +142,57 @@ export const EditModal = (props: EditModalProps) => {
                       {capitalizeFirstLetter(element)}
                     </StyledText>
                     {Object.keys(item).map((objData: string) => {
-                      return (
-                        <>
-                          {Array.isArray(item[objData]) ? (
-                            <></>
-                          ) : (
-                            <>
-                              <StyledText color={colors.primary.base}>
-                                {capitalizeFirstLetter(objData)}{" "}
-                              </StyledText>
-                              <StyledTextArea
-                                onChange={(e) =>
-                                  handleObjectArrayMessageChange(
-                                    e,
-                                    objData,
-                                    index
-                                  )
-                                }
-                                name={item}
-                                minHeight={
-                                  item[objData].length > 50
-                                    ? (
-                                        item[objData].length / 3 +
-                                        20
-                                      ).toString() + "px"
-                                    : ""
-                                }
-                              >
-                                {item[objData]}
-                              </StyledTextArea>
-                            </>
-                          )}
-                        </>
-                      );
+                      if (objData === "image" || objData === "icon") {
+                        return (
+                          <>
+                            {" "}
+                            <StyledText color={colors.primary.base}>
+                              {capitalizeFirstLetter(objData)}{" "}
+                            </StyledText>
+                            <UploadImage
+                              uploadFunction={handleObjectArrayMessageChange}
+                              objData={objData}
+                              index={index}
+                              //@ts-ignore
+                              usedImage={updateObjectArray}
+                            />
+                          </>
+                        );
+                      } else {
+                        return (
+                          <>
+                            {Array.isArray(item[objData]) ? (
+                              <></>
+                            ) : (
+                              <>
+                                <StyledText color={colors.primary.base}>
+                                  {capitalizeFirstLetter(objData)}{" "}
+                                </StyledText>
+                                <StyledTextArea
+                                  onChange={(e) =>
+                                    handleObjectArrayMessageChange(
+                                      e,
+                                      objData,
+                                      index
+                                    )
+                                  }
+                                  name={item}
+                                  minHeight={
+                                    item[objData].length > 50
+                                      ? (
+                                          item[objData].length / 3 +
+                                          20
+                                        ).toString() + "px"
+                                      : ""
+                                  }
+                                >
+                                  {item[objData]}
+                                </StyledTextArea>
+                              </>
+                            )}
+                          </>
+                        );
+                      }
                     })}
                   </>
                 );
@@ -206,7 +234,6 @@ export const EditModal = (props: EditModalProps) => {
     <ModalCover>
       <ModalWrapper>
         <ContentContainer>
-          <UploadImage></UploadImage>
           <StyledText color={colors.primary.base}>Edit Section</StyledText>
           {textEditors}
           <StyledSaveButton onClick={saveModal}>Save</StyledSaveButton>
