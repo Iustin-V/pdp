@@ -15,7 +15,7 @@ import {
   StyledText,
   ItemsWrapper,
 } from "./Navbar-Style";
-import logo from "./images/logo.png";
+import logo from "./images/logo.webp";
 import { ProgressBar } from "./ProgressBar";
 import { colors } from "../generalStyle";
 import { LanguageSelector } from "./LanguageSelector";

@@ -11,7 +11,7 @@ import {
   ParagraphItalicStyled,
   TitleSection,
 } from "../Styles";
-import Background from "../images/TimeLine.Background.png";
+import Background from "../images/TimeLine.Background.webp";
 import { getData } from "../../utils/getData";
 import { PDPContext } from "../../App";
 import {EditButton} from "../EditButton";

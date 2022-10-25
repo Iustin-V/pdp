@@ -5,9 +5,9 @@ import {
   StyledIconLabel,
   StyledIconLink,
 } from "./PrincipalesLinksStyle";
-import storytelling from "../images/icons8-storyfire-500.png";
-import idea from "../images/icons8-idea-500.png";
-import talkWithTeacher from "../images/icons8-mail-500.png";
+import storytelling from "../images/icons8-storyfire-500.webp";
+import idea from "../images/icons8-idea-500.webp";
+import talkWithTeacher from "../images/icons8-mail-500.webp";
 import { getData } from "../../utils/getData";
 import { PDPContext } from "../../App";
 

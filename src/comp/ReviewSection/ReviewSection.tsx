@@ -16,7 +16,7 @@ import {
   TitleReviewSection,
 } from "./ReviewSection.style.style";
 import { SectionContainer } from "../Styles";
-import reviewIcon from "../images/icons8-chat-100.png";
+import reviewIcon from "../images/icons8-chat-100.webp";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ThreeDots from "../../utils/loader";
-import LogoImage from "../images/logo.png";
+import LogoImage from "../images/logo.webp";
 import TeacherIcon from "../images/teacher-icon.webp";
 
 export const LoadingContainer = styled.div`

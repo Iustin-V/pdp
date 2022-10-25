@@ -26,7 +26,7 @@ import {emailValidation, messageValidation, nameValidation,} from "../../inputsV
 import openBox from "../images/transparent-box-black-open-bure.webp";
 import ball from "../images/ball.png";
 import heart from "../images/heart.png";
-import star from "../images/star.png";
+import star from "../images/star.webp";
 import bee from "../images/bee.png";
 import airplane from "../images/airplane.png";
 import closedBox from "../images/closedBox.png";
