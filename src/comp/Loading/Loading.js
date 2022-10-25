@@ -1,6 +1,6 @@
 import {CloudStyled, ImageStyled, LoadingContainer, LogoImageContainer, TeacherIconStyled} from "./LoadingStyle";
 import Typewriter from 'typewriter-effect';
-import {courseButtonTranslates, loadingTranslates} from "../../Translates/Translates";
+import {loadingTranslates} from "../../Translates/Translates";
 
 const Loading = () => {
     // @ts-ignore
