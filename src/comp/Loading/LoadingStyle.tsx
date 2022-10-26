@@ -27,11 +27,17 @@ export const LogoImageContainer = styled(ThreeDots)`
     top: 70px;
     left: -50px;
   }
-  @media (max-width: 324px) {
+  @media (width: 414px) {
     width: 150px;
-    top: -91px;
-    left: 125px;
+    top: 70px;
+    left: -45px;
   }
+  @media (max-width: 400px) {
+    width: 140px;
+    top:72px;
+    left: -48px;
+  }
+  
   @media (max-width: 320px) {
     width: 150px;
     top: -92px;
@@ -48,13 +54,17 @@ export const ImageStyled = styled.img.attrs({
   @media (max-width: 768px) {
     width: 300px;
   }
+  @media (max-width: 499px) {
+    width: 280px;
+  }
+  @media (max-width: 480px) {
+    width: 230px;
+  }
   @media (max-width: 425px) {
-    width: 225px;
-    margin-left: 50px;
+    width: 220px;
   }
   @media (max-width: 400px) {
     width: 170px;
-    margin-left: 50px;
   }
   @media (max-width: 320px) {
     width: 150px;
