@@ -59,7 +59,7 @@ export const Navbar = (props: navbarProps) => {
       return (
         <StyledNavItem
           onClick={() => {
-            handleClose();
+            handleOpen();
           }}
           key={item}
           to={`/${linkGenerate(item) || "#"}`}
@@ -77,13 +77,7 @@ export const Navbar = (props: navbarProps) => {
     );
   };
 
-  const handleClose = () => {
-    document?.getElementById("lateralmenu")?.classList.remove("opened");
-    document
-      ?.getElementById("menubutton")
-      ?.classList.remove("menubuttonopened");
-    document?.getElementById("overlay")?.classList.remove("visible");
-  };
+
   const handleOpen = () => {
     document.body.classList.toggle("overflow");
     document?.getElementById("lateralmenu")?.classList.toggle("opened");
