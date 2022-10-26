@@ -20,10 +20,11 @@ import reviewIcon from "../images/icons8-chat-100.webp";
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
+import { CreateButton } from "../CreateButton";
 
 export const ReviewSection = () => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({
@@ -36,7 +37,7 @@ export const ReviewSection = () => {
     const textData = getData(contextLocal?.allCategories, "ReviewSection");
     setContentTexts(textData);
   }, [contextLocal]);
-
+  console.log("contentText", contentText);
   const ReviewsSection = contentText.content?.map((review, index) => {
     return (
       <SwiperSlide key={index}>
@@ -72,9 +73,14 @@ export const ReviewSection = () => {
           {ReviewsSection}
         </Swiper>
       </SectionContainer>
+      <CreateButton
+        createFunction={contextLocal?.editFunction}
+        sectionText={contentText}
+        createType="createReview"
+      />
       <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentText}
+        editFunction={contextLocal?.editFunction}
+        sectionText={contentText}
       />
     </StyledReviewSection>
   );

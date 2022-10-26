@@ -23,9 +23,9 @@ interface CreateModalProps {
 export const CreateModal = (props: CreateModalProps) => {
   const [updateObject, setUpdateObject] = React.useState({});
   const [updateArray, setUpdateArray] = React.useState([]);
-  const [buttonDisabled, setButtonDisabled] = React.useState(false);
+  const [buttonDisabled, setButtonDisabled] = React.useState(true);
 
-  const [courseType, setCourseType] = React.useState({
+  const [objectType, setObjectType] = React.useState({
     title: "",
     image: "",
     text: ["", "", "", ""],
@@ -37,7 +37,7 @@ export const CreateModal = (props: CreateModalProps) => {
   }
   React.useEffect(() => {
     if (props.createModalSchema === "course") {
-      setCourseType({
+      setObjectType({
         title: "",
         image: "",
         text: ["", "", "", ""],
@@ -45,7 +45,7 @@ export const CreateModal = (props: CreateModalProps) => {
         time: "",
       });
     } else if (props.createModalSchema === "event") {
-      setCourseType({
+      setObjectType({
         titleSection: "",
         // @ts-ignore
         text: "",
@@ -55,8 +55,17 @@ export const CreateModal = (props: CreateModalProps) => {
         image: "",
         alt: "",
       });
+    } else if (props.createModalSchema === "review") {
+      setObjectType({
+        avatar: "",
+        name: "",
+        age: "",
+        // @ts-ignore
+        text: "",
+      });
     }
   }, [props.createModalSchema]);
+
 
 
   const handleCreate = () => {
@@ -111,27 +120,27 @@ export const CreateModal = (props: CreateModalProps) => {
       ...updateArray.slice(0, index),
       event.target.value,
       // @ts-ignore
-      ...updateArray.slice(index + 1, courseType.text.length),
+      ...updateArray.slice(index + 1, objectType.text.length),
     ]);
   };
 
   const handleEditArray = (addField: boolean) => {
     addField
-      ? setCourseType({ ...courseType, text: [...courseType.text, ""] })
+      ? setObjectType({ ...objectType, text: [...objectType.text, ""] })
       : // @ts-ignore
-      courseType.text.length > 1
-      ? setCourseType({
-          ...courseType,
-          text: courseType.text.slice(0, courseType.text.length - 1),
+      objectType.text.length > 1
+      ? setObjectType({
+          ...objectType,
+          text: objectType.text.slice(0, objectType.text.length - 1),
         })
-      : setCourseType({ ...courseType, text: courseType.text });
-    console.log(courseType.text);
+      : setObjectType({ ...objectType, text: objectType.text });
+    console.log(objectType.text);
   };
   const exitModal = () => {
     props.setCreateModal({ visibility: false, schema: "none" });
     document.body.style.overflow = "unset";
   };
-  const createInputs = Object.keys(courseType).map(
+  const createInputs = Object.keys(objectType).map(
     (element: string, index: number) => {
       return (
         <>
@@ -141,11 +150,11 @@ export const CreateModal = (props: CreateModalProps) => {
           {
             // @ts-ignore
 
-            Array.isArray(courseType[element]) ? (
+            Array.isArray(objectType[element]) ? (
               <>
                 {
                   // @ts-ignore
-                  courseType[element].map((item: any, index: number) => {
+                  objectType[element].map((item: any, index: number) => {
                     return (
                       <>
                         <StyledTextArea
@@ -182,7 +191,9 @@ export const CreateModal = (props: CreateModalProps) => {
               </>
             ) : (
               <>
-                {element === "image" || element === "icon" ? (
+                {element === "image" ||
+                element === "icon" ||
+                element === "avatar" ? (
                   <UploadImage
                     uploadFunction={handleMessageChange}
                     objData={element}
@@ -196,16 +207,16 @@ export const CreateModal = (props: CreateModalProps) => {
                     name={element}
                     minHeight={
                       // @ts-ignore
-                      courseType[element].length > 50
+                      objectType[element].length > 50
                         ? // @ts-ignore
-                          (courseType[element].length / 3 + 20).toString() +
+                          (objectType[element].length / 3 + 20).toString() +
                           "px"
                         : ""
                     }
                   >
                     {
                       // @ts-ignore
-                      courseType[element]
+                      objectType[element]
                     }
                   </StyledTextArea>
                 )}
@@ -223,7 +234,7 @@ export const CreateModal = (props: CreateModalProps) => {
         <ContentContainer>
           <StyledText color={colors.primary.base}>Create new course</StyledText>
           {createInputs}
-          <StyledSaveButton onClick={handleCreate} disabled={buttonDisabled}>
+          <StyledSaveButton onClick={handleCreate} >
             Create
           </StyledSaveButton>
           <StyledSaveButton onClick={exitModal}>Close</StyledSaveButton>

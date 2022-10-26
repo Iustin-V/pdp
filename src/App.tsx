@@ -93,7 +93,9 @@ function App() {
       case "createEvent":
         setCreateModal({ visibility: true, schema: "event" });
         break;
-
+      case "createReview":
+        setCreateModal({ visibility: true, schema: "review" });
+        break;
       case "delete":
         setDeleteModal(true);
         break;
@@ -128,10 +130,10 @@ function App() {
     }
   }, [loading]);
 
-  const eventsLinkRoutes = allEvents.map((link,key) => {
+  const eventsLinkRoutes = allEvents.map((link, key) => {
     return (
       <Route
-          key={key}
+        key={key}
         path={`/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
         element={
           <EventInfo
@@ -148,10 +150,10 @@ function App() {
     );
   });
 
-  const coursesLinkRoutes = allLinkCourses.map((link,key) => {
+  const coursesLinkRoutes = allLinkCourses.map((link, key) => {
     return (
       <Route
-          key={key}
+        key={key}
         path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
         element={<CourseInfo title={link.title} text={link.text} />}
       />
@@ -167,7 +169,7 @@ function App() {
   const navbarLinks = navbarText.map((link, index) => {
     return (
       <Route
-          key={index}
+        key={index}
         path={`/${linkGenerate(link)}`}
         element={arrayNavbarLinks[index]}
       />

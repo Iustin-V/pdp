@@ -144,12 +144,11 @@ export const EditModal = (props: EditModalProps) => {
                       {capitalizeFirstLetter(element)}
                     </StyledText>
                     {Object.keys(item).map((objData: string) => {
-                      if (objData === "image" || objData === "icon") {
+                      if (objData === "image" || objData === "icon" || objData === "avatar") {
                         return (
                           <>
-                            {" "}
                             <StyledText color={colors.primary.base}>
-                              {capitalizeFirstLetter(objData)}{" "}
+                              {capitalizeFirstLetter(objData)}
                             </StyledText>
                             <UploadImage
                               uploadFunction={handleObjectArrayMessageChange}

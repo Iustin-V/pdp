@@ -68,13 +68,15 @@ export const UploadImage = (props) => {
         existingImage={
           postImage.myFile ||
           props?.usedImage[props.index]?.image ||
-          props?.usedImage[props.index]?.icon
+          props?.usedImage[props.index]?.icon ||
+          props?.usedImage[props.index]?.avatar
         }
         src={
           postImage.myFile.length !== 0
             ? postImage.myFile
             : props?.usedImage[props.index]?.image ||
-              props?.usedImage[props.index]?.icon
+              props?.usedImage[props.index]?.icon ||
+              props?.usedImage[props.index]?.avatar
         }
       />
     </>

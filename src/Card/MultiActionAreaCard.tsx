@@ -14,7 +14,6 @@ import { PDPContext } from "../App";
 
 const CardMediaStyled = styled.img`
   width: 100%;
-
   :hover {
     transform: scale(1.15, 1.15);
   }
@@ -24,6 +23,8 @@ const CardMediaStyled = styled.img`
 const StyledCard = styled(Card)`
   position: relative;
   margin-top: 40px;
+  width: 250px;
+  height: 360px;
   margin-bottom: 40px;
   overflow: initial;
   :hover {
@@ -32,7 +33,11 @@ const StyledCard = styled(Card)`
   }
   transition: box-shadow 1s ease-in-out;
 `;
-
+const StyledMediaWrapper = styled.div`
+  height: 166px;
+  overflow: hidden;
+  width: 250px;
+`;
 interface DetailedAboutCard {
   item: object;
   image: any;
@@ -81,7 +86,9 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
         </button>
       )}
       <CardActionArea>
-        <CardMediaStyled src={props.image} alt="courses" />
+        <StyledMediaWrapper>
+          <CardMediaStyled src={props.image} alt="courses" />
+        </StyledMediaWrapper>
         <CardContent>
           <Typography
             variant="h2"
