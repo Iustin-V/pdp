@@ -78,7 +78,6 @@ export const Navbar = (props: navbarProps) => {
   };
 
   const handleClose = () => {
-    document.body.style.overflow = "auto";
     document?.getElementById("lateralmenu")?.classList.remove("opened");
     document
       ?.getElementById("menubutton")
