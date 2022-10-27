@@ -101,7 +101,7 @@ export const Navbar = (props: navbarProps) => {
 
   return (
     <Container>
-      <Overlay id="overlay" onClick={handleOpen} />
+      {/*<Overlay id="overlay" onClick={handleOpen} />*/}
       <StyledNav height="80px">
         <Logo />
         <ItemsWrapper>
