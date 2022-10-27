@@ -179,7 +179,7 @@ export const StyledLateralMenu = styled.div`
   top: 85px;
   right: -300px;
   transition: 0.7s;
-  height: calc(100vh - 85px);
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
