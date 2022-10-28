@@ -36,9 +36,10 @@
   visibility: visible !important;
 }
 
-.overflow{
-  overflow: hidden;
+.overflow {
+  height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 

@@ -13,7 +13,6 @@ import {
   StyledNavItems,
   StyledText,
   ItemsWrapper,
-  Overlay,
 } from "./Navbar-Style";
 import logo from "./images/logo.webp";
 import { ProgressBar } from "./ProgressBar";
@@ -30,11 +29,12 @@ interface navbarProps {
 
 export const Navbar = (props: navbarProps) => {
   const contextLocal: {
-    editFunction: (data: any, type: string) => boolean;
+    editFunction: (data: any,type:string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
 
   const [navbarText, setNavbarTexts] = useState([]);
+
   React.useEffect(() => {
     const navbar = getData(contextLocal?.allCategories, "Navbar");
     setNavbarTexts(navbar.content);
@@ -52,25 +52,14 @@ export const Navbar = (props: navbarProps) => {
     });
   }, [window.scrollY]);
 
-  const handleOpen = () => {
-    console.log(`${window.innerHeight}px`)
-    if (window.innerWidth < 1200) {
-      document.body.classList.toggle("overflow");
-      document.body.style.height = document.body.classList.contains("overflow") ? `${window.innerHeight}px` : "100%";
-      document?.getElementById("lateralmenu")?.classList.toggle("opened");
-      document
-        ?.getElementById("menubutton")
-        ?.classList.toggle("menubuttonopened");
-      document?.getElementById("overlay")?.classList.toggle("visible");
-    }
-  };
-
   const value =
     navbarText &&
     navbarText.map((item) => {
       return (
         <StyledNavItem
-          onClick={handleOpen}
+          onClick={() => {
+            handleOpen();
+          }}
           key={item}
           to={`/${linkGenerate(item) || "#"}`}
         >
@@ -87,6 +76,15 @@ export const Navbar = (props: navbarProps) => {
     );
   };
 
+
+  const handleOpen = () => {
+    document.body.classList.toggle("overflow");
+    document?.getElementById("lateralmenu")?.classList.toggle("opened");
+    document
+      ?.getElementById("menubutton")
+      ?.classList.toggle("menubuttonopened");
+    document?.getElementById("overlay")?.classList.toggle("visible");
+  };
   const MobileMenu = () => {
     return (
       <>
@@ -102,7 +100,6 @@ export const Navbar = (props: navbarProps) => {
 
   return (
     <Container>
-      <Overlay id="overlay" onClick={handleOpen} />
       <StyledNav height="80px">
         <Logo />
         <ItemsWrapper>

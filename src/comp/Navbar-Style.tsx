@@ -177,13 +177,13 @@ export const ItemsWrapper = styled.div`
 export const StyledLateralMenu = styled.div`
   position: absolute;
   top: 85px;
-  right: -300px;
+  right: -100%;
   transition: 0.7s;
   height: calc(100vh - 85px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 300px;
+  width: 100%;
   background: ${colors.secondary.base};
 
   a {
@@ -193,4 +193,9 @@ export const StyledLateralMenu = styled.div`
     text-align: left;
     justify-content: flex-start;
   }
+ 
+ @media(min-width:768px){
+ 
+   height: fit-content;
+ }
 `;
