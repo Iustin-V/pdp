@@ -177,13 +177,13 @@ export const ItemsWrapper = styled.div`
 export const StyledLateralMenu = styled.div`
   position: absolute;
   top: 85px;
-  right: -100%;
+  right: -300px;
   transition: 0.7s;
   height: calc(100vh - 85px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 100%;
+  width: 300px;
   background: ${colors.secondary.base};
 
   a {
