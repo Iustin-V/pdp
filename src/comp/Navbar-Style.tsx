@@ -174,12 +174,12 @@ export const ItemsWrapper = styled.div`
   }
 `;
 
-export const StyledLateralMenu = styled.div`
+export const StyledLateralMenu = styled.div<{windowHeight:number}>`
   position: absolute;
   top: 85px;
   right: -100%;
-  transition: 0.7s;
-  height: calc(100vh - 85px);
+  transition: 0.7s; 
+  height: ${(props)=>`calc(${props.windowHeight}px - 85px)`}
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
