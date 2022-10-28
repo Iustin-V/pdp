@@ -34,7 +34,6 @@ export const Navbar = (props: navbarProps) => {
   } = React.useContext(PDPContext);
 
   const [navbarText, setNavbarTexts] = useState([]);
-const [windowHeight,setWindowHeight] =useState(window.innerHeight)
   React.useEffect(() => {
     const navbar = getData(contextLocal?.allCategories, "Navbar");
     setNavbarTexts(navbar.content);
@@ -49,8 +48,6 @@ const [windowHeight,setWindowHeight] =useState(window.innerHeight)
           props.setTopButton(false);
         }
       }
-
-      setWindowHeight(window.innerHeight)
     });
   }, [window.scrollY]);
 
@@ -80,7 +77,6 @@ const [windowHeight,setWindowHeight] =useState(window.innerHeight)
 
 
   const handleOpen = () => {
-    document.body.classList.toggle("overflow");
     document?.getElementById("lateralmenu")?.classList.toggle("opened");
     document
       ?.getElementById("menubutton")
@@ -95,7 +91,7 @@ const [windowHeight,setWindowHeight] =useState(window.innerHeight)
           <span></span>
           <span></span>
         </BurgerMenu>
-        <StyledLateralMenu id={"lateralmenu"} windowHeight={windowHeight}>{value}</StyledLateralMenu>
+        <StyledLateralMenu id={"lateralmenu"} >{value}</StyledLateralMenu>
       </>
     );
   };

@@ -174,12 +174,13 @@ export const ItemsWrapper = styled.div`
   }
 `;
 
-export const StyledLateralMenu = styled.div<{windowHeight:number}>`
+export const StyledLateralMenu = styled.div`
   position: absolute;
-  top: 85px;
+  top: 80px;
   right: -100%;
+  z-index:1000;
   transition: 0.7s; 
-  height: ${(props)=>`calc(${props.windowHeight}px - 85px)`}
+  height: calc(100vh - 85px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -191,6 +192,8 @@ export const StyledLateralMenu = styled.div<{windowHeight:number}>`
     height: fit-content;
     padding: 20px 15px;
     text-align: left;
+    margin-top:0;
+    border-top:2px solid ${colors.primary.base};
     justify-content: flex-start;
   }
  
