@@ -40,7 +40,6 @@ export const Navbar = (props: navbarProps) => {
     setNavbarTexts(navbar.content);
   }, [contextLocal]);
 
-
   React.useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > window!.visualViewport!.height - 160) {
@@ -54,14 +53,16 @@ export const Navbar = (props: navbarProps) => {
   }, [window.scrollY]);
 
   const handleOpen = () => {
-    if(window.innerWidth<1200) {
+    console.log(`${window.innerHeight}px`)
+    if (window.innerWidth < 1200) {
       document.body.classList.toggle("overflow");
-
-    document?.getElementById("lateralmenu")?.classList.toggle("opened");
-    document
+      document.body.style.height = document.body.classList.contains("overflow") ? `${window.innerHeight}px` : "100%";
+      document?.getElementById("lateralmenu")?.classList.toggle("opened");
+      document
         ?.getElementById("menubutton")
         ?.classList.toggle("menubuttonopened");
-    document?.getElementById("overlay")?.classList.toggle("visible");}
+      document?.getElementById("overlay")?.classList.toggle("visible");
+    }
   };
 
   const value =
@@ -69,8 +70,7 @@ export const Navbar = (props: navbarProps) => {
     navbarText.map((item) => {
       return (
         <StyledNavItem
-          onClick={ handleOpen
-          }
+          onClick={handleOpen}
           key={item}
           to={`/${linkGenerate(item) || "#"}`}
         >
@@ -87,15 +87,10 @@ export const Navbar = (props: navbarProps) => {
     );
   };
 
-
-
   const MobileMenu = () => {
     return (
       <>
-        <BurgerMenu
-          id={"menubutton"}
-          onClick={handleOpen}
-        >
+        <BurgerMenu id={"menubutton"} onClick={handleOpen}>
           <span></span>
           <span></span>
           <span></span>
@@ -107,10 +102,7 @@ export const Navbar = (props: navbarProps) => {
 
   return (
     <Container>
-        <Overlay
-          id="overlay"
-          onClick={handleOpen}
-        />
+      <Overlay id="overlay" onClick={handleOpen} />
       <StyledNav height="80px">
         <Logo />
         <ItemsWrapper>
