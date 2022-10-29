@@ -93,6 +93,9 @@ export const LogoContainer = styled.div`
     width: 100%;
     margin: 0;
   }
+  a > img {
+  filter: grayscale(100%) invert(100%);
+  }
 `;
 export const StyledFooterSocialMediaColumn = styled.div`
   justify-content: right;

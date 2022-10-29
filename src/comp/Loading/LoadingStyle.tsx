@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import ThreeDots from "../../utils/loader";
-import LogoImage from "../images/logo.webp";
 import TeacherIcon from "../images/teacher-icon.webp";
 
 export const LoadingContainer = styled.div`
@@ -45,9 +44,7 @@ export const LogoImageContainer = styled(ThreeDots)`
   }
 `;
 
-export const ImageStyled = styled.img.attrs({
-    src: `${LogoImage}`,
-})`
+export const ImageStyled = styled.img`
   @media (max-width: 840px) {
     width: 200px;
   }

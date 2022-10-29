@@ -15,6 +15,7 @@ import {
   ItemsWrapper,
 } from "./Navbar-Style";
 import logo from "./images/logo.webp";
+import en_logo from "./images/en-logoo.webp"
 import { ProgressBar } from "./ProgressBar";
 import { colors } from "../generalStyle";
 import { LanguageSelector } from "./LanguageSelector";
@@ -70,7 +71,7 @@ export const Navbar = (props: navbarProps) => {
   const Logo = () => {
     return (
       <StyledLogoItem key="" to={`/`}>
-        <StyledImage height="70px" width="218px" src={logo} alt="logo" />
+        <StyledImage height="70px" width="218px" src={localStorage?.locale==='en' ? en_logo: logo} alt="logo" />
       </StyledLogoItem>
     );
   };

@@ -13,7 +13,8 @@ import youtubeIcon from "./images/social-media/icons8-youtube.svg";
 import instagramIcon from "./images/social-media/icons8-instagram.svg";
 import tiktokIcon from "./images/social-media/icons8-tiktok.svg";
 import twitterIcon from "./images/social-media/icons8-twitter.svg";
-import whiteLogo from "./images/logo-white.webp";
+import logo from "./images/logo.webp";
+import enlogo from "./images/en-logoo.webp"
 import redEclipse from "./images/RedEclipse.webp";
 import { StyledImage, StyledLogoItem } from "./Navbar-Style";
 import * as React from "react";
@@ -103,7 +104,7 @@ export const Footer = () => {
   const FooterLogo = () => {
     return (
       <StyledLogoItem key="" to={`/`}>
-        <StyledImage height="80px" src={whiteLogo} alt="logo" />
+        <StyledImage height="80px"  src={localStorage?.locale==='en' ? enlogo: logo} alt="logo" />
       </StyledLogoItem>
     );
   };
