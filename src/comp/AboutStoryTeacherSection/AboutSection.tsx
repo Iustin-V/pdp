@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
+
+import { PDPContext } from "../../App";
+import { colors } from "../../generalStyle";
+import { getData } from "../../utils/getData";
+import { EditButton } from "../EditButton";
 // @ts-ignore
 import {
   BackgroundWrapper,
@@ -8,15 +12,12 @@ import {
   SectionContainer,
   TitleSection,
 } from "../Styles";
+import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
 import Background from "../images/aboutBackground.webp";
-import { colors } from "../../generalStyle";
-import { PDPContext } from "../../App";
-import { getData } from "../../utils/getData";
-import {EditButton} from "../EditButton";
 
 export const AboutSection = () => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
 
@@ -47,8 +48,8 @@ export const AboutSection = () => {
         </SectionContainer>
       </BackgroundWrapper>
       <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentText}
+        editFunction={contextLocal?.editFunction}
+        sectionText={contentText}
       />
     </MarginTOPContainer>
   );

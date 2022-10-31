@@ -1,6 +1,17 @@
+import React, { useEffect, useState } from "react";
+
+import { PDPContext } from "../../App";
+import { colors } from "../../generalStyle";
+import {
+  emailValidation,
+  messageValidation,
+  nameValidation,
+  phoneValidation,
+} from "../../inputsValidations";
+import { getData } from "../../utils/getData";
 import { ParagraphItalicStyled, TitleSection } from "../Styles";
 import background from "../images/contact-background-overlay.webp";
-
+import teacherIcon from "../images/teacher-icon.webp";
 import {
   ContactFormBackground,
   StyledButton,
@@ -15,17 +26,6 @@ import {
   StyledTextArea,
   TextsSection,
 } from "./Contact-Style";
-import { colors } from "../../generalStyle";
-import React, { useEffect, useState } from "react";
-import {
-  emailValidation,
-  messageValidation,
-  nameValidation,
-  phoneValidation,
-} from "../../inputsValidations";
-import teacherIcon from "../images/teacher-icon.webp";
-import { PDPContext } from "../../App";
-import { getData } from "../../utils/getData";
 
 export interface formFieldsType {
   name: string;
@@ -34,7 +34,6 @@ export interface formFieldsType {
   course: string;
   message: string;
 }
-
 
 let formFields: formFieldsType = {
   name: "",
@@ -88,7 +87,7 @@ export const Contact = () => {
   };
 
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   React.useEffect(() => {
@@ -113,11 +112,10 @@ export const Contact = () => {
         break;
     }
   }, []);
-  const optionCourses = allLinkCourses?.map((course,key) => {
-
+  const optionCourses = allLinkCourses?.map((course, key) => {
     return (
       <option
-          key={key}
+        key={key}
         value={course.title}
         selected={course.title === localStorage.course}
       >

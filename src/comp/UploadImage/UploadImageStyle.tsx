@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { colors } from "../../generalStyle";
 
 export const StyledUploadImage = styled.img<{ existingImage?: boolean }>`

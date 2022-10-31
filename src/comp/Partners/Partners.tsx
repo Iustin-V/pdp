@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { TitleSection } from "../Styles";
-import { colors } from "../../generalStyle";
-import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.webp";
-import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.webp";
-import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.webp";
-
 import styled from "styled-components";
+
 import { PDPContext } from "../../App";
+import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { redirectLink } from "../../utils/redirectLink";
+import { TitleSection } from "../Styles";
+import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.webp";
+import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.webp";
+import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.webp";
 
 export const LogoSection = styled.img`
   width: 276px;
@@ -34,7 +34,7 @@ export const Container = styled.div`
 
 export const Partners = () => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({ title: "" });
@@ -54,10 +54,10 @@ export const Partners = () => {
   const LogoSections = partnersLink.map((link, index) => {
     return (
       <LogoSection
-          key={index}
+        key={index}
         onClick={() => redirectLink(partnersLink[index])}
         src={partnersPhotos[index]}
-          alt={`logo${index}`}
+        alt={`logo${index}`}
       />
     );
   });

@@ -1,13 +1,13 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import {SectionContainer, TitleSection, Tooltip} from "../Styles";
-import { colors } from "../../generalStyle";
-import { EventCard } from "./EventCard";
-import React, { useState } from "react";
 import { PDPContext } from "../../App";
+import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
-import { EditButton } from "../EditButton";
 import { CreateButton } from "../CreateButton";
+import { EditButton } from "../EditButton";
+import { SectionContainer, TitleSection, Tooltip } from "../Styles";
+import { EventCard } from "./EventCard";
 
 const StyledEventsPage = styled.div`
   margin-top: 80px;
@@ -89,28 +89,29 @@ export const Events = () => {
   console.log("eventData", dataSection);
   const eventCards = dataSection.content?.map((event, key) => {
     return (
-        <AnimatedContainer key={key}>
-            {localStorage.user !== "null" && ( <button
-                className={"delete-button"}
-                onClick={() => {
-                    contextLocal?.editFunction(
-                        { data: dataSection, index: key },
-                        "delete"
-                    );
-                }}
-            >
-                <Tooltip>Delete this event</Tooltip>X
-            </button>)}
-          <EventCard
-            key={key}
-            title={event.titleSection}
-            text={event.text}
-            eventImage={event.image}
-            imageAlt={event.alt}
-            date={event.date}
-          />
-        </AnimatedContainer>
-
+      <AnimatedContainer key={key}>
+        {localStorage.user !== "null" && (
+          <button
+            className={"delete-button"}
+            onClick={() => {
+              contextLocal?.editFunction(
+                { data: dataSection, index: key },
+                "delete"
+              );
+            }}
+          >
+            <Tooltip>Delete this event</Tooltip>X
+          </button>
+        )}
+        <EventCard
+          key={key}
+          title={event.titleSection}
+          text={event.text}
+          eventImage={event.image}
+          imageAlt={event.alt}
+          date={event.date}
+        />
+      </AnimatedContainer>
     );
   });
   return (

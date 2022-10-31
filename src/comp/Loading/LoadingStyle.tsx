@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import ThreeDots from "../../utils/loader";
 import TeacherIcon from "../images/teacher-icon.webp";
 
@@ -33,10 +34,10 @@ export const LogoImageContainer = styled(ThreeDots)`
   }
   @media (max-width: 400px) {
     width: 140px;
-    top:72px;
+    top: 72px;
     left: -48px;
   }
-  
+
   @media (max-width: 320px) {
     width: 150px;
     top: -92px;
@@ -70,7 +71,7 @@ export const ImageStyled = styled.img`
 `;
 
 export const TeacherIconStyled = styled.img.attrs({
-    src: `${TeacherIcon}`,
+  src: `${TeacherIcon}`,
 })`
   position: absolute;
   bottom: 0;
@@ -89,14 +90,13 @@ export const TeacherIconStyled = styled.img.attrs({
     width: 125px;
     margin-left: 50px;
   }
- 
 `;
 
 export const CloudStyled = styled.div`
   margin-top: 70px;
   width: 250px;
   height: 100px;
-  background: #ECEFF1;
+  background: #eceff1;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
   border-radius: 100px;
   position: absolute;
@@ -105,14 +105,14 @@ export const CloudStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   @media (max-width: 425px) {
     width: 200px;
     height: 70px;
     right: 120px;
-    
-    span{
-    font-size: 20px !important;
+
+    span {
+      font-size: 20px !important;
     }
   }
 
@@ -120,8 +120,8 @@ export const CloudStyled = styled.div`
     width: 150px;
     height: 50px;
     right: 100px;
-    span{
+    span {
       font-size: 20px !important;
     }
   }
-`
+`;

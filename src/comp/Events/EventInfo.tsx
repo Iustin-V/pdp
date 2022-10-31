@@ -1,12 +1,12 @@
 import React from "react";
-
-import { Border, SectionContainer, TitleSection } from "../Styles";
-import { colors, fontSizes } from "../../generalStyle";
-import { StyledPageEventInfo, StyledParagraph } from "./EventStyle";
-import styled from "styled-components";
-import { eventTranslates } from "../../Translates/Translates";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+import { eventTranslates } from "../../Translates/Translates";
+import { colors, fontSizes } from "../../generalStyle";
 import { redirectLink } from "../../utils/redirectLink";
+import { Border, SectionContainer, TitleSection } from "../Styles";
+import { StyledPageEventInfo, StyledParagraph } from "./EventStyle";
 
 interface EventInfoProps {
   title: string;

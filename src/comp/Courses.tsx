@@ -1,3 +1,12 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+
+import { PDPContext } from "../App";
+import { MultiActionAreaCard } from "../Card/MultiActionAreaCard";
+import { colors } from "../generalStyle";
+import { getData } from "../utils/getData";
+import { CreateButton } from "./CreateButton";
+import { EditButton } from "./EditButton";
 import {
   Border,
   ParagraphItalicStyled,
@@ -5,15 +14,6 @@ import {
   TitleSection,
   WrapperCard,
 } from "./Styles";
-import { colors } from "../generalStyle";
-import { MultiActionAreaCard } from "../Card/MultiActionAreaCard";
-
-import styled from "styled-components";
-import React, { useState } from "react";
-import { PDPContext } from "../App";
-import { getData } from "../utils/getData";
-import { EditButton } from "./EditButton";
-import { CreateButton } from "./CreateButton";
 
 export const StyledPageCourses = styled.div`
   margin-top: 80px;
@@ -69,7 +69,7 @@ export const Courses = () => {
     (item, index: number) => {
       return (
         <MultiActionAreaCard
-            key={index}
+          key={index}
           title={item.title}
           time={item.time}
           price={item.price}
@@ -85,7 +85,7 @@ export const Courses = () => {
     (item, index: number) => {
       return (
         <MultiActionAreaCard
-            key={index}
+          key={index}
           title={item.title}
           time={item.time}
           price={item.price}

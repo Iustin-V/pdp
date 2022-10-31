@@ -1,7 +1,9 @@
 import styled from "styled-components";
+
 import { colors } from "../generalStyle";
 import { deleteObject } from "../utils/removeObject";
-import {StyledSaveButton} from "./EditModal/EditModalStyle";
+import { StyledSaveButton } from "./EditModal/EditModalStyle";
+
 const StyledOverlay = styled.div`
   width: 100vw;
   height: 100vh;
@@ -24,14 +26,13 @@ const StyledModal = styled.div`
   h2 {
     text-align: center;
   }
-  div{
-  display:flex;
-  flex-direction:row;
-  justify-content:space-around;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 `;
 export const DeleteModal = (props: any) => {
-
   return (
     <StyledOverlay>
       <StyledModal>
@@ -42,11 +43,9 @@ export const DeleteModal = (props: any) => {
         <div>
           <StyledSaveButton
             onClick={() => {
-                deleteObject(props.modalData.data, props.modalData.index)
-                props.setDeleteMOdalOpen(false);
-
-            }
-            }
+              deleteObject(props.modalData.data, props.modalData.index);
+              props.setDeleteMOdalOpen(false);
+            }}
           >
             YES
           </StyledSaveButton>

@@ -1,16 +1,16 @@
-import * as React from "react";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
-import clock from "./Assets/clock-regular.svg";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import linkGenerate from "../generalFunction";
+import * as React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-import { Tooltip } from "../comp/Styles";
 import { PDPContext } from "../App";
+import { Tooltip } from "../comp/Styles";
+import linkGenerate from "../generalFunction";
+import clock from "./Assets/clock-regular.svg";
 
 const CardMediaStyled = styled.img`
   width: 100%;

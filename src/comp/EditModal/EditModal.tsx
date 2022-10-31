@@ -1,17 +1,17 @@
-import React from "react";
 import axios from "axios";
+import React from "react";
 
+import { colors } from "../../generalStyle";
+import { capitalizeFirstLetter } from "../../utils/Capitalize";
+import { UploadImage } from "../UploadImage/UploadImage";
 import {
+  ContentContainer,
   ModalCover,
   ModalWrapper,
   StyledSaveButton,
   StyledText,
   StyledTextArea,
-  ContentContainer,
 } from "./EditModalStyle";
-import { colors } from "../../generalStyle";
-import { capitalizeFirstLetter } from "../../utils/Capitalize";
-import { UploadImage } from "../UploadImage/UploadImage";
 
 interface EditModalProps {
   modalData: any;
@@ -144,7 +144,11 @@ export const EditModal = (props: EditModalProps) => {
                       {capitalizeFirstLetter(element)}
                     </StyledText>
                     {Object.keys(item).map((objData: string) => {
-                      if (objData === "image" || objData === "icon" || objData === "avatar") {
+                      if (
+                        objData === "image" ||
+                        objData === "icon" ||
+                        objData === "avatar"
+                      ) {
                         return (
                           <>
                             <StyledText color={colors.primary.base}>

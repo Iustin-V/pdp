@@ -1,3 +1,8 @@
+import React, { useState } from "react";
+
+import { PDPContext } from "../../App";
+import { getData } from "../../utils/getData";
+import { EditButton } from "../EditButton";
 import {
   MainContentWrapper,
   MainPagePhoto,
@@ -5,16 +10,11 @@ import {
   MainTitle,
   PageContainer,
 } from "../Styles";
-
 import bookshelf from "../images/bookshelf_compressed.webp";
-import React, { useState } from "react";
-import { PDPContext } from "../../App";
-import { getData } from "../../utils/getData";
-import { EditButton } from "../EditButton";
 
 export const MainPage = () => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [sectionText, setSectionTexts] = useState({ title: "", subTitle: [] });
@@ -33,8 +33,8 @@ export const MainPage = () => {
             {<MainPageText>{sectionText.subTitle}</MainPageText>}
           </PageContainer>
           <EditButton
-              editFunction={contextLocal?.editFunction}
-              sectionText={sectionText}
+            editFunction={contextLocal?.editFunction}
+            sectionText={sectionText}
           />
         </MainContentWrapper>
       </MainPagePhoto>

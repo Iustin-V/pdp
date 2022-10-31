@@ -1,3 +1,9 @@
+import * as React from "react";
+import { useState } from "react";
+
+import { PDPContext } from "../App";
+import linkGenerate from "../generalFunction";
+import { getData } from "../utils/getData";
 import {
   LogoContainer,
   StyledFirstRow,
@@ -5,23 +11,18 @@ import {
   StyledFooterSocialMedia,
   StyledFooterSocialMediaColumn,
   StyledFooterText,
-  StyledSecondRow,
   StyledSMImage,
+  StyledSecondRow,
 } from "./Footer-Style";
+import { StyledImage, StyledLogoItem } from "./Navbar-Style";
+import redEclipse from "./images/RedEclipse.webp";
+import enlogo from "./images/en-logoo.webp";
+import logo from "./images/logo.webp";
 import facebookIcon from "./images/social-media/icons8-facebook.svg";
-import youtubeIcon from "./images/social-media/icons8-youtube.svg";
 import instagramIcon from "./images/social-media/icons8-instagram.svg";
 import tiktokIcon from "./images/social-media/icons8-tiktok.svg";
 import twitterIcon from "./images/social-media/icons8-twitter.svg";
-import logo from "./images/logo.webp";
-import enlogo from "./images/en-logoo.webp"
-import redEclipse from "./images/RedEclipse.webp";
-import { StyledImage, StyledLogoItem } from "./Navbar-Style";
-import * as React from "react";
-import { useState } from "react";
-import { PDPContext } from "../App";
-import { getData } from "../utils/getData";
-import linkGenerate from "../generalFunction";
+import youtubeIcon from "./images/social-media/icons8-youtube.svg";
 
 interface socialMedia {
   name: string;
@@ -31,7 +32,7 @@ interface socialMedia {
 
 export const Footer = () => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [contentMediaLinks, setContentMediaLinks] = useState({ title: "" });
@@ -104,7 +105,11 @@ export const Footer = () => {
   const FooterLogo = () => {
     return (
       <StyledLogoItem key="" to={`/`}>
-        <StyledImage height="80px"  src={localStorage?.locale==='en' ? enlogo: logo} alt="logo" />
+        <StyledImage
+          height="80px"
+          src={localStorage?.locale === "en" ? enlogo : logo}
+          alt="logo"
+        />
       </StyledLogoItem>
     );
   };
@@ -122,7 +127,6 @@ export const Footer = () => {
       </StyledFirstRow>
       <StyledSecondRow>
         <img src={redEclipse} alt="RedEclipseLogo" />
-
       </StyledSecondRow>
     </StyledFooter>
   );

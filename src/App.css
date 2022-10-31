@@ -36,23 +36,20 @@
   visibility: visible !important;
 }
 
-
-
 .delete-button {
-  color:red;
-  border-radius:50%;
+  color: red;
+  border-radius: 50%;
   position: absolute;
-  right:3px;
-  top:3px;
-  height:30px;
-  width:30px;
+  right: 3px;
+  top: 3px;
+  height: 30px;
+  width: 30px;
   z-index: 2;
-
 }
-.delete-button:hover{
+.delete-button:hover {
   cursor: pointer;
 }
 
-.delete-button:hover>span{
+.delete-button:hover > span {
   visibility: visible;
 }

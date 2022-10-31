@@ -1,9 +1,10 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
+
 import { colors } from "../generalStyle";
+import frflag from "./images/fr-flag.png";
 import roflag from "./images/ro-flag.png";
 import ukflag from "./images/uk-flag.png";
-import frflag from "./images/fr-flag.png";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ const StyledDiv = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 5px;
-    padding:5px;
+    padding: 5px;
   }
   ul {
     background-color: ${colors.secondary.base};
@@ -79,7 +80,7 @@ const CurrentCookie = () => {
     case "en": {
       return (
         <>
-          <FlagIcon src={ukflag} alt={"ukflag"}/>
+          <FlagIcon src={ukflag} alt={"ukflag"} />
           EN
         </>
       );
@@ -103,16 +104,34 @@ export const LanguageSelector = () => {
         <CurrentCookie /> &#9660;{" "}
       </div>
       <ul>
-        <li onClick={(localStorage.getItem("locale")!=="ro") ? () => setCookie("ro"):undefined}>
+        <li
+          onClick={
+            localStorage.getItem("locale") !== "ro"
+              ? () => setCookie("ro")
+              : undefined
+          }
+        >
           {" "}
           <FlagIcon src={roflag} alt={"roflag"} /> RO{" "}
         </li>
-        <li onClick={(localStorage.getItem("locale")!=="en") ? () => setCookie("en"):undefined}>
+        <li
+          onClick={
+            localStorage.getItem("locale") !== "en"
+              ? () => setCookie("en")
+              : undefined
+          }
+        >
           {" "}
           <FlagIcon src={ukflag} alt={"ukflag"} /> EN
         </li>
-        <li onClick={(localStorage.getItem("locale")!=="fr") ? () => setCookie("fr"):undefined}>
-          <FlagIcon src={frflag} alt={"frflag"}/> FR
+        <li
+          onClick={
+            localStorage.getItem("locale") !== "fr"
+              ? () => setCookie("fr")
+              : undefined
+          }
+        >
+          <FlagIcon src={frflag} alt={"frflag"} /> FR
         </li>
       </ul>
     </StyledDiv>

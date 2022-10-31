@@ -1,6 +1,8 @@
-import React from "react";
 import axios from "axios";
+import React from "react";
 
+import { colors } from "../../generalStyle";
+import { capitalizeFirstLetter } from "../../utils/Capitalize";
 import {
   ContentContainer,
   ModalCover,
@@ -9,8 +11,6 @@ import {
   StyledText,
   StyledTextArea,
 } from "../EditModal/EditModalStyle";
-import { colors } from "../../generalStyle";
-import { capitalizeFirstLetter } from "../../utils/Capitalize";
 import { UploadImage } from "../UploadImage/UploadImage";
 
 interface CreateModalProps {
@@ -65,8 +65,6 @@ export const CreateModal = (props: CreateModalProps) => {
       });
     }
   }, [props.createModalSchema]);
-
-
 
   const handleCreate = () => {
     let text: undefined;
@@ -234,9 +232,7 @@ export const CreateModal = (props: CreateModalProps) => {
         <ContentContainer>
           <StyledText color={colors.primary.base}>Create new course</StyledText>
           {createInputs}
-          <StyledSaveButton onClick={handleCreate} >
-            Create
-          </StyledSaveButton>
+          <StyledSaveButton onClick={handleCreate}>Create</StyledSaveButton>
           <StyledSaveButton onClick={exitModal}>Close</StyledSaveButton>
         </ContentContainer>
       </ModalWrapper>

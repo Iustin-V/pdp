@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 import { colors } from "../generalStyle";
 
 export const Overlay = styled.div`
@@ -124,7 +125,7 @@ export const StyledImage = styled.img<{
 }>`
   height: ${(props) => props.height};
   width: ${(props) => props.width || "250px"};
- 
+
   ${(props) =>
     props.construction &&
     "margin-left: 50px; filter: invert(13%) sepia(94%) saturate(1864%) hue-rotate(207deg) brightness(85%) contrast(110%);"}
@@ -132,7 +133,7 @@ export const StyledImage = styled.img<{
 
   @media (max-width: 768px) {
     height: 46px;
-    width:144px;
+    width: 144px;
     ${(props) => props.construction && "height:100px"}
   }
 `;
@@ -178,8 +179,8 @@ export const StyledLateralMenu = styled.div`
   position: absolute;
   top: 80px;
   right: -100%;
-  z-index:1000;
-  transition: 0.7s; 
+  z-index: 1000;
+  transition: 0.7s;
   height: calc(100vh - 85px);
   display: flex;
   flex-direction: column;
@@ -192,13 +193,12 @@ export const StyledLateralMenu = styled.div`
     height: fit-content;
     padding: 20px 15px;
     text-align: left;
-    margin-top:0;
-    border-top:2px solid ${colors.primary.base};
+    margin-top: 0;
+    border-top: 2px solid ${colors.primary.base};
     justify-content: flex-start;
   }
- 
- @media(min-width:768px){
- 
-   height: fit-content;
- }
+
+  @media (min-width: 768px) {
+    height: fit-content;
+  }
 `;

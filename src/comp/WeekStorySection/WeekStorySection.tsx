@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
+
+import { PDPContext } from "../../App";
+import { colors } from "../../generalStyle";
+import { getData } from "../../utils/getData";
+import { EditButton } from "../EditButton";
 import {
   BackgroundWrapper,
   ParagraphItalicStyled,
   SectionContainer,
   TitleSection,
 } from "../Styles";
+import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
 import Background from "../images/WeekStorySection.webp";
-import { colors } from "../../generalStyle";
-import { PDPContext } from "../../App";
-import { getData } from "../../utils/getData";
-import { EditButton } from "../EditButton";
 
 interface weekStorySectionProps {
   separatePage?: boolean;
@@ -18,7 +19,7 @@ interface weekStorySectionProps {
 
 export const WeekStorySection = (props: weekStorySectionProps) => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({

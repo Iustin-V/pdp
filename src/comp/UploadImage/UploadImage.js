@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { StyledUploadImage } from "./UploadImageStyle";
 
 export const UploadImage = (props) => {

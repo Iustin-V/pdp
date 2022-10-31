@@ -1,30 +1,30 @@
 import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from "./comp/Home";
-import { StyledWrapper } from "./comp/Styles";
-import { Courses } from "./comp/Courses";
-import { WeekStorySection } from "./comp/WeekStorySection/WeekStorySection";
-import { Navbar } from "./comp/Navbar";
-import { ToTopButton } from "./comp/ToTopButton";
-import { Footer } from "./comp/Footer";
-import { WorkInProgress } from "./comp/WorkInProgress";
-import { Contact } from "./comp/Contact/Contact";
-import { Events } from "./comp/Events/Events";
 import ScrollToTop from "./ScrollToTop";
-import linkGenerate from "./generalFunction";
-import { CourseInfo } from "./comp/CourseInfo/CouseInfo";
-import Login from "./comp/Login/Login";
-import useFetch from "./hooks/useFetch";
-import { getData } from "./utils/getData";
-import { StoryBoxPage } from "./comp/StoryBox/StoryBox";
-import { EventInfo } from "./comp/Events/EventInfo";
-import Loading from "./comp/Loading/Loading";
 import { UnknownRoute } from "./UnknownRoute";
-import { EditModal } from "./comp/EditModal/EditModal";
+import { Contact } from "./comp/Contact/Contact";
+import { CourseInfo } from "./comp/CourseInfo/CouseInfo";
+import { Courses } from "./comp/Courses";
 import { CreateModal } from "./comp/CreateModal/CreateModal";
 import { DeleteModal } from "./comp/DeleteModal";
+import { EditModal } from "./comp/EditModal/EditModal";
+import { EventInfo } from "./comp/Events/EventInfo";
+import { Events } from "./comp/Events/Events";
+import { Footer } from "./comp/Footer";
+import { Home } from "./comp/Home";
+import Loading from "./comp/Loading/Loading";
+import Login from "./comp/Login/Login";
+import { Navbar } from "./comp/Navbar";
+import { StoryBoxPage } from "./comp/StoryBox/StoryBox";
+import { StyledWrapper } from "./comp/Styles";
+import { ToTopButton } from "./comp/ToTopButton";
+import { WeekStorySection } from "./comp/WeekStorySection/WeekStorySection";
+import { WorkInProgress } from "./comp/WorkInProgress";
+import linkGenerate from "./generalFunction";
+import useFetch from "./hooks/useFetch";
+import { getData } from "./utils/getData";
 
 export const PDPContext = React.createContext({
   allCategories: [],

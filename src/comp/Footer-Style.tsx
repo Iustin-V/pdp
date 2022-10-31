@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { colors, fontSizes } from "../generalStyle";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+import { colors, fontSizes } from "../generalStyle";
 
 export const StyledFooter = styled.div`
   bottom: 0;
@@ -51,7 +52,7 @@ export const StyledFooterSocialMedia = styled.div<{ name?: string }>`
   transition: 0.7s ease;
 
   :hover {
-  cursor:pointer;
+    cursor: pointer;
     background: white;
     border: 1px solid black;
     img {
@@ -94,7 +95,7 @@ export const LogoContainer = styled.div`
     margin: 0;
   }
   a > img {
-  filter: grayscale(100%) invert(100%);
+    filter: grayscale(100%) invert(100%);
   }
 `;
 export const StyledFooterSocialMediaColumn = styled.div`
@@ -143,11 +144,11 @@ export const StyledSecondRow = styled.div`
   gap: 5px;
   img {
     height: 80px;
-    width:250px;
+    width: 250px;
     object-fit: contain;
     @media (max-width: 768px) {
       height: 46px;
-          width:144px;
+      width: 144px;
     }
   }
 `;

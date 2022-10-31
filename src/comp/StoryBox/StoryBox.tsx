@@ -1,13 +1,14 @@
-import { StoryBoxPageContainer } from "./StoryBoxStyle";
-import { WhatHowAndWhySection } from "./whatHowAndWhy";
-import { StoryBoxSection } from "./StoryBoxSection";
 import React, { useState } from "react";
+
 import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
+import { StoryBoxSection } from "./StoryBoxSection";
+import { StoryBoxPageContainer } from "./StoryBoxStyle";
+import { WhatHowAndWhySection } from "./whatHowAndWhy";
 
 export const StoryBoxPage = () => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [contentText, setContentTexts] = useState({

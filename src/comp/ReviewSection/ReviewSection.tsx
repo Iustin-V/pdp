@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import "./ReviewSection.styles.css";
-import { Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { PDPContext } from "../../App";
 import { colors } from "../../generalStyle";
+import { getData } from "../../utils/getData";
+import { CreateButton } from "../CreateButton";
+import { EditButton } from "../EditButton";
+import { SectionContainer } from "../Styles";
+import reviewIcon from "../images/icons8-chat-100.webp";
 import {
   InfoReviewer,
   InsideSlideWrapper,
@@ -15,12 +21,7 @@ import {
   StyledTitleContainer,
   TitleReviewSection,
 } from "./ReviewSection.style.style";
-import { SectionContainer } from "../Styles";
-import reviewIcon from "../images/icons8-chat-100.webp";
-import { PDPContext } from "../../App";
-import { getData } from "../../utils/getData";
-import { EditButton } from "../EditButton";
-import { CreateButton } from "../CreateButton";
+import "./ReviewSection.styles.css";
 
 export const ReviewSection = () => {
   const contextLocal: {

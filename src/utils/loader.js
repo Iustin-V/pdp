@@ -1,5 +1,6 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+
 import { colors } from "../generalStyle";
 
 const ThreeDots = (props) => (

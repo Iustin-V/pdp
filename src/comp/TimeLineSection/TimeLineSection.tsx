@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+
+import { PDPContext } from "../../App";
 import { colors } from "../../generalStyle";
+import { getData } from "../../utils/getData";
+import { EditButton } from "../EditButton";
 import {
   BackgroundWrapper,
   ParagraphItalicStyled,
   TitleSection,
 } from "../Styles";
 import Background from "../images/TimeLine.Background.webp";
-import { getData } from "../../utils/getData";
-import { PDPContext } from "../../App";
-import {EditButton} from "../EditButton";
 
 export const TimeLineSection = () => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
 
@@ -28,7 +28,6 @@ export const TimeLineSection = () => {
     const textData = getData(contextLocal?.allCategories, "TimeLineSelection");
     setContentTexts(textData);
   }, [contextLocal]);
-
 
   const timeLine = contentText.content?.map((element, index) => {
     return (
@@ -60,8 +59,8 @@ export const TimeLineSection = () => {
       </TitleSection>
       <VerticalTimeline lineColor={"#f8ecd4"}>{timeLine}</VerticalTimeline>
       <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentText}
+        editFunction={contextLocal?.editFunction}
+        sectionText={contentText}
       />
     </BackgroundWrapper>
   );

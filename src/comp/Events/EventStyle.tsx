@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { colors, fontSizes } from "../../generalStyle";
 
 export const StyledEventCardContainer = styled.div`

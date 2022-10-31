@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { fontSizes, colors } from "../../generalStyle";
+
+import { colors, fontSizes } from "../../generalStyle";
 
 export const ContactFormBackground = styled.div<{ backgroundImage: string }>`
   background-image: url(${(props) => props.backgroundImage});

@@ -1,19 +1,20 @@
-import styled from "styled-components";
-import { ParagraphItalicStyled, TitleSection } from "../Styles";
-import { colors } from "../../generalStyle";
-import backgroundImage from "../images/CourseInfo.webp";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import React, { useState } from "react";
-import { ContactFormBackground } from "../Contact/Contact-Style";
-import teacherIcon from "../images/teacher-icon.webp";
-import { Link } from "react-router-dom";
-import { getData } from "../../utils/getData";
+import styled from "styled-components";
+
 import { PDPContext } from "../../App";
-import linkGenerate from "../../generalFunction";
 import { courseButtonTranslates } from "../../Translates/Translates";
+import linkGenerate from "../../generalFunction";
+import { colors } from "../../generalStyle";
+import { getData } from "../../utils/getData";
+import { ContactFormBackground } from "../Contact/Contact-Style";
+import { ParagraphItalicStyled, TitleSection } from "../Styles";
+import backgroundImage from "../images/CourseInfo.webp";
+import teacherIcon from "../images/teacher-icon.webp";
 
 export const StyledPageCourseInfo = styled.div`
   margin-top: 80px;
@@ -83,7 +84,7 @@ interface coursesInfo {
 
 export const CourseInfo = (props: coursesInfo) => {
   const contextLocal: {
-    editFunction: (data: any,type:string) => boolean;
+    editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [talkWithTeacher, setLinkTalkWithTeacher] = useState({ content: [] });
@@ -103,7 +104,7 @@ export const CourseInfo = (props: coursesInfo) => {
   const coursesTimeLine = props.text?.map((element, index) => {
     return (
       <VerticalTimelineElement
-          key={index}
+        key={index}
         className={`vertical-timeline-element--${
           index % 2 === 0 ? "work" : "education"
         }`}
@@ -134,7 +135,7 @@ export const CourseInfo = (props: coursesInfo) => {
         <SectionContainer>
           <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
 
-          <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"} >
+          <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
             <ImageCourseInfo src={teacherIcon} alt="teacherIcon" />
             {coursesTimeLine}
           </VerticalTimeline>

@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { Divider } from "../Divider";
+import { buttonTranslates } from "../../Translates/Translates";
 import linkGenerate from "../../generalFunction";
-import { Link } from "react-router-dom";
+import { Divider } from "../Divider";
 import {
   StyledButton,
   StyledContent,
@@ -11,7 +12,6 @@ import {
   StyledParagraph,
   StyledTitle,
 } from "./EventStyle";
-import { buttonTranslates } from "../../Translates/Translates";
 
 interface EventCardProps {
   title: string;
