@@ -36,6 +36,7 @@ export const Navbar = (props: navbarProps) => {
   } = React.useContext(PDPContext);
 
   const [navbarText, setNavbarTexts] = useState([]);
+  const [activeMenu, setActiveMenu] = useState(false);
   React.useEffect(() => {
     const navbar = getData(contextLocal?.allCategories, "Navbar");
     setNavbarTexts(navbar.content);
@@ -52,6 +53,14 @@ export const Navbar = (props: navbarProps) => {
       }
     });
   }, [window.scrollY]);
+  React.useEffect(() => {
+    if(activeMenu){
+      document.body.style.overflow='hidden'
+    }
+    else {
+      document.body.style.overflow='auto'
+    }
+  }, [activeMenu]);
 
   const value =
     navbarText &&
@@ -59,7 +68,7 @@ export const Navbar = (props: navbarProps) => {
       return (
         <StyledNavItem
           onClick={() => {
-            handleOpen();
+            setActiveMenu(false);
           }}
           key={item}
           to={`/${linkGenerate(item) || "#"}`}
@@ -71,33 +80,48 @@ export const Navbar = (props: navbarProps) => {
 
   const Logo = () => {
     return (
-      <StyledLogoItem key="" to={`/`}>
+      <StyledLogoItem key="" to={`/`} onClick={()=>{setActiveMenu(false);}}>
         <StyledImage
           height="70px"
           width="218px"
-          src={localStorage?.locale === "en" ? en_logo : localStorage?.locale === "fr"? fr_logo: logo}
+          src={
+            localStorage?.locale === "en"
+              ? en_logo
+              : localStorage?.locale === "fr"
+              ? fr_logo
+              : logo
+          }
           alt="logo"
         />
       </StyledLogoItem>
     );
   };
 
-  const handleOpen = () => {
-    document?.getElementById("lateralmenu")?.classList.toggle("opened");
-    document
-      ?.getElementById("menubutton")
-      ?.classList.toggle("menubuttonopened");
-    document?.getElementById("overlay")?.classList.toggle("visible");
-  };
   const MobileMenu = () => {
     return (
       <>
-        <BurgerMenu id={"menubutton"} onClick={handleOpen}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </BurgerMenu>
-        <StyledLateralMenu id={"lateralmenu"}>{value}</StyledLateralMenu>
+        {!activeMenu && (
+          <BurgerMenu id={"menubutton"} onClick={() => setActiveMenu(true)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </BurgerMenu>
+        )}
+        {activeMenu && (
+          <>
+            <BurgerMenu
+              id={"menubutton"}
+              className={"menubuttonopened"}
+              onClick={() => setActiveMenu(false)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </BurgerMenu>
+            <StyledLateralMenu id={"lateralmenu"}
+            className={'opened'}>{value}</StyledLateralMenu>
+          </>
+        )}
       </>
     );
   };
