@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyledPageWrapper } from "./Styles";
+import {StyledHomeWrapper, StyledPageWrapper} from "./Styles";
 import { MainPage } from "./MainPage/MainPage";
 import { AboutSection } from "./AboutStoryTeacherSection/AboutSection";
 import { TimeLineSection } from "./TimeLineSection/TimeLineSection";
@@ -11,7 +11,7 @@ import { PrincipalesLinks } from "./PrincipalesLinksSection/PrincipalesLinks";
 
 export const Home = () => {
   return (
-    <>
+    <StyledHomeWrapper>
       <StyledPageWrapper>
         <MainPage />
       </StyledPageWrapper>
@@ -21,6 +21,6 @@ export const Home = () => {
       <WeekStorySection />
       <ReviewSection />
       <Partners />
-    </>
+    </StyledHomeWrapper>
   );
 };

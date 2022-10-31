@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { fontSizes } from "../generalStyle";
+import styled from "styled-components";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -237,7 +237,7 @@ export const Border = styled.hr`
       transform: translateX(0);
     }
     100% {
-      transform: translateX(2000px);
+      transform: translateX(3000px);
     }
   }
 `;
@@ -257,15 +257,18 @@ export const StyledEditButton = styled.button`
 `;
 
 export const Tooltip = styled.span`
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    position: absolute;
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
   z-index: 1;
-  left:-3px;
-  transform:translateX(-100%);
+  left: -3px;
+  transform: translateX(-100%);
+`;
+export const StyledHomeWrapper = styled.div`
+  background-color: white;
 `;

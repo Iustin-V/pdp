@@ -3,6 +3,7 @@ import { colors, fontSizes } from "../../generalStyle";
 
 export const StoryBoxPageContainer = styled.div`
   margin-top: 85px;
+  background-color: white;
 `;
 
 export const SubtitleSection = styled.p`

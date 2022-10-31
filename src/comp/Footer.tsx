@@ -69,7 +69,7 @@ export const Footer = () => {
     {
       name: "tiktok",
       iconSrc: tiktokIcon,
-      link: "https://www.tiktok.com/@profadepovesti",
+      link: "https://www.tiktok.com/@thestoryteacher",
     },
     {
       name: "twitter",
