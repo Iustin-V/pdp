@@ -6,6 +6,7 @@ import { buttonTranslates } from "../../Translates/Translates";
 import linkGenerate from "../../generalFunction";
 import { Divider } from "../Divider";
 import {
+  MediaWrapper,
   StyledButton,
   StyledContent,
   StyledEventCardContainer,
@@ -40,7 +41,9 @@ export const EventCard = (props: EventCardProps) => {
       <StyledEventCardContainer>
         <StyledTitle>{props.title}</StyledTitle>
         <StyledContent>
-          <StyledMedia src={props.eventImage} alt={props.title} />
+          <MediaWrapper>
+            <StyledMedia src={props.eventImage} alt={props.title} />
+          </MediaWrapper>
           <StyledFlexContainer>
             <StyledElipsisParagraph>{props.text}</StyledElipsisParagraph>
             <Link

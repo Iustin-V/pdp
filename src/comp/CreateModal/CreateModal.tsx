@@ -81,10 +81,12 @@ export const CreateModal = (props: CreateModalProps) => {
 
     if (props.createModalSchema === "course") {
       //@ts-ignore
+      console.log("emptyArray", emptyArray, updateArray);
       if (
         createValues?.length === 4 &&
         //@ts-ignore
         !createValues?.includes("") &&
+        updateArray?.length > 0 &&
         !emptyArray
       ) {
         setButtonDisabled(false);
@@ -103,7 +105,6 @@ export const CreateModal = (props: CreateModalProps) => {
       }
     } else if (props.createModalSchema === "event") {
       //@ts-ignore
-
       if (
         createValues?.length === 6 &&
         //@ts-ignore
@@ -161,8 +162,7 @@ export const CreateModal = (props: CreateModalProps) => {
       .then(() => {
         window.location.reload();
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
     exitModal();
   };
 
