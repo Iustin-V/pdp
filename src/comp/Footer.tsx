@@ -16,7 +16,8 @@ import {
 } from "./Footer-Style";
 import { StyledImage, StyledLogoItem } from "./Navbar-Style";
 import redEclipse from "./images/RedEclipse.webp";
-import enlogo from "./images/en-logoo.webp";
+import enlogo from "./images/en-logo.webp";
+import frlogo from "./images/fr-logo.webp";
 import logo from "./images/logo.webp";
 import facebookIcon from "./images/social-media/icons8-facebook.svg";
 import instagramIcon from "./images/social-media/icons8-instagram.svg";
@@ -107,7 +108,7 @@ export const Footer = () => {
       <StyledLogoItem key="" to={`/`}>
         <StyledImage
           height="80px"
-          src={localStorage?.locale === "en" ? enlogo : logo}
+          src={localStorage?.locale === "en" ? enlogo : localStorage?.locale === "fr"? frlogo: logo}
           alt="logo"
         />
       </StyledLogoItem>

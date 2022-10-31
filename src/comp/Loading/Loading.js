@@ -1,5 +1,6 @@
 import { loadingTranslates } from "../../Translates/Translates";
-import EnLogoImage from "../images/en-logoo.webp";
+import EnLogoImage from "../images/en-logo.webp";
+import FrLogoImage from "../images/fr-logo.webp";
 import LogoImage from "../images/logo.webp";
 import {
   CloudStyled,
@@ -15,7 +16,7 @@ const Loading = () => {
       <LoadingContainer>
         <div>
           <ImageStyled
-            src={localStorage?.locale === "en" ? EnLogoImage : LogoImage}
+            src={localStorage?.locale === "en" ? EnLogoImage : localStorage?.locale === "fr"?FrLogoImage: LogoImage}
           />
           <LogoImageContainer />
         </div>

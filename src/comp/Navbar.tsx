@@ -20,7 +20,8 @@ import {
   StyledText,
 } from "./Navbar-Style";
 import { ProgressBar } from "./ProgressBar";
-import en_logo from "./images/en-logoo.webp";
+import en_logo from "./images/en-logo.webp";
+import fr_logo from "./images/fr-logo.webp";
 import logo from "./images/logo.webp";
 
 interface navbarProps {
@@ -74,7 +75,7 @@ export const Navbar = (props: navbarProps) => {
         <StyledImage
           height="70px"
           width="218px"
-          src={localStorage?.locale === "en" ? en_logo : logo}
+          src={localStorage?.locale === "en" ? en_logo : localStorage?.locale === "fr"? fr_logo: logo}
           alt="logo"
         />
       </StyledLogoItem>
