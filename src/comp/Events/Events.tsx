@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import styled from "styled-components";
 
 import { PDPContext } from "../../App";
@@ -6,7 +7,12 @@ import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { CreateButton } from "../CreateButton";
 import { EditButton } from "../EditButton";
-import { SectionContainer, TitleSection, Tooltip } from "../Styles";
+import {
+  AdminButtons,
+  SectionContainer,
+  TitleSection,
+  Tooltip,
+} from "../Styles";
 import { EventCard } from "./EventCard";
 
 const StyledEventsPage = styled.div`
@@ -79,7 +85,7 @@ export const Events = () => {
     allCategories: any[];
   } = React.useContext(PDPContext);
   const [dataSection, setDataSection] = useState({
-    content: [{ titleSection: "", text: "", image: "", alt: "", date: "" }],
+    content: [{ titleSection: "", text: "", image: "", date: "" }],
     title: "",
   });
   React.useEffect(() => {
@@ -108,7 +114,6 @@ export const Events = () => {
           title={event.titleSection}
           text={event.text}
           eventImage={event.image}
-          imageAlt={event.alt}
           date={event.date}
         />
       </AnimatedContainer>
@@ -117,6 +122,18 @@ export const Events = () => {
   return (
     <StyledEventsPage>
       <SectionContainer>
+        <AdminButtons>
+          <CreateButton
+            createFunction={contextLocal?.editFunction}
+            sectionText={dataSection}
+            createType="createEvent"
+          />
+
+          <EditButton
+            editFunction={contextLocal?.editFunction}
+            sectionText={dataSection}
+          />
+        </AdminButtons>
         <StyledContent>
           {
             <TitleSection color={colors.primary.base}>
@@ -126,16 +143,6 @@ export const Events = () => {
           {eventCards}
         </StyledContent>
       </SectionContainer>
-      <CreateButton
-        createFunction={contextLocal?.editFunction}
-        sectionText={dataSection}
-        createType="createEvent"
-      />
-
-      <EditButton
-        editFunction={contextLocal?.editFunction}
-        sectionText={dataSection}
-      />
     </StyledEventsPage>
   );
 };

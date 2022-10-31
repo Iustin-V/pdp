@@ -273,3 +273,15 @@ export const Tooltip = styled.span`
 export const StyledHomeWrapper = styled.div`
   background-color: white;
 `;
+export const AdminButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+`;
+export const StyledErrorMessage = styled.div`
+  color: red;
+  font-size: 15px;
+  font-weight: 700;
+  height: 20px;
+  margin: 5px;
+`;

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 import { buttonTranslates } from "../../Translates/Translates";
@@ -17,7 +18,6 @@ interface EventCardProps {
   title: string;
   text: string;
   eventImage: string;
-  imageAlt: string;
   date: string;
 }
 const StyledFlexContainer = styled.div`
@@ -40,7 +40,7 @@ export const EventCard = (props: EventCardProps) => {
       <StyledEventCardContainer>
         <StyledTitle>{props.title}</StyledTitle>
         <StyledContent>
-          <StyledMedia src={props.eventImage} alt={props.imageAlt} />
+          <StyledMedia src={props.eventImage} alt={props.title} />
           <StyledFlexContainer>
             <StyledElipsisParagraph>{props.text}</StyledElipsisParagraph>
             <Link

@@ -1,10 +1,11 @@
+import * as React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { PDPContext } from "../App";
@@ -87,7 +88,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
       )}
       <CardActionArea>
         <StyledMediaWrapper>
-          <CardMediaStyled src={props.image} alt="courses" />
+          <CardMediaStyled src={props.image} alt={props.title} />
         </StyledMediaWrapper>
         <CardContent>
           <Typography

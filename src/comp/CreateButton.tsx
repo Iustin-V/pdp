@@ -16,7 +16,7 @@ export const CreateButton = (props: CreateButtonProps) => {
           props.createFunction(props.sectionText, props.createType)
         }
       >
-        Create course
+        Create
       </StyledEditButton>
     );
   }

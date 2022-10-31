@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import styled from "styled-components";
 
 import { PDPContext } from "../App";
@@ -8,6 +9,7 @@ import { getData } from "../utils/getData";
 import { CreateButton } from "./CreateButton";
 import { EditButton } from "./EditButton";
 import {
+  AdminButtons,
   Border,
   ParagraphItalicStyled,
   SectionContainer,
@@ -103,6 +105,19 @@ export const Courses = () => {
     <>
       <StyledPageCourses>
         <SectionContainer>
+          <AdminButtons>
+            <CreateButton
+              createFunction={contextLocal?.editFunction}
+              sectionText={contentCourseChildParents}
+              createType="createCourse"
+            />
+
+            <EditButton
+              editFunction={contextLocal?.editFunction}
+              sectionText={contentCourseChildParents}
+            />
+          </AdminButtons>
+
           <TitleSection color={colors.primary.base}>
             {refactorTitle[0]} <br /> -{refactorTitle[1]}-
           </TitleSection>
@@ -111,20 +126,21 @@ export const Courses = () => {
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
         </SectionContainer>
-        <CreateButton
-          createFunction={contextLocal?.editFunction}
-          sectionText={contentCourseChildParents}
-          createType="createCourse"
-        />
-
-        <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentCourseChildParents}
-        />
       </StyledPageCourses>
       <Border />
       <StyledPageCourses>
         <SectionContainer>
+          <AdminButtons>
+            <CreateButton
+              createFunction={contextLocal?.editFunction}
+              sectionText={contentCourseChildParents}
+              createType="createCourse"
+            />
+            <EditButton
+              editFunction={contextLocal?.editFunction}
+              sectionText={contentCourseTeacher}
+            />
+          </AdminButtons>
           <TitleSection color={colors.primary.base}>
             {refactorTitleCourseTeacher[0]} <br /> -
             {refactorTitleCourseTeacher[1]}-
@@ -134,15 +150,6 @@ export const Courses = () => {
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardParentsTeacher}</WrapperCard>
         </SectionContainer>
-        <CreateButton
-          createFunction={contextLocal?.editFunction}
-          sectionText={contentCourseChildParents}
-          createType="createCourse"
-        />
-        <EditButton
-          editFunction={contextLocal?.editFunction}
-          sectionText={contentCourseTeacher}
-        />
       </StyledPageCourses>
     </>
   );

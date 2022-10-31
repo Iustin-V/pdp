@@ -1,5 +1,6 @@
-import axios from "axios";
 import React from "react";
+
+import axios from "axios";
 
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
@@ -24,7 +25,7 @@ interface EditModalProps {
 export const EditModal = (props: EditModalProps) => {
   const localModalData = props?.modalData;
   const [updateObject, setUpdateObject] = React.useState({});
-  const [updateArray, setUpdateArray] = React.useState([]);
+  const [updateArray, setUpdateArray] = React.useState([""]);
   const [updateObjectArray, setUpdateObjectArray] = React.useState([{}]);
   const [initialArray, setInitialArray] = React.useState([]);
   const [initialObjectArray, setInitialObjectArray] = React.useState(
@@ -79,14 +80,11 @@ export const EditModal = (props: EditModalProps) => {
     });
   };
 
-  const handleArrayMessageChange = (event: any, index?: number) => {
+  const handleArrayMessageChange = (event: any, index: number) => {
     setInitialArray(props.modalData[event.target.name]);
-    // @ts-ignore
-    // la copy paste trb adaugat un space la final ca sa  citeasca
     setUpdateArray([
       ...updateArray.slice(0, index),
       event.target.value,
-      // @ts-ignore
       ...updateArray.slice(index + 1, initialArray.length),
     ]);
   };
@@ -158,7 +156,6 @@ export const EditModal = (props: EditModalProps) => {
                               uploadFunction={handleObjectArrayMessageChange}
                               objData={objData}
                               index={index}
-                              //@ts-ignore
                               usedImage={updateObjectArray}
                             />
                           </>

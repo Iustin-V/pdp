@@ -4,7 +4,6 @@ import { PDPContext } from "../../App";
 import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
-// @ts-ignore
 import {
   BackgroundWrapper,
   MarginTOPContainer,

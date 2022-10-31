@@ -1,5 +1,7 @@
-import axios from "axios";
 import React from "react";
+
+import axios from "axios";
+import { isArray } from "util";
 
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
@@ -11,6 +13,7 @@ import {
   StyledText,
   StyledTextArea,
 } from "../EditModal/EditModalStyle";
+import { StyledErrorMessage } from "../Styles";
 import { UploadImage } from "../UploadImage/UploadImage";
 
 interface CreateModalProps {
@@ -24,7 +27,7 @@ export const CreateModal = (props: CreateModalProps) => {
   const [updateObject, setUpdateObject] = React.useState({});
   const [updateArray, setUpdateArray] = React.useState([]);
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
-
+  const [errorMessage, setErrorMessage] = React.useState("");
   const [objectType, setObjectType] = React.useState({
     title: "",
     image: "",
@@ -53,7 +56,6 @@ export const CreateModal = (props: CreateModalProps) => {
         date: "",
         website: "",
         image: "",
-        alt: "",
       });
     } else if (props.createModalSchema === "review") {
       setObjectType({
@@ -66,9 +68,80 @@ export const CreateModal = (props: CreateModalProps) => {
     }
   }, [props.createModalSchema]);
 
+  React.useEffect(() => {
+    const createValues = Object.values(updateObject);
+    //@ts-ignore
+    const emptyArray = updateArray?.includes("");
+    const Titles = props?.data?.content?.map((item: any) => {
+      if (item?.title) {
+        return item?.title?.toLowerCase();
+      }
+      return item?.titleSection?.toLowerCase();
+    });
+
+    if (props.createModalSchema === "course") {
+      //@ts-ignore
+      if (
+        createValues?.length === 4 &&
+        //@ts-ignore
+        !createValues?.includes("") &&
+        !emptyArray
+      ) {
+        setButtonDisabled(false);
+      } else {
+        setButtonDisabled(true);
+      }
+      if (
+        //@ts-ignore
+        Titles?.includes(updateObject?.title?.toLowerCase().trim()) || //@ts-ignore
+        Titles?.includes(updateObject?.titleSection?.toLowerCase().trim())
+      ) {
+        setButtonDisabled(true);
+        setErrorMessage("Title is already used.");
+      } else {
+        setErrorMessage("");
+      }
+    } else if (props.createModalSchema === "event") {
+      //@ts-ignore
+
+      if (
+        createValues?.length === 6 &&
+        //@ts-ignore
+        !createValues?.includes("")
+      ) {
+        setButtonDisabled(false);
+      } else {
+        setButtonDisabled(true);
+      }
+      if (
+        //@ts-ignore
+        Titles?.includes(updateObject?.title?.toLowerCase().trim()) || //@ts-ignore
+        Titles?.includes(updateObject?.titleSection?.toLowerCase().trim())
+      ) {
+        setButtonDisabled(true);
+        setErrorMessage("Title is already used.");
+      } else {
+        setErrorMessage("");
+      }
+    } else if (props.createModalSchema === "review") {
+      if (
+        createValues?.length === 4 &&
+        //@ts-ignore
+        !createValues?.includes("")
+      ) {
+        setButtonDisabled(false);
+      } else {
+        setButtonDisabled(true);
+      }
+    }
+
+    //@ts-ignore
+  }, [updateObject, updateArray]);
+
   const handleCreate = () => {
-    let text: undefined;
-    if (updateArray.length > 0) {
+    let text: undefined; //@ts-ignore
+
+    if (updateArray?.length > 0) {
       // @ts-ignore
       text = updateArray;
     } else {
@@ -89,11 +162,10 @@ export const CreateModal = (props: CreateModalProps) => {
         window.location.reload();
       })
       .catch((error) => {
-        console.log("CreateError", error);
       });
     exitModal();
   };
-  console.log("asdasdas", props.data);
+
   const handleMessageChange = (
     event: any,
     name?: any,
@@ -107,32 +179,37 @@ export const CreateModal = (props: CreateModalProps) => {
         })
       : setUpdateObject({
           ...updateObject,
-          [event.target.name]: event.target.value,
+          [event.target.name]: event.target.value.trim(),
         });
   };
-  const handleArrayMessageChange = (event: any, index?: number) => {
-    // setInitialArray(props.data[event.target.name]);
-    // @ts-ignore
-    // la copy paste trb adaugat un space la final ca sa  citeasca
+  const handleArrayMessageChange = (event: any, index: number) => {
+    //@ts-ignore
     setUpdateArray([
-      ...updateArray.slice(0, index),
-      event.target.value,
-      // @ts-ignore
+      //@ts-ignore
+      ...updateArray?.slice(0, index),
+      event.target.value.trim(),
+      //@ts-ignore
       ...updateArray.slice(index + 1, objectType.text.length),
     ]);
   };
 
   const handleEditArray = (addField: boolean) => {
-    addField
-      ? setObjectType({ ...objectType, text: [...objectType.text, ""] })
-      : // @ts-ignore
-      objectType.text.length > 1
-      ? setObjectType({
-          ...objectType,
-          text: objectType.text.slice(0, objectType.text.length - 1),
-        })
-      : setObjectType({ ...objectType, text: objectType.text });
-    console.log(objectType.text);
+    if (addField) {
+      setObjectType({ ...objectType, text: [...objectType.text, ""] });
+    } else if (objectType.text.length > 1) {
+      setObjectType({
+        ...objectType,
+        text: objectType.text.slice(0, objectType.text.length - 1),
+      }); //@ts-ignore
+
+      if (updateArray.length > 1) {
+        //@ts-ignore
+
+        updateArray.pop();
+      }
+    } else {
+      setObjectType({ ...objectType, text: objectType.text });
+    }
   };
   const exitModal = () => {
     props.setCreateModal({ visibility: false, schema: "none" });
@@ -145,14 +222,15 @@ export const CreateModal = (props: CreateModalProps) => {
           <StyledText color={colors.primary.base}>
             {capitalizeFirstLetter(element)}
           </StyledText>
-          {
-            // @ts-ignore
-
-            Array.isArray(objectType[element]) ? (
-              <>
-                {
-                  // @ts-ignore
-                  objectType[element].map((item: any, index: number) => {
+          {(element === "title" || element === "titleSection") && (
+            <StyledErrorMessage>{errorMessage}</StyledErrorMessage>
+          )}
+          {Array.isArray(objectType[element as keyof typeof objectType]) ? (
+            <>
+              {
+                // @ts-ignore
+                objectType[element as keyof typeof objectType].map(
+                  (item: any, index: number) => {
                     return (
                       <>
                         <StyledTextArea
@@ -168,59 +246,47 @@ export const CreateModal = (props: CreateModalProps) => {
                         </StyledTextArea>
                       </>
                     );
-                  })
-                }
-                <StyledSaveButton
-                  onClick={
-                    // @ts-ignore
-                    () => handleEditArray(true)
+                  }
+                )
+              }
+              <StyledSaveButton onClick={() => handleEditArray(true)}>
+                +
+              </StyledSaveButton>
+              <StyledSaveButton onClick={() => handleEditArray(false)}>
+                -
+              </StyledSaveButton>
+            </>
+          ) : (
+            <>
+              {element === "image" ||
+              element === "icon" ||
+              element === "avatar" ? (
+                <UploadImage
+                  uploadFunction={handleMessageChange}
+                  objData={element}
+                  index={index}
+                  usedImage={updateObject}
+                />
+              ) : (
+                <StyledTextArea
+                  onChange={(e) => handleMessageChange(e)}
+                  name={element}
+                  minHeight={
+                    objectType[element as keyof typeof objectType].length > 50
+                      ? (
+                          objectType[element as keyof typeof objectType]
+                            .length /
+                            3 +
+                          20
+                        ).toString() + "px"
+                      : ""
                   }
                 >
-                  +
-                </StyledSaveButton>
-                <StyledSaveButton
-                  onClick={
-                    // @ts-ignore
-                    () => handleEditArray(false)
-                  }
-                >
-                  -
-                </StyledSaveButton>
-              </>
-            ) : (
-              <>
-                {element === "image" ||
-                element === "icon" ||
-                element === "avatar" ? (
-                  <UploadImage
-                    uploadFunction={handleMessageChange}
-                    objData={element}
-                    index={index}
-                    //@ts-ignore
-                    usedImage={updateObject}
-                  />
-                ) : (
-                  <StyledTextArea
-                    onChange={(e) => handleMessageChange(e)}
-                    name={element}
-                    minHeight={
-                      // @ts-ignore
-                      objectType[element].length > 50
-                        ? // @ts-ignore
-                          (objectType[element].length / 3 + 20).toString() +
-                          "px"
-                        : ""
-                    }
-                  >
-                    {
-                      // @ts-ignore
-                      objectType[element]
-                    }
-                  </StyledTextArea>
-                )}
-              </>
-            )
-          }
+                  {objectType[element as keyof typeof objectType]}
+                </StyledTextArea>
+              )}
+            </>
+          )}
         </>
       );
     }
@@ -230,9 +296,13 @@ export const CreateModal = (props: CreateModalProps) => {
     <ModalCover>
       <ModalWrapper>
         <ContentContainer>
-          <StyledText color={colors.primary.base}>Create new course</StyledText>
+          <StyledText color={colors.primary.base}>
+            Create new {props.createModalSchema}
+          </StyledText>
           {createInputs}
-          <StyledSaveButton onClick={handleCreate}>Create</StyledSaveButton>
+          <StyledSaveButton onClick={handleCreate} disabled={buttonDisabled}>
+            Create
+          </StyledSaveButton>
           <StyledSaveButton onClick={exitModal}>Close</StyledSaveButton>
         </ContentContainer>
       </ModalWrapper>

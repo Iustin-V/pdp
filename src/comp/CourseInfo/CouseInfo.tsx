@@ -4,6 +4,7 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
+
 import styled from "styled-components";
 
 import { PDPContext } from "../../App";
@@ -143,7 +144,6 @@ export const CourseInfo = (props: coursesInfo) => {
             <CourseInfoStyledButton
               onClick={() => {
                 setCourse(props.title);
-                // Trebuie luat value din Contact
               }}
             >
               {
