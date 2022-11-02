@@ -150,7 +150,7 @@ export const CreateModal = (props: CreateModalProps) => {
       text = updateObject.text;
     }
     axios
-      .put(`https://pdp-api.onrender.com/api/sections/${props.data?._id}`, {
+      .put(`https://pdp-api.onrender. com/api/sections/${props.data?._id}`, {
         content: [
           ...props.data.content,
           {
@@ -162,7 +162,9 @@ export const CreateModal = (props: CreateModalProps) => {
       .then(() => {
         window.location.reload();
       })
-      .catch((error) => {});
+      .catch(() => {
+        alert("An error has occurred while trying to save, please try again later.")
+      });
     exitModal();
   };
 

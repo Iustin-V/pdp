@@ -76,7 +76,7 @@ function App() {
   ]);
   const [linkPathCourses, setLinkPathCourses] = useState("");
   const [linkPathEvents, setLinkPathEvents] = useState("");
-  const { data, loading, error } = useFetch(
+  const { data, loading } = useFetch(
     `https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${
       localStorage.locale || "ro"
     }`
@@ -187,6 +187,7 @@ function App() {
               modalData={modalData}
               editModal={editModal}
               setEditModal={setEditModal}
+              createModalSchema={createModal.schema}
             />
           )}
           {createModal.visibility && (

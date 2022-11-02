@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
+import { StyledErrorMessage } from "../Styles";
 import { UploadImage } from "../UploadImage/UploadImage";
 import {
   ContentContainer,
@@ -20,6 +21,7 @@ interface EditModalProps {
   editModal: boolean;
   data?: {};
   handleSave?: () => void;
+  createModalSchema: string;
 }
 
 export const EditModal = (props: EditModalProps) => {
@@ -31,6 +33,8 @@ export const EditModal = (props: EditModalProps) => {
   const [initialObjectArray, setInitialObjectArray] = React.useState(
     props.modalData["content"]
   );
+  const [buttonDisabled, setButtonDisabled] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   if (props.editModal) {
     document.body.style.overflow = "hidden";
@@ -48,24 +52,77 @@ export const EditModal = (props: EditModalProps) => {
   }, [initialArray, initialObjectArray]);
 
   const saveModal = () => {
+    let emptyObject = false;
+    let updateObjArr = false;
+    let emptyArray = false;
+
+    Object.keys(updateObject).forEach(
+      // @ts-ignore
+      (elem) => (updateObject[elem] = updateObject[elem].trim())
+    );
+
+    console.log("updateObjectSAVE", updateObject);
+    updateArray.length >= 1 &&
+      setUpdateArray(
+        updateArray.map((arrElem) => {
+          return arrElem.trim();
+        })
+      );
+    updateObjectArray.length >= 1 &&
+      setUpdateObjectArray(
+        // @ts-ignore
+        updateObjectArray.map((objElem) => {
+          objElem &&
+            Object.keys(objElem).forEach(
+              // @ts-ignore
+              (elem) => (objElem[elem] = objElem[elem]?.trim())
+            );
+        })
+      );
+    emptyObject = updateObject
+      ? Object.values(updateObject).includes("")
+      : false;
+    updateObjArr = false;
+    emptyArray = updateArray ? updateArray.includes("") : false;
+    if (updateObjectArray) {
+      updateObjectArray.forEach((elem) => {
+        if (elem && Object.values(elem).includes("")) {
+          updateObjArr = true;
+        }
+      });
+    }
+
+    console.log("SAVEDATA", updateObject, updateArray, updateObjectArray);
+
     let content = undefined;
     if (updateArray.length > 0) {
       content = updateArray;
     } else if (updateObjectArray.length > 0) {
       content = updateObjectArray;
     }
-    axios
-      .put(`https://pdp-api.onrender.com/api/sections/${localModalData?._id}`, {
-        ...updateObject,
-        content,
-      })
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log("EditError", error);
-      });
-    exitModal();
+    if (!emptyObject && !updateObjArr && !emptyArray) {
+      axios
+        .put(
+          `https://pdp-api.onrender .com/api/sections/${localModalData?._id}`,
+          {
+            ...updateObject,
+            content,
+          }
+        )
+        .then(() => {
+          window.location.reload();
+        })
+        .catch(() => {
+          alert(
+            "An error has occurred while trying to update the database, please try again later."
+          );
+        });
+      exitModal();
+    } else {
+      console.log("dataafter", updateObject, updateArray, updateObjectArray);
+
+      alert("Inputs can not be empty");
+    }
   };
 
   const exitModal = () => {
@@ -130,6 +187,7 @@ export const EditModal = (props: EditModalProps) => {
           <StyledText color={colors.primary.base}>
             {capitalizeFirstLetter(element)}
           </StyledText>
+
           {Array.isArray(localModalData[element]) ? (
             localModalData[element].map((item: any, index: number) => {
               if (typeof item === "object") {
@@ -238,7 +296,12 @@ export const EditModal = (props: EditModalProps) => {
         <ContentContainer>
           <StyledText color={colors.primary.base}>Edit Section</StyledText>
           {textEditors}
-          <StyledSaveButton onClick={saveModal}>Save</StyledSaveButton>
+          <StyledSaveButton
+            onClick={() => saveModal()}
+            disabled={buttonDisabled}
+          >
+            Save
+          </StyledSaveButton>
           <StyledSaveButton onClick={exitModal}>Close</StyledSaveButton>
         </ContentContainer>
       </ModalWrapper>
