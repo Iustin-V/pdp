@@ -296,7 +296,6 @@ export const EditModal = (props: EditModalProps) => {
           {textEditors}
           <StyledSaveButton
             onClick={() => saveModal()}
-            disabled={buttonDisabled}
           >
             Save
           </StyledSaveButton>
