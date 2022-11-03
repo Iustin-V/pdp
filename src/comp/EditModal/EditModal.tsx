@@ -4,7 +4,6 @@ import axios from "axios";
 
 import { colors } from "../../generalStyle";
 import { capitalizeFirstLetter } from "../../utils/Capitalize";
-import { StyledErrorMessage } from "../Styles";
 import { UploadImage } from "../UploadImage/UploadImage";
 import {
   ContentContainer,
@@ -33,8 +32,6 @@ export const EditModal = (props: EditModalProps) => {
   const [initialObjectArray, setInitialObjectArray] = React.useState(
     props.modalData["content"]
   );
-  const [buttonDisabled, setButtonDisabled] = React.useState(false);
-  const [errorMessage, setErrorMessage] = React.useState("");
 
   if (props.editModal) {
     document.body.style.overflow = "hidden";
@@ -56,12 +53,11 @@ export const EditModal = (props: EditModalProps) => {
     let updateObjArr = false;
     let emptyArray = false;
 
-    Object.keys(updateObject).forEach(
+    Object.keys(updateObject) && Object.keys(updateObject).forEach(
       // @ts-ignore
       (elem) => (updateObject[elem] = updateObject[elem].trim())
     );
 
-    console.log("updateObjectSAVE", updateObject);
     updateArray.length >= 1 &&
       setUpdateArray(
         updateArray.map((arrElem) => {
@@ -71,14 +67,18 @@ export const EditModal = (props: EditModalProps) => {
     updateObjectArray.length >= 1 &&
       setUpdateObjectArray(
         // @ts-ignore
-        updateObjectArray.map((objElem) => {
-          objElem &&
+        updateObjectArray.map((objElem:any) => {
+          objElem && typeof objElem==='object' &&
             Object.keys(objElem).forEach(
               // @ts-ignore
               (elem) => (objElem[elem] = objElem[elem]?.trim())
             );
+          if(objElem && typeof objElem==='string')
+          return objElem.trim();
         })
       );
+
+
     emptyObject = updateObject
       ? Object.values(updateObject).includes("")
       : false;
@@ -92,8 +92,6 @@ export const EditModal = (props: EditModalProps) => {
       });
     }
 
-    console.log("SAVEDATA", updateObject, updateArray, updateObjectArray);
-
     let content = undefined;
     if (updateArray.length > 0) {
       content = updateArray;
@@ -103,7 +101,7 @@ export const EditModal = (props: EditModalProps) => {
     if (!emptyObject && !updateObjArr && !emptyArray) {
       axios
         .put(
-          `https://pdp-api.onrender .com/api/sections/${localModalData?._id}`,
+          `https://pdp-api.onrender.com/api/sections/${localModalData?._id}`,
           {
             ...updateObject,
             content,
