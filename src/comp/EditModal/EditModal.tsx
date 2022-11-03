@@ -53,52 +53,12 @@ export const EditModal = (props: EditModalProps) => {
     let updateObjArr = false;
     let emptyArray = false;
 
-    Object.keys(updateObject) && Object.keys(updateObject).forEach(
-      // @ts-ignore
-      (elem) => (updateObject[elem] = updateObject[elem].trim())
-    );
-
-    updateArray.length >= 1 &&
-      setUpdateArray(
-        updateArray.map((arrElem) => {
-          return arrElem.trim();
-        })
-      );
-
-    console.log(updateObjectArray)
-    updateObjectArray.length >= 1 &&
-      setUpdateObjectArray(
-        // @ts-ignore
-        updateObjectArray.map((objElem:any) => {
-         if( objElem && typeof objElem==='object') {
-           Object.keys(objElem).forEach(
-               // @ts-ignore
-               (elem: any) => {
-                 if (typeof elem === 'string') {
-                   elem= elem.trim()
-                 }
-                 if (Array.isArray(elem)) {
-                   elem.map((arrElem) => {
-                     console.log("elem",arrElem.trim())
-                     return arrElem.trim();
-                   })
-                   // @ts-ignor
-                 }
-               }
-           );
-         }
-          if(objElem && typeof objElem==='string')
-          return objElem.trim();
-        })
-      );
-
-    console.log("updateObjectArray",updateObjectArray)
 
     emptyObject = updateObject
       ? Object.values(updateObject).includes("")
       : false;
     updateObjArr = false;
-    emptyArray = updateArray ? updateArray.includes("") : false;
+    emptyArray = updateArray.length >= 1 ? updateArray.includes("") : false;
     if (updateObjectArray) {
       updateObjectArray.forEach((elem) => {
         if (elem && Object.values(elem).includes("")) {
@@ -145,7 +105,7 @@ export const EditModal = (props: EditModalProps) => {
   const handleMessageChange = (event: any) => {
     setUpdateObject({
       ...updateObject,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value.trim(),
     });
   };
 
@@ -153,7 +113,7 @@ export const EditModal = (props: EditModalProps) => {
     setInitialArray(props.modalData[event.target.name]);
     setUpdateArray([
       ...updateArray.slice(0, index),
-      event.target.value,
+      event.target.value.trim(),
       ...updateArray.slice(index + 1, initialArray.length),
     ]);
   };
@@ -175,7 +135,7 @@ export const EditModal = (props: EditModalProps) => {
     } else {
       setUpdateObjectArray([
         ...updateObjectArray.slice(0, index),
-        { ...updateObjectArray[index], [name]: event.target.value },
+        { ...updateObjectArray[index], [name]: event.target.value.trim() },
         ...updateObjectArray.slice(index + 1, initialObjectArray.length),
       ]);
     }
@@ -248,6 +208,27 @@ export const EditModal = (props: EditModalProps) => {
                                       index
                                     )
                                   }
+                                  onBlur={(e) =>
+                                    handleObjectArrayMessageChange(
+                                      e,
+                                      objData,
+                                      index
+                                    )
+                                  }
+                                  onPaste={(e) =>
+                                    handleObjectArrayMessageChange(
+                                      e,
+                                      objData,
+                                      index
+                                    )
+                                  }
+                                  onCut={(e) =>
+                                    handleObjectArrayMessageChange(
+                                      e,
+                                      objData,
+                                      index
+                                    )
+                                  }
                                   name={item}
                                   minHeight={
                                     item[objData].length > 50
@@ -273,6 +254,9 @@ export const EditModal = (props: EditModalProps) => {
                 <>
                   <StyledTextArea
                     onChange={(e) => handleArrayMessageChange(e, index)}
+                    onBlur={(e) => handleArrayMessageChange(e, index)}
+                    onPaste={(e) => handleArrayMessageChange(e, index)}
+                    onCut={(e) => handleArrayMessageChange(e, index)}
                     name={element}
                     minHeight={
                       item.length > 50
@@ -288,6 +272,9 @@ export const EditModal = (props: EditModalProps) => {
           ) : (
             <StyledTextArea
               onChange={(e) => handleMessageChange(e)}
+              onBlur={(e) => handleMessageChange(e)}
+              onPaste={(e) => handleMessageChange(e)}
+              onCut={(e) => handleMessageChange(e)}
               name={element}
               minHeight={
                 localModalData[element].length > 50
@@ -308,11 +295,7 @@ export const EditModal = (props: EditModalProps) => {
         <ContentContainer>
           <StyledText color={colors.primary.base}>Edit Section</StyledText>
           {textEditors}
-          <StyledSaveButton
-            onClick={() => saveModal()}
-          >
-            Save
-          </StyledSaveButton>
+          <StyledSaveButton onClick={() => saveModal()}>Save</StyledSaveButton>
           <StyledSaveButton onClick={exitModal}>Close</StyledSaveButton>
         </ContentContainer>
       </ModalWrapper>
