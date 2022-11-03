@@ -81,7 +81,6 @@ export const CreateModal = (props: CreateModalProps) => {
 
     if (props.createModalSchema === "course") {
       //@ts-ignore
-      console.log("emptyArray", emptyArray, updateArray);
       if (
         createValues?.length === 4 &&
         //@ts-ignore
@@ -150,7 +149,7 @@ export const CreateModal = (props: CreateModalProps) => {
       text = updateObject.text;
     }
     axios
-      .put(`https://pdp-api.onrender. com/api/sections/${props.data?._id}`, {
+      .put(`https://pdp-api.onrender.com/api/sections/${props.data?._id}`, {
         content: [
           ...props.data.content,
           {

@@ -133,7 +133,7 @@ export const Courses = () => {
           <AdminButtons>
             <CreateButton
               createFunction={contextLocal?.editFunction}
-              sectionText={contentCourseChildParents}
+              sectionText={contentCourseTeacher}
               createType="createCourse"
             />
             <EditButton

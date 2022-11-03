@@ -64,20 +64,35 @@ export const EditModal = (props: EditModalProps) => {
           return arrElem.trim();
         })
       );
+
+    console.log(updateObjectArray)
     updateObjectArray.length >= 1 &&
       setUpdateObjectArray(
         // @ts-ignore
         updateObjectArray.map((objElem:any) => {
-          objElem && typeof objElem==='object' &&
-            Object.keys(objElem).forEach(
-              // @ts-ignore
-              (elem) => (objElem[elem] = objElem[elem]?.trim())
-            );
+         if( objElem && typeof objElem==='object') {
+           Object.keys(objElem).forEach(
+               // @ts-ignore
+               (elem: any) => {
+                 if (typeof elem === 'string') {
+                   elem= elem.trim()
+                 }
+                 if (Array.isArray(elem)) {
+                   elem.map((arrElem) => {
+                     console.log("elem",arrElem.trim())
+                     return arrElem.trim();
+                   })
+                   // @ts-ignor
+                 }
+               }
+           );
+         }
           if(objElem && typeof objElem==='string')
           return objElem.trim();
         })
       );
 
+    console.log("updateObjectArray",updateObjectArray)
 
     emptyObject = updateObject
       ? Object.values(updateObject).includes("")
@@ -91,7 +106,6 @@ export const EditModal = (props: EditModalProps) => {
         }
       });
     }
-
     let content = undefined;
     if (updateArray.length > 0) {
       content = updateArray;
@@ -101,7 +115,7 @@ export const EditModal = (props: EditModalProps) => {
     if (!emptyObject && !updateObjArr && !emptyArray) {
       axios
         .put(
-          `https://pdp-api.onrender.com/api/sections/${localModalData?._id}`,
+          `https://pdp-api.onrender .com/api/sections/${localModalData?._id}`,
           {
             ...updateObject,
             content,
