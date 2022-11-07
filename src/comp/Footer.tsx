@@ -127,7 +127,7 @@ export const Footer = () => {
         </StyledFooterSocialMediaColumn>
       </StyledFirstRow>
       <StyledSecondRow>
-        <img src={redEclipse} alt="RedEclipseLogo" />
+        <img src={redEclipse} alt="RedEclipseLogo" onClick={()=>redirectLink("www.redeclipse.ro")}/>
       </StyledSecondRow>
     </StyledFooter>
   );

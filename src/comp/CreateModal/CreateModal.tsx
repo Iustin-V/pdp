@@ -81,7 +81,6 @@ export const CreateModal = (props: CreateModalProps) => {
 
     if (props.createModalSchema === "course") {
       //@ts-ignore
-      console.log("emptyArray", emptyArray, updateArray);
       if (
         createValues?.length === 4 &&
         //@ts-ignore
@@ -162,7 +161,9 @@ export const CreateModal = (props: CreateModalProps) => {
       .then(() => {
         window.location.reload();
       })
-      .catch((error) => {});
+      .catch(() => {
+        alert("An error has occurred while trying to save, please try again later.")
+      });
     exitModal();
   };
 

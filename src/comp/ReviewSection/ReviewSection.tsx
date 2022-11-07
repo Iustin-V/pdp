@@ -10,7 +10,7 @@ import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { CreateButton } from "../CreateButton";
 import { EditButton } from "../EditButton";
-import { SectionContainer } from "../Styles";
+import { AdminButtons, SectionContainer } from "../Styles";
 import reviewIcon from "../images/icons8-chat-100.webp";
 import {
   InfoReviewer,
@@ -39,7 +39,6 @@ export const ReviewSection = () => {
     const textData = getData(contextLocal?.allCategories, "ReviewSection");
     setContentTexts(textData);
   }, [contextLocal]);
-  console.log("contentText", contentText);
   const ReviewsSection = contentText.content?.map((review, index) => {
     return (
       <SwiperSlide key={index}>
@@ -57,11 +56,21 @@ export const ReviewSection = () => {
   return (
     <StyledReviewSection>
       <SectionContainer>
+        {" "}
+        <AdminButtons>
+          {" "}
+          <CreateButton
+            createFunction={contextLocal?.editFunction}
+            sectionText={contentText}
+            createType="createReview"
+          />
+          <EditButton
+            editFunction={contextLocal?.editFunction}
+            sectionText={contentText}
+          />
+        </AdminButtons>
         <StyledTitleContainer>
-          <StyledReviewIcon
-            src={reviewIcon}
-            alt="reviewIcon"
-          ></StyledReviewIcon>
+          <StyledReviewIcon src={reviewIcon} alt="reviewIcon" />
           <TitleReviewSection color={colors.primary.base}>
             {contentText.title}
           </TitleReviewSection>
@@ -75,15 +84,6 @@ export const ReviewSection = () => {
           {ReviewsSection}
         </Swiper>
       </SectionContainer>
-      <CreateButton
-        createFunction={contextLocal?.editFunction}
-        sectionText={contentText}
-        createType="createReview"
-      />
-      <EditButton
-        editFunction={contextLocal?.editFunction}
-        sectionText={contentText}
-      />
     </StyledReviewSection>
   );
 };

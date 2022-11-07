@@ -152,6 +152,9 @@ export const StyledSecondRow = styled.div`
       width: 144px;
     }
   }
+  img:hover{
+  cursor:pointer;
+  }
 `;
 
 export const StyledFooterText = styled.p`

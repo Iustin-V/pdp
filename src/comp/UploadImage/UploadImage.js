@@ -7,7 +7,6 @@ export const UploadImage = (props) => {
     myFile: "",
   });
 
-  const url = "http://localhost:5000/uploads";
   const createImage = (newImage) => console.log(newImage);
 
   const createPost = async (post) => {
@@ -40,8 +39,6 @@ export const UploadImage = (props) => {
     e.preventDefault();
     createPost(postImage);
   };
-  console.log("props.objData", props.objData);
-  console.log("props.usedImage", props.usedImage);
   return (
     <>
       <form onSubmit={handleSubmit}>
