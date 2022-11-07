@@ -110,6 +110,9 @@ export const Contact = () => {
       case "fr":
         setValueText(dataSection.fr);
         break;
+
+      default:
+        setValueText(dataSection.ro);
     }
   }, []);
   const optionCourses = allLinkCourses?.map((course, key) => {
