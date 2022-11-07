@@ -95,7 +95,10 @@ const CurrentCookie = () => {
       );
     }
   }
-  return <></>;
+  return <>
+      <FlagIcon src={roflag} alt={"roflag"} />
+      RO
+  </>;
 };
 
 export const LanguageSelector = () => {
@@ -112,7 +115,6 @@ export const LanguageSelector = () => {
               : undefined
           }
         >
-          {" "}
           <FlagIcon src={roflag} alt={"roflag"} /> RO{" "}
         </li>
         <li
@@ -122,7 +124,6 @@ export const LanguageSelector = () => {
               : undefined
           }
         >
-          {" "}
           <FlagIcon src={ukflag} alt={"ukflag"} /> EN
         </li>
         <li
