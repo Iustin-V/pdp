@@ -13,9 +13,10 @@ import linkGenerate from "../../generalFunction";
 import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { ContactFormBackground } from "../Contact/Contact-Style";
-import { ParagraphItalicStyled, TitleSection } from "../Styles";
+import {AdminButtons, ParagraphItalicStyled, TitleSection} from "../Styles";
 import backgroundImage from "../images/CourseInfo.webp";
 import teacherIcon from "../images/teacher-icon.webp";
+import {EditButton} from "../EditButton";
 
 export const StyledPageCourseInfo = styled.div`
   margin-top: 80px;
@@ -81,6 +82,7 @@ interface coursesInfo {
   title: string;
   array?: [];
   text?: Array<string>;
+  course?:object;
 }
 
 export const CourseInfo = (props: coursesInfo) => {
@@ -134,6 +136,13 @@ export const CourseInfo = (props: coursesInfo) => {
     <ContactFormBackground backgroundImage={backgroundImage}>
       <StyledPageCourseInfo>
         <SectionContainer>
+          <AdminButtons>
+            <EditButton
+                editFunction={contextLocal?.editFunction}
+                sectionText={{text: props.text,title:props.title}}
+                object={props.course}
+            />
+          </AdminButtons>
           <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
 
           <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>

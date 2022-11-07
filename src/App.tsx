@@ -28,7 +28,7 @@ import { getData } from "./utils/getData";
 
 export const PDPContext = React.createContext({
   allCategories: [],
-  editFunction: (data: any, type: string) => false,
+  editFunction: (data: any, type: string ,object?:object) => false,
 });
 
 export interface Category {
@@ -51,6 +51,7 @@ function App() {
   const [allCategories, setAllCategories] = React.useState([]);
   const [navbarText, setNavbarTexts] = useState([]);
   const [modalData, setModalData] = useState([]);
+  const [modalObject, setModalObject] = useState({});
   const [editModal, setEditModal] = useState<boolean>(false);
   const [createModal, setCreateModal] = useState<{
     visibility: boolean;
@@ -60,9 +61,13 @@ function App() {
     schema: "none",
   });
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
-  const [allLinkCourses, setLinkCourses] = useState([
+  const [allLinkCoursesChildParents, setLinkCoursesChildParents] = useState([
     { title: "", price: "", time: "", text: [], image: "" },
   ]);
+  const [allLinkCoursesTeacher, setLinkCoursesTeacher] = useState([
+    { title: "", price: "", time: "", text: [], image: "" },
+  ]);
+  const [coursesIDs,setCoursesIDs]=useState([])
   const [allEvents, setAllEvents] = useState([
     {
       titleSection: "",
@@ -81,7 +86,7 @@ function App() {
       localStorage.locale || "ro"
     }`
   );
-  const editFunction = (data: any, type: string) => {
+  const editFunction = (data: any, type: string, object?:object) => {
     switch (type) {
       case "edit": {
         setEditModal(true);
@@ -101,15 +106,25 @@ function App() {
         break;
     }
     setModalData(data);
+    setModalObject({})
+    if(object){
+      setModalObject(object)
+    }
   };
   React.useEffect(() => {
     if (data.length !== 0) {
       setAllCategories(data);
       setNavbarTexts(getData(data, "Navbar").content);
-      const allData = getData(data, "CourseChildParents").content.concat(
-        getData(data, "CourseTeacher").content
-      );
-      setLinkCourses(allData);
+      const allDataChildParents= getData(data, "CourseChildParents").content
+
+      setLinkCoursesChildParents(allDataChildParents);
+      const allDataTeacher= getData(data, "CourseTeacher").content
+      setLinkCoursesTeacher(allDataTeacher);
+      const coursesID=[getData(data, "CourseChildParents"),
+          getData(data, "CourseTeacher")
+      ]
+     // @ts-ignore
+      setCoursesIDs(coursesID)
 
       const eventData = getData(data, "EventsSection").content;
       setAllEvents(eventData);
@@ -150,12 +165,25 @@ function App() {
     );
   });
 
-  const coursesLinkRoutes = allLinkCourses.map((link, key) => {
+  const coursesLinkRoutesChildParents = allLinkCoursesChildParents.map((link, key) => {
     return (
       <Route
         key={key}
         path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
-        element={<CourseInfo title={link.title} text={link.text} />}
+        element={<CourseInfo course={coursesIDs[0]}
+
+                                 title={link.title} text={link.text}  />}
+      />
+    );
+  });
+  const coursesLinkRoutesTeacher = allLinkCoursesTeacher.map((link, key) => {
+    return (
+      <Route
+        key={key}
+        path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
+        element={<CourseInfo course={coursesIDs[1]}
+
+                                 title={link.title} text={link.text}  />}
       />
     );
   });
@@ -188,6 +216,7 @@ function App() {
               editModal={editModal}
               setEditModal={setEditModal}
               createModalSchema={createModal.schema}
+              object={Object.keys(modalObject).length>=1? modalObject : undefined}
             />
           )}
           {createModal.visibility && (
@@ -222,8 +251,8 @@ function App() {
                 {navbarLinks}
                 <Route path="/blog" element={<WorkInProgress />} />
                 <Route path="/login" element={<Login />} />
-
-                {coursesLinkRoutes}
+                {coursesLinkRoutesChildParents}
+                {coursesLinkRoutesTeacher}
                 {eventsLinkRoutes}
 
                 <Route path="*" element={<UnknownRoute />} />

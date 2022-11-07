@@ -99,7 +99,6 @@ export const Courses = () => {
       );
     }
   );
-  console.log("coursesdata", contentCourseChildParents);
 
   return (
     <>

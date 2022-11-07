@@ -39,7 +39,6 @@ export const ReviewSection = () => {
     const textData = getData(contextLocal?.allCategories, "ReviewSection");
     setContentTexts(textData);
   }, [contextLocal]);
-  console.log("contentText", contentText);
   const ReviewsSection = contentText.content?.map((review, index) => {
     return (
       <SwiperSlide key={index}>

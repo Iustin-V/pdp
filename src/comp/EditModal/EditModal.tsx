@@ -21,6 +21,7 @@ interface EditModalProps {
   data?: {};
   handleSave?: () => void;
   createModalSchema: string;
+  object?:any;
 }
 
 export const EditModal = (props: EditModalProps) => {
@@ -49,10 +50,10 @@ export const EditModal = (props: EditModalProps) => {
   }, [initialArray, initialObjectArray]);
 
   const saveModal = () => {
+
     let emptyObject = false;
     let updateObjArr = false;
     let emptyArray = false;
-
 
     emptyObject = updateObject
       ? Object.values(updateObject).includes("")
@@ -69,13 +70,13 @@ export const EditModal = (props: EditModalProps) => {
     let content = undefined;
     if (updateArray.length > 0) {
       content = updateArray;
-    } else if (updateObjectArray.length > 0) {
+    } else if (updateObjectArray && updateObjectArray.length > 0) {
       content = updateObjectArray;
     }
-    if (!emptyObject && !updateObjArr && !emptyArray) {
+    if (!emptyObject && !updateObjArr && !emptyArray && !props.object) {
       axios
         .put(
-          `https://pdp-api.onrender .com/api/sections/${localModalData?._id}`,
+          `https://pdp-api.onrender.com/api/sections/${localModalData?._id}`,
           {
             ...updateObject,
             content,
@@ -90,8 +91,35 @@ export const EditModal = (props: EditModalProps) => {
           );
         });
       exitModal();
-    } else {
-      console.log("dataafter", updateObject, updateArray, updateObjectArray);
+    } else if (!emptyObject && !updateObjArr && !emptyArray){
+      const contentUpdated=props.object?.content
+      contentUpdated.forEach((course:any) => {
+        if(course.title===props.modalData.title){
+          course.text=updateArray
+        }
+      })
+      axios
+          .put(
+              `https://pdp-api.onrender.com/api/sections/${props.object?._id}`,
+              {
+                ...updateObject,
+                content:contentUpdated,
+              }
+          )
+          .then(() => {
+            window.location.reload();
+          })
+          .catch(() => {
+            alert(
+                "An error has occurred while trying to update the database, please try again later."
+            );
+          });
+      exitModal();
+
+    }
+
+
+    else{
 
       alert("Inputs can not be empty");
     }
@@ -126,7 +154,6 @@ export const EditModal = (props: EditModalProps) => {
   ) => {
     setInitialObjectArray(props.modalData["content"]);
     if (image) {
-      console.log(event, name, index);
       setUpdateObjectArray([
         ...updateObjectArray.slice(0, index),
         { ...updateObjectArray[index], [name]: event },
@@ -139,9 +166,7 @@ export const EditModal = (props: EditModalProps) => {
         ...updateObjectArray.slice(index + 1, initialObjectArray.length),
       ]);
     }
-    console.log(updateObjectArray);
   };
-
   const textEditors = Object.keys(localModalData).map((element: string) => {
     if (
       [
@@ -152,7 +177,7 @@ export const EditModal = (props: EditModalProps) => {
         "label",
         "content",
       ].includes(element.toLowerCase()) &&
-      localModalData[element].length !== 0
+      localModalData[element].length !== 0 && !props.object
     ) {
       return (
         <>
@@ -285,6 +310,36 @@ export const EditModal = (props: EditModalProps) => {
               {localModalData[element]}
             </StyledTextArea>
           )}
+        </>
+      );
+    } else if (element.toLowerCase() === "text" && props.object) {
+      return (
+        <>
+          <StyledText color={colors.primary.base}>
+            {capitalizeFirstLetter(element)}
+          </StyledText>
+          {Array.isArray(localModalData[element]) ? (
+              localModalData[element].map((item: any, index: number) => {
+                return (
+                    <>
+                      <StyledTextArea
+                          onChange={(e) => handleArrayMessageChange(e, index)}
+                          onBlur={(e) => handleArrayMessageChange(e, index)}
+                          onPaste={(e) => handleArrayMessageChange(e, index)}
+                          onCut={(e) => handleArrayMessageChange(e, index)}
+                          name={element}
+                          minHeight={
+                            item.length > 50
+                                ? (item.length / 3 + 20).toString() + "px"
+                                : ""
+                          }
+                      >
+                        {item}
+                      </StyledTextArea>
+                    </>
+                );
+              })
+          ) : null }
         </>
       );
     }

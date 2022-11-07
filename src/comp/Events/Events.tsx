@@ -92,7 +92,6 @@ export const Events = () => {
     setDataSection(getData(contextLocal?.allCategories, "EventsSection"));
   }, []);
   // @ts-ignore
-  console.log("eventData", dataSection);
   const eventCards = dataSection.content?.map((event, key) => {
     return (
       <AnimatedContainer key={key}>
