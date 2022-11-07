@@ -10,7 +10,7 @@ import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { CreateButton } from "../CreateButton";
 import { EditButton } from "../EditButton";
-import { AdminButtons, SectionContainer } from "../Styles";
+import {AdminButtons, SectionContainer, Tooltip} from "../Styles";
 import reviewIcon from "../images/icons8-chat-100.webp";
 import {
   InfoReviewer,
@@ -39,10 +39,25 @@ export const ReviewSection = () => {
     const textData = getData(contextLocal?.allCategories, "ReviewSection");
     setContentTexts(textData);
   }, [contextLocal]);
+
   const ReviewsSection = contentText.content?.map((review, index) => {
     return (
       <SwiperSlide key={index}>
         <InsideSlideWrapper>
+
+          {localStorage.user !== "null" && (
+              <button
+                  className={"delete-button"}
+                  onClick={() => {
+                    contextLocal?.editFunction(
+                        { data: contentText, index: index },
+                        "delete"
+                    );
+                  }}
+              >
+                <Tooltip>Delete this review</Tooltip>X
+              </button>
+          )}
           <StyledRoundedImage src={review.avatar} alt="Avatar" />
           <QuoteReviewSection>{review.text}</QuoteReviewSection>
           <InfoReviewer>
