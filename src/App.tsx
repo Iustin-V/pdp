@@ -27,7 +27,8 @@ import useFetch from "./hooks/useFetch";
 import {getData} from "./utils/getData";
 
 export const PDPContext = React.createContext({
-    allCategories: [], editFunction: (data: any, type: string, object?: object) => false,
+    allCategories: [],
+    editFunction: (data: any, type: string, object?: object) => false,
 });
 
 export interface Category {
@@ -53,35 +54,52 @@ function App() {
     const [modalObject, setModalObject] = useState({});
     const [editModal, setEditModal] = useState<boolean>(false);
     const [createModal, setCreateModal] = useState<{
-        visibility: boolean; schema: string;
+        visibility: boolean;
+        schema: string;
     }>({
-        visibility: false, schema: "none",
+        visibility: false,
+        schema: "none",
     });
+    const path = window.location.pathname.split("/")[1];
+    let langArr = ['ro', 'en', 'fr']
+    if (langArr.includes(path)) {
+        localStorage.setItem("locale", path);
+
+    } else if (path) {
+        localStorage.setItem("locale", "ro");
+    } else {
+        localStorage.setItem("locale", "ro");
+        window.location.href = `/ro`;
+    }
+
+    console.log(path, 'location')
+    // localStorage.setItem("locale", 'ro');
     const [deleteModal, setDeleteModal] = useState<boolean>(false);
-    const [allLinkCoursesChildParents, setLinkCoursesChildParents] = useState([{
-        title: "",
-        price: "",
-        time: "",
-        text: [],
-        image: ""
-    },]);
-    const [allLinkCoursesTeacher, setLinkCoursesTeacher] = useState([{
-        title: "",
-        price: "",
-        time: "",
-        text: [],
-        image: ""
-    },]);
+    const [allLinkCoursesChildParents, setLinkCoursesChildParents] = useState([
+        {title: "", price: "", time: "", text: [], image: ""},
+    ]);
+    const [allLinkCoursesTeacher, setLinkCoursesTeacher] = useState([
+        {title: "", price: "", time: "", text: [], image: ""},
+    ]);
     const [coursesIDs, setCoursesIDs] = useState([])
-    const [allEvents, setAllEvents] = useState([{
-        titleSection: "", text: "", image: "", alt: "", date: "", time: "", website: "",
-    },]);
+    const [allEvents, setAllEvents] = useState([
+        {
+            titleSection: "",
+            text: "",
+            image: "",
+            alt: "",
+            date: "",
+            time: "",
+            website: "",
+        },
+    ]);
     const [linkPathCourses, setLinkPathCourses] = useState("");
     const [linkPathEvents, setLinkPathEvents] = useState("");
-    const {
-        data,
-        loading
-    } = useFetch(`https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${localStorage.locale || "ro"}`);
+    const {data, loading} = useFetch(
+        `https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${
+            localStorage.locale || "ro"
+        }`
+    );
     const editFunction = (data: any, type: string, object?: object) => {
         switch (type) {
             case "edit": {
@@ -116,7 +134,9 @@ function App() {
             setLinkCoursesChildParents(allDataChildParents);
             const allDataTeacher = getData(data, "CourseTeacher").content
             setLinkCoursesTeacher(allDataTeacher);
-            const coursesID = [getData(data, "CourseChildParents"), getData(data, "CourseTeacher")]
+            const coursesID = [getData(data, "CourseChildParents"),
+                getData(data, "CourseTeacher")
+            ]
             // @ts-ignore
             setCoursesIDs(coursesID)
 
@@ -140,69 +160,95 @@ function App() {
     }, [loading]);
 
     const eventsLinkRoutes = allEvents.map((link, key) => {
-        return (<Route
+        return (
+            <Route
                 key={key}
-                path={`/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
-                element={<EventInfo
-                    title={link?.titleSection}
-                    eventImage={link?.image}
-                    text={link?.text}
-                    date={link?.date}
-                    time={link?.time}
-                    website={link?.website}
-                    imageAlt={link?.alt}
-                />}
-            />);
+                path={`/${localStorage.locale}/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
+                element={
+                    <EventInfo
+                        title={link?.titleSection}
+                        eventImage={link?.image}
+                        text={link?.text}
+                        date={link?.date}
+                        time={link?.time}
+                        website={link?.website}
+                        imageAlt={link?.alt}
+                    />
+                }
+            />
+        );
     });
 
     const coursesLinkRoutesChildParents = allLinkCoursesChildParents.map((link, key) => {
-        return (<Route
+        return (
+            <Route
                 key={key}
-                path={`${linkPathCourses}/${linkGenerate(link.title)}`}
+                path={`/${localStorage.locale}/${linkPathCourses}/${linkGenerate(link.title)}`}
                 element={<CourseInfo course={coursesIDs[0]}
 
                                      title={link.title} text={link.text}/>}
-            />);
+            />
+        );
     });
     const coursesLinkRoutesTeacher = allLinkCoursesTeacher.map((link, key) => {
-        return (<Route
+        return (
+            <Route
                 key={key}
-                path={`${linkPathCourses}/${linkGenerate(link.title)}`}
+                path={`/${localStorage.locale}/${linkPathCourses}/${linkGenerate(link.title)}`}
                 element={<CourseInfo course={coursesIDs[1]}
-
                                      title={link.title} text={link.text}/>}
-            />);
+            />
+        );
     });
-    const arrayNavbarLinks = [<StoryBoxPage/>, <WeekStorySection/>, <Courses/>, <Events/>, <Contact/>,];
+    const arrayNavbarLinks = [
+        <StoryBoxPage/>,
+        <WeekStorySection/>,
+        <Courses/>,
+        <Events/>,
+        <Contact/>,
+    ];
     const navbarLinks = navbarText.map((link, index) => {
-        return (<Route
+        return (
+            <Route
                 key={index}
-                path={`${linkGenerate(link)}`}
+                path={`/${localStorage.locale}/${linkGenerate(link)}`}
                 element={arrayNavbarLinks[index]}
-            />);
+            />
+        );
     });
 
-    return (<StyledWrapper>
-            {data.length === 0 ? (<Loading/>) : (<>
-                    {editModal && (<EditModal
+    return (
+        <StyledWrapper>
+            {data.length === 0 ? (
+                <Loading/>
+            ) : (
+                <>
+                    {editModal && (
+                        <EditModal
                             modalData={modalData}
                             editModal={editModal}
                             setEditModal={setEditModal}
                             createModalSchema={createModal.schema}
                             object={Object.keys(modalObject).length >= 1 ? modalObject : undefined}
-                        />)}
-                    {createModal.visibility && (<CreateModal
+                        />
+                    )}
+                    {createModal.visibility && (
+                        <CreateModal
                             data={modalData}
                             createModalSchema={createModal.schema}
                             setCreateModal={setCreateModal}
-                        />)}
-                    {deleteModal && (<DeleteModal
+                        />
+                    )}
+                    {deleteModal && (
+                        <DeleteModal
                             modalData={modalData}
                             setDeleteMOdalOpen={setDeleteModal}
-                        />)}
+                        />
+                    )}
                     <PDPContext.Provider
                         value={{
-                            allCategories, //@ts-ignore
+                            allCategories,
+                            //@ts-ignore
                             editFunction,
                         }}
                     >
@@ -214,24 +260,24 @@ function App() {
                             />
                             <ScrollToTop/>
                             <Routes>
-                                <Route path="/" element={<Home/>}
-
-                                >
-                                    {coursesLinkRoutesChildParents}
-                                    {coursesLinkRoutesTeacher}
-                                    {eventsLinkRoutes}
-                                </Route>
+                                <Route path={`/${localStorage.locale}`} element={<Home/>}/>
                                 {navbarLinks}
                                 <Route path="/blog" element={<WorkInProgress/>}/>
                                 <Route path="/login" element={<Login/>}/>
+                                {coursesLinkRoutesChildParents}
+                                {coursesLinkRoutesTeacher}
+                                {eventsLinkRoutes}
+
                                 <Route path="*" element={<UnknownRoute/>}/>
                             </Routes>
                             <ToTopButton topRef={topRef} isTopButton={isTopButton}/>
                             <Footer/>
                         </BrowserRouter>
                     </PDPContext.Provider>
-                </>)}
-        </StyledWrapper>);
+                </>
+            )}
+        </StyledWrapper>
+    );
 }
 
 export default App;

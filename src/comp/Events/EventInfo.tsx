@@ -58,7 +58,7 @@ const StyledBox = styled.div`
   p > span:hover {
      {
       cursor: pointer;
-      text-dectimetion: underline;
+      text-decoration: underline;
     }
   }
 `;
@@ -86,6 +86,7 @@ const BackButton = styled.button`
   padding: 10px 25px;
   border-radius: 10px;
   position: absolute;
+  z-index: 5;
   border: 2px solid ${colors.primary.lighter};
   left: 40px;
   top: 120px;

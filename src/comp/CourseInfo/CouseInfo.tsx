@@ -149,7 +149,7 @@ export const CourseInfo = (props: coursesInfo) => {
             <ImageCourseInfo src={teacherIcon} alt="teacherIcon" />
             {coursesTimeLine}
           </VerticalTimeline>
-          <Link to={`/${talkWithTeacher}`}>
+          <Link to={`/${localStorage.locale}/${talkWithTeacher}`}>
             <CourseInfoStyledButton
               onClick={() => {
                 setCourse(props.title);
