@@ -132,7 +132,18 @@ export const Navbar = (props: navbarProps) => {
             <StyledNav height="80px">
                 <Logo/>
                 <ItemsWrapper>
-                    <StyledNavItems>{value}</StyledNavItems>
+                    <StyledNavItems>
+                        {value}
+                        <StyledNavItem
+                            onClick={() => {
+                                setActiveMenu(false);
+                            }}
+                            key={"test"}
+                            to={`/test`}
+                        >
+                            <StyledText>TEST</StyledText>
+                        </StyledNavItem>
+                    </StyledNavItems>
                     <LanguageSelector/>
 
                     <StyledMobileNav>

@@ -71,7 +71,7 @@ function App() {
         localStorage.setItem("locale", "ro");
     }
 
-    console.log(path, 'location')
+
     // localStorage.setItem("locale", 'ro');
     const [deleteModal, setDeleteModal] = useState<boolean>(false);
     const [allLinkCoursesChildParents, setLinkCoursesChildParents] = useState([
@@ -260,6 +260,7 @@ function App() {
                             <ScrollToTop/>
                             <Routes>
                                 <Route path={`/`} element={<Home/>}/>
+                                <Route path={`/test`} element={<div>Pagina de test</div>}/>
                                 {navbarLinks}
                                 <Route path="/blog" element={<WorkInProgress/>}/>
                                 <Route path="/login" element={<Login/>}/>
