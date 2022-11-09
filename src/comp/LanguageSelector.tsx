@@ -63,7 +63,8 @@ const FlagIcon = styled.img`
   height: 25px;
 `;
 const setCookie = (value: string) => {
-  window.location.href = `/${value}`;
+    localStorage.setItem("locale", value);
+    window.location.href = "/";
 };
 
 const CurrentCookie = () => {
