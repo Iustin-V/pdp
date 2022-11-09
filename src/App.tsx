@@ -69,7 +69,6 @@ function App() {
         localStorage.setItem("locale", "ro");
     } else {
         localStorage.setItem("locale", "ro");
-        window.location.href = `/ro`;
     }
 
     console.log(path, 'location')
@@ -163,7 +162,7 @@ function App() {
         return (
             <Route
                 key={key}
-                path={`/${localStorage.locale}/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
+                path={`/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
                 element={
                     <EventInfo
                         title={link?.titleSection}
@@ -183,7 +182,7 @@ function App() {
         return (
             <Route
                 key={key}
-                path={`/${localStorage.locale}/${linkPathCourses}/${linkGenerate(link.title)}`}
+                path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
                 element={<CourseInfo course={coursesIDs[0]}
 
                                      title={link.title} text={link.text}/>}
@@ -194,7 +193,7 @@ function App() {
         return (
             <Route
                 key={key}
-                path={`/${localStorage.locale}/${linkPathCourses}/${linkGenerate(link.title)}`}
+                path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
                 element={<CourseInfo course={coursesIDs[1]}
                                      title={link.title} text={link.text}/>}
             />
@@ -211,7 +210,7 @@ function App() {
         return (
             <Route
                 key={index}
-                path={`/${localStorage.locale}/${linkGenerate(link)}`}
+                path={`/${linkGenerate(link)}`}
                 element={arrayNavbarLinks[index]}
             />
         );
@@ -260,7 +259,7 @@ function App() {
                             />
                             <ScrollToTop/>
                             <Routes>
-                                <Route path={`/${localStorage.locale}`} element={<Home/>}/>
+                                <Route path={`/`} element={<Home/>}/>
                                 {navbarLinks}
                                 <Route path="/blog" element={<WorkInProgress/>}/>
                                 <Route path="/login" element={<Login/>}/>

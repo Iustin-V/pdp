@@ -1,4 +1,4 @@
-{
+{ "homepage": "http://profadepovesti.ro",
   "dependencies": {
     "@coreui/coreui": "^4.2.2",
     "@coreui/react": "^4.3.1",
