@@ -70,7 +70,7 @@ export const Navbar = (props: navbarProps) => {
                         setActiveMenu(false);
                     }}
                     key={item}
-                    to={`${localStorage.locale}/${linkGenerate(item) || "#"}`}
+                    to={`/${linkGenerate(item) || "#"}`}
                 >
                     <StyledText>{item}</StyledText>
                 </StyledNavItem>
@@ -79,7 +79,7 @@ export const Navbar = (props: navbarProps) => {
 
     const Logo = () => {
         return (
-            <StyledLogoItem key="" to={`/${localStorage.locale}`} onClick={() => {
+            <StyledLogoItem key="" to={`/`} onClick={() => {
                 setActiveMenu(false);
             }}>
                 <StyledImage
