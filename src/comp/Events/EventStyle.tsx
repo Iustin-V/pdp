@@ -16,10 +16,7 @@ export const StyledEventCardContainer = styled.div`
 export const MediaWrapper=styled.div`
   height: 166px;
   overflow: hidden;
-  min-width: 220px;
-  @media(max-width: 768px){
-    width: 100%;
-  }
+  width: 250px;
 `
 export const StyledMedia = styled.img<{ height?: string }>`
   height: ${(props) => props.height || "200px"};

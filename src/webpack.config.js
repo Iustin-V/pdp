@@ -1,28 +1,28 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    context: __dirname,
-    entry: './src/index.html',
+    entry: path.join(__dirname, "src", "index.js"),
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js',
-        public:'/',
-    },
-    devServer:{
-        historyApiFallback: true,
+        path:path.resolve(__dirname, "dist"),
     },
     module: {
         rules: [
             {
-                text: /\.js$/,
-                user: 'babel-loader',
-            }
+                test: /\.?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
+                    }
+                }
+            },
         ]
     },
-    plugins:[
-        new HtmlWebPackPlugin({
-            template: path.resolve(__dirname, 'public/index.html'),
-            filename: 'index.html'
-        })
-    ]
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, "src", "index.html"),
+        }),
+    ],
 }

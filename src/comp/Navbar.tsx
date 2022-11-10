@@ -70,7 +70,7 @@ export const Navbar = (props: navbarProps) => {
                         setActiveMenu(false);
                     }}
                     key={item}
-                    to={`/${linkGenerate(item) || "#"}`}
+                    to={`${localStorage.locale}/${linkGenerate(item) || "#"}`}
                 >
                     <StyledText>{item}</StyledText>
                 </StyledNavItem>
@@ -79,7 +79,7 @@ export const Navbar = (props: navbarProps) => {
 
     const Logo = () => {
         return (
-            <StyledLogoItem key="" to={`/`} onClick={() => {
+            <StyledLogoItem key="" to={`/${localStorage.locale}`} onClick={() => {
                 setActiveMenu(false);
             }}>
                 <StyledImage
@@ -132,18 +132,7 @@ export const Navbar = (props: navbarProps) => {
             <StyledNav height="80px">
                 <Logo/>
                 <ItemsWrapper>
-                    <StyledNavItems>
-                        {value}
-                        <StyledNavItem
-                            onClick={() => {
-                                setActiveMenu(false);
-                            }}
-                            key={"test"}
-                            to={`/test`}
-                        >
-                            <StyledText>TEST</StyledText>
-                        </StyledNavItem>
-                    </StyledNavItems>
+                    <StyledNavItems>{value}</StyledNavItems>
                     <LanguageSelector/>
 
                     <StyledMobileNav>
