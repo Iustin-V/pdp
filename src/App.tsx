@@ -69,9 +69,10 @@ function App() {
         localStorage.setItem("locale", "ro");
     } else {
         localStorage.setItem("locale", "ro");
+        window.location.href = `/ro`;
     }
 
-
+    console.log(path, 'location')
     // localStorage.setItem("locale", 'ro');
     const [deleteModal, setDeleteModal] = useState<boolean>(false);
     const [allLinkCoursesChildParents, setLinkCoursesChildParents] = useState([
@@ -162,7 +163,7 @@ function App() {
         return (
             <Route
                 key={key}
-                path={`/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
+                path={`/${localStorage.locale}/${linkPathEvents}/${linkGenerate(link.titleSection)}`}
                 element={
                     <EventInfo
                         title={link?.titleSection}
@@ -182,7 +183,7 @@ function App() {
         return (
             <Route
                 key={key}
-                path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
+                path={`/${localStorage.locale}/${linkPathCourses}/${linkGenerate(link.title)}`}
                 element={<CourseInfo course={coursesIDs[0]}
 
                                      title={link.title} text={link.text}/>}
@@ -193,7 +194,7 @@ function App() {
         return (
             <Route
                 key={key}
-                path={`/${linkPathCourses}/${linkGenerate(link.title)}`}
+                path={`/${localStorage.locale}/${linkPathCourses}/${linkGenerate(link.title)}`}
                 element={<CourseInfo course={coursesIDs[1]}
                                      title={link.title} text={link.text}/>}
             />
@@ -210,7 +211,7 @@ function App() {
         return (
             <Route
                 key={index}
-                path={`/${linkGenerate(link)}`}
+                path={`/${localStorage.locale}/${linkGenerate(link)}`}
                 element={arrayNavbarLinks[index]}
             />
         );
@@ -259,8 +260,7 @@ function App() {
                             />
                             <ScrollToTop/>
                             <Routes>
-                                <Route path={`/`} element={<Home/>}/>
-                                <Route path={`/test`} element={<div>Pagina de test</div>}/>
+                                <Route path={`/${localStorage.locale}`} element={<Home/>}/>
                                 {navbarLinks}
                                 <Route path="/blog" element={<WorkInProgress/>}/>
                                 <Route path="/login" element={<Login/>}/>
