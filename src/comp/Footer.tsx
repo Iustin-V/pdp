@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 
 import { PDPContext } from "../App";
-import linkGenerate from "../generalFunction";
 import { getData } from "../utils/getData";
 import {
   LogoContainer,
@@ -79,14 +78,7 @@ export const Footer = () => {
       link: "https://twitter.com/ITeachStories?t=KTFzvM7w2Inociouib0Ieg&s=09",
     },
   ];
-  const changePage = (link: string) => {
-    const homePage = ["Acasă", "Home", "Maison"];
-    if (homePage.includes(link)) {
-      return "/";
-    } else {
-      return linkGenerate(link);
-    }
-  };
+
   const redirectLink = (link: string) => {
     window.open(link);
   };
@@ -105,7 +97,7 @@ export const Footer = () => {
 
   const FooterLogo = () => {
     return (
-      <StyledLogoItem key="" to={`/`}>
+      <StyledLogoItem key="" to={`/${localStorage.locale}`}>
         <StyledImage
           height="80px"
           src={localStorage?.locale === "en" ? enlogo : localStorage?.locale === "fr"? frlogo: logo}
