@@ -72,8 +72,6 @@ function App() {
         window.location.href = `/ro`;
     }
 
-    console.log(path, 'location')
-    // localStorage.setItem("locale", 'ro');
     const [deleteModal, setDeleteModal] = useState<boolean>(false);
     const [allLinkCoursesChildParents, setLinkCoursesChildParents] = useState([
         {title: "", price: "", time: "", text: [], image: ""},
