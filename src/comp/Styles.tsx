@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { fontSizes } from "../generalStyle";
+import { fontSizes,colors } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -285,3 +285,26 @@ export const StyledErrorMessage = styled.div`
   height: 20px;
   margin: 5px;
 `;
+
+export const LogoutImage=styled.div`
+position:fixed;
+z-index:10;
+top: 90px;
+right:0;
+display:flex;
+flex-direction:row;
+column-gap:5px;
+padding:5px;
+justify-content:center;
+align-items:center;
+background-color:${colors.secondary.lighter}; 
+border: 2px solid ${colors.secondary.base};
+border-radius: 13px;
+
+p{
+font-size:20px;
+color:${colors.primary.base};
+font-weight:bold;
+margin:0;
+}
+`

@@ -95,7 +95,7 @@ export const Events = () => {
   const eventCards = dataSection.content?.map((event, key) => {
     return (
       <AnimatedContainer key={key}>
-        {localStorage.user !== "null" && (
+        {localStorage.user._id === "633fc7c57debf1918eb52792"&& (
           <button
             className={"delete-button"}
             onClick={() => {
