@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {colors, fontSizes} from "../generalStyle";
+import { fontSizes,colors } from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
