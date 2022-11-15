@@ -6,7 +6,7 @@ export const deleteObject = (data, index) => {
     ...data.content.slice(index + 1, data.content.length),
   ];
   axios
-    .put(`http://localhost:8800/api/sections/${data?._id}`, {
+    .put(`https://api.profadepovesti.ro/api/sections/${data?._id}`, {
       content,
     })
     .then(() => {

@@ -94,7 +94,7 @@ function App() {
     const [linkPathCourses, setLinkPathCourses] = useState("");
     const [linkPathEvents, setLinkPathEvents] = useState("");
     const {data, loading} = useFetch(
-        `http://localhost:8800/api/sections/sectionByLanguage?language=${
+        `https://api.profadepovesti.ro/api/sections/sectionByLanguage?language=${
             localStorage.locale || "ro"
         }`
     );

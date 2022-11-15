@@ -149,7 +149,7 @@ export const CreateModal = (props: CreateModalProps) => {
       text = updateObject.text;
     }
     axios
-      .put(`http://localhost:8800/api/sections/${props.data?._id}`, {
+      .put(`https://api.profadepovesti.ro/api/sections/${props.data?._id}`, {
         content: [
           ...props.data.content,
           {

@@ -100,7 +100,7 @@ export const EditModal = (props: EditModalProps) => {
       })
       axios
           .put(
-              `http://localhost:8800/api/sections/${props.object?._id}`,
+              `https://api.profadepovesti.ro/api/sections/${props.object?._id}`,
               {
                 ...updateObject,
                 content:contentUpdated,
