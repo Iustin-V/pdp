@@ -100,7 +100,7 @@ export const EditModal = (props: EditModalProps) => {
       })
       axios
           .put(
-              `https://pdp-api.onrender.com/api/sections/${props.object?._id}`,
+              `http://localhost:8800/api/sections/${props.object?._id}`,
               {
                 ...updateObject,
                 content:contentUpdated,

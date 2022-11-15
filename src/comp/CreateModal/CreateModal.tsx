@@ -149,7 +149,7 @@ export const CreateModal = (props: CreateModalProps) => {
       text = updateObject.text;
     }
     axios
-      .put(`https://pdp-api.onrender.com/api/sections/${props.data?._id}`, {
+      .put(`http://localhost:8800/api/sections/${props.data?._id}`, {
         content: [
           ...props.data.content,
           {

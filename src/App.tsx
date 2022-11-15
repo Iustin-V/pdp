@@ -94,7 +94,7 @@ function App() {
     const [linkPathCourses, setLinkPathCourses] = useState("");
     const [linkPathEvents, setLinkPathEvents] = useState("");
     const {data, loading} = useFetch(
-        `https://pdp-api.onrender.com/api/sections/sectionByLanguage?language=${
+        `http://localhost:8800/api/sections/sectionByLanguage?language=${
             localStorage.locale || "ro"
         }`
     );
