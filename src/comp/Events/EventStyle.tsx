@@ -13,11 +13,15 @@ export const StyledEventCardContainer = styled.div`
     max-width: calc(100vw - 80px);
   }
 `;
-export const MediaWrapper=styled.div`
+export const MediaWrapper = styled.div`
   height: 166px;
   overflow: hidden;
-  width: 250px;
-`
+  width: 30%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 export const StyledMedia = styled.img<{ height?: string }>`
   height: ${(props) => props.height || "200px"};
 
@@ -72,7 +76,7 @@ export const StyledPageEventInfo = styled.div`
   overflow: hidden;
 `;
 export const StyledButton = styled.button`
-  background-color: #002366;
+  background-color: ${colors.primary.base};
   width: fit-content;
   border-radius: 12px;
   border: none;
@@ -84,4 +88,9 @@ export const StyledButton = styled.button`
   margin: 4px 2px;
   font-size: 14px;
   cursor: pointer;
+
+  :hover {
+    border: 2px solid ${colors.primary.base};
+    background-color: ${colors.primary.lighter};
+  }
 `;

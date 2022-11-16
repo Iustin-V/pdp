@@ -36,7 +36,7 @@ export const SectionContainer = styled.div`
 `;
 
 export const IndexSection = styled.h2`
-  color: #002366;
+  color: ${colors.primary.base};
   margin-top: 6px;
 `;
 

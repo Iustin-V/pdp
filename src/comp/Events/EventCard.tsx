@@ -27,6 +27,10 @@ const StyledFlexContainer = styled.div`
   align-items: start;
   gap: 20px;
   justify-content: center;
+  width: 70%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const StyledElipsisParagraph = styled(StyledParagraph)`
   display: -webkit-box;

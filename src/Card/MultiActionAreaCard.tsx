@@ -12,6 +12,7 @@ import {PDPContext} from "../App";
 import {Tooltip} from "../comp/Styles";
 import linkGenerate from "../generalFunction";
 import clock from "./Assets/clock-regular.svg";
+import {colors} from "../generalStyle";
 
 const CardMediaStyled = styled.img`
   width: 100%;
@@ -99,7 +100,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
                         variant="h2"
                         color="text.secondary"
                         style={{
-                            color: "#002366",
+                            color: `${colors.primary.base}`,
                             margin: " 10px 0",
                             minHeight: "64px",
                             fontSize: "20px",
@@ -111,14 +112,14 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
                         <Typography
                             variant="h2"
                             color="text.secondary"
-                            style={{color: "#002366", fontSize: "20px"}}
+                            style={{color: `${colors.primary.base}`, fontSize: "20px"}}
                         >
                             <img src={clock} alt="clock" height={"15px"}/> {props.time}
                         </Typography>
                         <Typography
                             variant="h2"
                             color="text.secondary"
-                            style={{color: "#002366", fontSize: "20px"}}
+                            style={{color: `${colors.primary.base}`, fontSize: "20px"}}
                         >
                             Pret:{props.price}
                         </Typography>
@@ -135,7 +136,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
                 <Link style={{textDecoration: "none"}} to={linkGenerate(props.title)}>
                     <Button size="small" color="primary" style={{textAlign: "center"}}>
                         <Typography
-                            style={{color: "#002366", fontSize: "20px"}}
+                            style={{color: `${colors.primary.base}`, fontSize: "20px"}}
                             variant="h2"
                         >
                             {buttonText}
