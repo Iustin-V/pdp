@@ -5,13 +5,14 @@ import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
 import {
-  BackgroundWrapper,
+  BackgroundWrapper, LogoutImage,
   ParagraphItalicStyled,
   SectionContainer,
   TitleSection,
 } from "../Styles";
 import { YoutubeEmbed } from "../YoutubeEmbed/YoutubeEmbed";
 import Background from "../images/WeekStorySection.webp";
+import logout from "../images/logout-icon.webp";
 
 interface weekStorySectionProps {
   separatePage?: boolean;
@@ -36,9 +37,29 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
   const ParagraphAboutSection = contentText.content?.map((item, key) => {
     return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;
   });
+  const [logoutButton,setLogoutButton]=React.useState(false)
+  React.useEffect(()=>{
+        const user=localStorage.getItem("user")
+        if(user && user.includes("\"633fc7c57debf1918eb52792\"")){
+          setLogoutButton(true)
+        }
+      }
+      ,[localStorage.getItem("user")])
 
   return (
     <BackgroundWrapper imgUrl={Background} separatePage={props.separatePage}>
+      {logoutButton && (
+          <LogoutImage
+              onClick={() => {
+                localStorage.setItem("user", "");
+                setLogoutButton(false)
+                window.location.reload();
+              }}
+          >
+            <p>Logout</p>
+            <img src={logout} alt={"logout"} height={30} />
+          </LogoutImage>
+      )}
       <SectionContainer>
         <TitleSection
           color={props.separatePage ? "#e3b4d4" : colors.primary.base}

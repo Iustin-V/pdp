@@ -30,7 +30,7 @@ const Login = () => {
   };
   React.useEffect(() => {
     if (localStorage.user != "null") {
-      window.location.href = "/";
+      window.location.href = `/${localStorage.locale}`;
     }
   }, []);
 
@@ -43,7 +43,7 @@ const Login = () => {
         credentials
       );
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      navigate("/");
+      navigate(`/${localStorage.locale}`);
     } catch (err) {
       // @ts-ignore
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });

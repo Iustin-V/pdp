@@ -285,3 +285,33 @@ export const StyledErrorMessage = styled.div`
   height: 20px;
   margin: 5px;
 `;
+
+export const LogoutImage=styled.div`
+position:fixed;
+z-index:11;
+top: 90px;
+right:0;
+display:flex;
+flex-direction:row;
+column-gap:5px;
+padding:5px;
+justify-content:center;
+align-items:center;
+background-color:${colors.secondary.lighter}; 
+border: 2px solid ${colors.secondary.base};
+border-radius: 13px;
+
+p{
+font-size:20px;
+color:${colors.primary.base};
+font-weight:bold;
+margin:0;
+}
+
+:hover{
+cursor:pointer;
+p{
+color:${colors.primary.lighter};
+}
+}
+`

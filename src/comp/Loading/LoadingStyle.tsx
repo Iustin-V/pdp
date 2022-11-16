@@ -1,7 +1,7 @@
 import styled from "styled-components";
-
 import ThreeDots from "../../utils/loader";
 import TeacherIcon from "../images/teacher-icon.webp";
+import {colors} from "../../generalStyle";
 
 export const LoadingContainer = styled.div`
   height: 100vh;

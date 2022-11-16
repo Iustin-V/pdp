@@ -78,7 +78,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
 
     return (
         <StyledCard sx={{maxWidth: 250}}>
-            {localStorage.user !== "null" && (
+            {localStorage.user.includes("\"633fc7c57debf1918eb52792\"") && (
                 <button
                     className={"delete-button"}
                     onClick={() => {

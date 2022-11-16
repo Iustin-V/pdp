@@ -9,7 +9,7 @@ import {
   phoneValidation,
 } from "../../inputsValidations";
 import { getData } from "../../utils/getData";
-import { ParagraphItalicStyled, TitleSection } from "../Styles";
+import {LogoutImage, ParagraphItalicStyled, TitleSection} from "../Styles";
 import background from "../images/contact-background-overlay.webp";
 import teacherIcon from "../images/teacher-icon.webp";
 import {
@@ -26,6 +26,7 @@ import {
   StyledTextArea,
   TextsSection,
 } from "./Contact-Style";
+import logout from "../images/logout-icon.webp";
 
 export interface formFieldsType {
   name: string;
@@ -171,8 +172,32 @@ export const Contact = () => {
       setDisabledSubmitButton(true);
     }
   }, [nameError, emailError, phoneError, messageError]);
+
+  const [logoutButton,setLogoutButton]=React.useState(false)
+  React.useEffect(()=>{
+        const user=localStorage.getItem("user")
+        if(user && user.includes("\"633fc7c57debf1918eb52792\"")){
+          setLogoutButton(true)
+        }
+      }
+      ,[localStorage.getItem("user")])
+
+
+
   return (
     <ContactFormBackground backgroundImage={background}>
+      {logoutButton && (
+          <LogoutImage
+              onClick={() => {
+                localStorage.setItem("user", "");
+                setLogoutButton(false)
+                window.location.reload();
+              }}
+          >
+            <p>Logout</p>
+            <img src={logout} alt={"logout"} height={30} />
+          </LogoutImage>
+      )}
       <StyledContactForm>
         <TextsSection>
           <StyledImageTeacher

@@ -10,12 +10,13 @@ import { CreateButton } from "./CreateButton";
 import { EditButton } from "./EditButton";
 import {
   AdminButtons,
-  Border,
+  Border, LogoutImage,
   ParagraphItalicStyled,
   SectionContainer,
   TitleSection,
   WrapperCard,
 } from "./Styles";
+import logout from "./images/logout-icon.webp";
 
 export const StyledPageCourses = styled.div`
   margin-top: 80px;
@@ -99,9 +100,30 @@ export const Courses = () => {
       );
     }
   );
+  const [logoutButton,setLogoutButton]=React.useState(false)
+  React.useEffect(()=>{
+        const user=localStorage.getItem("user")
+        if(user && user.includes("\"633fc7c57debf1918eb52792\"")){
+          setLogoutButton(true)
+        }
+      }
+      ,[localStorage.getItem("user")])
+
 
   return (
     <>
+      {logoutButton && (
+          <LogoutImage
+              onClick={() => {
+                localStorage.setItem("user", "");
+                setLogoutButton(false)
+                window.location.reload();
+              }}
+          >
+            <p>Logout</p>
+            <img src={logout} alt={"logout"} height={30} />
+          </LogoutImage>
+      )}
       <StyledPageCourses>
         <SectionContainer>
           <AdminButtons>
