@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { fontSizes } from "../generalStyle";
+import {colors, fontSizes} from "../generalStyle";
 
 export const StyledWrapper = styled.div`
   overflow-x: hidden;
@@ -161,7 +161,7 @@ export const TitleSection = styled.h1<{ color: string }>`
 
 export const ParagraphItalicStyled = styled.p`
   text-align: center;
-  color: #002366;
+  color: ${colors.primary.base};
   font-family: "Nunito-Italic";
   font-size: ${fontSizes.desktop.paragraph.base};
   font-weight: 500;
@@ -225,7 +225,7 @@ export const Border = styled.hr`
     animation-timing-function: ease;
     animation-iteration-count: infinite;
     animation-name: progress;
-    background: #002366;
+    background: ${colors.primary.base};
     content: "";
     display: block;
     height: 1px;
@@ -253,7 +253,7 @@ export const StyledEditButton = styled.button`
   border: 5px solid black;
   border-radius: 15px;
   :hover {
-    background-color: #b4a087;
+    background-color: ${colors.secondary.base};
   }
 `;
 

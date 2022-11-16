@@ -24,7 +24,7 @@ export const ModalWrapper = styled.div`
   background-color: #f8ecd4;
   padding: 50px;
   opacity: 100%;
-  border: 5px solid #b4a087;
+  border: 5px solid ${colors.secondary.base};
   border-radius: 15px;
   overflow: auto;
 `;

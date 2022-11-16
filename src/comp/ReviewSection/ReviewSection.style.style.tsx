@@ -14,7 +14,7 @@ export const TitleReviewSection = styled.h1<{ color: string }>`
 `;
 
 export const QuoteReviewSection = styled.q`
-  color: #002366;
+  color: ${colors.primary.base};
   font-family: "Nunito-Italic";
   font-size: ${fontSizes.desktop.paragraph.small};
   font-weight: 500;

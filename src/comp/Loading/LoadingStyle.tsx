@@ -8,7 +8,7 @@ export const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #b4a087;
+  background-color: ${colors.secondary.base};
 `;
 
 export const LogoImageContainer = styled(ThreeDots)`
