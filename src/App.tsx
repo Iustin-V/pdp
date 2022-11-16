@@ -19,11 +19,9 @@ import Login from "./comp/Login/Login";
 import { Navbar } from "./comp/Navbar";
 import { StoryBoxPage } from "./comp/StoryBox/StoryBox";
 import { StyledWrapper } from "./comp/Styles";
-import { LogoutImage } from "./comp/Styles";
 import { ToTopButton } from "./comp/ToTopButton";
 import { WeekStorySection } from "./comp/WeekStorySection/WeekStorySection";
 import { WorkInProgress } from "./comp/WorkInProgress";
-import logout from "./comp/images/logout-icon.webp";
 import linkGenerate from "./generalFunction";
 import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
@@ -277,23 +275,12 @@ function App() {
                 allCategories={allCategories}
                 setTopButton={setTopButton}
               />
-              {localStorage.user !== "null" && (
-                <LogoutImage
-                  onClick={() => {
-                    localStorage.setItem("user", "");
-                    window.location.reload();
-                  }}
-                >
-                  <p>Logout</p>
-                  <img src={logout} alt={"logout"} height={30} />
-                </LogoutImage>
-              )}
               <ScrollToTop />
               <Routes>
                 <Route path={`/${localStorage.locale}`} element={<Home />} />
                 {navbarLinks}
                 <Route path="/blog" element={<WorkInProgress />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login/>} />
                 {coursesLinkRoutesChildParents}
                 {coursesLinkRoutesTeacher}
                 {eventsLinkRoutes}

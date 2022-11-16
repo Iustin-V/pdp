@@ -288,7 +288,7 @@ export const StyledErrorMessage = styled.div`
 
 export const LogoutImage=styled.div`
 position:fixed;
-z-index:10;
+z-index:11;
 top: 90px;
 right:0;
 display:flex;
@@ -306,5 +306,12 @@ font-size:20px;
 color:${colors.primary.base};
 font-weight:bold;
 margin:0;
+}
+
+:hover{
+cursor:pointer;
+p{
+color:${colors.primary.lighter};
+}
 }
 `

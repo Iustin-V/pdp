@@ -5,6 +5,8 @@ import { getData } from "../../utils/getData";
 import { StoryBoxSection } from "./StoryBoxSection";
 import { StoryBoxPageContainer } from "./StoryBoxStyle";
 import { WhatHowAndWhySection } from "./whatHowAndWhy";
+import {LogoutImage} from "../Styles";
+import logout from "../images/logout-icon.webp";
 
 export const StoryBoxPage = () => {
   const contextLocal: {
@@ -16,6 +18,14 @@ export const StoryBoxPage = () => {
     subTitle: "",
     content: [{ boxSection: "", sectionContent: [""] }],
   });
+  const [logoutButton,setLogoutButton]=React.useState(false)
+  React.useEffect(()=>{
+        const user=localStorage.getItem("user")
+        if(user && user.includes("\"633fc7c57debf1918eb52792\"")){
+          setLogoutButton(true)
+        }
+      }
+      ,[localStorage.getItem("user")])
 
   React.useEffect(() => {
     const textData = getData(contextLocal?.allCategories, "StoryBox");
@@ -24,6 +34,18 @@ export const StoryBoxPage = () => {
 
   return (
     <StoryBoxPageContainer>
+      {logoutButton && (
+          <LogoutImage
+              onClick={() => {
+                localStorage.setItem("user", "");
+                setLogoutButton(false)
+                window.location.reload();
+              }}
+          >
+            <p>Logout</p>
+            <img src={logout} alt={"logout"} height={30} />
+          </LogoutImage>
+      )}
       <WhatHowAndWhySection
         subTitle={contentText?.subTitle}
         title={contentText?.title}
