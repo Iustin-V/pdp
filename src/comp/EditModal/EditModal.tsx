@@ -45,7 +45,10 @@ export const EditModal = (props: EditModalProps) => {
   };
 
   React.useEffect(() => {
-    setUpdateObjectArray(initialObjectArray);
+    let arr= props.modalData["content"]
+    if( arr && typeof arr[0]!=="string") {
+      setUpdateObjectArray(initialObjectArray);
+    }
     setUpdateArray(initialArray);
   }, [initialArray, initialObjectArray]);
 
