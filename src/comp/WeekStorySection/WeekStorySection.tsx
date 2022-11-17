@@ -34,6 +34,7 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
     setContentTexts(textData);
   }, [contextLocal]);
 
+
   const ParagraphAboutSection = contentText.content?.map((item, key) => {
     return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;
   });

@@ -76,7 +76,7 @@ export const EditModal = (props: EditModalProps) => {
     if (!emptyObject && !updateObjArr && !emptyArray && !props.object) {
       axios
         .put(
-          `https://pdp-api.onrender.com/api/sections/${localModalData?._id}`,
+          `https://api.profadepovesti.ro/api/sections/${localModalData?._id}`,
           {
             ...updateObject,
             content,
@@ -117,6 +117,7 @@ export const EditModal = (props: EditModalProps) => {
       exitModal();
 
     }
+
 
 
     else{

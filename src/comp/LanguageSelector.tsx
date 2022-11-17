@@ -59,10 +59,12 @@ const StyledDiv = styled.div`
       :nth-child(2) {
         background-color: #b4ada6;
         color: #454545;
+        cursor:not-allowed;
       }
       :nth-child(3) {
         background-color: #b4ada6;
         color: #454545;
+        cursor:not-allowed;
       }
     }
   }
