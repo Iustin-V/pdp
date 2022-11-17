@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+
+
 import "./App.css";
 import ScrollToTop from "./ScrollToTop";
 import { UnknownRoute } from "./UnknownRoute";
@@ -27,6 +29,7 @@ import logout from "./comp/images/logout-icon.webp";
 import linkGenerate from "./generalFunction";
 import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
+
 
 export const PDPContext = React.createContext({
   allCategories: [],
@@ -63,7 +66,8 @@ function App() {
     schema: "none",
   });
   const path = window.location.pathname.split("/")[1];
-  let langArr = ["ro", "en", "fr"];
+  // let langArr = ["ro", "en", "fr"];
+  let langArr = ["ro"];
   if (langArr.includes(path)) {
     localStorage.setItem("locale", path);
   } else if (path) {

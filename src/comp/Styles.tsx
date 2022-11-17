@@ -32,7 +32,7 @@ export const MainContentWrapper = styled.div<{
   width: 100%;
   padding: ${(props) => props.padding};
 `;
-export const StyledToTopButton = styled.button<{ bottom: string }>`
+export const StyledToTopButton = styled.div<{ bottom: string }>`
   height: 50px;
   width: 50px;
   opacity: 70%;
@@ -48,11 +48,6 @@ export const StyledToTopButton = styled.button<{ bottom: string }>`
   border-radius: 37%;
   overflow: hidden;
   transition: bottom 200ms ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none !important;
-
-  appearance: none;
   bottom: ${(props) => props.bottom};
 `;
 export const StyledImageNew = styled.img`

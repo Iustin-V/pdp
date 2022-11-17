@@ -74,6 +74,10 @@ export const StyledPageEventInfo = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  div > h1 {
+    max-width: 900px;
+    margin: 0 auto 40px;
+  }
 `;
 export const StyledButton = styled.button`
   background-color: ${colors.primary.base};
@@ -90,7 +94,6 @@ export const StyledButton = styled.button`
   cursor: pointer;
 
   :hover {
-    border: 2px solid ${colors.primary.base};
     background-color: ${colors.primary.lighter};
   }
 `;

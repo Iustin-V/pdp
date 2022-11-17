@@ -8,13 +8,14 @@ import { getData } from "../../utils/getData";
 import { CreateButton } from "../CreateButton";
 import { EditButton } from "../EditButton";
 import {
-  AdminButtons, LogoutImage,
+  AdminButtons,
+  LogoutImage,
   SectionContainer,
   TitleSection,
   Tooltip,
 } from "../Styles";
-import { EventCard } from "./EventCard";
 import logout from "../images/logout-icon.webp";
+import { EventCard } from "./EventCard";
 
 const StyledEventsPage = styled.div`
   margin-top: 80px;
@@ -30,11 +31,14 @@ const StyledContent = styled.div`
   display: flex;
   justify-content: center;
   gap: 30px;
+  max-width: 850px;
+  margin: 0 auto;
 `;
 const AnimatedContainer = styled.div`
   transform: translateX(70%);
   opacity: 0;
   animation: slide-in-anim-right 1.5s ease-out forwards;
+  width: 100%;
 
   :nth-child(even) {
     transform: translateX(-70%);
@@ -96,7 +100,7 @@ export const Events = () => {
   const eventCards = dataSection.content?.map((event, key) => {
     return (
       <AnimatedContainer key={key}>
-        {localStorage.user.includes("\"633fc7c57debf1918eb52792\"") && (
+        {localStorage.user.includes('"633fc7c57debf1918eb52792"') && (
           <button
             className={"delete-button"}
             onClick={() => {
@@ -119,30 +123,27 @@ export const Events = () => {
       </AnimatedContainer>
     );
   });
-  const [logoutButton,setLogoutButton]=React.useState(false)
-  React.useEffect(()=>{
-        const user=localStorage.getItem("user")
-        if(user && user.includes("\"633fc7c57debf1918eb52792\"")){
-          setLogoutButton(true)
-        }
-      }
-      ,[localStorage.getItem("user")])
-
-
+  const [logoutButton, setLogoutButton] = React.useState(false);
+  React.useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user && user.includes('"633fc7c57debf1918eb52792"')) {
+      setLogoutButton(true);
+    }
+  }, [localStorage.getItem("user")]);
 
   return (
     <StyledEventsPage>
       {logoutButton && (
-          <LogoutImage
-              onClick={() => {
-                localStorage.setItem("user", "");
-                setLogoutButton(false)
-                window.location.reload();
-              }}
-          >
-            <p>Logout</p>
-            <img src={logout} alt={"logout"} height={30} />
-          </LogoutImage>
+        <LogoutImage
+          onClick={() => {
+            localStorage.setItem("user", "");
+            setLogoutButton(false);
+            window.location.reload();
+          }}
+        >
+          <p>Logout</p>
+          <img src={logout} alt={"logout"} height={30} />
+        </LogoutImage>
       )}
       <SectionContainer>
         <AdminButtons>

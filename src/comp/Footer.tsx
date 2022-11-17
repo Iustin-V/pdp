@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { PDPContext } from "../App";
 import { getData } from "../utils/getData";
+import { redirectLink } from "../utils/redirectLink";
 import {
   LogoContainer,
   StyledFirstRow,
@@ -65,7 +66,7 @@ export const Footer = () => {
     {
       name: "instagram",
       iconSrc: instagramIcon,
-      link: "https://www.instagram.com/profadepovesti/",
+      link: "https://www.instagram.com/the_storyteacher/",
     },
     {
       name: "tiktok",
@@ -78,10 +79,6 @@ export const Footer = () => {
       link: "https://twitter.com/ITeachStories?t=KTFzvM7w2Inociouib0Ieg&s=09",
     },
   ];
-
-  const redirectLink = (link: string) => {
-    window.open(link);
-  };
 
   const FooterSocialMediaColumn = socialMediaLinks.map((socialMedia, index) => {
     return (
@@ -100,7 +97,13 @@ export const Footer = () => {
       <StyledLogoItem key="" to={`/${localStorage.locale}`}>
         <StyledImage
           height="80px"
-          src={localStorage?.locale === "en" ? enlogo : localStorage?.locale === "fr"? frlogo: logo}
+          src={
+            localStorage?.locale === "en"
+              ? enlogo
+              : localStorage?.locale === "fr"
+              ? frlogo
+              : logo
+          }
           alt="logo"
         />
       </StyledLogoItem>
@@ -119,7 +122,11 @@ export const Footer = () => {
         </StyledFooterSocialMediaColumn>
       </StyledFirstRow>
       <StyledSecondRow>
-        <img src={redEclipse} alt="RedEclipseLogo" onClick={()=>redirectLink("www.redeclipse.ro")}/>
+        <img
+          src={redEclipse}
+          alt="RedEclipseLogo"
+          onClick={() => redirectLink("https://redeclipse.ro")}
+        />
       </StyledSecondRow>
     </StyledFooter>
   );

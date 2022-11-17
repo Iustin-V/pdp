@@ -23,7 +23,7 @@ import bee from "../images/bee.webp";
 import closedBox from "../images/closedBox.webp";
 import heart from "../images/heart.webp";
 import star from "../images/star.webp";
-import openBox from "../images/transparent-box-black-open-bure.webp";
+import openBox from "../images/box-open.webp";
 import {
   DoubleContainer,
   FormContainer,

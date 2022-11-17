@@ -70,6 +70,7 @@ const StyledBoxHead = styled(StyledParagraph)`
 `;
 const PictureWrapper = styled.div`
   width: 100%;
+  height: 400px;
 
   img {
     object-fit: cover;

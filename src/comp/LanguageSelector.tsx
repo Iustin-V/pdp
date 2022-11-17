@@ -56,6 +56,14 @@ const StyledDiv = styled.div`
         background-color: ${colors.secondary.lighter};
         cursor: pointer;
       }
+      :nth-child(2) {
+        background-color: #b4ada6;
+        color: #454545;
+      }
+      :nth-child(3) {
+        background-color: #b4ada6;
+        color: #454545;
+      }
     }
   }
 `;
@@ -63,78 +71,80 @@ const FlagIcon = styled.img`
   height: 25px;
 `;
 const setCookie = (value: string) => {
-    window.location.href = `/${value}`;
+  window.location.href = `/${value}`;
 };
 
 const CurrentCookie = () => {
-    let cookie = localStorage.getItem("locale");
-    switch (cookie) {
-        case "ro": {
-            return (
-                <>
-                    <FlagIcon src={roflag} alt={"roflag"} />
-                    RO
-                </>
-            );
-        }
-        case "en": {
-            return (
-                <>
-                    <FlagIcon src={ukflag} alt={"ukflag"} />
-                    EN
-                </>
-            );
-        }
-        case "fr": {
-            return (
-                <>
-                    <FlagIcon src={frflag} alt={"frflag"} />
-                    FR
-                </>
-            );
-        }
+  let cookie = localStorage.getItem("locale");
+  switch (cookie) {
+    case "ro": {
+      return (
+        <>
+          <FlagIcon src={roflag} alt={"roflag"} />
+          RO
+        </>
+      );
     }
-    return <>
-        <FlagIcon src={roflag} alt={"roflag"} />
-        RO
-    </>;
+    case "en": {
+      return (
+        <>
+          <FlagIcon src={ukflag} alt={"ukflag"} />
+          EN
+        </>
+      );
+    }
+    case "fr": {
+      return (
+        <>
+          <FlagIcon src={frflag} alt={"frflag"} />
+          FR
+        </>
+      );
+    }
+  }
+  return (
+    <>
+      <FlagIcon src={roflag} alt={"roflag"} />
+      RO
+    </>
+  );
 };
 
 export const LanguageSelector = () => {
-    return (
-        <StyledDiv>
-            <div>
-                <CurrentCookie /> &#9660;{" "}
-            </div>
-            <ul>
-                <li
-                    onClick={
-                        localStorage.getItem("locale") !== "ro"
-                            ? () => setCookie("ro")
-                            : undefined
-                    }
-                >
-                    <FlagIcon src={roflag} alt={"roflag"} /> RO{" "}
-                </li>
-                <li
-                    onClick={
-                        localStorage.getItem("locale") !== "en"
-                            ? () => setCookie("en")
-                            : undefined
-                    }
-                >
-                    <FlagIcon src={ukflag} alt={"ukflag"} /> EN
-                </li>
-                <li
-                    onClick={
-                        localStorage.getItem("locale") !== "fr"
-                            ? () => setCookie("fr")
-                            : undefined
-                    }
-                >
-                    <FlagIcon src={frflag} alt={"frflag"} /> FR
-                </li>
-            </ul>
-        </StyledDiv>
-    );
+  return (
+    <StyledDiv>
+      <div>
+        <CurrentCookie /> &#9660;{" "}
+      </div>
+      <ul>
+        <li
+          onClick={
+            localStorage.getItem("locale") !== "ro"
+              ? () => setCookie("ro")
+              : undefined
+          }
+        >
+          <FlagIcon src={roflag} alt={"roflag"} /> RO{" "}
+        </li>
+        <li
+        // onClick={
+        //     localStorage.getItem("locale") !== "en"
+        //         ? () => setCookie("en")
+        //         : undefined
+        // }
+        >
+          <FlagIcon src={ukflag} alt={"ukflag"} /> EN
+        </li>
+        <li
+        // onClick={
+        //     localStorage.getItem("locale") !== "fr"
+        //         ? () => setCookie("fr")
+        //         : undefined
+        // }
+        >
+          <FlagIcon src={frflag} alt={"frflag"} /> FR
+        </li>
+      </ul>
+    </StyledDiv>
+  );
 };
