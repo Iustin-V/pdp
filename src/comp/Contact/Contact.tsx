@@ -59,7 +59,7 @@ export const Contact = () => {
     mesaj: "",
     sendButton: "",
   });
-  const [textSection, setTextSection] = useState({ subTitle: [], title: "" });
+  const [textSection, setTextSection] = useState({ subTitle: "", title: "" });
   const dataSection = {
     ro: {
       name: "Nume",
@@ -204,9 +204,7 @@ export const Contact = () => {
           <TitleSection color={colors.primary.base}>
             {textSection.title}
           </TitleSection>
-          <ParagraphItalicStyled>
-            {textSection.subTitle[0]}
-          </ParagraphItalicStyled>
+          <ParagraphItalicStyled>{textSection.subTitle}</ParagraphItalicStyled>
         </TextsSection>
         <StyledForm
           action="https://public.herotofu.com/v1/62aea5a0-34f8-11ed-9de0-b73c4b901972"

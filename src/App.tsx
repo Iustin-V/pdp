@@ -36,7 +36,7 @@ export interface Category {
   img: string[];
   language: string;
   sectionName: string;
-  subTitle: string[];
+  subTitle: string;
   video: string;
   links: string[];
   contain: string[];
@@ -158,6 +158,7 @@ function App() {
     }
   }, [loading]);
 
+  console.log("allCategories", allCategories);
   const eventsLinkRoutes = allEvents.map((link, key) => {
     return (
       <Route

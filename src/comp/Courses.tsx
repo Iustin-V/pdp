@@ -143,7 +143,7 @@ export const Courses = () => {
             {refactorTitle[0]} <br /> -{refactorTitle[1]}-
           </TitleSection>
           <ParagraphItalicStyled>
-            {TextAlignment(contentCourseChildParents.subTitle[0])}
+            {TextAlignment(contentCourseChildParents.subTitle)}
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
         </SectionContainer>
@@ -167,7 +167,7 @@ export const Courses = () => {
             {refactorTitleCourseTeacher[1]}-
           </TitleSection>
           <ParagraphItalicStyled>
-            {TextAlignment(contentCourseTeacher.subTitle[0])}
+            {TextAlignment(contentCourseTeacher.subTitle)}
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardParentsTeacher}</WrapperCard>
         </SectionContainer>

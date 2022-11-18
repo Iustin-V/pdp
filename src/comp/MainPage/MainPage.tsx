@@ -17,7 +17,7 @@ export const MainPage = () => {
     editFunction: (data: any, type: string) => boolean;
     allCategories: any[];
   } = React.useContext(PDPContext);
-  const [sectionText, setSectionTexts] = useState({ title: "", subTitle: [] });
+  const [sectionText, setSectionTexts] = useState({ title: "", subTitle: "" });
 
   React.useEffect(() => {
     const mainPage = getData(contextLocal?.allCategories, "MainPage");

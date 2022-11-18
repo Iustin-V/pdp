@@ -30,7 +30,7 @@ export const WhatHowAndWhySection = (props: sectionDetails) => {
     <BackgroundWrapper imgUrl={storyboxBG}>
       <SectionContainer>
         <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
-        <SubtitleSection>{props.subTitle[0]}</SubtitleSection>
+        <SubtitleSection>{props.subTitle}</SubtitleSection>
         {ParagraphAboutSection}
       </SectionContainer>
     </BackgroundWrapper>
