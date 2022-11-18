@@ -38,7 +38,7 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
 
   const ParagraphAboutSection = contentText.content?.map((item, key) => {
     return (
-      <ParagraphItalicStyled key={key}>
+      <ParagraphItalicStyled key={key} animated={true}>
         {TextAlignment(item)}
       </ParagraphItalicStyled>
     );
@@ -65,12 +65,10 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
         </LogoutImage>
       )}
       <SectionContainer>
-        <TitleSection
-          color={ colors.primary.base}
-        >
+        <TitleSection color={colors.primary.base} animated={props.separatePage}>
           {contentText.title}
         </TitleSection>
-        <YoutubeEmbed embedId={contentText.video} />
+        <YoutubeEmbed embedId={contentText.video} animated={true} />
         {ParagraphAboutSection}
       </SectionContainer>
       <EditButton

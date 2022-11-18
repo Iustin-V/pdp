@@ -140,10 +140,10 @@ export const Courses = () => {
             />
           </AdminButtons>
 
-          <TitleSection color={colors.primary.base}>
+          <TitleSection color={colors.primary.base} animated={true}>
             {refactorTitle[0]} <br /> -{refactorTitle[1]}-
           </TitleSection>
-          <ParagraphItalicStyled>
+          <ParagraphItalicStyled animated={true}>
             {TextAlignment(contentCourseChildParents.subTitle)}
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
@@ -163,11 +163,11 @@ export const Courses = () => {
               sectionText={contentCourseTeacher}
             />
           </AdminButtons>
-          <TitleSection color={colors.primary.base}>
+          <TitleSection color={colors.primary.base} animated={true}>
             {refactorTitleCourseTeacher[0]} <br /> -
             {refactorTitleCourseTeacher[1]}-
           </TitleSection>
-          <ParagraphItalicStyled>
+          <ParagraphItalicStyled animated={true}>
             {TextAlignment(contentCourseTeacher.subTitle)}
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardParentsTeacher}</WrapperCard>

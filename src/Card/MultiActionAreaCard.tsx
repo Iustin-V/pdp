@@ -24,15 +24,21 @@ const CardMediaStyled = styled.img`
 
   transition: transform 1s ease-in-out;
 `;
-const StyledCard = styled(Card)`
+const StyledCard = styled(Card)<{ index: number }>`
   position: relative;
   width: 250px;
   height: 360px;
+  opacity: 0;
   overflow: initial;
+  transform: translateX(150%);
+  animation: slide-in-anim-right-text 0.8s ease-out forwards;
 
   :hover {
     -webkit-box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
     box-shadow: 4px 1px 15px -1px rgba(0, 0, 0, 0.4);
+  }
+  :nth-child(n) {
+    ${(props) => `animation-delay:${props.index / 5 + 0.8}s`}
   }
 
   transition: box-shadow 1s ease-in-out;
@@ -76,7 +82,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
   }, []);
 
   return (
-    <StyledCard sx={{ maxWidth: 250 }}>
+    <StyledCard sx={{ maxWidth: 250 }} index={props.index}>
       {localStorage.user.includes('"633fc7c57debf1918eb52792"') && (
         <button
           className={"delete-button"}

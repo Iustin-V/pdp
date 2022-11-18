@@ -144,18 +144,35 @@ export const SectionContainer = styled.div<{ maxWidth?: string }>`
   position: relative;
 `;
 
-export const TitleSection = styled.h1<{ color: string }>`
+export const TitleSection = styled.h1<{ color: string; animated?: boolean }>`
   font-family: "KaushanScript";
   font-size: ${fontSizes.desktop.heading.base};
   color: ${(props) => props.color};
   text-align: center;
   margin-top: 0;
+  ${(props) =>
+    props.animated &&
+    `transform: translateX(70%);
+  opacity: 0;
+  animation: slide-in-anim-right-text 0.6s ease-out forwards;
+  width: 100%;
+
+  @keyframes slide-in-anim-right-text {
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+`};
   @media (max-width: 768px) {
     font-size: ${fontSizes.mobile.heading.base};
   }
 `;
 
-export const ParagraphItalicStyled = styled.p`
+export const ParagraphItalicStyled = styled.p<{ animated?: boolean }>`
   text-align: center;
   color: ${colors.primary.base};
   font-family: "Nunito-Italic";
@@ -166,6 +183,13 @@ export const ParagraphItalicStyled = styled.p`
   width: initial;
   max-width: initial;
  margin:0;
+  ${(props) =>
+    props.animated &&
+    `transform: translateX(-70%);
+  opacity: 0;
+  animation: slide-in-anim-right-text 0.6s ease-out forwards;
+  animation-delay: 0.3s;`};
+
   @media (max-width: 768px) {
     font-size: ${fontSizes.desktop.paragraph.small};
   }

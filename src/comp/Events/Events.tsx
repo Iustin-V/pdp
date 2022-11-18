@@ -162,7 +162,7 @@ export const Events = () => {
         </AdminButtons>
         <StyledContent>
           {
-            <TitleSection color={colors.primary.base}>
+            <TitleSection color={colors.primary.base} animated={true}>
               {dataSection?.title}
             </TitleSection>
           }
