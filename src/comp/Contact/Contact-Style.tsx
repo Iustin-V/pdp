@@ -20,6 +20,16 @@ export const StyledContactForm = styled.div`
   @media (max-width: 1200px) {
     flex-direction: column;
     align-items: center;
+    div:first-child {
+      margin-top: 100px;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    div:first-child {
+      margin-top: 50px;
+    }
   }
 `;
 export const TextsSection = styled.div`
@@ -35,13 +45,10 @@ export const TextsSection = styled.div`
   }
 
   @media (max-width: 1200px) {
-    margin-top: 100px;
     width: 100%;
     max-width: calc(100% - 40px);
-    margin-bottom: 20px;
   }
   @media (max-width: 768px) {
-    margin-top: 50px;
     p {
       margin-bottom: 0;
     }
@@ -51,15 +58,27 @@ export const StyledImageTeacher = styled.img`
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1) translateY(-100%);
   position: absolute;
-  top: -1px;
-
+  left: 20px;
+  top:10px;
+   transition:top 0.5s;
+animation: teacher-go-up 2s;
   @media (max-width: 1200px) {
     height: 120px;
     object-fit: contain;
+    top:0px;
+   transition:top 0.5s;
   }
   @media (max-width: 768px) {
     height: 80px;
     object-fit: contain;
+  }
+   :hover {
+   top:0px;
+   transition:top 0.5s;
+   }
+  @keyframes teacher-go-up {
+  from {top:100%;}
+  to {top:10px;}
   }
 `;
 
