@@ -44,6 +44,7 @@ export interface Category {
   _id: string;
   __v: number;
 }
+console.log = console.warn = console.error = () => {};
 
 function App() {
   const topRef = React.useRef<null | HTMLDivElement>(null);
@@ -158,7 +159,6 @@ function App() {
     }
   }, [loading]);
 
-  console.log("allCategories", allCategories);
   const eventsLinkRoutes = allEvents.map((link, key) => {
     return (
       <Route
@@ -219,7 +219,7 @@ function App() {
   });
   const arrayNavbarLinks = [
     <StoryBoxPage />,
-    <WeekStorySection />,
+    <WeekStorySection separatePage={true} />,
     <Courses />,
     <Events />,
     <Contact />,

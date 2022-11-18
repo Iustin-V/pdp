@@ -53,7 +53,7 @@ export const StyledTitleContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 25px;
+  margin: 0 auto;
   border: solid;
   border-width: 0 0 1px 0;
   border-color: ${colors.primary.base};
@@ -68,5 +68,5 @@ export const StyledRoundedImage = styled.img`
   border-radius: 50%;
   height: 150px !important;
   width: 150px !important;
-  margin: auto;
+  margin: 16px auto;
 `;

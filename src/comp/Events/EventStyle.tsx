@@ -14,21 +14,35 @@ export const StyledEventCardContainer = styled.div`
   }
 `;
 export const MediaWrapper = styled.div`
-  height: 166px;
+  height: 200px;
   overflow: hidden;
   width: 30%;
 
   @media (max-width: 768px) {
     width: 100%;
   }
+  
 `;
 export const StyledMedia = styled.img<{ height?: string }>`
   height: ${(props) => props.height || "200px"};
-
+  object-fit:cover;
+   width: 100%;
+   animation:image-position 10s infinite;
   @media (max-width: 768px) {
-    height: auto;
+    height: 100%;
     width: 100%;
+     animation:image-position-mobile 10s infinite;
   }
+   @keyframes image-position {
+  0%{object-position: left;}
+  50% {object-position: right;}
+  100%{object-position: left;}
+}
+ @keyframes image-position-mobile {
+  0%{object-position: top;}
+  50% {object-position: bottom;}
+  100%{object-position: top;}
+}
 `;
 export const StyledContent = styled.div`
   display: inherit;

@@ -50,7 +50,6 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
       setLogoutButton(true);
     }
   }, [localStorage.getItem("user")]);
-
   return (
     <BackgroundWrapper imgUrl={Background} separatePage={props.separatePage}>
       {logoutButton && (
@@ -67,7 +66,7 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
       )}
       <SectionContainer>
         <TitleSection
-          color={props.separatePage ? "#e3b4d4" : colors.primary.base}
+          color={ colors.primary.base}
         >
           {contentText.title}
         </TitleSection>

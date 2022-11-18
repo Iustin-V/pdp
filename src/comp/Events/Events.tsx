@@ -33,6 +33,8 @@ const StyledContent = styled.div`
   gap: 30px;
   max-width: 850px;
   margin: 0 auto;
+  >h1 {
+  margin:0;}
 `;
 const AnimatedContainer = styled.div`
   transform: translateX(70%);

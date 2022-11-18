@@ -164,7 +164,7 @@ export const ParagraphItalicStyled = styled.p`
   line-height: 3=0;
   width: initial;
   max-width: initial;
-
+ margin:0;
   @media (max-width: 768px) {
     font-size: ${fontSizes.desktop.paragraph.small};
   }
@@ -174,14 +174,14 @@ export const BackgroundWrapper = styled.div<{
   imgUrl: string;
   separatePage?: boolean;
 }>`
-  margin-top: 80px;
+  margin-top: 0;
   background-image: url(${(props) => props.imgUrl});
   background-position: top;
   background-repeat: no-repeat;
   background-color: white;
   background-size: 100%;
   text-align: center;
-  ${(props) => props.separatePage && "padding-top: 50px;"}
+  ${(props) => props.separatePage && "margin-top: 80px;" }
 `;
 
 export const MarginTOPContainer = styled.div`
@@ -198,6 +198,7 @@ export const WrapperCard = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-top:40px;
   column-gap: 30px;
   row-gap: 30px;
   justify-content: center;
@@ -207,7 +208,7 @@ export const Border = styled.hr`
   border: 0;
   clear: both;
   display: block;
-  margin: 2.4rem auto;
+  margin: 8px 0;
   text-align: center;
   width: 100%;
   background: rgba(1, 15, 30, 0.1);

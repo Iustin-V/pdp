@@ -20,13 +20,14 @@ import {
 } from "./Styles";
 import logout from "./images/logout-icon.webp";
 
-export const StyledPageCourses = styled.div`
-  margin-top: 80px;
+export const StyledPageCourses = styled.div<{first?:boolean}>`
+
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+   ${(props) => props.first && "margin-top: 80px;" }
 `;
 
 export const Courses = () => {
@@ -124,7 +125,7 @@ export const Courses = () => {
           <img src={logout} alt={"logout"} height={30} />
         </LogoutImage>
       )}
-      <StyledPageCourses>
+      <StyledPageCourses first={true}>
         <SectionContainer>
           <AdminButtons>
             <CreateButton

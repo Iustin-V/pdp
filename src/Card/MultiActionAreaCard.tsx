@@ -17,7 +17,7 @@ import clock from "./Assets/clock-regular.svg";
 const CardMediaStyled = styled.img`
   width: 100%;
   height: 167px;
-
+    object-fit: cover;
   :hover {
     transform: scale(1.15, 1.15);
   }
@@ -26,10 +26,8 @@ const CardMediaStyled = styled.img`
 `;
 const StyledCard = styled(Card)`
   position: relative;
-  margin-top: 40px;
   width: 250px;
   height: 360px;
-  margin-bottom: 40px;
   overflow: initial;
 
   :hover {
@@ -122,7 +120,7 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
               color="text.secondary"
               style={{ color: `${colors.primary.base}`, fontSize: "20px" }}
             >
-              Pret:{props.price}
+              Pret: {props.price}
             </Typography>
           </div>
         </CardContent>

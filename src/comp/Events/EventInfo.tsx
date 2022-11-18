@@ -71,12 +71,10 @@ const StyledBoxHead = styled(StyledParagraph)`
 `;
 const PictureWrapper = styled.div`
   width: 100%;
-  height: 400px;
 
   img {
     object-fit: cover;
     object-position: bottom;
-    height: 400px;
     width: 100%;
   }
 `;
@@ -151,7 +149,7 @@ export const EventInfo = (props: EventInfoProps) => {
             )}
             {props.website && (
               <StyledParagraph>
-                Website:
+                Website:{" "}
                 <span onClick={() => redirectLink(props.website)}>
                   {props.website}
                 </span>

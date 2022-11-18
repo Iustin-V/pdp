@@ -75,6 +75,7 @@ export const EditModal = (props: EditModalProps) => {
     } else if (updateObjectArray && updateObjectArray.length > 0) {
       content = updateObjectArray;
     }
+
     if (!emptyObject && !updateObjArr && !emptyArray && !props.object) {
       axios
         .put(
