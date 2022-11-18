@@ -38,7 +38,12 @@ export const DeleteModal = (props: any) => {
       <StyledModal>
         <h2>
           Are you sure you want to delete
-          {props.modalData.data.content[props.modalData.index].title ? ` "${props.modalData.data.content[props.modalData.index].title}"` : ` ${props.modalData.data.content[props.modalData.index].name}'s review`} ?
+          {props.modalData.data.content[props.modalData.index].title
+            ? ` "${props.modalData.data.content[props.modalData.index].title}"`
+            : ` ${
+                props.modalData.data.content[props.modalData.index].name
+              }'s review`}{" "}
+          ?
         </h2>
         <div>
           <StyledSaveButton

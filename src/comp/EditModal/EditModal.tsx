@@ -21,7 +21,7 @@ interface EditModalProps {
   data?: {};
   handleSave?: () => void;
   createModalSchema: string;
-  object?:any;
+  object?: any;
 }
 
 export const EditModal = (props: EditModalProps) => {
@@ -45,15 +45,14 @@ export const EditModal = (props: EditModalProps) => {
   };
 
   React.useEffect(() => {
-    let arr= props.modalData["content"]
-    if( arr && typeof arr[0]!=="string") {
+    let arr = props.modalData["content"];
+    if (arr && typeof arr[0] !== "string") {
       setUpdateObjectArray(initialObjectArray);
     }
     setUpdateArray(initialArray);
   }, [initialArray, initialObjectArray]);
 
   const saveModal = () => {
-
     let emptyObject = false;
     let updateObjArr = false;
     let emptyArray = false;
@@ -94,37 +93,31 @@ export const EditModal = (props: EditModalProps) => {
           );
         });
       exitModal();
-    } else if (!emptyObject && !updateObjArr && !emptyArray){
-      const contentUpdated=props.object?.content
-      contentUpdated.forEach((course:any) => {
-        if(course.title===props.modalData.title){
-          course.text=updateArray
+    } else if (!emptyObject && !updateObjArr && !emptyArray) {
+      const contentUpdated = props.object?.content;
+      contentUpdated.forEach((course: any) => {
+        if (course.title === props.modalData.title) {
+          course.text = updateArray;
         }
-      })
+      });
       axios
-          .put(
-              `https://api.profadepovesti.ro/api/sections/${props.object?._id}`,
-              {
-                ...updateObject,
-                content:contentUpdated,
-              }
-          )
-          .then(() => {
-            window.location.reload();
-          })
-          .catch(() => {
-            alert(
-                "An error has occurred while trying to update the database, please try again later."
-            );
-          });
+        .put(
+          `https://api.profadepovesti.ro/api/sections/${props.object?._id}`,
+          {
+            ...updateObject,
+            content: contentUpdated,
+          }
+        )
+        .then(() => {
+          window.location.reload();
+        })
+        .catch(() => {
+          alert(
+            "An error has occurred while trying to update the database, please try again later."
+          );
+        });
       exitModal();
-
-    }
-
-
-
-    else{
-
+    } else {
       alert("Inputs can not be empty");
     }
   };
@@ -181,7 +174,8 @@ export const EditModal = (props: EditModalProps) => {
         "label",
         "content",
       ].includes(element.toLowerCase()) &&
-      localModalData[element].length !== 0 && !props.object
+      localModalData[element].length !== 0 &&
+      !props.object
     ) {
       return (
         <>
@@ -322,28 +316,28 @@ export const EditModal = (props: EditModalProps) => {
           <StyledText color={colors.primary.base}>
             {capitalizeFirstLetter(element)}
           </StyledText>
-          {Array.isArray(localModalData[element]) ? (
-              localModalData[element].map((item: any, index: number) => {
+          {Array.isArray(localModalData[element])
+            ? localModalData[element].map((item: any, index: number) => {
                 return (
-                    <>
-                      <StyledTextArea
-                          onChange={(e) => handleArrayMessageChange(e, index)}
-                          onBlur={(e) => handleArrayMessageChange(e, index)}
-                          onPaste={(e) => handleArrayMessageChange(e, index)}
-                          onCut={(e) => handleArrayMessageChange(e, index)}
-                          name={element}
-                          minHeight={
-                            item.length > 50
-                                ? (item.length / 3 + 20).toString() + "px"
-                                : ""
-                          }
-                      >
-                        {item}
-                      </StyledTextArea>
-                    </>
+                  <>
+                    <StyledTextArea
+                      onChange={(e) => handleArrayMessageChange(e, index)}
+                      onBlur={(e) => handleArrayMessageChange(e, index)}
+                      onPaste={(e) => handleArrayMessageChange(e, index)}
+                      onCut={(e) => handleArrayMessageChange(e, index)}
+                      name={element}
+                      minHeight={
+                        item.length > 50
+                          ? (item.length / 3 + 20).toString() + "px"
+                          : ""
+                      }
+                    >
+                      {item}
+                    </StyledTextArea>
+                  </>
                 );
               })
-          ) : null }
+            : null}
         </>
       );
     }

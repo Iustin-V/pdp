@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
-
 import "./App.css";
 import ScrollToTop from "./ScrollToTop";
 import { UnknownRoute } from "./UnknownRoute";
@@ -27,7 +25,6 @@ import { WorkInProgress } from "./comp/WorkInProgress";
 import linkGenerate from "./generalFunction";
 import useFetch from "./hooks/useFetch";
 import { getData } from "./utils/getData";
-
 
 export const PDPContext = React.createContext({
   allCategories: [],
@@ -284,7 +281,7 @@ function App() {
                 <Route path={`/${localStorage.locale}`} element={<Home />} />
                 {navbarLinks}
                 <Route path="/blog" element={<WorkInProgress />} />
-                <Route path="/login" element={<Login/>} />
+                <Route path="/login" element={<Login />} />
                 {coursesLinkRoutesChildParents}
                 {coursesLinkRoutesTeacher}
                 {eventsLinkRoutes}

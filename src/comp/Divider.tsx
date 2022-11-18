@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import {colors} from "../generalStyle";
+
+import { colors } from "../generalStyle";
 
 const StyledDividerContainer = styled.div`
   display: flex;

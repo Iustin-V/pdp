@@ -16,7 +16,13 @@ const Loading = () => {
       <LoadingContainer>
         <div>
           <ImageStyled
-            src={localStorage?.locale === "en" ? EnLogoImage : localStorage?.locale === "fr"?FrLogoImage: LogoImage}
+            src={
+              localStorage?.locale === "en"
+                ? EnLogoImage
+                : localStorage?.locale === "fr"
+                ? FrLogoImage
+                : LogoImage
+            }
           />
           <LogoImageContainer />
         </div>

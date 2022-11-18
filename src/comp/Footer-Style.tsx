@@ -152,8 +152,8 @@ export const StyledSecondRow = styled.div`
       width: 144px;
     }
   }
-  img:hover{
-  cursor:pointer;
+  img:hover {
+    cursor: pointer;
   }
 `;
 

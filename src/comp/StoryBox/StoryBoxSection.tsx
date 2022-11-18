@@ -20,10 +20,10 @@ import { ParagraphItalicStyled } from "../Styles";
 import airplane from "../images/airplane.webp";
 import ball from "../images/ball.webp";
 import bee from "../images/bee.webp";
+import openBox from "../images/box-open.webp";
 import closedBox from "../images/closedBox.webp";
 import heart from "../images/heart.webp";
 import star from "../images/star.webp";
-import openBox from "../images/box-open.webp";
 import {
   DoubleContainer,
   FormContainer,

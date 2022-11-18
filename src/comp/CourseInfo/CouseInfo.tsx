@@ -13,10 +13,10 @@ import linkGenerate from "../../generalFunction";
 import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { ContactFormBackground } from "../Contact/Contact-Style";
-import {AdminButtons, ParagraphItalicStyled, TitleSection} from "../Styles";
+import { EditButton } from "../EditButton";
+import { AdminButtons, ParagraphItalicStyled, TitleSection } from "../Styles";
 import backgroundImage from "../images/CourseInfo.webp";
 import teacherIcon from "../images/teacher-icon.webp";
-import {EditButton} from "../EditButton";
 
 export const StyledPageCourseInfo = styled.div`
   margin-top: 80px;
@@ -82,7 +82,7 @@ interface coursesInfo {
   title: string;
   array?: [];
   text?: Array<string>;
-  course?:object;
+  course?: object;
 }
 
 export const CourseInfo = (props: coursesInfo) => {
@@ -95,9 +95,9 @@ export const CourseInfo = (props: coursesInfo) => {
   React.useEffect(() => {
     const textData = getData(contextLocal?.allCategories, "Navbar");
     textData &&
-    textData.content &&
-    // @ts-ignore
-    setLinkTalkWithTeacher(linkGenerate(textData.content[4]));
+      textData.content &&
+      // @ts-ignore
+      setLinkTalkWithTeacher(linkGenerate(textData.content[4]));
   }, [contextLocal]);
 
   const setCourse = (title: string) => {
@@ -106,63 +106,63 @@ export const CourseInfo = (props: coursesInfo) => {
 
   const coursesTimeLine = props.text?.map((element, index) => {
     return (
-        <VerticalTimelineElement
-            key={index}
-            className={`vertical-timeline-element--${
-                index % 2 === 0 ? "work" : "education"
-            }`}
-            contentStyle={{
-              background: index % 2 === 0 ? "#f8ecd4" : "",
-              color: colors.primary.base,
-            }}
-            contentArrowStyle={{
-              borderRight: `7px solid ${
-                  index % 2 === 0 ? "" : "#f8ecd4"
-              } ${"#f8ecd4"}`,
-            }}
-            icon={<IndexSection>{index + 1}</IndexSection>}
-            iconStyle={{
-              background: "#f8ecd4",
-              color: "#fff",
-              textAlign: "center",
-            }}
-        >
-          <ParagraphItalicStyled>{element}</ParagraphItalicStyled>
-        </VerticalTimelineElement>
+      <VerticalTimelineElement
+        key={index}
+        className={`vertical-timeline-element--${
+          index % 2 === 0 ? "work" : "education"
+        }`}
+        contentStyle={{
+          background: index % 2 === 0 ? "#f8ecd4" : "",
+          color: colors.primary.base,
+        }}
+        contentArrowStyle={{
+          borderRight: `7px solid ${
+            index % 2 === 0 ? "" : "#f8ecd4"
+          } ${"#f8ecd4"}`,
+        }}
+        icon={<IndexSection>{index + 1}</IndexSection>}
+        iconStyle={{
+          background: "#f8ecd4",
+          color: "#fff",
+          textAlign: "center",
+        }}
+      >
+        <ParagraphItalicStyled>{element}</ParagraphItalicStyled>
+      </VerticalTimelineElement>
     );
   });
 
   return (
-      <ContactFormBackground backgroundImage={backgroundImage}>
-        <StyledPageCourseInfo>
-          <SectionContainer>
-            <AdminButtons>
-              <EditButton
-                  editFunction={contextLocal?.editFunction}
-                  sectionText={{text: props.text,title:props.title}}
-                  object={props.course}
-              />
-            </AdminButtons>
-            <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
+    <ContactFormBackground backgroundImage={backgroundImage}>
+      <StyledPageCourseInfo>
+        <SectionContainer>
+          <AdminButtons>
+            <EditButton
+              editFunction={contextLocal?.editFunction}
+              sectionText={{ text: props.text, title: props.title }}
+              object={props.course}
+            />
+          </AdminButtons>
+          <TitleSection color={colors.primary.base}>{props.title}</TitleSection>
 
-            <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
-              <ImageCourseInfo src={teacherIcon} alt="teacherIcon" />
-              {coursesTimeLine}
-            </VerticalTimeline>
-            <Link to={`/${localStorage.locale}/${talkWithTeacher}`}>
-              <CourseInfoStyledButton
-                  onClick={() => {
-                    setCourse(props.title);
-                  }}
-              >
-                {
-                  // @ts-ignore
-                  courseButtonTranslates[localStorage?.locale || "ro"]
-                }
-              </CourseInfoStyledButton>
-            </Link>
-          </SectionContainer>
-        </StyledPageCourseInfo>
-      </ContactFormBackground>
+          <VerticalTimeline lineColor={"#f8ecd4"} layout={"1-column-left"}>
+            <ImageCourseInfo src={teacherIcon} alt="teacherIcon" />
+            {coursesTimeLine}
+          </VerticalTimeline>
+          <Link to={`/${localStorage.locale}/${talkWithTeacher}`}>
+            <CourseInfoStyledButton
+              onClick={() => {
+                setCourse(props.title);
+              }}
+            >
+              {
+                // @ts-ignore
+                courseButtonTranslates[localStorage?.locale || "ro"]
+              }
+            </CourseInfoStyledButton>
+          </Link>
+        </SectionContainer>
+      </StyledPageCourseInfo>
+    </ContactFormBackground>
   );
 };

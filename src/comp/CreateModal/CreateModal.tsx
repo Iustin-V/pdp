@@ -162,7 +162,9 @@ export const CreateModal = (props: CreateModalProps) => {
         window.location.reload();
       })
       .catch(() => {
-        alert("An error has occurred while trying to save, please try again later.")
+        alert(
+          "An error has occurred while trying to save, please try again later."
+        );
       });
     exitModal();
   };
