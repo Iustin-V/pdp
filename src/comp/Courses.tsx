@@ -5,12 +5,14 @@ import styled from "styled-components";
 import { PDPContext } from "../App";
 import { MultiActionAreaCard } from "../Card/MultiActionAreaCard";
 import { colors } from "../generalStyle";
+import { TextAlignment } from "../utils/TextAlignment";
 import { getData } from "../utils/getData";
 import { CreateButton } from "./CreateButton";
 import { EditButton } from "./EditButton";
 import {
   AdminButtons,
-  Border, LogoutImage,
+  Border,
+  LogoutImage,
   ParagraphItalicStyled,
   SectionContainer,
   TitleSection,
@@ -100,29 +102,27 @@ export const Courses = () => {
       );
     }
   );
-  const [logoutButton,setLogoutButton]=React.useState(false)
-  React.useEffect(()=>{
-        const user=localStorage.getItem("user")
-        if(user && user.includes("\"633fc7c57debf1918eb52792\"")){
-          setLogoutButton(true)
-        }
-      }
-      ,[localStorage.getItem("user")])
-
+  const [logoutButton, setLogoutButton] = React.useState(false);
+  React.useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user && user.includes('"633fc7c57debf1918eb52792"')) {
+      setLogoutButton(true);
+    }
+  }, [localStorage.getItem("user")]);
 
   return (
     <>
       {logoutButton && (
-          <LogoutImage
-              onClick={() => {
-                localStorage.setItem("user", "");
-                setLogoutButton(false)
-                window.location.reload();
-              }}
-          >
-            <p>Logout</p>
-            <img src={logout} alt={"logout"} height={30} />
-          </LogoutImage>
+        <LogoutImage
+          onClick={() => {
+            localStorage.setItem("user", "");
+            setLogoutButton(false);
+            window.location.reload();
+          }}
+        >
+          <p>Logout</p>
+          <img src={logout} alt={"logout"} height={30} />
+        </LogoutImage>
       )}
       <StyledPageCourses>
         <SectionContainer>
@@ -143,7 +143,7 @@ export const Courses = () => {
             {refactorTitle[0]} <br /> -{refactorTitle[1]}-
           </TitleSection>
           <ParagraphItalicStyled>
-            {contentCourseChildParents.subTitle[0]}
+            {TextAlignment(contentCourseChildParents.subTitle[0])}
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardChildParents}</WrapperCard>
         </SectionContainer>
@@ -167,7 +167,7 @@ export const Courses = () => {
             {refactorTitleCourseTeacher[1]}-
           </TitleSection>
           <ParagraphItalicStyled>
-            {contentCourseTeacher.subTitle[0]}
+            {TextAlignment(contentCourseTeacher.subTitle[0])}
           </ParagraphItalicStyled>
           <WrapperCard>{showCoursesCardParentsTeacher}</WrapperCard>
         </SectionContainer>

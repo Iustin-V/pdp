@@ -1,6 +1,7 @@
 import React from "react";
 
 import { colors } from "../../generalStyle";
+import { TextAlignment } from "../../utils/TextAlignment";
 import {
   BackgroundWrapper,
   ParagraphItalicStyled,
@@ -19,7 +20,11 @@ interface sectionDetails {
 export const WhatHowAndWhySection = (props: sectionDetails) => {
   let Paragraph = props.sectionContent;
   const ParagraphAboutSection = Paragraph.map((item, key) => {
-    return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;
+    return (
+      <ParagraphItalicStyled key={key}>
+        {TextAlignment(item)}
+      </ParagraphItalicStyled>
+    );
   });
   return (
     <BackgroundWrapper imgUrl={storyboxBG}>

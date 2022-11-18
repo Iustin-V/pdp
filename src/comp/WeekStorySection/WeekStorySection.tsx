@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 import { PDPContext } from "../../App";
 import { colors } from "../../generalStyle";
+import { TextAlignment } from "../../utils/TextAlignment";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
 import {
-  BackgroundWrapper, LogoutImage,
+  BackgroundWrapper,
+  LogoutImage,
   ParagraphItalicStyled,
   SectionContainer,
   TitleSection,
@@ -34,32 +36,34 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
     setContentTexts(textData);
   }, [contextLocal]);
 
-
   const ParagraphAboutSection = contentText.content?.map((item, key) => {
-    return <ParagraphItalicStyled key={key}>{item}</ParagraphItalicStyled>;
+    return (
+      <ParagraphItalicStyled key={key}>
+        {TextAlignment(item)}
+      </ParagraphItalicStyled>
+    );
   });
-  const [logoutButton,setLogoutButton]=React.useState(false)
-  React.useEffect(()=>{
-        const user=localStorage.getItem("user")
-        if(user && user.includes("\"633fc7c57debf1918eb52792\"")){
-          setLogoutButton(true)
-        }
-      }
-      ,[localStorage.getItem("user")])
+  const [logoutButton, setLogoutButton] = React.useState(false);
+  React.useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user && user.includes('"633fc7c57debf1918eb52792"')) {
+      setLogoutButton(true);
+    }
+  }, [localStorage.getItem("user")]);
 
   return (
     <BackgroundWrapper imgUrl={Background} separatePage={props.separatePage}>
       {logoutButton && (
-          <LogoutImage
-              onClick={() => {
-                localStorage.setItem("user", "");
-                setLogoutButton(false)
-                window.location.reload();
-              }}
-          >
-            <p>Logout</p>
-            <img src={logout} alt={"logout"} height={30} />
-          </LogoutImage>
+        <LogoutImage
+          onClick={() => {
+            localStorage.setItem("user", "");
+            setLogoutButton(false);
+            window.location.reload();
+          }}
+        >
+          <p>Logout</p>
+          <img src={logout} alt={"logout"} height={30} />
+        </LogoutImage>
       )}
       <SectionContainer>
         <TitleSection

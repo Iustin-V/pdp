@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import { eventTranslates } from "../../Translates/Translates";
 import { colors, fontSizes } from "../../generalStyle";
+import { TextAlignment } from "../../utils/TextAlignment";
 import { redirectLink } from "../../utils/redirectLink";
 import { Border, SectionContainer, TitleSection } from "../Styles";
 import { StyledPageEventInfo, StyledParagraph } from "./EventStyle";
@@ -130,7 +131,9 @@ export const EventInfo = (props: EventInfoProps) => {
           <PictureWrapper>
             <img src={props.eventImage} alt={props.imageAlt} />
           </PictureWrapper>
-          <StyledParagraph textAlign="center">{props.text}</StyledParagraph>
+          <StyledParagraph textAlign="center">
+            {TextAlignment(props.text)}
+          </StyledParagraph>
           <Border />
           <StyledBox>
             <StyledBoxHead>
