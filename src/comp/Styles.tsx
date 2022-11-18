@@ -101,6 +101,7 @@ export const MainPageText = styled.p`
     border-width: 6px 0 0 0;
     @media (max-width: 768px) {
       border-width: 3px 0 0 0;
+          margin-bottom: 50px;
       font-size: ${fontSizes.mobile.paragraph.base};
     }
   }
