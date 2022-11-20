@@ -16,7 +16,7 @@ export const StyledPageWrapper = styled.div<{ login?: boolean }>`
   justify-content: center;
   overflow: hidden;
   @media (max-width: 768px) {
-    height: 600px;
+    height: 700px;
   }
 `;
 export const MainContentWrapper = styled.div<{

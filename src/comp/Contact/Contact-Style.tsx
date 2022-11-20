@@ -213,6 +213,7 @@ export const StyledError = styled.p`
   color: red;
   background: #ffcccc;
   margin: 0;
+  width:fit-content;
   max-width: calc(100% - 20px);
   padding: 3px 10px;
   font-weight: 300;
