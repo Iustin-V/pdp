@@ -214,6 +214,7 @@ export const StyledError = styled.p`
   background: #ffcccc;
   margin: 0;
      width: 100%;
+     min-width:max-content;
   max-width: calc(100% - 20px);
   padding: 3px 10px;
   font-weight: 300;
