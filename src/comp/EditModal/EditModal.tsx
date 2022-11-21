@@ -2,16 +2,16 @@ import React from "react";
 
 import axios from "axios";
 
-import { colors } from "../../generalStyle";
-import { capitalizeFirstLetter } from "../../utils/Capitalize";
-import { UploadImage } from "../UploadImage/UploadImage";
+import {colors} from "../../generalStyle";
+import {capitalizeFirstLetter} from "../../utils/Capitalize";
+import {UploadImage} from "../UploadImage/UploadImage";
 import {
-  ContentContainer,
-  ModalCover,
-  ModalWrapper,
-  StyledSaveButton,
-  StyledText,
-  StyledTextArea,
+    ContentContainer,
+    ModalCover,
+    ModalWrapper,
+    StyledSaveButton,
+    StyledText,
+    StyledTextArea,
 } from "./EditModalStyle";
 
 interface EditModalProps {
@@ -21,7 +21,7 @@ interface EditModalProps {
   data?: {};
   handleSave?: () => void;
   createModalSchema: string;
-  object?: any;
+  object?:any;
 }
 
 export const EditModal = (props: EditModalProps) => {
