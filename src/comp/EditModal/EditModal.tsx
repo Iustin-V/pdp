@@ -37,13 +37,12 @@ export const EditModal = (props: EditModalProps) => {
   if (props.editModal) {
     document.body.style.overflow = "hidden";
   }
-  let config = {
+  const config = {
     headers: {
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2ZjN2M1N2RlYmYxOTE4ZWI1Mjc5MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Njc4MjkyMzB9.BQMlU-SugSbJYCB8Non09NZTArPUAOw1s7rXUWTrOUI",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2ZjN2M1N2RlYmYxOTE4ZWI1Mjc5MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Njc4MjkyMzB9.BQMlU-SugSbJYCB8Non09NZTArPUAOw1s7rXUWTrOUI",
     },
   };
-
   React.useEffect(() => {
     let arr = props.modalData["content"];
     if (arr && typeof arr[0] !== "string") {
@@ -83,7 +82,7 @@ export const EditModal = (props: EditModalProps) => {
           {
             ...updateObject,
             content,
-          }
+          },config
         )
         .then(() => {
           window.location.reload();
@@ -107,7 +106,7 @@ export const EditModal = (props: EditModalProps) => {
           {
             ...updateObject,
             content: contentUpdated,
-          }
+          },config
         )
         .then(() => {
           window.location.reload();
