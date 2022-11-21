@@ -49,7 +49,9 @@ const AnimatedContainer = styled.div`
 
   }
   :nth-child(odd) > div:nth-child(2) > div {
+  @media (min-width:768px){
     flex-direction:row-reverse;
+    }
   }
 
   @keyframes slide-in-anim-right {
