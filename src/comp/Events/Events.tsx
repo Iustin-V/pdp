@@ -41,11 +41,15 @@ const AnimatedContainer = styled.div`
   opacity: 0;
   animation: slide-in-anim-right 1.5s ease-out forwards;
   width: 100%;
-
+  
   :nth-child(even) {
     transform: translateX(-70%);
-
+ 
     animation: slide-in-anim-left 1.5s ease-out forwards;
+
+  }
+  :nth-child(odd) > div:nth-child(2) > div {
+    flex-direction:row-reverse;
   }
 
   @keyframes slide-in-anim-right {

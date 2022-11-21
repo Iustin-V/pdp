@@ -19,10 +19,10 @@ export const StyledFirstRow = styled.div`
   align-items: center;
   justify-content: space-between;
   @media (max-width: 1200px) {
-    flex-direction: column;
     row-gap: 25px;
   }
   @media (max-width: 768px) {
+  flex-direction: column;
     row-gap: 14px;
   }
 `;
@@ -92,9 +92,16 @@ export const LogoContainer = styled.div`
   //border-top: 2px solid ${colors.primary.lighter};
 
   @media (max-width: 1200px) {
-    width: 100%;
+    width: 40%;
+    align-items:flex-start;
     margin: 0;
   }
+  
+   @media (max-width: 768px) {
+   align-items:center;
+   width: 100%;
+   }
+   
   a > img {
     filter: grayscale(100%) invert(100%);
   }
@@ -144,11 +151,11 @@ export const StyledSecondRow = styled.div`
   border-top: 2px solid ${colors.primary.lighter};
   gap: 5px;
   img {
-    height: 80px;
+    height: 60px;
     width: 250px;
     object-fit: contain;
     @media (max-width: 768px) {
-      height: 46px;
+      height: 40px;
       width: 144px;
     }
   }

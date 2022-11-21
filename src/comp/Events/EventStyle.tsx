@@ -12,6 +12,8 @@ export const StyledEventCardContainer = styled.div`
     align-items: center;
     max-width: calc(100vw - 80px);
   }
+  
+ 
 `;
 export const MediaWrapper = styled.div`
   height: 200px;
@@ -20,6 +22,7 @@ export const MediaWrapper = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    height:auto;
   }
   
 `;
@@ -50,10 +53,10 @@ export const StyledContent = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 50px;
-
   @media (max-width: 768px) {
     flex-direction: column;
   }
+ 
 `;
 export const StyledTitle = styled.p`
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;

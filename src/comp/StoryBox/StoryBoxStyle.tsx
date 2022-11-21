@@ -36,6 +36,7 @@ export const StoryDescription = styled.div`
 
   @media (max-width: 1200px) {
     width: 100%;
+    row-gap: 40px;
   }
 `;
 

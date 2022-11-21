@@ -190,7 +190,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                   StoryBoxFromTranslates[localStorage.locale || "ro"][0]
                 }
                 <StyledInput
-                  placeholder="Name"
+                  placeholder=""
                   name="Name"
                   id="name"
                   type="text"
@@ -368,7 +368,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 <StyledLabel>
                   Email*
                   <StyledInput
-                    placeholder="Email"
+                    placeholder=""
                     name="Email"
                     id="email"
                     type="email"
@@ -386,7 +386,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                     StoryBoxFromTranslates[localStorage.locale || "ro"][13]
                   }
                   <StyledInput
-                    placeholder="Address"
+                    placeholder=""
                     name="address"
                     id="address"
                     type="text"

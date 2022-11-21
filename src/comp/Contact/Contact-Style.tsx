@@ -20,14 +20,14 @@ export const StyledContactForm = styled.div`
   @media (max-width: 1200px) {
     flex-direction: column;
     align-items: center;
-    div:first-child {
+    > div:first-child {
       margin-top: 100px;
       margin-bottom: 20px;
     }
   }
 
   @media (max-width: 768px) {
-    div:first-child {
+    > div:first-child {
       margin-top: 50px;
     }
   }
@@ -87,7 +87,7 @@ export const StyledForm = styled.form`
   background: #f8ecd4;
   max-width: 600px;
   width: 100%;
-  padding: 20px 40px;
+  padding: 35px 40px;
   border: 1px solid ${colors.primary.base};
 
   @media (max-width: 1200px) {
@@ -150,7 +150,10 @@ export const StyledButton = styled.input`
   }
 `;
 export const StyledContainer = styled.div`
-  margin: 35px 0;
+  margin:0 0 35px 0;
+  &:last-child {
+  margin:0;
+  }
 `;
 export const StyledTextArea = styled.textarea`
   display: block;

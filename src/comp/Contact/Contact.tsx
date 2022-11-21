@@ -196,7 +196,7 @@ export const Contact = () => {
         </LogoutImage>
       )}
       <StyledContactForm>
-        <div style={{ position:"relative" }}>
+        <div style={{ position:"relative"}}>
           <StyledImageTeacher
             src={teacherIcon}
             alt="teacherIcon"
