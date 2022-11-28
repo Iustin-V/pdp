@@ -17,7 +17,7 @@ import clock from "./Assets/clock-regular.svg";
 const CardMediaStyled = styled.img`
   width: 100%;
   height: 167px;
-    object-fit: cover;
+  object-fit: cover;
   :hover {
     transform: scale(1.15, 1.15);
   }
@@ -83,19 +83,20 @@ export const MultiActionAreaCard = (props: DetailedAboutCard) => {
 
   return (
     <StyledCard sx={{ maxWidth: 250 }} index={props.index}>
-      {localStorage.user.includes('"633fc7c57debf1918eb52792"') && (
-        <button
-          className={"delete-button"}
-          onClick={() => {
-            contextLocal?.editFunction(
-              { data: props.content, index: props.index },
-              "delete"
-            );
-          }}
-        >
-          <Tooltip>Delete this course</Tooltip>X
-        </button>
-      )}
+      {localStorage.user.includes('"633fc7c57debf1918eb52792"') &&
+        window.screen.width >= 1200 && (
+          <button
+            className={"delete-button"}
+            onClick={() => {
+              contextLocal?.editFunction(
+                { data: props.content, index: props.index },
+                "delete"
+              );
+            }}
+          >
+            <Tooltip>Delete this course</Tooltip>X
+          </button>
+        )}
       <CardActionArea>
         <StyledMediaWrapper>
           <CardMediaStyled src={props.image} alt={props.title} />

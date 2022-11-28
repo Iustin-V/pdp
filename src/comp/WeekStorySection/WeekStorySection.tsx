@@ -6,6 +6,7 @@ import { TextAlignment } from "../../utils/TextAlignment";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
 import {
+  AdminButtons,
   BackgroundWrapper,
   LogoutImage,
   ParagraphItalicStyled,
@@ -65,16 +66,18 @@ export const WeekStorySection = (props: weekStorySectionProps) => {
         </LogoutImage>
       )}
       <SectionContainer>
+        <AdminButtons>
+          <EditButton
+            editFunction={contextLocal?.editFunction}
+            sectionText={contentText}
+          />
+        </AdminButtons>
         <TitleSection color={colors.primary.base} animated={props.separatePage}>
           {contentText.title}
         </TitleSection>
         <YoutubeEmbed embedId={contentText.video} animated={true} />
         {ParagraphAboutSection}
       </SectionContainer>
-      <EditButton
-        editFunction={contextLocal?.editFunction}
-        sectionText={contentText}
-      />
     </BackgroundWrapper>
   );
 };

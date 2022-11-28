@@ -10,6 +10,7 @@ import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
 import {
+  AdminButtons,
   BackgroundWrapper,
   ParagraphItalicStyled,
   TitleSection,
@@ -54,14 +55,17 @@ export const TimeLineSection = () => {
 
   return (
     <BackgroundWrapper imgUrl={Background}>
+      <AdminButtons>
+        {" "}
+        <EditButton
+          editFunction={contextLocal?.editFunction}
+          sectionText={contentText}
+        />
+      </AdminButtons>
       <TitleSection color={colors.primary.base}>
         {contentText.title}
       </TitleSection>
       <VerticalTimeline lineColor={"#f8ecd4"}>{timeLine}</VerticalTimeline>
-      <EditButton
-        editFunction={contextLocal?.editFunction}
-        sectionText={contentText}
-      />
     </BackgroundWrapper>
   );
 };

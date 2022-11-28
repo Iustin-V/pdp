@@ -4,6 +4,7 @@ import { PDPContext } from "../../App";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
 import {
+  AdminButtons,
   MainContentWrapper,
   MainPagePhoto,
   MainPageText,
@@ -27,15 +28,17 @@ export const MainPage = () => {
   return (
     <>
       <MainPagePhoto backgroundImage={bookshelf}>
+        <AdminButtons>
+          <EditButton
+            editFunction={contextLocal?.editFunction}
+            sectionText={sectionText}
+          />
+        </AdminButtons>
         <MainContentWrapper flexDirection="row">
           <PageContainer>
             {<MainTitle>{sectionText.title}</MainTitle>}
             {<MainPageText>{sectionText.subTitle}</MainPageText>}
           </PageContainer>
-          <EditButton
-            editFunction={contextLocal?.editFunction}
-            sectionText={sectionText}
-          />
         </MainContentWrapper>
       </MainPagePhoto>
     </>

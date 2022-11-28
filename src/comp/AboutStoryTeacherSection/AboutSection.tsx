@@ -5,6 +5,7 @@ import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { EditButton } from "../EditButton";
 import {
+  AdminButtons,
   BackgroundWrapper,
   MarginTOPContainer,
   ParagraphItalicStyled,
@@ -39,6 +40,12 @@ export const AboutSection = () => {
     <MarginTOPContainer>
       <BackgroundWrapper imgUrl={Background}>
         <SectionContainer>
+          <AdminButtons>
+            <EditButton
+                editFunction={contextLocal?.editFunction}
+                sectionText={contentText}
+            />
+          </AdminButtons>
           <TitleSection color={colors.primary.base}>
             {contentText.title}
           </TitleSection>
@@ -46,10 +53,6 @@ export const AboutSection = () => {
           <YoutubeEmbed embedId={contentText.video} />
         </SectionContainer>
       </BackgroundWrapper>
-      <EditButton
-        editFunction={contextLocal?.editFunction}
-        sectionText={contentText}
-      />
     </MarginTOPContainer>
   );
 };

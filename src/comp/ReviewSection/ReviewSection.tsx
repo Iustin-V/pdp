@@ -44,7 +44,7 @@ export const ReviewSection = () => {
     return (
       <SwiperSlide key={index}>
         <InsideSlideWrapper>
-          {localStorage.user.includes('"633fc7c57debf1918eb52792"') && (
+          {localStorage.user.includes('"633fc7c57debf1918eb52792"') && (window.screen.width>=1200)&&(
             <button
               className={"delete-button"}
               onClick={() => {
@@ -70,9 +70,7 @@ export const ReviewSection = () => {
   return (
     <StyledReviewSection>
       <SectionContainer>
-        {" "}
         <AdminButtons>
-          {" "}
           <CreateButton
             createFunction={contextLocal?.editFunction}
             sectionText={contentText}

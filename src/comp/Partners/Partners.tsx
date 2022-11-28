@@ -7,18 +7,21 @@ import { colors } from "../../generalStyle";
 import { getData } from "../../utils/getData";
 import { redirectLink } from "../../utils/redirectLink";
 import { TitleSection } from "../Styles";
+import AVTraduceriLogo from "../images/Partners/avtraduceri.webp";
 import LectiiViraleLogo from "../images/Partners/lectiivirale-logo.webp";
 import OanaNiculescuLogo from "../images/Partners/oananiculescu-logo.webp";
 import PointsOfYouLogo from "../images/Partners/pointsofyou-logo.webp";
 
 export const LogoSection = styled.img`
-  width: 276px;
+  height: fit-content;
   cursor: pointer;
+  width: 276px;
 `;
 export const FlexWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  align-items: center;
 '
 `;
 
@@ -45,11 +48,17 @@ export const Partners = () => {
     setContentTexts(textData);
   }, [contextLocal]);
 
-  const partnersPhotos = [OanaNiculescuLogo, PointsOfYouLogo, LectiiViraleLogo];
+  const partnersPhotos = [
+    OanaNiculescuLogo,
+    PointsOfYouLogo,
+    LectiiViraleLogo,
+    AVTraduceriLogo,
+  ];
   const partnersLink = [
     "https://oananiculae.com/",
     "https://www.points-of-you.ro/",
     "https://lectii-virtuale.ro/",
+    "https://www.tradus.ro/",
   ];
 
   const LogoSections = partnersLink.map((link, index) => {

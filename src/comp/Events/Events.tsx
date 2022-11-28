@@ -33,24 +33,24 @@ const StyledContent = styled.div`
   gap: 30px;
   max-width: 850px;
   margin: 0 auto;
-  >h1 {
-  margin:0;}
+  > h1 {
+    margin: 0;
+  }
 `;
 const AnimatedContainer = styled.div`
   transform: translateX(70%);
   opacity: 0;
   animation: slide-in-anim-right 1.5s ease-out forwards;
   width: 100%;
-  
+
   :nth-child(even) {
     transform: translateX(-70%);
- 
-    animation: slide-in-anim-left 1.5s ease-out forwards;
 
+    animation: slide-in-anim-left 1.5s ease-out forwards;
   }
   :nth-child(odd) > div:nth-child(2) > div {
-  @media (min-width:768px){
-    flex-direction:row-reverse;
+    @media (min-width: 768px) {
+      flex-direction: row-reverse;
     }
   }
 
@@ -108,19 +108,20 @@ export const Events = () => {
   const eventCards = dataSection.content?.map((event, key) => {
     return (
       <AnimatedContainer key={key}>
-        {localStorage.user.includes('"633fc7c57debf1918eb52792"') && (
-          <button
-            className={"delete-button"}
-            onClick={() => {
-              contextLocal?.editFunction(
-                { data: dataSection, index: key },
-                "delete"
-              );
-            }}
-          >
-            <Tooltip>Delete this event</Tooltip>X
-          </button>
-        )}
+        {localStorage.user.includes('"633fc7c57debf1918eb52792"') &&
+          window.screen.width >= 1200 && (
+            <button
+              className={"delete-button"}
+              onClick={() => {
+                contextLocal?.editFunction(
+                  { data: dataSection, index: key },
+                  "delete"
+                );
+              }}
+            >
+              <Tooltip>Delete this event</Tooltip>X
+            </button>
+          )}
         <EventCard
           key={key}
           title={event.titleSection}
