@@ -294,10 +294,11 @@ export const Tooltip = styled.span`
 export const StyledHomeWrapper = styled.div`
   background-color: white;
 `;
-export const AdminButtons = styled.div`
+export const AdminButtons = styled.div<{ position?: string }>`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  ${(props) => props.position}
 `;
 export const StyledErrorMessage = styled.div`
   color: red;

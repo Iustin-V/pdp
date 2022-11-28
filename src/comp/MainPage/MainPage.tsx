@@ -28,7 +28,7 @@ export const MainPage = () => {
   return (
     <>
       <MainPagePhoto backgroundImage={bookshelf}>
-        <AdminButtons>
+        <AdminButtons position={"position:absolute; margin-top:50px;"}>
           <EditButton
             editFunction={contextLocal?.editFunction}
             sectionText={sectionText}
