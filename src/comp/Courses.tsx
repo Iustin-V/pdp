@@ -20,14 +20,13 @@ import {
 } from "./Styles";
 import logout from "./images/logout-icon.webp";
 
-export const StyledPageCourses = styled.div<{first?:boolean}>`
-
+export const StyledPageCourses = styled.div<{ first?: boolean }>`
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-   ${(props) => props.first && "margin-top: 80px;" }
+  ${(props) => props.first && "margin-top: 80px;"}
 `;
 
 export const Courses = () => {

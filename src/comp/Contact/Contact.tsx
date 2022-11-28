@@ -196,18 +196,19 @@ export const Contact = () => {
         </LogoutImage>
       )}
       <StyledContactForm>
-        <div style={{ position:"relative"}}>
+        <div style={{ position: "relative" }}>
           <StyledImageTeacher
             src={teacherIcon}
             alt="teacherIcon"
-        ></StyledImageTeacher>
-        <TextsSection>
-
-          <TitleSection color={colors.primary.base}>
-            {textSection.title}
-          </TitleSection>
-          <ParagraphItalicStyled>{textSection.subTitle}</ParagraphItalicStyled>
-        </TextsSection>
+          ></StyledImageTeacher>
+          <TextsSection>
+            <TitleSection color={colors.primary.base}>
+              {textSection.title}
+            </TitleSection>
+            <ParagraphItalicStyled>
+              {textSection.subTitle}
+            </ParagraphItalicStyled>
+          </TextsSection>
         </div>
         <StyledForm
           action="https://public.herotofu.com/v1/62aea5a0-34f8-11ed-9de0-b73c4b901972"

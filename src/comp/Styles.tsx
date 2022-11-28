@@ -101,7 +101,7 @@ export const MainPageText = styled.p`
     border-width: 6px 0 0 0;
     @media (max-width: 768px) {
       border-width: 3px 0 0 0;
-          margin-bottom: 50px;
+      margin-bottom: 50px;
       font-size: ${fontSizes.mobile.paragraph.base};
     }
   }
@@ -182,7 +182,7 @@ export const ParagraphItalicStyled = styled.p<{ animated?: boolean }>`
   line-height: 3=0;
   width: initial;
   max-width: initial;
- margin:0;
+  margin: 0;
   ${(props) =>
     props.animated &&
     `transform: translateX(-70%);
@@ -206,7 +206,7 @@ export const BackgroundWrapper = styled.div<{
   background-color: white;
   background-size: 100%;
   text-align: center;
-  ${(props) => props.separatePage && "margin-top: 80px;" }
+  ${(props) => props.separatePage && "margin-top: 80px;"}
 `;
 
 export const MarginTOPContainer = styled.div`
@@ -223,7 +223,7 @@ export const WrapperCard = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-top:40px;
+  padding-top: 40px;
   column-gap: 30px;
   row-gap: 30px;
   justify-content: center;

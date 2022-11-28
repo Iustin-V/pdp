@@ -22,7 +22,7 @@ export const StyledFirstRow = styled.div`
     row-gap: 25px;
   }
   @media (max-width: 768px) {
-  flex-direction: column;
+    flex-direction: column;
     row-gap: 14px;
   }
 `;
@@ -93,15 +93,15 @@ export const LogoContainer = styled.div`
 
   @media (max-width: 1200px) {
     width: 40%;
-    align-items:flex-start;
+    align-items: flex-start;
     margin: 0;
   }
-  
-   @media (max-width: 768px) {
-   align-items:center;
-   width: 100%;
-   }
-   
+
+  @media (max-width: 768px) {
+    align-items: center;
+    width: 100%;
+  }
+
   a > img {
     filter: grayscale(100%) invert(100%);
   }

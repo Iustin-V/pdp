@@ -12,8 +12,6 @@ export const StyledEventCardContainer = styled.div`
     align-items: center;
     max-width: calc(100vw - 80px);
   }
-  
- 
 `;
 export const MediaWrapper = styled.div`
   height: 200px;
@@ -22,30 +20,41 @@ export const MediaWrapper = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    height:auto;
+    height: auto;
   }
-  
 `;
 export const StyledMedia = styled.img<{ height?: string }>`
   height: ${(props) => props.height || "200px"};
-  object-fit:cover;
-   width: 100%;
-   animation:image-position 10s infinite;
+  object-fit: cover;
+  width: 100%;
+  animation: image-position 10s infinite;
   @media (max-width: 768px) {
     height: 100%;
     width: 100%;
-     animation:image-position-mobile 10s infinite;
+    animation: image-position-mobile 10s infinite;
   }
-   @keyframes image-position {
-  0%{object-position: left;}
-  50% {object-position: right;}
-  100%{object-position: left;}
-}
- @keyframes image-position-mobile {
-  0%{object-position: top;}
-  50% {object-position: bottom;}
-  100%{object-position: top;}
-}
+  @keyframes image-position {
+    0% {
+      object-position: left;
+    }
+    50% {
+      object-position: right;
+    }
+    100% {
+      object-position: left;
+    }
+  }
+  @keyframes image-position-mobile {
+    0% {
+      object-position: top;
+    }
+    50% {
+      object-position: bottom;
+    }
+    100% {
+      object-position: top;
+    }
+  }
 `;
 export const StyledContent = styled.div`
   display: inherit;
@@ -56,7 +65,6 @@ export const StyledContent = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
- 
 `;
 export const StyledTitle = styled.p`
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;

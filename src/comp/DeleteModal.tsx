@@ -42,7 +42,10 @@ export const DeleteModal = (props: any) => {
             ? ` ${
                 props.modalData.data.content[props.modalData.index].name
               }'s review`
-            : ` "${props.modalData.data.content[props.modalData.index].title || props.modalData.data.content[props.modalData.index].titleSection}"`}
+            : ` "${
+                props.modalData.data.content[props.modalData.index].title ||
+                props.modalData.data.content[props.modalData.index].titleSection
+              }"`}
         </h2>
         <div>
           <StyledSaveButton

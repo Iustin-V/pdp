@@ -44,19 +44,20 @@ export const ReviewSection = () => {
     return (
       <SwiperSlide key={index}>
         <InsideSlideWrapper>
-          {localStorage.user.includes('"633fc7c57debf1918eb52792"') && (window.screen.width>=1200)&&(
-            <button
-              className={"delete-button"}
-              onClick={() => {
-                contextLocal?.editFunction(
-                  { data: contentText, index: index },
-                  "delete"
-                );
-              }}
-            >
-              <Tooltip>Delete this review</Tooltip>X
-            </button>
-          )}
+          {localStorage.user.includes('"633fc7c57debf1918eb52792"') &&
+            window.screen.width >= 1200 && (
+              <button
+                className={"delete-button"}
+                onClick={() => {
+                  contextLocal?.editFunction(
+                    { data: contentText, index: index },
+                    "delete"
+                  );
+                }}
+              >
+                <Tooltip>Delete this review</Tooltip>X
+              </button>
+            )}
           <StyledRoundedImage src={review.avatar} alt="Avatar" />
           <QuoteReviewSection>{review.text}</QuoteReviewSection>
           <InfoReviewer>

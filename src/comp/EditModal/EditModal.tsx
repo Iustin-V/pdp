@@ -2,16 +2,16 @@ import React from "react";
 
 import axios from "axios";
 
-import {colors} from "../../generalStyle";
-import {capitalizeFirstLetter} from "../../utils/Capitalize";
-import {UploadImage} from "../UploadImage/UploadImage";
+import { colors } from "../../generalStyle";
+import { capitalizeFirstLetter } from "../../utils/Capitalize";
+import { UploadImage } from "../UploadImage/UploadImage";
 import {
-    ContentContainer,
-    ModalCover,
-    ModalWrapper,
-    StyledSaveButton,
-    StyledText,
-    StyledTextArea,
+  ContentContainer,
+  ModalCover,
+  ModalWrapper,
+  StyledSaveButton,
+  StyledText,
+  StyledTextArea,
 } from "./EditModalStyle";
 
 interface EditModalProps {
@@ -21,7 +21,7 @@ interface EditModalProps {
   data?: {};
   handleSave?: () => void;
   createModalSchema: string;
-  object?:any;
+  object?: any;
 }
 
 export const EditModal = (props: EditModalProps) => {
@@ -40,7 +40,7 @@ export const EditModal = (props: EditModalProps) => {
   const config = {
     headers: {
       Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2ZjN2M1N2RlYmYxOTE4ZWI1Mjc5MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Njc4MjkyMzB9.BQMlU-SugSbJYCB8Non09NZTArPUAOw1s7rXUWTrOUI",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2ZjN2M1N2RlYmYxOTE4ZWI1Mjc5MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Njc4MjkyMzB9.BQMlU-SugSbJYCB8Non09NZTArPUAOw1s7rXUWTrOUI",
     },
   };
   React.useEffect(() => {
@@ -82,7 +82,8 @@ export const EditModal = (props: EditModalProps) => {
           {
             ...updateObject,
             content,
-          },config
+          },
+          config
         )
         .then(() => {
           window.location.reload();
@@ -106,7 +107,8 @@ export const EditModal = (props: EditModalProps) => {
           {
             ...updateObject,
             content: contentUpdated,
-          },config
+          },
+          config
         )
         .then(() => {
           window.location.reload();

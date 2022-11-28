@@ -59,26 +59,30 @@ export const StyledImageTeacher = styled.img`
   transform: scaleX(-1) translateY(-100%);
   position: absolute;
   left: 20px;
-  top:10px;
-   transition:top 0.5s;
-animation: teacher-go-up 2s;
+  top: 10px;
+  transition: top 0.5s;
+  animation: teacher-go-up 2s;
   @media (max-width: 1200px) {
     height: 120px;
     object-fit: contain;
-    top:0px;
-   transition:top 0.5s;
+    top: 0px;
+    transition: top 0.5s;
   }
   @media (max-width: 768px) {
     height: 80px;
     object-fit: contain;
   }
-   :hover {
-   top:0px;
-   transition:top 0.5s;
-   }
+  :hover {
+    top: 0px;
+    transition: top 0.5s;
+  }
   @keyframes teacher-go-up {
-  from {top:100%;}
-  to {top:10px;}
+    from {
+      top: 100%;
+    }
+    to {
+      top: 10px;
+    }
   }
 `;
 
@@ -150,9 +154,9 @@ export const StyledButton = styled.input`
   }
 `;
 export const StyledContainer = styled.div`
-  margin:0 0 35px 0;
+  margin: 0 0 35px 0;
   &:last-child {
-  margin:0;
+    margin: 0;
   }
 `;
 export const StyledTextArea = styled.textarea`
@@ -216,8 +220,8 @@ export const StyledError = styled.p`
   color: red;
   background: #ffcccc;
   margin: 0;
-     width: 100%;
-     min-width:max-content;
+  width: 100%;
+  min-width: max-content;
   max-width: calc(100% - 20px);
   padding: 3px 10px;
   font-weight: 300;

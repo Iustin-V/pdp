@@ -26,7 +26,7 @@ export const CreateModal = (props: CreateModalProps) => {
   const config = {
     headers: {
       Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2ZjN2M1N2RlYmYxOTE4ZWI1Mjc5MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Njc4MjkyMzB9.BQMlU-SugSbJYCB8Non09NZTArPUAOw1s7rXUWTrOUI",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2ZjN2M1N2RlYmYxOTE4ZWI1Mjc5MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Njc4MjkyMzB9.BQMlU-SugSbJYCB8Non09NZTArPUAOw1s7rXUWTrOUI",
     },
   };
   const [updateObject, setUpdateObject] = React.useState({});
@@ -146,7 +146,6 @@ export const CreateModal = (props: CreateModalProps) => {
   const handleCreate = () => {
     let text: undefined; //@ts-ignore
 
-
     if (updateArray?.length > 0) {
       // @ts-ignore
       text = updateArray;
@@ -155,15 +154,19 @@ export const CreateModal = (props: CreateModalProps) => {
       text = updateObject.text;
     }
     axios
-      .put(`https://api.profadepovesti.ro/api/sections/${props.data?._id}`, {
-        content: [
-          ...props.data.content,
-          {
-            ...updateObject,
-            text,
-          },
-        ],
-      },config)
+      .put(
+        `https://api.profadepovesti.ro/api/sections/${props.data?._id}`,
+        {
+          content: [
+            ...props.data.content,
+            {
+              ...updateObject,
+              text,
+            },
+          ],
+        },
+        config
+      )
       .then(() => {
         window.location.reload();
       })

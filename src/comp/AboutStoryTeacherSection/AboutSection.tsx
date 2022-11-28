@@ -42,8 +42,8 @@ export const AboutSection = () => {
         <SectionContainer>
           <AdminButtons>
             <EditButton
-                editFunction={contextLocal?.editFunction}
-                sectionText={contentText}
+              editFunction={contextLocal?.editFunction}
+              sectionText={contentText}
             />
           </AdminButtons>
           <TitleSection color={colors.primary.base}>
