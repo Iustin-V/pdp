@@ -181,7 +181,7 @@ export const StoryBoxSection = (props: BoxSection) => {
       <DoubleContainer>
         <FormContainer>
           <StyledForm
-            action="https://public.herotofu.com/v1/62aea5a0-34f8-11ed-9de0-b73c4b901972"
+            action="https://public.herotofu.com/v1/efe00dc0-7fc0-11ed-b38f-a1ed22f366b1"
             method="post"
           >
             <StyledContainer>
