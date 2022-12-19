@@ -91,7 +91,6 @@ export const StoryBoxSection = (props: BoxSection) => {
   const [emailError, setEmailError] = React.useState("");
   const [addressError, setAddressError] = React.useState("");
   const [disabledSubmitButton, setDisabledSubmitButton] = React.useState(true);
-
   const onChangeHandle = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -143,7 +142,7 @@ export const StoryBoxSection = (props: BoxSection) => {
       eventError === "" &&
       descriptionError === "" &&
       detailsError === "" &&
-      (emailError === "" || addressError === "")
+      emailError === "" && ((formatValue && formatValue === StoryBoxFromTranslates["ro"][10]) || addressError === "")
     ) {
       if (
         formFields.name !== "" &&
@@ -153,7 +152,7 @@ export const StoryBoxSection = (props: BoxSection) => {
         formFields.description !== "" &&
         formFields.details !== "" &&
         formFields.format !== "" &&
-        (formFields.email !== "" || formFields.address !== "") &&
+        formFields.email !== "" && ((formatValue && formatValue === StoryBoxFromTranslates["ro"][10]) || formFields.address !== "" ) &&
         formFields.date !== ""
       ) {
         setDisabledSubmitButton(false);
@@ -172,6 +171,8 @@ export const StoryBoxSection = (props: BoxSection) => {
     detailsError,
     emailError,
     addressError,
+      formFields,
+      formatValue
   ]);
 
   const currentData = getCurrentDate("-");
@@ -191,7 +192,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledInput
                   placeholder=""
-                  name="Name"
+                  name={StoryBoxFromTranslates["ro"][0]}
                   id="name"
                   type="text"
                   required
@@ -208,7 +209,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledInput
                   placeholder=""
-                  name="storyFramework"
+                  name={StoryBoxFromTranslates["ro"][1]}
                   id="storyFramework"
                   type="text"
                   required
@@ -227,7 +228,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledInput
                   placeholder=""
-                  name="relation"
+                  name={StoryBoxFromTranslates["ro"][2]}
                   id="relation"
                   type="text"
                   required
@@ -244,7 +245,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledInput
                   placeholder=""
-                  name="specialSituation"
+                  name={StoryBoxFromTranslates["ro"][3]}
                   id="specialSituation"
                   type="text"
                   onChange={onChangeHandle}
@@ -259,7 +260,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledInput
                   placeholder=""
-                  name="event"
+                  name={StoryBoxFromTranslates["ro"][4]}
                   id="event"
                   type="text"
                   required
@@ -276,7 +277,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledInput
                   placeholder=""
-                  name="date"
+                  name={StoryBoxFromTranslates["ro"][5]}
                   id="date"
                   type="date"
                   min={currentData}
@@ -294,7 +295,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledTextArea
                   placeholder=""
-                  name="description"
+                  name={StoryBoxFromTranslates["ro"][6]}
                   id="description"
                   required
                   onChange={onChangeHandle}
@@ -312,7 +313,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledTextArea
                   placeholder=""
-                  name="details"
+                  name={StoryBoxFromTranslates["ro"][7]}
                   id="details"
                   required
                   onChange={onChangeHandle}
@@ -328,7 +329,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                 }
                 <StyledSelect
                   id="format"
-                  name="format"
+                  name={StoryBoxFromTranslates["ro"][8]}
                   onChange={(e) => {
                     formFields.format = e.target.value;
                     setFormatValue(e.target.value);
@@ -342,19 +343,19 @@ export const StoryBoxSection = (props: BoxSection) => {
                       StoryBoxFromTranslates[localStorage.locale || "ro"][9]
                     }
                   </option>
-                  <option value="audioFormat">
+                  <option value={StoryBoxFromTranslates["ro"][10]}>
                     {
                       //@ts-ignore
                       StoryBoxFromTranslates[localStorage.locale || "ro"][10]
                     }
                   </option>
-                  <option value="dvdFormat">
+                  <option value={StoryBoxFromTranslates["ro"][11]}>
                     {
                       //@ts-ignore
                       StoryBoxFromTranslates[localStorage.locale || "ro"][11]
                     }
                   </option>
-                  <option value="printedFormat">
+                  <option value={StoryBoxFromTranslates["ro"][12]}>
                     {
                       //@ts-ignore
                       StoryBoxFromTranslates[localStorage.locale || "ro"][12]
@@ -363,22 +364,21 @@ export const StoryBoxSection = (props: BoxSection) => {
                 </StyledSelect>
               </StyledLabel>
             </StyledContainer>
-            {formatValue && formatValue === "audioFormat" ? (
-              <StyledContainer>
-                <StyledLabel>
-                  Email*
-                  <StyledInput
-                    placeholder=""
-                    name="Email"
-                    id="email"
-                    type="email"
-                    required
-                    onChange={onChangeHandle}
-                  />
-                  {emailError && <StyledError>{emailError}</StyledError>}
-                </StyledLabel>
-              </StyledContainer>
-            ) : formatValue !== "" ? (
+            <StyledContainer>
+              <StyledLabel>
+                Email de contact*
+                <StyledInput
+                  placeholder=""
+                  name="Email"
+                  id="email"
+                  type="email"
+                  required
+                  onChange={onChangeHandle}
+                />
+                {emailError && <StyledError>{emailError}</StyledError>}
+              </StyledLabel>
+            </StyledContainer>
+            {(formatValue && formatValue === StoryBoxFromTranslates["ro"][10]) || formatValue === "" ? null : (
               <StyledContainer>
                 <StyledLabel>
                   {
@@ -387,7 +387,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                   }
                   <StyledInput
                     placeholder=""
-                    name="address"
+                    name={StoryBoxFromTranslates["ro"][13]}
                     id="address"
                     type="text"
                     required
@@ -396,7 +396,7 @@ export const StoryBoxSection = (props: BoxSection) => {
                   {addressError && <StyledError>{addressError}</StyledError>}
                 </StyledLabel>
               </StyledContainer>
-            ) : null}
+            )}
             <StyledContainer>
               <StyledButton
                 type="submit"

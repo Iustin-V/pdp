@@ -27,9 +27,9 @@ export const StoryBoxFromTranslates = {
     "Alte detalii: (prenumele celui care Dăruiește povestea, mesajul pe care vrei sa-l transmiți) *",
     "Doresc povestea în format: *",
     "Selectează un format",
-    "Audio pe canalul de Youtube 'Profa de Povești'",
-    "Inregistrata pe suport audio DVD",
-    "Tipărită",
+    "Audio pe canalul de Youtube 'Profa de Povești' - 150 RON",
+    "Inregistrata pe suport audio DVD - 150 RON",
+    "Tipărită - 150 RON",
     "Adresa de livrare *",
   ],
   en: [

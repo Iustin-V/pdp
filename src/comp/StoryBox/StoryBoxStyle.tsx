@@ -68,8 +68,13 @@ export const SectionContainerStoryBox = styled.div`
 `;
 
 export const StyledBoxOpened = styled.img<{ open: boolean }>`
-  height: 400px;
+  height:  ${(props) => (props.open ? "400px" : "250px")};
   width: ${(props) => (props.open ? "364px" : "auto")};
+  
+  
+  @media (max-width: 1200px){  
+    margin-top: ${(props) => (props.open ? "0" : "40px")};
+  }
 `;
 export const StyledBall = styled.img`
   height: 30px;
