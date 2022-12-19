@@ -71,7 +71,7 @@ export const EditModal = (props: EditModalProps) => {
     let content = undefined;
     if (updateArray.length > 0) {
       content = updateArray;
-    } else if (updateObjectArray && updateObjectArray.length > 0) {
+    } else if (updateObjectArray && updateObjectArray.length > 0 && updateObjectArray[0] ==! {}) {
       content = updateObjectArray;
     }
 
