@@ -29,7 +29,7 @@ export const StoryBoxFromTranslates = {
     "Selectează un format",
     "Audio pe canalul de Youtube 'Profa de Povești' - 150 RON",
     "Inregistrata pe suport audio DVD - 150 RON",
-    "Tipărită - 150 RON",
+    "Tipărită - 75 RON",
     "Adresa de livrare *",
   ],
   en: [
